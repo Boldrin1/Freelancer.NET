@@ -2,7 +2,17 @@ package Main_Package.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class HistoricoDeServicos {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
      public Freelancer freelancer;
      public Date DateDeInicio;
      public Date DateDeFim;
@@ -13,13 +23,19 @@ public class HistoricoDeServicos {
      }
 
 	public HistoricoDeServicos(Freelancer freelancer, Date dateDeInicio, Date dateDeFim, Servico servico) {
-		super();
 		this.freelancer = freelancer;
 		DateDeInicio = dateDeInicio;
 		DateDeFim = dateDeFim;
 		this.servico = servico;
 	}
+	
+	
+	   public HistoricoDeServicos() {
+	}
 
+	public Long getId() {
+		   return id;
+	   }
 	public Freelancer getFreelancer() {
 		return freelancer;
 	}

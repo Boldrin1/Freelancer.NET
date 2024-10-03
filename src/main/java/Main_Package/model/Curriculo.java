@@ -1,6 +1,17 @@
 package Main_Package.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Curriculo {
+	  @Id
+	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+	  private Long id;
+	  
       public Experiencias experiencias;
       public FormacaoAcademica formacaoAcademica;
       public Competencias competencias;
@@ -14,14 +25,21 @@ public class Curriculo {
 
 	public Curriculo(Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias,
 			String areaDeInteresse) {
-		super();
 		this.experiencias = experiencias;
 		this.formacaoAcademica = formacaoAcademica;
 		this.competencias = competencias;
 		AreaDeInteresse = areaDeInteresse;
 	}
+	
+	
+
+	   public Curriculo() {
+	}
 
 
+	public Long getId() {
+		   return id;
+	   }
 	public Experiencias getExperiencias() {
 		return experiencias;
 	}

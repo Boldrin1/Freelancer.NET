@@ -1,6 +1,11 @@
 package Main_Package.model;
 
+
+
+
 public class Cliente {
+	
+	
    private void criarServico() {
 	   //return servicoCriado
    }

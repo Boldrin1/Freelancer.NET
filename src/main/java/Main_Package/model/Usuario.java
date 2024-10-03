@@ -2,10 +2,21 @@ package Main_Package.model;
 
 import java.util.Date;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Usuario {
+	  @Id
+	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+	  private Long id;
+	  
       public String Nome;
       public String Email;
-      public boolean Senha;
+      private boolean Senha;
       public Date DataNascimento;
       public String Sexo;
       public int CPF;
@@ -22,7 +33,6 @@ public class Usuario {
 
 	public Usuario(String nome, String email, boolean senha, Date dataNascimento, String sexo, int cPF,
 			String telefone) {
-		super();
 		Nome = nome;
 		Email = email;
 		Senha = senha;
@@ -31,7 +41,15 @@ public class Usuario {
 		CPF = cPF;
 		Telefone = telefone;
 	}
+	
+	
 
+	   public Usuario() {
+	}
+
+	public Long getId() {
+		   return id;
+	   }
 	public String getNome() {
 		return Nome;
 	}

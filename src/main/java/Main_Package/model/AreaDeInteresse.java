@@ -1,0 +1,12 @@
+package Main_Package.model;
+
+public enum AreaDeInteresse {
+	 MARKETING,
+	 TECNOLOGIADAINFORMACAO,
+	 LIMPEZA,
+	 AUTOMOTIVO,
+	 GRAFICA,
+	 CONSULTORIA,
+	 EVENTOS,
+	 SERVICOSGERAIS
+}

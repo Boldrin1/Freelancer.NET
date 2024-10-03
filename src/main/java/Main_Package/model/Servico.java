@@ -1,21 +1,22 @@
 package Main_Package.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Servico {
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private Long id;
+	 
      public int Valor;
      public int Horas;
      public String Descricao;
      public int CodigoDeServico;
      
-     enum AreaDeInteresse{
-    	 MARKETING,
-    	 TECNOLOGIADAINFORMACAO,
-    	 LIMPEZA,
-    	 AUTOMOTIVO,
-    	 GRAFICA,
-    	 CONSULTORIA,
-    	 EVENTOS,
-    	 SERVICOSGERAIS
-     }
      
      
      public void receberCurriculo(Curriculo curriculo) {
@@ -24,14 +25,21 @@ public class Servico {
 
 
 	public Servico(int valor, int horas, String descricao, int codigoDeServico) {
-		super();
 		Valor = valor;
 		Horas = horas;
 		Descricao = descricao;
 		CodigoDeServico = codigoDeServico;
 	}
+	
+	
+
+	   public Servico() {
+	}
 
 
+	public Long getId() {
+		   return id;
+	   }
 	public int getValor() {
 		return Valor;
 	}

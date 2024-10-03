@@ -2,10 +2,20 @@ package Main_Package.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Contrato {
-     public Date DataInicio;
-     public Date DataFim;
-     public String Termos;
+   	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+   	 private Long id;
+   	 
+     private Date DataInicio;
+     private Date DataFim;
+     private String Termos;
      
      public void validarContrato(Date DateInico,Date DateFim,int Valor) {
     	 //return resulta 
@@ -16,10 +26,15 @@ public class Contrato {
      }
 
 	public Contrato(Date dataInicio, Date dataFim, String termos) {
-		super();
 		DataInicio = dataInicio;
 		DataFim = dataFim;
 		Termos = termos;
+	}
+	
+	   public Long getId() {
+		   return id;
+	   }
+	public Contrato() {
 	}
 
 	public Date getDataInicio() {
