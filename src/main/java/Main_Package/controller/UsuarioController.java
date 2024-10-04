@@ -21,7 +21,6 @@ public class UsuarioController {
 	public String visualizarPerfil(Model modelo) {		
 		return "u";	
 	}
-	
 }
 
 
@@ -35,4 +34,3 @@ public class UsuarioController {
  *  @DeleteMapping: Mapeia requisições HTTP DELETE para excluir um usuário por ID.
  *  
  */
- 
