@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class OrdemDeServico {
@@ -11,9 +12,13 @@ public class OrdemDeServico {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
+	  @ManyToOne
       public Servico servico;
+      @ManyToOne
       public Cliente cliente;
+      @ManyToOne
       public Freelancer freelancer;
+      @ManyToOne
       public Contrato contrato;
       
       public void criarOrdem(Servico servico, Usuario usuario, Freelancer freelancer,Contrato contrato){

@@ -1,5 +1,7 @@
 package Main_Package.model;
 
+
+
 public enum AreaDeInteresse {
 	 MARKETING,
 	 TECNOLOGIADAINFORMACAO,

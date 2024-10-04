@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Freelancer {
@@ -10,7 +11,9 @@ public class Freelancer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-	public Curriculo curriculo;
+    
+    @ManyToOne
+	private Curriculo curriculo;
 	
 	
 	public void enviarCurriculo(Curriculo curriculo) {
@@ -23,7 +26,11 @@ public class Freelancer {
 	
 	
 
-	   public Freelancer() {
+	   public Freelancer(Curriculo curriculo) {
+		this.curriculo = curriculo;
+	}
+
+	public Freelancer() {
 	}
 
 	public Long getId() {

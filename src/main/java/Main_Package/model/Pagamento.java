@@ -1,6 +1,8 @@
 package Main_Package.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +14,9 @@ public class Pagamento {
 	private Long id;
 	
     public int Valor;
+    
+    @Enumerated(EnumType.STRING)
+    private TiposPagamento tipo;
     
     private void processarPagamento(int valor) {
     	//return resultado

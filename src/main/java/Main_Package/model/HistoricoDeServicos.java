@@ -6,16 +6,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class HistoricoDeServicos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	 @ManyToOne
      public Freelancer freelancer;
      public Date DateDeInicio;
      public Date DateDeFim;
+     @ManyToOne
      public Servico servico;
      
      public void verificarStatus(OrdemDeServico ordem) {

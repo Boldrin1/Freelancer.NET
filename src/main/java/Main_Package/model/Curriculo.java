@@ -2,9 +2,12 @@ package Main_Package.model;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Curriculo {
@@ -12,10 +15,14 @@ public class Curriculo {
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  
+	  @ManyToOne
       public Experiencias experiencias;
+	  @ManyToOne
       public FormacaoAcademica formacaoAcademica;
+      @ManyToOne
       public Competencias competencias;
-      public String AreaDeInteresse;
+      @Enumerated(EnumType.STRING)
+      public AreaDeInteresse area;
       
       
       public void alterarCurriculo(Experiencias experiencias,FormacaoAcademica formacaoAcademica,Competencias competencias) {
@@ -23,12 +30,10 @@ public class Curriculo {
       }
 
 
-	public Curriculo(Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias,
-			String areaDeInteresse) {
+	public Curriculo(Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias) {
 		this.experiencias = experiencias;
 		this.formacaoAcademica = formacaoAcademica;
 		this.competencias = competencias;
-		AreaDeInteresse = areaDeInteresse;
 	}
 	
 	
@@ -70,15 +75,6 @@ public class Curriculo {
 	}
 
 
-	public String getAreaDeInteresse() {
-		return AreaDeInteresse;
-	}
-
-
-	public void setAreaDeInteresse(String areaDeInteresse) {
-		AreaDeInteresse = areaDeInteresse;
-	}
-      
       
       
       

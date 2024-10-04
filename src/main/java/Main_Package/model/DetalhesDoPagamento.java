@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class DetalhesDoPagamento {
 	       @Id
@@ -13,9 +14,13 @@ public class DetalhesDoPagamento {
 	       private Long id;
 	       
            private Date DataDePagamento;
+           @ManyToOne
            public Freelancer Coletor;
+           @ManyToOne
            public Cliente Pagador;
-		public DetalhesDoPagamento(Date dataDePagamento, Freelancer coletor, Cliente pagador, int id) {
+           
+           
+		public DetalhesDoPagamento(Date dataDePagamento, Freelancer coletor, Cliente pagador) {
 			DataDePagamento = dataDePagamento;
 			Coletor = coletor;
 			Pagador = pagador;

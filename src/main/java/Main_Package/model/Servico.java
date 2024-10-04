@@ -2,6 +2,8 @@ package Main_Package.model;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +19,8 @@ public class Servico {
      public String Descricao;
      public int CodigoDeServico;
      
+     @Enumerated(EnumType.STRING)
+     private AreaDeInteresse area;
      
      
      public void receberCurriculo(Curriculo curriculo) {
