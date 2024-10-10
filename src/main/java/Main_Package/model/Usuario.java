@@ -16,7 +16,7 @@ public class Usuario {
 	  
       public String Nome;
       public String Email;
-      private boolean Senha;
+      private int Senha;
       public Date DataNascimento;
       public String Sexo;
       public int CPF;
@@ -31,8 +31,7 @@ public class Usuario {
     	  //return bool;
       }
 
-	public Usuario(String nome, String email, boolean senha, Date dataNascimento, String sexo, int cPF,
-			String telefone) {
+	public Usuario(String nome, String email, int senha, Date dataNascimento, String sexo, int cPF,String telefone) {
 		Nome = nome;
 		Email = email;
 		Senha = senha;
@@ -66,11 +65,11 @@ public class Usuario {
 		Email = email;
 	}
 
-	public boolean isSenha() {
+	public int getSenha() {
 		return Senha;
 	}
 
-	public void setSenha(boolean senha) {
+	public void setSenha(int senha) {
 		Senha = senha;
 	}
 
@@ -94,8 +93,8 @@ public class Usuario {
 		return CPF;
 	}
 
-	public void setCPF(int cPF) {
-		CPF = cPF;
+	public void setCPF(int CPF) {
+		this.CPF = CPF;
 	}
 
 	public String getTelefone() {
