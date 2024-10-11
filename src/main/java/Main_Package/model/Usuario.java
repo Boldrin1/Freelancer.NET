@@ -23,7 +23,11 @@ public class Usuario {
       public String Telefone;
       
       
-      private void alterarDados(String Nome,String Email,Date DataNascimento,String Sexo,int CPF,String Telefone){
+      public void setId(Long id) {
+		this.id = id;
+	}
+
+	private void alterarDados(String Nome,String Email,Date DataNascimento,String Sexo,int CPF,String Telefone){
     	  //return dadosAlterados;
       }
       
@@ -49,6 +53,8 @@ public class Usuario {
 	public Long getId() {
 		   return id;
 	   }
+	
+
 	public String getNome() {
 		return Nome;
 	}
@@ -104,8 +110,7 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		Telefone = telefone;
 	}
+
+
       
-      
-      
-	
 }

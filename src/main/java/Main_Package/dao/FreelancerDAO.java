@@ -3,6 +3,9 @@ package Main_Package.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -21,6 +24,7 @@ public class FreelancerDAO {
 	 */
 	
 	public void save(Usuario usuario) {
+
 		String sql = "INSERT INTO usuario(nome,email,senha,DataNascimento,Sexo,CPF,Telefone) VALUES (?, ?, ?)";
 		
 		Connection conn = null;
@@ -64,4 +68,78 @@ public class FreelancerDAO {
 		}
 		
 	}
+
+
+	public List<Usuario> getUsuario(){
+		String sql = "SELECT * FROM usuarios";
+		
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		
+		Connection conn = null;
+		
+		PreparedStatement pstm = null;
+		
+		//Classe que vai recuperar os dados do banco.   *****SELECT*****
+		ResultSet rset = null;
+		
+		try {
+			conn = ConnectionFactory.createConnectionToMySql();
+			
+			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			
+			rset = pstm.executeQuery();
+			
+			
+			while (rset.next()) {
+				Usuario usuario = new Usuario();
+				
+				//Recuperar o id
+				usuario.setId(rset.getLong("id"));
+				//Recuperar o nome
+				usuario.setNome(rset.getString("nome"));
+				//Recuperar o email
+				usuario.setEmail(rset.getString("email"));
+				
+				usuario.setSenha(rset.getInt("senha"));
+				
+				usuario.setDataNascimento(rset.getDate("datadenascimento"));
+				
+				usuario.setSexo(rset.getString("sexo"));
+				
+				usuario.setCPF(rset.getInt("cpf"));
+				
+				usuario.setTelefone(rset.getString("telefone"));
+				
+				usuarios.add(usuario);
+				
+			}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+				try {
+				if(rset!=null) {
+					rset.close();
+				}
+				
+				if(pstm!=null) {
+					pstm.close();
+				}
+				
+				if(conn!=null) {
+					conn.close();
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			}
+	
+		return usuarios;
+	}
+
+	
+	
+	
+	
 }
