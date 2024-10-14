@@ -7,12 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 
 import Main_Package.factory.ConnectionFactory;
 import Main_Package.model.Usuario;
 
-public class FreelancerDAO {
+public class UsuarioDAO {
 
 	/*
 	 *  CRUD

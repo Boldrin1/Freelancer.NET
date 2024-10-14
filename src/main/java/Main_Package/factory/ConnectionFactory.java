@@ -12,7 +12,7 @@ public class ConnectionFactory {
 	private static final String PASSWORD = "1";
 	
 	//Caminho do banco de dados, porta
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:8080/Freelancer.NET";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/FreelancerNET";
 	
 	/*
 	 * Conexao com o banco de dados
