@@ -23,9 +23,60 @@ public class UsuarioDAO {
 	 *   
 	 */
 	
+	
+	
+	public void update(Usuario usuario){
+		
+		String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, sexo = ?, Telefone = ?"+"WHERE id = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			//Criar conexão com o banco
+			conn = ConnectionFactory.createConnectionToMySql();
+			
+			//Criar a classe para executar a query
+			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			
+			//Adicionar os valores para atualizar
+			pstm.setString(1, usuario.getNome());
+		    pstm.setString(2, usuario.getEmail());
+		    pstm.setInt(3, usuario.getSenha());
+		    pstm.setString(4, usuario.getSexo());
+		    pstm.setString(5, usuario.getTelefone());
+		    
+		    //Pegou o id do registro que deseja atualizar
+		    pstm.setLong(6, usuario.getId());
+			
+			//Executar a query
+		    pstm.execute();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				
+				if(conn != null) {
+					conn.close();
+				}
+				
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+				
+		}
+	}
+		
+		
+	
+	
 	public void save(Usuario usuario) {
 
-		String sql = "INSERT INTO usuario(nome,email,senha,DataNascimento,Sexo,CPF,Telefone) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO usuario(nome,email,senha,DataNascimento,Sexo,CPF,Telefone) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -139,7 +190,7 @@ public class UsuarioDAO {
 	}
 
 	
-	
+
 	
 	
 }
