@@ -7,29 +7,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  
-      public String Nome;
-      public String Email;
-      private int Senha;
+      public String Nome; 
+      public String Email;  
+      private int Senha;    
       public Date DataNascimento;
       public String Sexo;
       public int CPF;
-      public String Telefone;
+      public String Telefone;  
       
       
       public void setId(Long id) {
 		this.id = id;
 	}
 
-	private void alterarDados(String Nome,String Email,Date DataNascimento,String Sexo,int CPF,String Telefone){
-    	  //return dadosAlterados;
-      }
       
       private void  vereficarLogin(String Email,boolean Senha) {
     	  //return bool;

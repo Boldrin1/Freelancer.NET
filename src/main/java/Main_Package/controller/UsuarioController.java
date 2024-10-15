@@ -4,22 +4,26 @@ package Main_Package.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-
+import Main_Package.model.Usuario;
 import Main_Package.service.UsuarioService;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuarioController {
    
 	
 	private UsuarioService usuarioService;
 	
-	@GetMapping("/viewPerfil")
-	public String visualizarPerfil(Model modelo) {		
-		return "u";	
+	@PostMapping("/create-count")
+	public String criarConta(Usuario usuario) {
+		usuarioService.saveUsuario(usuario);
+		return "Pagina de Registro";
 	}
+	
+	
 }
 
 
