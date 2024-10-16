@@ -1,4 +1,4 @@
-package Main_Package.factory;
+/*package Main_Package.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,9 +14,9 @@ public class ConnectionFactory {
 	//Caminho do banco de dados, porta
 	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/FreelancerNET";
 	
-	/*
+	
 	 * Conexao com o banco de dados
-	 */
+	 
 	
 	public static Connection createConnectionToMySql() throws Exception{
 		//Faz com que a classe seja caregada pela JVM
@@ -37,4 +37,4 @@ public class ConnectionFactory {
 			con.close();
 		}
 	}
-}
+}*/

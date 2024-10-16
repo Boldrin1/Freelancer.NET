@@ -1,4 +1,4 @@
-package Main_Package.dao;
+ /*package Main_Package.dao;
 
 
 import java.sql.Connection;
@@ -21,7 +21,7 @@ public class UsuarioDAO {
 	 *  u: UPDATE
 	 *  d: DELETE 
 	 *   
-	 */
+
 	
 	
 	
@@ -193,4 +193,4 @@ public class UsuarioDAO {
 
 	
 	
-}
+}*/

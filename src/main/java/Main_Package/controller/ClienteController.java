@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Main_Package.service.ClienteService;
 
 @Controller
-@RequestMapping("/usuario/cliente/{id}")
+@RequestMapping("/usuario/cliente")
 public class ClienteController {
 
 	private ClienteService clienteService;
 	
-	@GetMapping
+	@GetMapping("/perfil/{id}")
 	public String mostrarCliente(Long id) {
 		clienteService.mostrarCliente(id);
 		return "vizualizar perfil do Cliente";
 	}
 	
-	@PutMapping
+	@PutMapping("/perfil/editar/{id}")
 	public String editarDados(Long id) {
 		clienteService.UpdateCliente(id);
 		return "Pagina de editar dados do Cliente";
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/perfil/{id}")
 	public String excluirCliente(Long id) {
 		return "create-count";
 	}
