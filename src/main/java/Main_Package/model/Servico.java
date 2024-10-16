@@ -16,6 +16,7 @@ public class Servico {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
+	 private String Titulo;
      public int Valor;
      public int Horas;
      public String Descricao;
@@ -40,6 +41,18 @@ public class Servico {
 	
 
 	   public Servico() {
+	}
+
+	   
+	   
+
+	public String getTitulo() {
+		return Titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		Titulo = titulo;
 	}
 
 

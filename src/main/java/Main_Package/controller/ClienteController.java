@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Main_Package.service.ClienteService;
+import Main_Package.service.FreelancerService;
+
 
 @Controller
 @RequestMapping("/usuario/cliente")
 public class ClienteController {
 
 	private ClienteService clienteService;
+	
+	private FreelancerService freelancerService;
+	
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarCliente(Long id) {
@@ -27,14 +32,23 @@ public class ClienteController {
 	
 	@DeleteMapping("/perfil/{id}")
 	public String excluirCliente(Long id) {
-		return "create-count";
+		return "redirect:/create-count";
 	}
 	
+	@GetMapping
+	public String paginaInicial_Cliente() {
+		freelancerService.listarFreelancer();
+		return "Pagina Inicial dos clientes que lista os Freelancers disponiveis";
+	}
+	
+
 	
 }
 
 
 /*
+ * 	O cliente vai ver serviços e o freelancer vai ver trabalhos disponiveis
+ * 
  *  @GetMapping: Mapeia requisições HTTP GET para recuperar todos os usuários ou um usuário por ID.
  *  @PostMapping: Mapeia requisições HTTP POST para criar um novo usuário.
  *  @PutMapping: Mapeia requisições HTTP PUT para atualizar um usuário existente.

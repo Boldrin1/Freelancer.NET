@@ -75,6 +75,18 @@ public class Curriculo {
 	}
 
 
+	public void setFreelancer(Freelancer freelancer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setServico(Servico servico) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
       
       
       

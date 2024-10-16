@@ -1,7 +1,9 @@
 package Main_Package.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Main_Package.model.Freelancer;
@@ -10,10 +12,15 @@ import Main_Package.repository.FreelancerRepository;
 @Service
 public class FreelancerService {
 
+	@Autowired
 	private FreelancerRepository freelancerRepository;
 	
 	public Optional<Freelancer> mostraFreelancer(Long id){
 		return freelancerRepository.findById(id);
+	}
+	
+	public List<Freelancer> listarFreelancer(){
+		return freelancerRepository.findAll();
 	}
 	
 	public Freelancer UpdateFreelancer(Long id){
