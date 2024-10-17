@@ -1,12 +1,17 @@
 package Main_Package.model;
 
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 
 
@@ -21,6 +26,14 @@ public class Servico {
      public int Horas;
      public String Descricao;
      public int CodigoDeServico;
+     
+     @ManyToOne
+     @JoinColumn(name = "cliente_id")
+     private Cliente cliente;
+     
+     // Um serviço pode ter vários curriculos enviados por freelancers
+     @OneToMany(mappedBy = "servico")
+     private List<Curriculo> curriculos;
      
      @Enumerated(EnumType.STRING)
      private AreaDeInteresse area;

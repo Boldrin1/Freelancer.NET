@@ -62,4 +62,3 @@ public class CurriculoService {
         return ResponseEntity.ok("Currículo enviado com sucesso!");
     }
 }
-	

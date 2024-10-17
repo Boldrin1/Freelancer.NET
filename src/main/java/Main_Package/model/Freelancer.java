@@ -1,13 +1,15 @@
 package Main_Package.model;
+import java.util.List;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Freelancer extends Usuario{
     
     
-    @OneToOne
-	private Curriculo curriculo;
+	// Um freelancer pode enviar varios curriculos para serviços diferentes
+    @OneToMany(mappedBy = "freelancer")
+	private List<Curriculo> curriculo;
 	
 	
 	public void enviarCurriculo(Curriculo curriculo) {
@@ -20,7 +22,7 @@ public class Freelancer extends Usuario{
 	
 	
 
-	   public Freelancer(Curriculo curriculo) {
+	   public Freelancer(List<Curriculo> curriculo) {
 		this.curriculo = curriculo;
 	}
 
@@ -28,11 +30,11 @@ public class Freelancer extends Usuario{
 	}
 
 
-	public Curriculo getCurriculo() {
+	public List<Curriculo> getCurriculo() {
 		return curriculo;
 	}
 
-	public void setCurriculo(Curriculo curriculo) {
+	public void setCurriculo(List<Curriculo> curriculo) {
 		this.curriculo = curriculo;
 	}
 	

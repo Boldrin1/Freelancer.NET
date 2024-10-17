@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -24,6 +25,15 @@ public class Curriculo {
       @Enumerated(EnumType.STRING)
       public AreaDeInteresse area;
       
+
+      @ManyToOne
+      @JoinColumn(name = "freelancer_id")
+      private Freelancer freelancer;
+
+      @ManyToOne
+      @JoinColumn(name = "servico_id")
+      private Servico servico;
+
       
       public void alterarCurriculo(Experiencias experiencias,FormacaoAcademica formacaoAcademica,Competencias competencias) {
     	 // return curriculoAlterado;
@@ -38,48 +48,41 @@ public class Curriculo {
 	
 	
 
-	   public Curriculo() {
+	public Curriculo() {
 	}
-
 
 	public Long getId() {
 		   return id;
 	   }
+	
 	public Experiencias getExperiencias() {
 		return experiencias;
 	}
-
 
 	public void setExperiencias(Experiencias experiencias) {
 		this.experiencias = experiencias;
 	}
 
-
 	public FormacaoAcademica getFormacaoAcademica() {
 		return formacaoAcademica;
 	}
-
 
 	public void setFormacaoAcademica(FormacaoAcademica formacaoAcademica) {
 		this.formacaoAcademica = formacaoAcademica;
 	}
 
-
 	public Competencias getCompetencias() {
 		return competencias;
 	}
-
 
 	public void setCompetencias(Competencias competencias) {
 		this.competencias = competencias;
 	}
 
-
 	public void setFreelancer(Freelancer freelancer) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	public void setServico(Servico servico) {
 		// TODO Auto-generated method stub
