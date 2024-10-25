@@ -1,5 +1,6 @@
 package Main_Package.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -13,9 +14,14 @@ public class Contrato {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
    	 private Long id;
    	 
-     private Date DataInicio;
-     private Date DataFim;
-     private String Termos;
+   	 private Freelancer freelancer;
+   	 private Cliente cliente;
+   	private LocalDate dataInicio;
+   	private LocalDate dataFim;
+   	private boolean FreelancerAssinou;
+   	private boolean ClienteAssinou;
+
+	private String Termos;
      
      public void validarContrato(Date DateInico,Date DateFim,int Valor) {
     	 //return resulta 
@@ -25,32 +31,82 @@ public class Contrato {
     	 //return status
      }
 
-	public Contrato(Date dataInicio, Date dataFim, String termos) {
-		DataInicio = dataInicio;
-		DataFim = dataFim;
+	
+
+	
+
+	public boolean isFreelancerAssinou() {
+		return FreelancerAssinou;
+	}
+
+	public void setFreelancerAssinou(boolean freelancerAssinou) {
+		FreelancerAssinou = freelancerAssinou;
+	}
+
+	
+
+	public Contrato(Long id, Freelancer freelancer, Cliente cliente, LocalDate dataInicio, LocalDate dataFim,
+			boolean freelancerAssinou, boolean clienteAssinou, String termos) {
+		this.id = id;
+		this.freelancer = freelancer;
+		this.cliente = cliente;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		FreelancerAssinou = freelancerAssinou;
+		ClienteAssinou = clienteAssinou;
 		Termos = termos;
 	}
+
 	
-	   public Long getId() {
-		   return id;
-	   }
+	public boolean isClienteAssinou() {
+		return ClienteAssinou;
+	}
+
+	public void setClienteAssinou(boolean clienteAssinou) {
+		ClienteAssinou = clienteAssinou;
+	}
+
 	public Contrato() {
 	}
 
-	public Date getDataInicio() {
-		return DataInicio;
+	public Long getId() {
+		return id;
 	}
 
-	public void setDataInicio(Date dataInicio) {
-		DataInicio = dataInicio;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Date getDataFim() {
-		return DataFim;
+	public Freelancer getFreelancer() {
+		return freelancer;
 	}
 
-	public void setDataFim(Date dataFim) {
-		DataFim = dataFim;
+	public void setFreelancer(Freelancer freelancer) {
+		this.freelancer = freelancer;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(LocalDate dataFim) {
+		dataFim = dataFim;
 	}
 
 	public String getTermos() {
@@ -60,6 +116,10 @@ public class Contrato {
 	public void setTermos(String termos) {
 		Termos = termos;
 	}
+
+
+
+	
      
      
 	
