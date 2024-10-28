@@ -3,8 +3,7 @@ package Main_Package.model;
 import java.util.Collection;
 import java.util.Date;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -115,26 +114,5 @@ public class Usuario implements UserDetails{
 
 	// o spring vai consultar quais sao os papeis(roles) que nosso usuario tem, entao é aqui que nos temos que retornar quais sao as roles do
 	// meu usuario
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return Email;
-	}
-
-
-      
+	
 }

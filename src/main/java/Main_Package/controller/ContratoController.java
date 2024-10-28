@@ -15,7 +15,6 @@ import Main_Package.service.ContratoService;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
 
 @RestController
 public class ContratoController {
@@ -27,11 +26,11 @@ public class ContratoController {
     }
 
     @GetMapping("/contratos/{id}/gerar")
-    public ResponseEntity<byte[]> gerarContrato(@PathVariable Long id) {
+    public ResponseEntity<byte[]> gerarContrato(@PathVariable("id") Long id) {
         try {
             Contrato contrato = contratoService.buscarContratoPorId(id);  // Método para buscar o contrato
             contratoService.gerarContrato(contrato);
-            
+
             Path path = Paths.get("contrato_" + id + ".pdf");
             byte[] pdf = Files.readAllBytes(path);
 
@@ -43,8 +42,7 @@ public class ContratoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
-    
+
     @PostMapping("/contratos/{id}/assinar")
     public ResponseEntity<String> assinarContrato(@PathVariable Long id, @RequestParam String papel) {
         try {
@@ -56,8 +54,6 @@ public class ContratoController {
                 contrato.setClienteAssinou(true);
             }
 
-            
-
             contratoService.salvarContrato(contrato);
 
             return new ResponseEntity<>("Contrato assinado com sucesso.", HttpStatus.OK);
@@ -65,5 +61,4 @@ public class ContratoController {
             return new ResponseEntity<>("Erro ao assinar o contrato.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Contrato {
@@ -14,7 +15,9 @@ public class Contrato {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
    	 private Long id;
    	 
+   	@OneToOne
    	 private Freelancer freelancer;
+   	 @OneToOne
    	 private Cliente cliente;
    	private LocalDate dataInicio;
    	private LocalDate dataFim;

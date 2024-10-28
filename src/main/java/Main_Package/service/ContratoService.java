@@ -10,16 +10,23 @@ import Main_Package.repository.ContratoRepository;
 
 import java.io.FileOutputStream;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+@Service
 public class ContratoService {
 
-	
-	private ContratoRepository contratoRepository;
-	
-    public void gerarContrato(Contrato contrato) throws Exception {
+    private final ContratoRepository contratoRepository;
+
+    @Autowired
+    public ContratoService(ContratoRepository contratoRepository) {
+        this.contratoRepository = contratoRepository;
+    }
+
+        public void gerarContrato(Contrato contrato) throws Exception {
         String nomeArquivo = "contrato_" + contrato.getId() + ".pdf";
         PdfWriter writer = new PdfWriter(new FileOutputStream(nomeArquivo));
         PdfDocument pdf = new PdfDocument(writer);
@@ -39,15 +46,13 @@ public class ContratoService {
         // Fechar o documento PDF
         document.close();
     }
-    
+
     public Contrato buscarContratoPorId(Long id) {
         return contratoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Contrato não encontrado para o ID: " + id));
     }
 
     public Contrato salvarContrato(@ModelAttribute Contrato contrato) {
-    	return contratoRepository.save(contrato);
+        return contratoRepository.save(contrato);
     }
-
-
 }
