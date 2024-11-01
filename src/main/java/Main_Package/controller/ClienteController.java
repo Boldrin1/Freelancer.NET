@@ -38,7 +38,7 @@ public class ClienteController {
 	@GetMapping
 	public String paginaInicial_Cliente() {
 		freelancerService.listarFreelancer();
-		return "Pagina Inicial dos clientes que lista os Freelancers disponiveis";
+		return "cliente-home";
 	}
 	
 

@@ -1,6 +1,7 @@
 package Main_Package.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,21 +11,25 @@ import Main_Package.model.Usuario;
 import Main_Package.service.UsuarioService;
 
 @Controller
-@RequestMapping("/registrar")
+@RequestMapping
 public class UsuarioController {
    
-	
+	@Autowired
 	private UsuarioService usuarioService;
 	
-	@PostMapping
-	public String criarConta(Usuario usuario) {
-		usuarioService.saveUsuario(usuario);
-		return "Pagina de Registro";
+	@GetMapping("/registrar")
+	public String criarConta() {
+		return "register";
 	}
 	
-	@GetMapping("/entrar")
+	public String save(Usuario usuario) {
+		usuarioService.saveUsuario(usuario);
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/login")
 	public String entrarConta() {
-		return "Pagina para entrar";
+		return "login";
 	}
 	
 }
