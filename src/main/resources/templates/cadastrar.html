@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Forma de Pagamento - Freelancer.NET</title>
+    <style>
+		/* Estilo para o corpo */
+		body {
+		    margin: 0;
+		    font-family: Arial, sans-serif;
+		    background-color: #f0f4f8;
+		    height: 100vh;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: flex-start;
+		    overflow: hidden;
+		    position: relative;
+		}
+
+		.header {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    padding: 10px 20px;
+		    background-color: rgba(250, 250, 250, 0.99);
+		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    z-index: 1000;
+		}
+
+		.title {
+		    font-family: 'Inter', sans-serif;
+		    font-weight: 700;
+		    font-size: 30px;
+		    color: #1E1E1E;
+		}
+
+		.form-container {
+		    max-width: 455px;
+		    padding: 60px 45px;
+		    background-color: #ffffff;
+		    border-radius: 20px;
+		    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+		    text-align: center;
+		    position: relative;
+		    z-index: 1;
+		    margin-top: 100px; /* Para evitar sobreposição com o cabeçalho fixo */
+		}
+
+		input[type="text"], input[type="password"], input[type="date"] {
+		    width: 100%;
+		    padding: 12px;
+		    border-radius: 5px;
+		    border: 1px solid #ccc;
+		    margin: 10px 0;
+		}
+
+		.btn-primary {
+		    background-color: #5f3fc9;
+		    border: none;
+		    padding: 12px;
+		    border-radius: 10px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    width: 100%;
+		    color: #fff;
+		    cursor: pointer;
+		    transition: background-color 0.3s ease;
+		}
+
+		.btn-primary:hover {
+		    background-color: #4b2ea6;
+		}
+
+		.cancel-button {
+		    background-color: #f44336;
+		    color: #fff;
+		    border: none;
+		    padding: 10px;
+		    border-radius: 5px;
+		    cursor: pointer;
+		    transition: background-color 0.3s ease;
+		    margin-top: 10px;
+		}
+
+		.cancel-button:hover {
+		    background-color: #d32f2f;
+		}
+
+		.message {
+		    color: #5f3fc9;
+		    margin: 20px 0;
+		}
+
+		/* Estilo das amoebas */
+		.amoeba {
+		    position: absolute;
+		    background: rgba(95, 63, 201, 0.3);
+		    border-radius: 50%;
+		    width: 200px;
+		    height: 200px;
+		    opacity: 0.5;
+		    animation: float 4s ease-in-out infinite;
+		    z-index: 0;
+		}
+
+		.amoeba:nth-child(1) {
+		    top: -50px;
+		    left: -50px;
+		}
+
+		.amoeba:nth-child(2) {
+		    top: 200px;
+		    right: 100px;
+		    width: 150px;
+		    height: 150px;
+		}
+
+		.amoeba:nth-child(3) {
+		    bottom: -50px;
+		    left: 150px;
+		    width: 250px;
+		    height: 250px;
+		}
+
+		.amoeba:nth-child(4) {
+		    top: 100px;
+		    right: 50px;
+		    width: 300px;
+		    height: 300px;
+		}
+
+		@keyframes float {
+		    0%, 100% {
+		        transform: translateY(0);
+		    }
+		    50% {
+		        transform: translateY(-20px);
+		    }
+		}
+		</style>
+    
+</head>
+<body>
+    <div class="header">
+        <span class="title">Freelancer.NET</span>
+    </div>
+
+    <div class="form-container">
+        <h1>Cadastrar Forma de Pagamento</h1>
+        <form th:action="@{/cliente/pagamento/salvar}" method="post">
+            <input type="text" name="tipo" placeholder="Tipo de Pagamento (Ex: Cartão de Crédito)" required />
+            <input type="text" name="titular" placeholder="Titular do Cartão" required />
+            <input type="text" name="numero" placeholder="Número do Cartão" required />
+            <input type="date" name="vencimento" placeholder="Data de Vencimento" required />
+            <input type="password" name="cvv" placeholder="Código de Segurança (CVV)" required />
+
+            <button type="submit" class="btn-primary">Cadastrar</button>
+            <button type="button" class="cancel-button" onclick="window.history.back()">Cancelar</button>
+        </form>
+
+        <div class="message" th:if="${mensagem}" th:text="${mensagem}"></div>
+    </div>
+
+    <div class="amoeba"></div>
+    <div class="amoeba"></div>
+</body>
+</html>

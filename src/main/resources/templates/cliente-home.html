@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancers Disponíveis</title>
+  <style>
+	/* Estilo para o corpo */
+	body {
+	    margin: 0;
+	    font-family: Arial, sans-serif;
+	    background-color: #f0f4f8;
+	    display: flex;
+	    justify-content: center; /* Centraliza horizontalmente */
+	    padding: 20px; /* Padding para espaçamento */
+	}
+
+	/* Container principal */
+	.container {
+	    max-width: 1200px; /* Largura máxima do container */
+	    width: 100%; /* Largura total */
+	    padding: 40px; /* Padding interno */
+	    background-color: #ffffff;
+	    border-radius: 20px;
+	    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+	    text-align: center;
+	}
+
+	/* Título da seção */
+	.container h1 {
+	    font-size: 36px; /* Tamanho da fonte do título */
+	    font-weight: bold;
+	    color: #5f3fc9;
+	    margin-bottom: 30px; /* Margem inferior para separação */
+	    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	/* Lista de freelancers */
+	.freelancers-list {
+	    display: grid;
+	    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsivo */
+	    gap: 20px; /* Espaçamento entre os cartões */
+	}
+
+	/* Cartão do freelancer */
+	.freelancer-card {
+	    background-color: #ffffff;
+	    border-radius: 15px;
+	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	    padding: 20px; /* Padding interno do cartão */
+	    text-align: left; /* Alinhamento do texto */
+	    transition: transform 0.3s; /* Efeito de transição */
+	}
+
+	/* Efeito de hover no cartão */
+	.freelancer-card:hover {
+	    transform: translateY(-5px); /* Leve elevação ao passar o mouse */
+	}
+
+	/* Título do freelancer */
+	.freelancer-card h3 {
+	    font-size: 24px; /* Tamanho da fonte do nome */
+	    color: #333; /* Cor do texto */
+	    margin-bottom: 10px; /* Margem inferior para separação */
+	}
+
+	/* Estilo para localização */
+	.freelancer-card p {
+	    font-size: 14px; /* Tamanho da fonte para parágrafo */
+	    color: #555; /* Cor do texto */
+	    margin: 5px 0; /* Margens verticais */
+	}
+
+	/* Estilo para o botão */
+	.btn {
+	    display: inline-block; /* Botão como bloco inline */
+	    background-color: #5f3fc9; /* Cor de fundo */
+	    color: #ffffff; /* Cor do texto */
+	    padding: 12px 20px; /* Padding interno do botão */
+	    border: none; /* Sem borda */
+	    border-radius: 10px; /* Bordas arredondadas */
+	    font-size: 16px; /* Tamanho da fonte */
+	    text-decoration: none; /* Sem sublinhado */
+	    margin-top: 10px; /* Margem superior */
+	    transition: background-color 0.3s ease; /* Transição suave */
+	}
+
+	/* Estilo do botão ao passar o mouse */
+	.btn:hover {
+	    background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
+	}
+
+	</style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Freelancers Disponíveis</h1>
+        <div class="freelancers-list" th:each="freelancer : ${freelancers}">
+            <div class="freelancer-card">
+                <!-- Nome do freelancer -->
+                <h3 th:text="${freelancer.nome}">Nome do Freelancer</h3>
+                
+                <!-- Localização -->
+                <p><strong>Localização:</strong> <span th:text="${freelancer.localizacao}">Localização</span></p>
+                
+                <!-- Descrição do serviço -->
+                <p th:text="${freelancer.descricaoServico}">Descrição do serviço...</p>
+                
+                <!-- Link para ver o perfil completo -->
+                <a th:href="@{/perfil/freelancer/{id}(id=${freelancer.id})}" class="btn">Ver Perfil</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

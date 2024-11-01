@@ -3,8 +3,7 @@ package Main_Package.model;
 import java.util.Collection;
 import java.util.Date;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -156,4 +155,95 @@ public class Usuario implements UserDetails{
 		} 
       
       
+<<<<<<< HEAD
 }
+=======
+      public void setId(Long id) {
+		this.id = id;
+	}
+
+      
+      private void  vereficarLogin(String Email,boolean Senha) {
+    	  //return bool;
+      }
+
+	public Usuario(String nome, String email, String senha, Date dataNascimento, String sexo, String cPF,String telefone) {
+		Nome = nome;
+		Email = email;
+		Senha = senha;
+		DataNascimento = dataNascimento;
+		Sexo = sexo;
+		CPF = cPF;
+		Telefone = telefone;
+	}
+	
+	   public Usuario() {
+	}
+
+	public Long getId() {
+		   return id;
+	   }
+	
+
+	public String getNome() {
+		return Nome;
+	}
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+	public String getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(String string) {
+		Senha = string;
+	}
+
+	public Date getDataNascimento() {
+		return DataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		DataNascimento = dataNascimento;
+	}
+
+	public String getSexo() {
+		return Sexo;
+	}
+
+	public void setSexo(String sexo) {
+		Sexo = sexo;
+	}
+
+	public String getCPF() {
+		return CPF;
+	}
+
+	public void setCPF(String string) {
+		this.CPF = string;
+	}
+
+	public String getTelefone() {
+		return Telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		Telefone = telefone;
+	}
+
+
+	// o spring vai consultar quais sao os papeis(roles) que nosso usuario tem, entao é aqui que nos temos que retornar quais sao as roles do
+	// meu usuario
+	
+}
+>>>>>>> 2d5aa6a9000b6a28de71ab3e9ed1abbcba4432e8

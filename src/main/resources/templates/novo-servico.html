@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Serviço - Freelancer.NET</title>
+    <style>
+		/* Estilo para o corpo */
+		body {
+		    margin: 0;
+		    font-family: Arial, sans-serif;
+		    background-color: #f0f4f8;
+		    height: 100vh; /* Altura total da tela */
+		    display: flex;
+		    align-items: center; /* Centraliza verticalmente */
+		    justify-content: center; /* Centraliza horizontalmente */
+		    overflow: hidden; /* Impede rolagem da página */
+		}
+
+		/* Cabeçalho fixo contendo logo, título e botão de menu */
+		.header {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    padding: 10px 20px;
+		    background-color: rgba(250, 250, 250, 0.99);
+		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    z-index: 1000;
+		}
+
+		/* Container para menu-toggle, logo e título no cabeçalho */
+		.left-header {
+		    display: flex;
+		    align-items: center;
+		    gap: 10px;
+		}
+
+		/* Estilo do botão de abrir o menu */
+		.menu-toggle {
+		    color: black;
+		    padding: 10px;
+		    cursor: pointer;
+		    font-size: 25px;
+		}
+
+		/* Logo e título no cabeçalho */
+		.logo {
+		    width: 65px;
+		    height: 65px;
+		    object-fit: contain;
+		}
+		.title {
+		    font-family: 'Inter', sans-serif;
+		    font-weight: 700;
+		    font-size: 30px;
+		    color: #1E1E1E;
+		}
+
+		/* Estilo para a barra lateral */
+		.sidebar {
+		    width: 250px;
+		    height: 100vh;
+		    position: fixed;
+		    top: 0;
+		    left: -300px;
+		    background-color: rgba(250, 250, 250, 0.99);
+		    transition: left 0.3s ease;
+		    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+		    padding: 20px;
+		    display: flex;
+		    flex-direction: column;
+		    gap: 20px;
+		    z-index: 1100;
+		}
+
+		/* Cabeçalho dentro da sidebar com nova logo e título */
+		.sidebar-header {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    margin-bottom: 30px;
+		}
+
+		/* Logo e título na sidebar */
+		.sidebar-logo {
+		    width: 55px;
+		    height: 55px;
+		    object-fit: contain;
+		}
+		.sidebar-title {
+		    font-family: 'Inter', sans-serif;
+		    font-weight: 700;
+		    font-size: 22px;
+		    color: #1E1E1E;
+		}
+
+		/* Animação para abrir a barra lateral */
+		.sidebar.active {
+		    left: 0;
+		}
+
+		/* Itens de menu */
+		.menu-item {
+		    font-family: 'Inter', sans-serif;
+		    font-weight: 400;
+		    font-size: 24px;
+		    color: #000;
+		    border: 0.3px solid #000;
+		    padding: 10px 15px;
+		    cursor: pointer;
+		    transition: background-color 0.2s ease;
+		}
+
+		/* Hover nos itens */
+		.menu-item:hover {
+		    background-color: #e0e0e0;
+		}
+
+		/* Link de ajuda */
+		.help-link {
+		    font-family: 'Inter', sans-serif;
+		    font-weight: 400;
+		    font-size: 18px;
+		    color: #000;
+		    border: 0.3px solid #000;
+		    padding: 10px 15px;
+		    text-align: center;
+		    cursor: pointer;
+		    margin-top: auto;
+		}
+
+		.register-container {
+		    max-width: 455px; /* Aumentando a largura do container */
+		    padding: 60px 45px; /* Aumentando o padding interno */
+		    background-color: #ffffff;
+		    border-radius: 20px;
+		    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+		    text-align: center;
+		    position: relative;
+		    z-index: 1;
+		    margin-top: 80px; /* Espaço abaixo do cabeçalho fixo */
+		}
+
+		.register-container h1 {
+		    font-size: 36px; /* Aumentando o tamanho da fonte do título */
+		    font-weight: bold;
+		    color: #5f3fc9;
+		    margin-bottom: 10px;
+		    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.form-label {
+		    font-weight: 600;
+		    font-size: 15px;
+		    color: #555;
+		    margin-bottom: 8px;
+		    display: block;
+		}
+
+		.form-control {
+		    border-radius: 10px;
+		    padding: 12px;
+		    border: 1px solid #ced4da;
+		    font-size: 15px;
+		    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+		    width: 400px;
+		    margin-bottom: 15px;
+		}
+
+		.form-control:focus {
+		    border-color: #5f3fc9;
+		    box-shadow: 0 0 10px rgba(95, 63, 201, 0.4);
+		    outline: none;
+		}
+
+		.btn-primary {
+		    background-color: #5f3fc9;
+		    border: none;
+		    padding: 12px;
+		    border-radius: 10px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    width: 100%;
+		    color: #fff;
+		    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		    cursor: pointer;
+		    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+		    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
+		}
+
+		.btn-primary:hover {
+		    background-color: #4b2ea6;
+		    box-shadow: 0 10px 30px rgba(75, 46, 166, 0.4);
+		}
+
+		.text-center a {
+		    font-size: 15px;
+		    color: #5f3fc9;
+		    margin-top: 15px;
+		    display: block;
+		    font-weight: 500;
+		    transition: color 0.3s ease;
+		}
+
+		.text-center a:hover {
+		    color: #4b2ea6;
+		    text-decoration: underline;
+		}
+		</style>
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
+            <span class="title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+        <div class="menu-item">Início</div>
+        <div class="menu-item">Meus Serviços</div>
+        <div class="menu-item">Meus Currículos</div>
+        <div class="menu-item">Ajustes</div>
+        <div class="help-link">Ajuda</div>
+    </div>
+    <div class="register-container">
+        <h1>Novo Serviço</h1>
+        <form th:action="@{/cliente/servicos/salvar}" th:object="${servico}" method="post">
+            <input type="hidden" name="clienteId" th:value="${clienteId}" />
+            <label class="form-label" for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" th:field="*{titulo}" class="form-control" required />
+
+            <label class="form-label" for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" th:field="*{descricao}" class="form-control" required></textarea>
+
+            <label class="form-label" for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" th:field="*{preco}" class="form-control" required />
+
+            <button type="submit" class="btn-primary">Cadastrar Serviço</button>
+        </form>
+        <div class="text-center">
+            <a th:href="@{/cliente/servicos}">Voltar para Meus Serviços</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

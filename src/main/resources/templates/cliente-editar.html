@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil do Cliente</title>
+    <style>
+		/* Estilo para o corpo */
+		body {
+		    margin: 0;
+		    font-family: Arial, sans-serif;
+		    background-color: #f0f4f8;
+		    height: 100vh; /* Altura total da tela */
+		    display: flex;
+		    align-items: center; /* Centraliza verticalmente */
+		    justify-content: center; /* Centraliza horizontalmente */
+		    overflow: hidden; /* Impede rolagem da página */
+		}
+
+		/* Container principal para o formulário */
+		.container {
+		    max-width: 455px; /* Largura máxima do contêiner */
+		    padding: 40px 30px; /* Padding interno */
+		    background-color: #ffffff;
+		    border-radius: 20px;
+		    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+		    text-align: center;
+		    position: relative;
+		    z-index: 1;
+		}
+
+		/* Estilo do título */
+		.container h1 {
+		    font-size: 36px; /* Tamanho da fonte do título */
+		    font-weight: bold;
+		    color: #5f3fc9;
+		    margin-bottom: 20px; /* Margem inferior para separação */
+		    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Estilos para os rótulos do formulário */
+		.form-label {
+		    font-weight: 600;
+		    font-size: 15px;
+		    color: #555;
+		    margin-bottom: 8px;
+		    display: block;
+		    text-align: left; /* Alinhamento à esquerda */
+		}
+
+		/* Estilos para os campos de entrada */
+		.form-control {
+		    border-radius: 10px;
+		    padding: 12px;
+		    border: 1px solid #ced4da;
+		    font-size: 15px;
+		    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+		    width: 100%; /* Largura total do campo */
+		    margin-bottom: 15px; /* Margem inferior */
+		}
+
+		/* Estilos para o foco nos campos de entrada */
+		.form-control:focus {
+		    border-color: #5f3fc9;
+		    box-shadow: 0 0 10px rgba(95, 63, 201, 0.4);
+		    outline: none;
+		}
+
+		/* Estilo para o botão */
+		.btn {
+		    background-color: #5f3fc9;
+		    border: none;
+		    padding: 12px;
+		    border-radius: 10px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    width: 100%; /* Largura total do botão */
+		    color: #fff;
+		    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		    cursor: pointer;
+		    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+		    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
+		}
+
+		/* Estilo do botão ao passar o mouse */
+		.btn:hover {
+		    background-color: #4b2ea6;
+		    box-shadow: 0 10px 30px rgba(75, 46, 166, 0.4);
+		}
+
+		/* Estilos para as formas de fundo */
+		.background-shapes {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    z-index: -1;
+		}
+
+		.top-right-amoeba, .bottom-left-amoeba {
+		    position: absolute;
+		    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+		    border-radius: 50%;
+		    opacity: 0.9;
+		}
+
+		.top-right-amoeba {
+		    top: -90px;
+		    right: -90px;
+		    width: 580px;
+		    height: 580px;
+		}
+
+		.bottom-left-amoeba {
+		    bottom: -100px;
+		    left: -100px;
+		    width: 400px;
+		    height: 400px;
+		}
+
+		</style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="container">
+        <h1>Editar Perfil de [[${cliente.nome}]]</h1>
+        <form th:action="@{/cliente/editar/{id}(id=${cliente.id})}" th:object="${cliente}" method="post">
+            <label class="form-label" for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" class="form-control" required />
+
+            <label class="form-label" for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" required />
+
+            <label class="form-label" for="localizacao">Localização:</label>
+            <input type="text" id="localizacao" th:field="*{localizacao}" class="form-control" />
+
+            <label class="form-label" for="descricaoServico">Descrição do Serviço:</label>
+            <textarea id="descricaoServico" th:field="*{descricaoServico}" class="form-control" rows="3"></textarea>
+
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

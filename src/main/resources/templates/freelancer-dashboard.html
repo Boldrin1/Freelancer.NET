@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Freelancer - Serviços Disponíveis</title>
+   <style>
+	/* Estilo para o corpo */
+	body {
+	    margin: 0;
+	    font-family: Arial, sans-serif;
+	    background-color: #f0f4f8;
+	    height: 100vh; /* Altura total da tela */
+	    display: flex;
+	    align-items: center; /* Centraliza verticalmente */
+	    justify-content: center; /* Centraliza horizontalmente */
+	    overflow: hidden; /* Impede rolagem da página */
+	}
+
+	/* Cabeçalho fixo contendo logo, título e botão de menu */
+	.header {
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    padding: 10px 20px;
+	    background-color: rgba(250, 250, 250, 0.99);
+	    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 1000;
+	}
+
+	/* Container para menu-toggle, logo e título no cabeçalho */
+	.left-header {
+	    display: flex;
+	    align-items: center;
+	    gap: 10px;
+	}
+
+	/* Estilo do botão de abrir o menu */
+	.menu-toggle {
+	    color: black;
+	    padding: 10px;
+	    cursor: pointer;
+	    font-size: 25px;
+	}
+
+	/* Logo e título no cabeçalho */
+	.logo {
+	    width: 65px;
+	    height: 65px;
+	    object-fit: contain;
+	}
+
+	.title {
+	    font-family: 'Inter', sans-serif;
+	    font-weight: 700;
+	    font-size: 30px;
+	    color: #1E1E1E;
+	}
+
+	/* Estilo para a barra lateral */
+	.sidebar {
+	    width: 250px;
+	    height: 100vh;
+	    position: fixed;
+	    top: 0;
+	    left: -300px;
+	    background-color: rgba(250, 250, 250, 0.99);
+	    transition: left 0.3s ease;
+	    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	    padding: 20px;
+	    display: flex;
+	    flex-direction: column;
+	    gap: 20px;
+	    z-index: 1100;
+	}
+
+	/* Cabeçalho dentro da sidebar com nova logo e título */
+	.sidebar-header {
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    margin-bottom: 30px;
+	}
+
+	/* Logo e título na sidebar */
+	.sidebar-logo {
+	    width: 55px;
+	    height: 55px;
+	    object-fit: contain;
+	}
+
+	.sidebar-title {
+	    font-family: 'Inter', sans-serif;
+	    font-weight: 700;
+	    font-size: 22px;
+	    color: #1E1E1E;
+	}
+
+	/* Animação para abrir a barra lateral */
+	.sidebar.active {
+	    left: 0;
+	}
+
+	/* Itens de menu */
+	.menu-item {
+	    font-family: 'Inter', sans-serif;
+	    font-weight: 400;
+	    font-size: 24px;
+	    color: #000;
+	    border: 0.3px solid #000;
+	    padding: 10px 15px;
+	    cursor: pointer;
+	    transition: background-color 0.2s ease;
+	}
+
+	/* Hover nos itens */
+	.menu-item:hover {
+	    background-color: #e0e0e0;
+	}
+
+	/* Link de ajuda */
+	.help-link {
+	    font-family: 'Inter', sans-serif;
+	    font-weight: 400;
+	    font-size: 18px;
+	    color: #000;
+	    border: 0.3px solid #000;
+	    padding: 10px 15px;
+	    text-align: center;
+	    cursor: pointer;
+	    margin-top: auto;
+	}
+
+	/* Estilo para a lista de serviços */
+	.service-list {
+	    margin-top: 100px; /* Espaçamento abaixo do cabeçalho */
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap: 20px; /* Espaçamento entre os itens */
+	    padding: 20px;
+	}
+
+	/* Estilo para cada item de serviço */
+	.service-item {
+	    background-color: #ffffff;
+	    border-radius: 15px;
+	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	    padding: 20px;
+	    width: 80%; /* Largura do item */
+	    max-width: 600px; /* Largura máxima do item */
+	    transition: transform 0.2s;
+	}
+
+	/* Efeito de hover para o item de serviço */
+	.service-item:hover {
+	    transform: scale(1.02);
+	}
+
+	/* Estilo para o botão de aplicar */
+	.btn-apply {
+	    background-color: #5f3fc9;
+	    color: white;
+	    padding: 10px 15px;
+	    border: none;
+	    border-radius: 10px;
+	    text-decoration: none; /* Remove o sublinhado do link */
+	    font-weight: bold;
+	    transition: background-color 0.3s ease;
+	    display: inline-block;
+	}
+
+	/* Hover no botão de aplicar */
+	.btn-apply:hover {
+	    background-color: #4b2ea6;
+	}
+
+	/* Formas de amoeba maiores e com pontas mais arredondadas */
+	.background-shapes {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    z-index: -1;
+	}
+
+	.top-right-amoeba,
+	.bottom-left-amoeba {
+	    position: absolute;
+	    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+	    opacity: 0.9;
+	    width: 650px;
+	    height: 500px;
+	    border-radius: 1000px;
+	}
+
+	.top-right-amoeba {
+	    top: -90px;
+	    right: -90px;
+	    position: absolute;
+	    width: 580px;
+	    height: 800px;
+	    background-color: #yourColor;
+	    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+	}
+
+	/* Amoeba inferior esquerda com pontas arredondadas */
+	.bottom-left-amoeba {
+	    bottom: -120px;
+	    left: -180px;
+	    width: 500px;
+	    border-radius: 100%;
+	    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+	}
+	</style>
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
+            <span class="title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+        <div class="menu-item">Início</div>
+        <div class="menu-item">Meus Serviços</div>
+        <div class="menu-item">Meus Currículos</div>
+        <div class="menu-item">Ajustes</div>
+        <div class="help-link">Ajuda</div>
+    </div>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="dashboard-container">
+        <h2>Serviços Disponíveis para Freelancers</h2>
+
+        <!-- Lista de serviços -->
+        <div class="service-list" th:each="servico : ${servicos}">
+            <div class="service-item">
+                <h3 th:text="${servico.titulo}">Título do Serviço</h3>
+                <p th:text="${servico.descricao}">Descrição do serviço...</p>
+                <p><strong>Cliente:</strong> <span th:text="${servico.cliente.nome}">Nome do Cliente</span></p>
+                <p><strong>Localização:</strong> <span th:text="${servico.localizacao}">Localização do Serviço</span></p>
+                
+                <!-- Botão para aplicar ao serviço -->
+                <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Aplicar</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
