@@ -2,31 +2,35 @@ package Main_Package.model;
 
 import java.util.Date;
 
-import javax.management.relation.Role;
 
-import jakarta.persistence.Entity;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
 
-@Entity
 
+@MappedSuperclass
 public class Usuario{
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	  
-	  private String nome;
+	    private String nome;
 	    private String email;
 	    private String senha;    
+	    @DateTimeFormat(pattern = "yyyy-MM-dd")
 	    private Date dataNascimento;
 	    private String sexo;
 	    private String cpf;
 	    private String telefone;
-		private Role role;
+		private role role;
 		public Usuario(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
-				String telefone, Role role) {
+				String telefone, role role) {
 			this.id = id;
 			this.nome = nome;
 			this.email = email;
@@ -87,12 +91,14 @@ public class Usuario{
 		public void setTelefone(String telefone) {
 			this.telefone = telefone;
 		}
-		public Role getRole() {
+		public role getRole() {
 			return role;
 		}
-		public void setRole(Role role) {
+		public void setRole(role role) {
 			this.role = role;
 		}
+		
+		
 		
 		
 		

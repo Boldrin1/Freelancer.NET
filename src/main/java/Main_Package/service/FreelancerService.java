@@ -15,6 +15,10 @@ public class FreelancerService {
 	@Autowired
 	private FreelancerRepository freelancerRepository;
 	
+	public Freelancer save(Freelancer freelancer) {
+		return freelancerRepository.save(freelancer);
+	}
+	
 	public Optional<Freelancer> mostraFreelancer(Long id){
 		return freelancerRepository.findById(id);
 	}

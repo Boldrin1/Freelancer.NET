@@ -14,6 +14,10 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
+	public Cliente save(Cliente cliente) {
+		return clienteRepository.save(cliente);
+	}
+	
 	public Optional<Cliente> mostrarCliente(Long id) {
 		return clienteRepository.findById(id);
 	}

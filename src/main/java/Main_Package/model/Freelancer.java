@@ -1,9 +1,12 @@
 package Main_Package.model;
+import java.util.Date;
 import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "freelancer")
 public class Freelancer extends Usuario{
     
     
@@ -11,6 +14,13 @@ public class Freelancer extends Usuario{
     @OneToMany(mappedBy = "freelancer")
 	private List<Curriculo> curriculo;
 	
+    
+	
+	public Freelancer(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
+			String telefone, Main_Package.model.role role, List<Curriculo> curriculo) {
+		super(id, nome, email, senha, dataNascimento, sexo, cpf, telefone, role);
+		this.curriculo = curriculo;
+	}
 	
 	public void enviarCurriculo(Curriculo curriculo) {
 		//return curriculoEnviado
@@ -27,6 +37,11 @@ public class Freelancer extends Usuario{
 	}
 
 	public Freelancer() {
+	}
+
+
+	public Freelancer(Usuario usuario) {
+		// TODO Auto-generated constructor stub
 	}
 
 
