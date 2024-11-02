@@ -1,6 +1,10 @@
 package Main_Package.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +20,13 @@ import Main_Package.service.ServicoService;
 @RequestMapping("/usuario/freelancer")
 public class FreelancerController {
    
+	@Autowired
 	private FreelancerService freelancerService;
 	
+	@Autowired
 	private ServicoService servicoService;
 	
+	@Autowired
 	private CurriculoService curriculoService;
 	
 	@GetMapping("/perfil/{id}")
@@ -41,10 +48,12 @@ public class FreelancerController {
 	}
 	
 	@GetMapping
-	public String paginaInicial_Free(Servico servico){
-		servicoService.listarServico(servico);
-		return "Pagina inicial dos freelancers que lista os serviços disponiveis";
+	public String paginaInicial_Free(Model model,Servico servico) {
+	    List<Servico> servicos = servicoService.listarServico(servico); // Certifique-se de que isso retorna todos os serviços
+	    model.addAttribute("servicos", servicos); // Adiciona a lista de serviços ao modelo
+	    return "freelancer-home"; // Retorna a página
 	}
+
 	
 	@GetMapping("/curriculo/{id}")
 	public String mostrarCurriculo(Long id) {

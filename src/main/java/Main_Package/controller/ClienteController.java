@@ -1,5 +1,6 @@
 package Main_Package.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,10 @@ import Main_Package.service.FreelancerService;
 @RequestMapping("/usuario/cliente")
 public class ClienteController {
 
+	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
 	private FreelancerService freelancerService;
 	
 	

@@ -21,11 +21,11 @@ public class Servico {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
-	 private String Titulo;
-     public int Valor;
-     public int Horas;
-     public String Descricao;
-     public int CodigoDeServico;
+	 private String titulo;
+     public int valor;
+     public int horas;
+     public String descricao;
+
      
      @ManyToOne
      @JoinColumn(name = "cliente_id")
@@ -44,76 +44,105 @@ public class Servico {
      }
 
 
-	public Servico(int valor, int horas, String descricao, int codigoDeServico) {
-		Valor = valor;
-		Horas = horas;
-		Descricao = descricao;
-		CodigoDeServico = codigoDeServico;
-	}
-	
-	
-
-	   public Servico() {
-	}
-
-	   
-	   
-
-	public String getTitulo() {
-		return Titulo;
+	public Servico(Long id, String titulo, int valor, int horas, String descricao, Cliente cliente,
+			List<Curriculo> curriculos, AreaDeInteresse area) {
+		this.id = id;
+		this.titulo = titulo;
+		this.valor = valor;
+		this.horas = horas;
+		this.descricao = descricao;
+		this.cliente = cliente;
+		this.curriculos = curriculos;
+		this.area = area;
 	}
 
 
-	public void setTitulo(String titulo) {
-		Titulo = titulo;
+	public Servico() {
 	}
 
 
 	public Long getId() {
-		   return id;
-	   }
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
 	public int getValor() {
-		return Valor;
+		return valor;
 	}
 
 
 	public void setValor(int valor) {
-		Valor = valor;
+		this.valor = valor;
 	}
 
 
 	public int getHoras() {
-		return Horas;
+		return horas;
 	}
 
 
 	public void setHoras(int horas) {
-		Horas = horas;
+		this.horas = horas;
 	}
 
 
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
 
 
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		this.descricao = descricao;
 	}
 
 
-	public int getCodigoDeServico() {
-		return CodigoDeServico;
+
+
+	public Cliente getCliente() {
+		return cliente;
 	}
 
 
-	public void setCodigoDeServico(int codigoDeServico) {
-		CodigoDeServico = codigoDeServico;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-     
-     
+
+
+	public List<Curriculo> getCurriculos() {
+		return curriculos;
+	}
+
+
+	public void setCurriculos(List<Curriculo> curriculos) {
+		this.curriculos = curriculos;
+	}
+
+
+	public AreaDeInteresse getArea() {
+		return area;
+	}
+
+
+	public void setArea(AreaDeInteresse area) {
+		this.area = area;
+	}
+
+
 	
-	
-    
      
 }

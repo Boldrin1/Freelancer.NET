@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Main_Package.model.Cliente;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Usuario;
 import Main_Package.model.role;
+import Main_Package.service.AutenticacaoService;
 import Main_Package.service.ClienteService;
 import Main_Package.service.FreelancerService;
 
@@ -22,14 +24,16 @@ import Main_Package.service.FreelancerService;
 @RequestMapping
 public class UsuarioController {
    
-
+	@Autowired
+    private AutenticacaoService autenticacaoService;
+	
 	@Autowired
 	private ClienteService clienteService;
 	
 	@Autowired
 	private FreelancerService frelancerSerivce;
 	
-	@GetMapping("/registrar")
+	@GetMapping("/register")
 	public String criarConta(Model modelo) {
 		modelo.addAttribute("usuario",new Usuario());
 		return "register";
@@ -42,8 +46,6 @@ public class UsuarioController {
 		    } else if (usuario.getRole() == role.CLIENTE) {
 		    	clienteService.save(cliente);
 		    }
-
-		    // Salve o usuário no banco
 		    return "redirect:/login";
 	}
 	
@@ -52,7 +54,27 @@ public class UsuarioController {
 		return "login";
 	}
 	
-}
+	
+	@GetMapping("/login-verificar")
+	public String verificarUser(@RequestParam String email, @RequestParam String senha, Model model) {
+	    Usuario usuario = autenticacaoService.autenticar(email, senha);
+
+	    if (usuario != null) {
+	        if (usuario instanceof Freelancer) {
+	            return "redirect:/usuario/freelancer";
+	        } else if (usuario instanceof Cliente) {
+	            return "redirect:/usuario/cliente";
+	        }
+	    }
+	    model.addAttribute("erro", "Email ou senha incorretos");
+	    return "/login";
+	}
+
+	
+
+	}
+	
+
 
 
 
