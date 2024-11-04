@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo do Freelancer</title>
+    <link rel="stylesheet" href="/css/freelancerCurriculo.css"> <!-- Mudança no caminho para o CSS -->
+</head>
+<body>
+    <div class="header">
+        <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo"> <!-- Caminho para o logo -->
+        <span class="header-title">Currículo do Freelancer</span>
+        <div class="menu-toggle" onclick="toggleSidebar()" style="font-size: 24px; cursor: pointer;">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="menu-item">Perfil</div>
+        <div class="menu-item">Inbox</div>
+        <div class="menu-item">Contratos</div> <!-- Corrigido para fechar a div -->
+        <div class="menu-item">Informações</div>
+    </div>
+
+
+
+        <div class="form-section">
+            <h2>Editar Currículo</h2>
+            <form th:action="@{/freelancers-curriculo/{id}(id=${freelancerCurriculo.id})}" method="post"> <!-- Alterado para freelancers -->
+                <label for="inputNome">Nome:</label>
+                <input type="text" id="inputNome" name="nome" th:value="${freelancerCurriculo.nome}" placeholder="Insira seu nome">
+                
+                <label for="inputEmail">E-mail:</label>
+                <input type="email" id="inputEmail" name="email" th:value="${freelancerCurriculo.email}" placeholder="Insira seu e-mail">
+
+                <label for="inputTelefone">Telefone:</label>
+                <input type="text" id="inputTelefone" name="telefone" th:value="${freelancerCurriculo.telefone}" placeholder="Insira seu telefone">
+
+                <label for="inputExperiencia">Experiência Profissional:</label>
+                <textarea id="inputExperiencia" name="experiencia" rows="3" th:text="${freelancerCurriculo.experiencia}" placeholder="Descreva sua experiência profissional"></textarea>
+
+                <label for="inputFormacao">Formação Acadêmica:</label>
+                <textarea id="inputFormacao" name="formacao" rows="2" th:text="${freelancerCurriculo.formacao}" placeholder="Descreva sua formação acadêmica"></textarea>
+
+                <label for="inputHabilidades">Habilidades:</label>
+                <textarea id="inputHabilidades" name="habilidades" rows="2" th:text="${freelancerCurriculo.habilidades}" placeholder="Liste suas habilidades"></textarea>
+
+                <button type="submit" class="submit-button">Editar Currículo</button> <!-- Alterado para português correto -->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

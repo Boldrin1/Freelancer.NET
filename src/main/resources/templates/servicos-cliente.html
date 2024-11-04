@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Serviços - Freelancer.NET</title>
+	<link rel="stylesheet" href="/css/servicos-cliente.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo"> 
+            <span class="title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+    
+    <div class="register-container">
+        <h1>Meus Serviços</h1>
+        <a th:href="@{/cliente/servicos/novo/{clienteId}(clienteId=${clienteId})}" class="btn-primary">Criar Novo Serviço</a>
+        <ul>
+            <li th:each="servico : ${servicos}">
+                <p><strong>Serviço:</strong> <span th:text="${servico.titulo}">Título</span></p>
+                <p><strong>Descrição:</strong> <span th:text="${servico.descricao}">Descrição</span></p>
+                <p><strong>Preço:</strong> <span th:text="${servico.preco}">Preço</span></p>
+                <a th:href="@{/cliente/servicos/editar/{id}(id=${servico.id})}" class="edit-button">Editar</a>
+                <form th:action="@{/cliente/servicos/deletar/{id}(id=${servico.id})}" method="post">
+                    <input type="hidden" name="clienteId" th:value="${clienteId}" />
+                    <button type="submit">Excluir</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

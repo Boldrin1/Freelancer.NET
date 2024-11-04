@@ -120,6 +120,11 @@ public class Contrato {
 		Termos = termos;
 	}
 
+	public void setServico(Servico servico) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 	

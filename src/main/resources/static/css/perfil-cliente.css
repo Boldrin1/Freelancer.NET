@@ -1,0 +1,156 @@
+/* Estilo para o corpo */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        /* Cabeçalho fixo contendo logo e título */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fdfdfd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        /* Estilo do título */
+        .header-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        /* Estilo da barra lateral */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: #ffffff; /* Cor branca */
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1100;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .menu-item {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: #000000;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            margin-top: 80px; /* Espaço para o cabeçalho fixo */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Seção de perfil */
+        .profile-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .profile-section h2 {
+            margin: 0 0 10px;
+            color: #6a1b9a; /* Cor roxa para o título */
+        }
+
+        .profile-detail {
+            margin-bottom: 15px;
+        }
+
+        .profile-detail label {
+            font-weight: bold;
+        }
+
+        .edit-button {
+            background-color: #6a1b9a; /* Cor roxa para o botão de editar */
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #4a0072; /* Tom mais escuro de roxo ao passar o mouse */
+        }
+
+        /* Estilo da seção de serviços */
+        .services-section {
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .services-section h2 {
+            margin: 0 0 10px;
+            color: #6a1b9a; /* Cor roxa para o título */
+        }
+
+        /* Estilo dos cards */
+        .services-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria um layout responsivo */
+            gap: 20px; /* Espaçamento entre os cards */
+        }
+
+        .service-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px); /* Efeito de levantar o card ao passar o mouse */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px;
+            color: #333; /* Cor padrão para o título do serviço */
+        }
+
+        .service-card p {
+            margin: 5px 0;
+            color: #555; /* Cor padrão para o texto do serviço */
+        }

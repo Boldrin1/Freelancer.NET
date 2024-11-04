@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil do Cliente</title>
+	<link rel="stylesheet" href="/css/cliente-editar.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="container">
+        <h1>Editar Perfil de [[${cliente.nome}]]</h1>
+        <form th:action="@{/cliente/editar/{id}(id=${cliente.id})}" th:object="${cliente}" method="post">
+            <label class="form-label" for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" class="form-control" required />
+
+            <label class="form-label" for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" required />
+
+            <label class="form-label" for="localizacao">Localização:</label>
+            <input type="text" id="localizacao" th:field="*{localizacao}" class="form-control" />
+
+            <label class="form-label" for="descricaoServico">Descrição do Serviço:</label>
+            <textarea id="descricaoServico" th:field="*{descricaoServico}" class="form-control" rows="3"></textarea>
+
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

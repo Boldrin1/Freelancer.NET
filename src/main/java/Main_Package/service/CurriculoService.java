@@ -1,18 +1,25 @@
 package Main_Package.service;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import Main_Package.model.Contrato;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
+
+import Main_Package.repository.ContratoRepository;
 import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.repository.ServicoRepository;
+
 
 @Service
 public class CurriculoService {
@@ -26,10 +33,14 @@ public class CurriculoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
+    @Autowired
+    private ContratoRepository contratoRepository;
 	
 	public Optional<Curriculo> mostraCurriculo(Long id) {
 		return curriculoRepository.findById(id);
 	}
+	
+	
 	
 	public Curriculo editaCurriculo(Long id){
 		Optional<Curriculo> curriculo = curriculoRepository.findById(id);
@@ -53,12 +64,30 @@ public class CurriculoService {
         	.orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
 
         // Associar o currículo ao freelancer e ao serviço
+        curriculo.setStatus("PENDENTE");
         curriculo.setFreelancer(freelancer);
-        curriculo.setServico(servico);
+        curriculo.setServico(servico);        
 
         // Salvar o currículo no banco de dados
         curriculoRepository.save(curriculo);
 
         return ResponseEntity.ok("Currículo enviado com sucesso!");
     }
+    
+    public void aceitarCurriculo(Long curriculoId) {
+        Curriculo curriculo = curriculoRepository.findById(curriculoId).orElseThrow();
+        curriculo.setStatus("ACEITO");
+
+        Contrato contrato = new Contrato();
+        contrato.setCliente(curriculo.getServico().getCliente());
+        contrato.setFreelancer(curriculo.getFreelancer());
+        contrato.setServico(curriculo.getServico());
+        contratoRepository.save(contrato);
+    }
+    
+    
+    
+
+
 }
+

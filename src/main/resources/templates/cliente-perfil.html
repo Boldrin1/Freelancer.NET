@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Cliente</title>
+	<link rel="stylesheet" href="/css/cliente-perfil.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="container">
+        <h1>Perfil de [[${cliente.nome}]]</h1>
+        <p><strong>Email:</strong> [[${cliente.email}]]</p>
+        <p><strong>Localização:</strong> [[${cliente.localizacao}]]</p>
+        <p><strong>Descrição:</strong> [[${cliente.descricaoServico}]]</p>
+
+        <!-- Botão para editar perfil -->
+        <a th:href="@{/cliente/editar/{id}(id=${cliente.id})}" class="btn">Editar Perfil</a>
+    </div>
+</body>
+</html>

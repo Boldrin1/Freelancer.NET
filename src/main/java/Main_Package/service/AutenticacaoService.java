@@ -22,6 +22,8 @@ public class AutenticacaoService {
  @Autowired
  private ClienteRepository clienteRepository;
 
+
+ 
  public Usuario autenticar(String email, String senha) {
      // Primeiro, verifica na tabela de freelancers
      Optional<Freelancer> freelancerOpt = freelancerRepository.findByEmailAndSenha(email, senha);
@@ -38,5 +40,7 @@ public class AutenticacaoService {
      // Retorna null se as credenciais forem inválidas
      return null;
  }
+ 
+ 
 }
 

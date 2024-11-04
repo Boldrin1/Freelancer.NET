@@ -38,10 +38,10 @@ public class ClienteController {
 		return "redirect:/create-count";
 	}
 	
-	@GetMapping
+	@GetMapping("/{id}")
 	public String paginaInicial_Cliente() {
 		freelancerService.listarFreelancer();
-		return "cliente-home";
+		return "PrincipalCliente";
 	}
 	
 

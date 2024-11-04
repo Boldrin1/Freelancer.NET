@@ -9,22 +9,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
 @Entity
 public class Curriculo {
-	  @Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private Long id;
-	  
-	  @ManyToOne
-      public Experiencias experiencias;
-	  @ManyToOne
-      public FormacaoAcademica formacaoAcademica;
-      @ManyToOne
-      public Competencias competencias;
-      @Enumerated(EnumType.STRING)
-      public AreaDeInteresse area;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "experiencias_id") // Nome da coluna de referência
+    private Experiencias experiencias;
+
+    @ManyToOne
+    @JoinColumn(name = "formacao_academica_id") // Nome da coluna de referência
+    private FormacaoAcademica formacaoAcademica;
+
+    @ManyToOne
+    @JoinColumn(name = "competencias_id") // Nome da coluna de referência
+    private Competencias competencias;
+
+    @Enumerated(EnumType.STRING)
+    private AreaDeInteresse area;
+    
+    // Adicione os getters e setters, se necessário
+
+
       
+      private String status;
 
       @ManyToOne
       @JoinColumn(name = "freelancer_id")
@@ -39,41 +49,6 @@ public class Curriculo {
     	 // return curriculoAlterado;
       }
 
-
-	public Curriculo(Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias) {
-		this.experiencias = experiencias;
-		this.formacaoAcademica = formacaoAcademica;
-		this.competencias = competencias;
-	}
-	
-	
-
-	public Curriculo() {
-	}
-
-	public Long getId() {
-		   return id;
-	   }
-	
-	public Experiencias getExperiencias() {
-		return experiencias;
-	}
-
-	public void setExperiencias(Experiencias experiencias) {
-		this.experiencias = experiencias;
-	}
-
-	public FormacaoAcademica getFormacaoAcademica() {
-		return formacaoAcademica;
-	}
-
-	public void setFormacaoAcademica(FormacaoAcademica formacaoAcademica) {
-		this.formacaoAcademica = formacaoAcademica;
-	}
-
-	public Competencias getCompetencias() {
-		return competencias;
-	}
 
 	public void setCompetencias(Competencias competencias) {
 		this.competencias = competencias;
@@ -90,7 +65,86 @@ public class Curriculo {
 	}
 
 
-      
-      
+	public Curriculo(Long id, Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias,
+			AreaDeInteresse area, String status, Freelancer freelancer, Servico servico) {
+		this.id = id;
+		this.experiencias = experiencias;
+		this.formacaoAcademica = formacaoAcademica;
+		this.competencias = competencias;
+		this.area = area;
+		this.status = status;
+		this.freelancer = freelancer;
+		this.servico = servico;
+	}
+
+
+	public Curriculo() {
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public Experiencias getExperiencias() {
+		return experiencias;
+	}
+
+
+	public void setExperiencias(Experiencias experiencias) {
+		this.experiencias = experiencias;
+	}
+
+
+	public FormacaoAcademica getFormacaoAcademica() {
+		return formacaoAcademica;
+	}
+
+
+	public void setFormacaoAcademica(FormacaoAcademica formacaoAcademica) {
+		this.formacaoAcademica = formacaoAcademica;
+	}
+
+
+	public AreaDeInteresse getArea() {
+		return area;
+	}
+
+
+	public void setArea(AreaDeInteresse area) {
+		this.area = area;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public Competencias getCompetencias() {
+		return competencias;
+	}
+
+
+	public Freelancer getFreelancer() {
+		return freelancer;
+	}
+
+
+	public Servico getServico() {
+		return servico;
+	}
+
       
 }

@@ -30,6 +30,8 @@ public class Servico {
      @ManyToOne
      @JoinColumn(name = "cliente_id")
      private Cliente cliente;
+
+
      
      // Um serviço pode ter vários curriculos enviados por freelancers
      @OneToMany(mappedBy = "servico")

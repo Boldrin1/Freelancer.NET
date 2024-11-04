@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Freelancer.NET</title>
-	<link rel="stylesheet" type="text/css" href="/css/login.css" media="screen" />
-	
+    <link rel="stylesheet" href="/css/login.css"> <!-- Certifique-se de que o caminho do CSS esteja correto -->
 </head>
 <body>
 
@@ -15,41 +14,27 @@
 
     <div class="login-container register-container"> <!-- Alterei a classe para usar os estilos do registro -->
         <div class="header-logo text-center mb-4">
-            <img src="/img/logofree-removebg-preview#######.png" alt="Logo" class="logo-img"> <!-- Caminho do logo -->
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo-img"> <!-- Caminho do logo -->
             <h1 class="site-title">Freelancer.NET</h1> <!-- Classe para o título -->
         </div>
 		
 		
-				
 		
-		<form th:action="@{/login-verificar}" method="get">
-		    <div class="mb-3">
-		        <label for="email" class="form-label">Email</label>
-		        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
-		    </div>
-		    
-		    <div class="mb-3">
-		        <label for="senha" class="form-label">Senha</label>
-		        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
-		    </div>
-		    
-		    <!-- Campo de seleção para Freelancer ou Cliente -->
-		    <div class="mb-3">
-		        <label for="tipo-usuario" class="form-label">Tipo de Usuário</label>
-		        <select class="form-control" id="tipo-usuario" name="tipoUsuario" required>
-		            <option value="" disabled selected>Escolha uma opção</option>
-		            <option value="freelancer">Freelancer</option>
-		            <option value="cliente">Cliente</option>
-		        </select>
-		    </div>
-
-		    <button type="submit" class="btn-primary">Login</button>
-		</form>
-
-		<div class="text-center mt-3">
-		    <a href="/register">Não tem uma conta? Crie uma!</a>
-		</div>
-
+        <form th:action="@{/login-verificar}" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="/register">Não tem uma conta? Crie uma!</a>
+        </div>
+    </div>
 
 </body>
 </html>

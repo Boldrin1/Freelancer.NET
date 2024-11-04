@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Freelancer</title>
+	<link rel="stylesheet" href="/css/editar-freelancer.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="edit-freelancer">
+        <h2>Editar Perfil do Freelancer</h2>
+        <form th:action="@{/editar-freelancer/{id}(id=${freelancer.id})}" method="post">
+            <input type="text" th:value="${freelancer.nome}" name="nome" placeholder="Nome" required>
+            <textarea th:value="${freelancer.descricaoServico}" name="descricaoServico" placeholder="Descrição do Serviço" required></textarea>
+            <input type="text" th:value="${freelancer.localizacao}" name="localizacao" placeholder="Localização" required>
+            <input type="text" th:value="${freelancer.habilidades}" name="habilidades" placeholder="Habilidades" required>
+
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços do Cliente</title>
+	<link rel="stylesheet" href="/css/ServicoCliente.css">
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Substitua 'logo.png' pelo caminho da sua imagem -->
+        <span class="header-title">Serviços do Cliente</span>
+        <div class="menu-toggle" onclick="toggleSidebar()" style="font-size: 24px; cursor: pointer;">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="menu-item">Perfil</div>
+        <div class="menu-item">Meu Perfil</div>
+        <div class="menu-item">Inbox</div>
+        <div class="menu-item">Contratos</div>
+        <div class="menu-item">Informações</div>
+    </div>
+
+    <div class="main-content">
+        <div class="services-section">
+            <h2>Serviços Disponíveis</h2>
+            <div class="service-card">
+                <h3>Desenvolvimento Web</h3>
+                <p>Criação de sites responsivos e otimizados.</p>
+                <button class="hire-button">Contratar</button>
+            </div>
+            <div class="service-card">
+                <h3>Design Gráfico</h3>
+                <p>Desenvolvimento de identidades visuais e materiais gráficos.</p>
+                <button class="hire-button">Contratar</button>
+            </div>
+            <div class="service-card">
+                <h3>Marketing Digital</h3>
+                <p>Estratégias para aumentar a visibilidade online.</p>
+                <button class="hire-button">Contratar</button>
+            </div>
+            <div class="service-card">
+                <h3>Consultoria de TI</h3>
+                <p>Consultoria especializada em tecnologia da informação.</p>
+                <button class="hire-button">Contratar</button>
+            </div>
+            <div class="service-card">
+                <h3>Redação e Revisão</h3>
+                <p>Criação e revisão de conteúdos para blogs e sites.</p>
+                <button class="hire-button">Contratar</button>
+            </div>
+            <!-- Adicione mais serviços conforme necessário -->
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

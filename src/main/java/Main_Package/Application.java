@@ -20,19 +20,4 @@ public class Application implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 	}
-
-   /* @Autowired
-    private ClienteRepository clienteRepository;
-    @Override
-    public void run(String... args) throws Exception {
-        Cliente cliente = new Cliente();
-        cliente.setCPF("12");
-        cliente.setDataNascimento(new Date());
-        cliente.setEmail("Roberto@gmail.com");
-        cliente.setNome("Fernando");
-        cliente.setSenha("123");
-        cliente.setSexo("Masculino");              
-        cliente.setTelefone("44 99909393");
-        clienteRepository.save(cliente);
-    }*/
 }

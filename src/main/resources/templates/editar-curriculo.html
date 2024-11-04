@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Currículo</title>
+	<link rel="stylesheet" href="/css/editar-curriculo.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="curriculum-edit-container">
+        <h2>Editar Currículo</h2>
+
+        <form th:action="@{/editar-curriculo/{freelancerId}(freelancerId=${curriculum.freelancerId})}" th:object="${curriculum}" method="post">
+            <label for="qualificacoes">Qualificações</label>
+            <textarea id="qualificacoes" th:field="*{qualificacoes}" required></textarea>
+
+            <label for="experiencias">Experiências</label>
+            <textarea id="experiencias" th:field="*{experiencias}" required></textarea>
+
+            <label for="habilidades">Habilidades</label>
+            <textarea id="habilidades" th:field="*{habilidades}" required></textarea>
+
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

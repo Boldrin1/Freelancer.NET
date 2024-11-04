@@ -46,7 +46,6 @@ body {
     height: 65px;
     object-fit: contain;
 }
-
 .title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
@@ -85,7 +84,6 @@ body {
     height: 55px;
     object-fit: contain;
 }
-
 .sidebar-title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
@@ -128,85 +126,80 @@ body {
     margin-top: auto;
 }
 
-/* Estilo para a lista de serviços */
-.service-list {
-    margin-top: 100px; /* Espaçamento abaixo do cabeçalho */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Espaçamento entre os itens */
-    padding: 20px;
-}
-
-/* Estilo para cada item de serviço */
-.service-item {
+.register-container {
+    max-width: 455px; /* Aumentando a largura do container */
+    padding: 60px 45px; /* Aumentando o padding interno */
     background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%; /* Largura do item */
-    max-width: 600px; /* Largura máxima do item */
-    transition: transform 0.2s;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 80px; /* Espaço abaixo do cabeçalho fixo */
 }
 
-/* Efeito de hover para o item de serviço */
-.service-item:hover {
-    transform: scale(1.02);
-}
-
-/* Estilo para o botão de aplicar */
-.btn-apply {
-    background-color: #5f3fc9;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none; /* Remove o sublinhado do link */
+.register-container h1 {
+    font-size: 36px; /* Aumentando o tamanho da fonte do título */
     font-weight: bold;
-    transition: background-color 0.3s ease;
-    display: inline-block;
+    color: #5f3fc9;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover no botão de aplicar */
-.btn-apply:hover {
-    background-color: #4b2ea6;
+.form-label {
+    font-weight: 600;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
 }
 
-/* Formas de amoeba maiores e com pontas mais arredondadas */
-.background-shapes {
-    position: absolute;
-    top: 0;
-    left: 0;
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    border-color: #5f3fc9;
+    box-shadow: 0 0 10px rgba(95, 63, 201, 0.4);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #5f3fc9;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
     width: 100%;
-    height: 100%;
-    z-index: -1;
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
 }
 
-.top-right-amoeba,
-.bottom-left-amoeba {
-    position: absolute;
-    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
-    opacity: 0.9;
-    width: 650px;
-    height: 500px;
-    border-radius: 1000px;
+.btn-primary:hover {
+    background-color: #4b2ea6;
+    box-shadow: 0 10px 30px rgba(75, 46, 166, 0.4);
 }
 
-.top-right-amoeba {
-    top: -90px;
-    right: -90px;
-    position: absolute;
-    width: 580px;
-    height: 800px;
-    background-color: #yourColor;
-    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+.text-center a {
+    font-size: 15px;
+    color: #5f3fc9;
+    margin-top: 15px;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Amoeba inferior esquerda com pontas arredondadas */
-.bottom-left-amoeba {
-    bottom: -120px;
-    left: -180px;
-    width: 500px;
-    border-radius: 100%;
-    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+.text-center a:hover {
+    color: #4b2ea6;
+    text-decoration: underline;
 }

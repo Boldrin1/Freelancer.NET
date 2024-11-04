@@ -1,0 +1,100 @@
+/* Estilo do corpo */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Altura total da tela */
+    position: relative; /* Para posicionar o fundo corretamente */
+}
+
+/* Container de edição do freelancer */
+.edit-freelancer {
+    max-width: 600px;
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: left; /* Alinhamento à esquerda */
+    position: relative; /* Para manter a estrutura */
+    z-index: 1; /* Garante que o conteúdo esteja acima do fundo */
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #5f3fc9; /* Cor do título */
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+/* Estilo dos campos de entrada e textarea */
+input,
+textarea {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Padding interno */
+    margin: 10px 0; /* Margem */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna para profundidade */
+    transition: border-color 0.3s; /* Transição suave para a borda */
+}
+
+/* Efeito de foco nos campos de entrada e textarea */
+input:focus,
+textarea:focus {
+    border-color: #5f3fc9; /* Cor da borda ao focar */
+    outline: none; /* Remove a borda padrão do navegador */
+}
+
+/* Estilo dos botões */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5f3fc9; /* Cor do botão */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%; /* Largura total do botão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição */
+}
+
+.btn:hover {
+    background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
+    box-shadow: 0 4px 15px rgba(75, 46, 166, 0.4); /* Sombra ao passar o mouse */
+}
+
+/* Estilo para as formas de fundo, se houver */
+.background-shapes {
+    position: absolute; /* Para permitir sobreposição */
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Ignora eventos para não interferir na interação */
+    z-index: 0; /* Coloca atrás do conteúdo principal */
+}
+
+.top-right-amoeba {
+    position: absolute;
+    top: -100px; /* Ajuste conforme necessário */
+    right: -100px; /* Ajuste conforme necessário */
+    width: 200px; /* Ajuste conforme necessário */
+    height: 200px; /* Ajuste conforme necessário */
+    background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
+    border-radius: 50%; /* Forma arredondada */
+}
+
+.bottom-left-amoeba {
+    position: absolute;
+    bottom: -100px; /* Ajuste conforme necessário */
+    left: -100px; /* Ajuste conforme necessário */
+    width: 200px; /* Ajuste conforme necessário */
+    height: 200px; /* Ajuste conforme necessário */
+    background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
+    border-radius: 50%; /* Forma arredondada */
+}

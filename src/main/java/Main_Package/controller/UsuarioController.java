@@ -18,6 +18,7 @@ import Main_Package.model.role;
 import Main_Package.service.AutenticacaoService;
 import Main_Package.service.ClienteService;
 import Main_Package.service.FreelancerService;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -31,7 +32,7 @@ public class UsuarioController {
 	private ClienteService clienteService;
 	
 	@Autowired
-	private FreelancerService frelancerSerivce;
+	private FreelancerService freelancerService;
 	
 	@GetMapping("/register")
 	public String criarConta(Model modelo) {
@@ -40,35 +41,67 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/save")
-	public String save(@ModelAttribute Usuario usuario,Freelancer freelancer,Cliente cliente) {
-		  if (usuario.getRole() == role.FREELANCER) {
-			  frelancerSerivce.save(freelancer);
-		    } else if (usuario.getRole() == role.CLIENTE) {
-		    	clienteService.save(cliente);
-		    }
-		    return "redirect:/login";
+	public String save(@ModelAttribute Usuario usuario) {
+	    if (usuario.getRole() == role.FREELANCER) {
+	        Freelancer freelancer = new Freelancer();
+	        freelancer.setNome(usuario.getNome());
+	        freelancer.setEmail(usuario.getEmail());
+	        freelancer.setSenha(usuario.getSenha());
+	        freelancer.setDataNascimento(usuario.getDataNascimento());
+	        freelancer.setSexo(usuario.getSexo());
+	        freelancer.setCpf(usuario.getCpf());
+	        freelancer.setTelefone(usuario.getTelefone());
+	        freelancer.setRole(usuario.getRole());
+	        
+	        freelancerService.save(freelancer);
+	    } else if (usuario.getRole() == role.CLIENTE) {
+	        Cliente cliente = new Cliente();
+	        cliente.setNome(usuario.getNome());
+	        cliente.setEmail(usuario.getEmail());
+	        cliente.setSenha(usuario.getSenha());
+	        cliente.setDataNascimento(usuario.getDataNascimento());
+	        cliente.setSexo(usuario.getSexo());
+	        cliente.setCpf(usuario.getCpf());
+	        cliente.setTelefone(usuario.getTelefone());
+	        cliente.setRole(usuario.getRole());
+
+	        clienteService.save(cliente);
+	    }
+	    return "redirect:/login";
 	}
+
+
 	
 	@GetMapping("/login")
 	public String entrarConta() {
 		return "login";
 	}
 	
-	
-	@GetMapping("/login-verificar")
-	public String verificarUser(@RequestParam String email, @RequestParam String senha, Model model) {
+	@PostMapping("/login-verificar")
+	public String verificarUser(@RequestParam String email, @RequestParam String senha, HttpSession session, Model model) {
 	    Usuario usuario = autenticacaoService.autenticar(email, senha);
 
 	    if (usuario != null) {
+	        session.setAttribute("usuarioAutenticado", usuario);
+	        System.out.println("Usuário autenticado: " + usuario.getId());
+	        
 	        if (usuario instanceof Freelancer) {
-	            return "redirect:/usuario/freelancer";
+	            return "redirect:/usuario/freelancer/" + usuario.getId();
 	        } else if (usuario instanceof Cliente) {
-	            return "redirect:/usuario/cliente";
+	            return "redirect:/usuario/cliente/" + usuario.getId();
 	        }
 	    }
+
 	    model.addAttribute("erro", "Email ou senha incorretos");
-	    return "/login";
+	    return "login";
 	}
+
+
+	    public Usuario getUsuarioAutenticado(HttpSession session) {
+	        return (Usuario) session.getAttribute("usuarioAutenticado");
+	    }
+
+
 
 	
 

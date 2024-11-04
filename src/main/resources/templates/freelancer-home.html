@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard do Freelancer - Serviços Disponíveis</title>
-	<link rel="stylesheet" type="text/css" href="/css/freelancer-home.css" media="screen" />
+	<link rel="stylesheet" href="/css/freelancer-home.css">
 </head>
 <body>
     <div class="header">
@@ -20,34 +20,37 @@
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
-        <div class="menu-item">Início</div>
-        <div class="menu-item">Meus Serviços</div>
-        <div class="menu-item">Meus Currículos</div>
-        <div class="menu-item">Ajustes</div>
-        <div class="help-link">Ajuda</div>
+        <div class="menu-item">Perfil</div>
+		<div class="menu-item">
+		    <a th:href="@{/usuario/freelancer/curriculo/{id}(id=${freelancerId})}">Currículo</a>
+		</div>
+
+
+
+        <div class="menu-item">Inbox</div>
+		<div class="menu-item">Contratos</div>
+		<div class="menu-item">Informações</div>
     </div>
     <div class="background-shapes">
         <div class="top-right-amoeba"></div>
         <div class="bottom-left-amoeba"></div>
     </div>
-	<div class="dashboard-container">
-	    <h2>Serviços Disponíveis para Freelancers</h2>
+    <div class="dashboard-container">
+        <h2>Serviços Disponíveis para Freelancers</h2>
 
-	    <!-- Lista de serviços -->
-	    <div class="service-list" th:each="servico : ${servicos}">
-	        <div class="service-item">
-	            <h3 th:text="${servico.titulo}">Título do Serviço</h3>
-	            <p><strong>Descrição:</strong> <span th:text="${servico.descricao}">Descrição do serviço...</span></p>
-	            <p><strong>Valor:</strong> <span th:text="${servico.valor}">Valor</span> R$</p>
-	            <p><strong>Horas:</strong> <span th:text="${servico.horas}">Horas</span></p>
-	            <p><strong>Área de Interesse:</strong> <span th:text="${servico.area}">Área de Interesse</span></p>
+        <!-- Lista de serviços -->
+        <div class="service-list" th:each="servico : ${servicos}">
+            <div class="service-item">
+                <h3 th:text="${servico.titulo}">Título do Serviço</h3>
+                <p th:text="${servico.descricao}">Descrição do serviço...</p>
 
-	            <!-- Botão para aplicar ao serviço -->
-	            <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Aplicar</a>
-	        </div>
-	    </div>
-	</div>
 
+                
+                <!-- Botão para aplicar ao serviço -->
+                <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Aplicar</a>
+            </div>
+        </div>
+    </div>
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -55,5 +58,4 @@
         }
     </script>
 </body>
-
 </html>

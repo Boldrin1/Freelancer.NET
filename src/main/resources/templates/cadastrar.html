@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Forma de Pagamento - Freelancer.NET</title>
+	<link rel="stylesheet" href="/css/cadastrar.css">
+</head>
+<body>
+    <div class="header">
+        <span class="title">Freelancer.NET</span>
+    </div>
+
+    <div class="form-container">
+        <h1>Cadastrar Forma de Pagamento</h1>
+        <form th:action="@{/cliente/pagamento/salvar}" method="post">
+            <input type="text" name="tipo" placeholder="Tipo de Pagamento (Ex: Cartão de Crédito)" required />
+            <input type="text" name="titular" placeholder="Titular do Cartão" required />
+            <input type="text" name="numero" placeholder="Número do Cartão" required />
+            <input type="date" name="vencimento" placeholder="Data de Vencimento" required />
+            <input type="password" name="cvv" placeholder="Código de Segurança (CVV)" required />
+
+            <button type="submit" class="btn-primary">Cadastrar</button>
+            <button type="button" class="cancel-button" onclick="window.history.back()">Cancelar</button>
+        </form>
+
+        <div class="message" th:if="${mensagem}" th:text="${mensagem}"></div>
+    </div>
+
+    <div class="amoeba"></div>
+    <div class="amoeba"></div>
+</body>
+</html>
