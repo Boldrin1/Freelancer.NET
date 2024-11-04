@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,23 +45,22 @@ public class FreelancerController {
     }
 
 
+    
+    
     @GetMapping("/curriculo/{id}")
     public String mostrarCurriculo(@PathVariable Long id, Model model) {
-        System.out.println("ID recebido: " + id);
         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
-
         if (curriculoOpt.isPresent()) {
-            model.addAttribute("freelancerCurriculo", curriculoOpt.get());
+            model.addAttribute("curriculo", curriculoOpt.get());
             return "curriculo"; 
         } else {
-            System.out.println("Currículo não encontrado para o ID: " + id);
             return "redirect:/usuario/freelancer/curriculo/novo"; 
         }
     }
     
     @GetMapping("/curriculo/novo")
     public String criarCurriculoForm(Model model) {
-        model.addAttribute("freelancerCurriculo", new Curriculo()); 
+        model.addAttribute("curriculo", new Curriculo()); 
         return "criar-curriculo"; 
     }
 
@@ -70,17 +70,32 @@ public class FreelancerController {
     	return "redirect:/usuario/freelancer/curriculo/{id}";
     }
 
-	@GetMapping("/curriculo/editar/{id}")
-	public String editaCurriculo(Long id){
-	    curriculoService.editaCurriculo(id);
-		return "Pagina de editar curriculo";
-	}
+	
+    @GetMapping("/curriculo/editar/{id}")
+    public String editarCurriculo(@PathVariable Long id, Model model) {
+       curriculoService.editaCurriculo(id);
+        return "editar-curriculo"; // Nome do template
+    }
+	
+    @PutMapping("/curriculo/editar/salvar/{id}")
+    public String salvarEdit(@PathVariable Long id, @ModelAttribute Curriculo curriculo) {
+        // Definir o ID no objeto Curriculo, caso ele precise ser atualizado antes de salvar
+        curriculo.setId(id);
+        
+        // Salvar o currículo no serviço
+        curriculoService.save(curriculo);
+
+        return "redirect:/usuario/freelancer/curriculo/" + id;
+    }
+
+
 	
 	@PostMapping("/enviarCurriculo")
 	public String enviarCurriculo(Long id){
 		curriculoService.editaCurriculo(id);
 		return "redirect:/usuario/freelancer";
 	}
+
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarPerfil(Long id){

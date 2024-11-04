@@ -87,6 +87,8 @@ public class CurriculoService {
         contrato.setServico(curriculo.getServico());
         contratoRepository.save(contrato);
     }
+
+
     
     
     

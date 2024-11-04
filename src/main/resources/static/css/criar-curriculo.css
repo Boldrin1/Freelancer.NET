@@ -1,100 +1,138 @@
-/* Estilo do corpo */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    display: flex;
-    flex-direction: column; /* Alinha os itens na coluna */
-    align-items: center; /* Centraliza horizontalmente */
-    padding: 20px; /* Padding para espaçamento */
-}
+        /* Estilo geral do corpo */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
 
-/* Container principal */
-.container {
-    max-width: 800px; /* Largura máxima do container */
-    width: 100%; /* Largura total */
-    padding: 40px 30px; /* Padding interno */
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    text-align: left; /* Alinhamento à esquerda */
-    margin-top: 20px; /* Margem superior para espaçamento */
-}
+        /* Container principal do formulário */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
 
-/* Títulos das seções */
-h2 {
-    font-size: 28px; /* Tamanho do título principal */
-    color: #5f3fc9; /* Cor do título */
-    margin-bottom: 20px; /* Margem inferior */
-    text-align: center; /* Centraliza o título */
-}
+        /* Título da página */
+        h2 {
+            font-size: 26px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-/* Estilo dos campos do formulário */
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        /* Estilo dos campos do formulário */
+        label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-/* Estilo para o botão aceitar */
-.btn-accept {
-    margin-top: 10px; /* Margem superior para separação */
-    padding: 10px 15px;
-    background-color: #5f3fc9; /* Cor do botão */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block; /* Para que o botão respeite as margens */
-    transition: background-color 0.3s ease; /* Efeito de transição */
-}
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
 
-.btn-accept:hover {
-    background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
-}
+        /* Estilo do botão de envio */
+        .btn-accept {
+            width: 100%;
+            padding: 12px;
+            background-color: #5f3fc9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-/* Efeito para a barra lateral */
-.sidebar {
-    width: 250px;
-    background-color: #444;
-    color: #fff;
-    position: fixed;
-    top: 60px;
-    left: -250px;
-    transition: left 0.3s ease;
-    padding: 10px;
-}
+        .btn-accept:hover {
+            background-color: #4b2ea6;
+        }
 
-.sidebar.active {
-    left: 0;
-}
+        /* Barra lateral (menu) */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: #000000;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease;
+            height: 100%;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
 
-.menu-item {
-    padding: 10px;
-    cursor: pointer;
-}
+        .sidebar.active {
+            left: 0;
+        }
 
-.menu-item:hover {
-    background-color: #555;
-}
+        .menu-item {
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #312d2d;
+        }
 
-/* Estilo do cabeçalho */
-.header {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-}
+        .menu-item:hover {
+            background-color: #d6cfcf;
+        }
 
-.header .logo {
-    height: 40px;
-    margin-right: 20px;
-}
+        /* Cabeçalho fixo */
+        .header {
+            background-color: #ffffff;
+            color: #000000;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.header-title {
-    flex-grow: 1;
-    font-size: 20px;
-}
+        .header .logo {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .header-title {
+            flex-grow: 1;
+            font-size: 20px;
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .menu-item {
+                font-size: 14px;
+            }
+        }

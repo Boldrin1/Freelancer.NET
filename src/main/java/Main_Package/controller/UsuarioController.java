@@ -1,7 +1,5 @@
 package Main_Package.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import Main_Package.model.Cliente;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Usuario;
@@ -102,17 +99,7 @@ public class UsuarioController {
 	    }
 
 
-
-	
-
 	}
-	
-
-
-
-
-
-
 /*
  *  @GetMapping: Mapeia requisições HTTP GET para recuperar todos os usuários ou um usuário por ID.
  *  @PostMapping: Mapeia requisições HTTP POST para criar um novo usuário.
