@@ -20,32 +20,8 @@
         <div class="menu-item">Informações</div>
     </div>
 
+	
 
-
-        <div class="form-section">
-            <h2>Editar Currículo</h2>
-            <form th:action="@{/freelancers-curriculo/{id}(id=${freelancerCurriculo.id})}" method="post"> <!-- Alterado para freelancers -->
-                <label for="inputNome">Nome:</label>
-                <input type="text" id="inputNome" name="nome" th:value="${freelancerCurriculo.nome}" placeholder="Insira seu nome">
-                
-                <label for="inputEmail">E-mail:</label>
-                <input type="email" id="inputEmail" name="email" th:value="${freelancerCurriculo.email}" placeholder="Insira seu e-mail">
-
-                <label for="inputTelefone">Telefone:</label>
-                <input type="text" id="inputTelefone" name="telefone" th:value="${freelancerCurriculo.telefone}" placeholder="Insira seu telefone">
-
-                <label for="inputExperiencia">Experiência Profissional:</label>
-                <textarea id="inputExperiencia" name="experiencia" rows="3" th:text="${freelancerCurriculo.experiencia}" placeholder="Descreva sua experiência profissional"></textarea>
-
-                <label for="inputFormacao">Formação Acadêmica:</label>
-                <textarea id="inputFormacao" name="formacao" rows="2" th:text="${freelancerCurriculo.formacao}" placeholder="Descreva sua formação acadêmica"></textarea>
-
-                <label for="inputHabilidades">Habilidades:</label>
-                <textarea id="inputHabilidades" name="habilidades" rows="2" th:text="${freelancerCurriculo.habilidades}" placeholder="Liste suas habilidades"></textarea>
-
-                <button type="submit" class="submit-button">Editar Currículo</button> <!-- Alterado para português correto -->
-            </form>
-        </div>
     </div>
 
     <script>
@@ -56,3 +32,29 @@
     </script>
 </body>
 </html>
+
+
+<div class="form-section">
+	    <h2>Editar Currículo</h2>
+	    <form th:action="@{/freelancers-curriculo/{id}(id=${freelancerCurriculo.id})}" method="post">
+	        <label for="inputNome">Nome:</label>
+	        <input type="text" id="inputNome" name="nome" th:value="${freelancerCurriculo.nome}" placeholder="Insira seu nome">
+
+	        <label for="inputEmail">E-mail:</label>
+	        <input type="email" id="inputEmail" name="email" th:value="${freelancerCurriculo.email}" placeholder="Insira seu e-mail">
+
+	        <label for="inputTelefone">Telefone:</label>
+	        <input type="text" id="inputTelefone" name="telefone" th:value="${freelancerCurriculo.telefone}" placeholder="Insira seu telefone">
+
+	        <label for="inputExperiencia">Experiência Profissional:</label>
+	        <textarea id="inputExperiencia" name="experiencia" rows="3" th:text="${freelancerCurriculo.experiencia}" placeholder="Descreva sua experiência profissional"></textarea>
+
+	        <label for="inputFormacao">Formação Acadêmica:</label>
+	        <textarea id="inputFormacao" name="formacao" rows="2" th:text="${freelancerCurriculo.formacao}" placeholder="Descreva sua formação acadêmica"></textarea>
+
+	        <label for="inputHabilidades">Habilidades:</label>
+	        <textarea id="inputHabilidades" name="habilidades" rows="2" th:text="${freelancerCurriculo.habilidades}" placeholder="Liste suas habilidades"></textarea>
+
+	        <button type="submit" class="submit-button">Salvar Alterações</button>
+	    </form>
+	</div>

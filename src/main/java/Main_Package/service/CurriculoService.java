@@ -41,6 +41,9 @@ public class CurriculoService {
 	}
 	
 	
+	public Curriculo save(Curriculo curriculo){
+		return curriculoRepository.save(curriculo);
+	}
 	
 	public Curriculo editaCurriculo(Long id){
 		Optional<Curriculo> curriculo = curriculoRepository.findById(id);

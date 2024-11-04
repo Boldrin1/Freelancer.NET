@@ -1,6 +1,8 @@
 package Main_Package.model;
 
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 @Entity
-public class Curriculo {
+public class Curriculo extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,11 +32,7 @@ public class Curriculo {
     @Enumerated(EnumType.STRING)
     private AreaDeInteresse area;
     
-    // Adicione os getters e setters, se necessário
-
-
-      
-      private String status;
+    private String status;
 
       @ManyToOne
       @JoinColumn(name = "freelancer_id")
@@ -65,9 +63,12 @@ public class Curriculo {
 	}
 
 
-	public Curriculo(Long id, Experiencias experiencias, FormacaoAcademica formacaoAcademica, Competencias competencias,
-			AreaDeInteresse area, String status, Freelancer freelancer, Servico servico) {
-		this.id = id;
+	public Curriculo(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
+			String telefone, Main_Package.model.role role, Long id2, Experiencias experiencias,
+			FormacaoAcademica formacaoAcademica, Competencias competencias, AreaDeInteresse area, String status,
+			Freelancer freelancer, Servico servico) {
+		super(id, nome, email, senha, dataNascimento, sexo, cpf, telefone, role);
+		id = id2;
 		this.experiencias = experiencias;
 		this.formacaoAcademica = formacaoAcademica;
 		this.competencias = competencias;
@@ -75,6 +76,15 @@ public class Curriculo {
 		this.status = status;
 		this.freelancer = freelancer;
 		this.servico = servico;
+	}
+
+
+	
+	
+	
+	public Curriculo(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
+			String telefone, Main_Package.model.role role) {
+		super(id, nome, email, senha, dataNascimento, sexo, cpf, telefone, role);
 	}
 
 
@@ -145,6 +155,15 @@ public class Curriculo {
 	public Servico getServico() {
 		return servico;
 	}
+
+
+	
+
+	
+	
+	
+
+	
 
       
 }
