@@ -37,13 +37,13 @@ public class FreelancerController {
 
 
     @GetMapping("/{id}")
-    public String paginaInicial_Free(@PathVariable Long id, Model model,Servico servico) {
+    public String paginaInicial_Free(@PathVariable Long id, Model model, Servico servico) {
+        System.out.println("freelancerId recebido: " + id); // Verifique no console
         List<Servico> servicos = servicoService.listarServico(servico); 
         model.addAttribute("servicos", servicos); 
         model.addAttribute("freelancerId", id); 
         return "freelancer-home"; 
     }
-
 
     
     
@@ -51,13 +51,16 @@ public class FreelancerController {
     public String mostrarCurriculo(@PathVariable Long id, Model model) {
         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
         if (curriculoOpt.isPresent()) {
-            model.addAttribute("curriculo", curriculoOpt.get());
-            return "curriculo"; 
+            Long freelancerId = curriculoOpt.get().getFreelancerId(); // Obtém o ID do freelancer
+            return "redirect:/usuario/freelancer/" + freelancerId; // Redireciona diretamente para a página inicial do freelancer
         } else {
             return "redirect:/usuario/freelancer/curriculo/novo"; 
         }
     }
-    
+
+
+
+
     @GetMapping("/curriculo/novo")
     public String criarCurriculoForm(Model model) {
         model.addAttribute("curriculo", new Curriculo()); 

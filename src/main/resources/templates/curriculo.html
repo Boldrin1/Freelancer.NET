@@ -4,50 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo do Freelancer</title>
-    <link rel="stylesheet" href="/css/curriculo.css"> <!-- Mudança no caminho para o CSS -->
-</head>
+    <link rel="stylesheet" href="/css/curriculo.css">
 <body>
     <div class="header">
-        <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo"> <!-- Caminho para o logo -->
-        <span class="header-title">Currículo do Freelancer</span>
-        <div class="menu-toggle" onclick="toggleSidebar()" style="font-size: 24px; cursor: pointer;">&#9776;</div>
+        <div class="left-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo"> <!-- Caminho para o logo -->
+            <span class="title">Currículo do Freelancer</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
     </div>
 
     <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+        </div>
+        <div class="menu-item">
+           <a th:href="@{/usuario/freelancer/{id}(id=${freelancerId})}">Inicio</a>
+        </div>
+        <p>freelancerId: <span th:text="${freelancerId}"></span></p>
+        
+        
+        
+        
         <div class="menu-item">Perfil</div>
         <div class="menu-item">Inbox</div>
-        <div class="menu-item">Contratos</div> <!-- Corrigido para fechar a div -->
+        <div class="menu-item">Contratos</div>
         <div class="menu-item">Informações</div>
     </div>
-<div class="form-section">
-	    <h2>Editar Currículo</h2>
-	    <form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="get">
-	        <label for="inputNome">Nome:</label>
-	        <input type="text" id="inputNome" name="nome" th:value="${curriculo.nome}" placeholder="Insira seu nome">
 
-	        <label for="inputEmail">E-mail:</label>
-	        <input type="email" id="inputEmail" name="email" th:value="${curriculo.email}" placeholder="Insira seu e-mail">
+    <div class="register-container">
+        <h1>Currículo</h1>
+        <form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="get">
+            <label for="inputNome" class="form-label">Nome:</label>
+            <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome">
 
-	        <label for="inputTelefone">Telefone:</label>
-	        <input type="text" id="inputTelefone" name="telefone" th:value="${curriculo.telefone}" placeholder="Insira seu telefone">
+            <label for="inputEmail" class="form-label">E-mail:</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" th:value="${curriculo.email}" placeholder="Insira seu e-mail">
 
-	        <label for="inputExperiencia">Experiência Profissional:</label>
-	        <textarea id="inputExperiencia" name="experiencia" rows="3" th:text="${curriculo.experiencias}" placeholder="Descreva sua experiência profissional"></textarea>
+            <label for="inputTelefone" class="form-label">Telefone:</label>
+            <input type="text" id="inputTelefone" name="telefone" class="form-control" th:value="${curriculo.telefone}" placeholder="Insira seu telefone">
 
-	        <label for="inputFormacao">Formação Acadêmica:</label>
-	       <textarea id="inputFormacao" name="formacao" rows="2" th:text="${curriculo.formacaoAcademica}" placeholder="Descreva sua formação acadêmica"></textarea>
+            <label for="inputExperiencia" class="form-label">Experiência Profissional:</label>
+            <textarea id="inputExperiencia" name="experiencia" class="form-control" rows="3" th:text="${curriculo.experiencias}" placeholder="Descreva sua experiência profissional"></textarea>
 
-	        <label for="inputHabilidades">Competencias:</label>
-	        <textarea id="inputHabilidades" name="Competencias" rows="2" th:text="${curriculo.competencias}" placeholder="Liste suas competencias"></textarea>
+            <label for="inputFormacao" class="form-label">Formação Acadêmica:</label>
+            <textarea id="inputFormacao" name="formacao" class="form-control" rows="2" th:text="${curriculo.formacaoAcademica}" placeholder="Descreva sua formação acadêmica"></textarea>
 
+            <label for="inputHabilidades" class="form-label">Competências:</label>
+            <textarea id="inputHabilidades" name="competencias" class="form-control" rows="2" th:text="${curriculo.competencias}" placeholder="Liste suas competências"></textarea>
 
-		    <button type="submit" id="botao_head" >Editar</button>
+            <button type="submit" class="btn-primary">Editar</button>
+        </form>
+    </div>
 
-	    </form>
-	</div>
-	
-
- 
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -56,8 +66,3 @@
     </script>
 </body>
 </html>
-
-
-
-	
-	

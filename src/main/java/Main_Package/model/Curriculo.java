@@ -157,6 +157,12 @@ public class Curriculo extends Usuario {
 	}
 
 
+	public Long getFreelancerId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 
 	
