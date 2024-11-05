@@ -65,10 +65,14 @@ public class FreelancerController {
     }
 
     @PostMapping("/curriculo/salvar")
-    public String salvarCurriculo(Curriculo curriculo) {
-    	curriculoService.save(curriculo);
-    	return "redirect:/usuario/freelancer/curriculo/{id}";
+    public String salvarCurriculo(@ModelAttribute Curriculo curriculo) {
+        // Salvar o currículo e obter o ID gerado (assumindo que save retorna o objeto salvo com ID preenchido)
+        Curriculo savedCurriculo = curriculoService.save(curriculo);
+
+        // Redirecionar para a página do currículo usando o ID do objeto salvo
+        return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
     }
+
 
 	
     @GetMapping("/curriculo/editar/{id}")

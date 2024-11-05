@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,6 +21,7 @@ public class Usuario{
 	  private Long id;
 	  
 	    private String nome;
+	    @Column(unique = true)
 	    private String email;
 	    private String senha;    
 	    @DateTimeFormat(pattern = "yyyy-MM-dd")
