@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
-import Main_Package.model.Usuario;
 import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
 import Main_Package.service.ServicoService;
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/usuario/freelancer")
@@ -45,135 +43,106 @@ public class FreelancerController {
     @Autowired
     private CurriculoRepository curriculoRepository;
     
-@GetMapping("/{id}")
-    public String paginaInicial_Free(@PathVariable Long id, Model model,Servico servico) {
-        Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
-        if (freelancerOpt.isPresent()) {
-        	List<Servico> servicos = servicoService.listarServico(servico); 
-            model.addAttribute("servicos", servicos); 
-            model.addAttribute("freelancer", freelancerOpt.get()); // Passando freelancer para o modelo
-            return "freelancer-home";
-        } else {
-            return "redirect:/erro"; // Ou qualquer outra página caso o freelancer não seja encontrado
+    @GetMapping("/{id}")
+        public String paginaInicial_Free(@PathVariable Long id, Model model,Servico servico) {
+            Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
+            if (freelancerOpt.isPresent()) {
+            	List<Servico> servicos = servicoService.listarServico(servico); 
+                model.addAttribute("servicos", servicos); 
+                model.addAttribute("freelancer", freelancerOpt.get()); // Passando freelancer para o modelo
+                return "freelancer-home";
+            } else {
+                return "redirect:/erro"; // Ou qualquer outra página caso o freelancer não seja encontrado
+            }
         }
+
+
+    @GetMapping("/curriculo/{id}")
+    public String mostrarCurriculo(@PathVariable Long id, Model model) {
+         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id); // Busca pelo mesmo ID do Freelancer
+         if (curriculoOpt.isPresent()) {
+             Curriculo curriculo = curriculoOpt.get();
+             model.addAttribute("curriculo", curriculo);  // Adiciona o currículo ao modelo
+             return "curriculo"; // Retorna a página do currículo
+         } else {
+             return "redirect:/curriculo/novo/" + id; // Redireciona se o currículo não for encontrado
+         }
     }
-
-
+    @GetMapping("/curriculo/novo/{id}")
+    public String criarCurriculoForm(@PathVariable Long id, Model model) {
+         Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
+         if (freelancerOpt.isPresent()) {
+             Optional<Curriculo> curriculoOpt = curriculoRepository.findByFreelancerId(id);
+             
+             if (curriculoOpt.isPresent()) {
+                 model.addAttribute("curriculo", curriculoOpt.get());  // Currículo existente
+                 return "curriculo";
+             } else {
+                 Curriculo curriculo = new Curriculo();
+                 curriculo.setFreelancer(freelancerOpt.get());  // Associa o Freelancer ao novo Currículo
+                 model.addAttribute("freelancer", freelancerOpt.get());
+                 model.addAttribute("curriculo", curriculo); // Passa o novo currículo
+                 return "criar-curriculo";
+             }
+         } else {
+             return "redirect:/usuario/freelancer/" + id;
+         }
+    }
     
     
-@GetMapping("/curriculo/{id}")
-public String mostrarCurriculo(@PathVariable Long id, Model model) {
-    Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
-    if (curriculoOpt.isPresent()) {
-        Curriculo curriculo = curriculoOpt.get();
-        Long freelancerId = curriculo.getFreelancer() != null ? curriculo.getFreelancer().getId() : null;
-        System.out.println("freelancerId recuperado do currículo: " + freelancerId);
-        
-        if (freelancerId != null) {
-            model.addAttribute("curriculo", curriculo);  // Adicionando o curriculo ao modelo
-            return "curriculo"; // Retorna a página curriculo
-        } else {
-            return "redirect:/erro"; // Página de erro caso freelancerId seja nulo
-        }
-    } else {
-        return "redirect:/usuario/freelancer/curriculo/novo"; // Redireciona se o currículo não for encontrado
-    }
-}
-
-
-@GetMapping("/curriculo/novo/{id}")
-public String criarCurriculoForm(@PathVariable Long id, Model model) {
-    // Procurar o Freelancer pelo ID
-    Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
-    
-    if (freelancerOpt.isPresent()) {
-        // Verificar se já existe um Curriculo associado ao Freelancer
-        Optional<Curriculo> curriculoOpt = curriculoRepository.findByFreelancerId(id);
-        
-        if (curriculoOpt.isPresent()) {
-            // Se já existe, redireciona para a página do currículo
-            model.addAttribute("curriculo", curriculoOpt.get());  // Passa o currículo existente para o modelo
-            return "curriculo";  // Página do currículo
-        } else {
-            // Se não existir, cria um novo Curriculo
-            model.addAttribute("freelancer", freelancerOpt.get());  // Passa o Freelancer para o modelo
-            model.addAttribute("curriculo", new Curriculo());  // Cria um novo Curriculo
-            return "criar-curriculo";  // Página para criar o currículo
-        }
-    } else {
-        // Se o Freelancer não for encontrado, redireciona para uma página de erro ou página inicial
-        return "redirect:/usuario/freelancer/" + id;  // Redireciona para a página inicial do freelancer
-    }
-}
-
-
-
     @PostMapping("/curriculo/salvar")
     public String salvarCurriculo(@ModelAttribute Curriculo curriculo, @RequestParam Long freelancerId) {
-        Optional<Freelancer> freelancerOpt = freelancerRepository.findById(freelancerId);
-        if (freelancerOpt.isPresent()) {
-            curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
-            Curriculo savedCurriculo = curriculoService.save(curriculo); // Salva o currículo com o freelancer associado
-            return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
-        } else {
-            return "redirect:/erro"; // Redireciona para uma página de erro se o freelancer não for encontrado
-        }
+         Optional<Freelancer> freelancerOpt = freelancerRepository.findById(freelancerId);
+         if (freelancerOpt.isPresent()) {
+             curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
+             Curriculo savedCurriculo = curriculoService.save(curriculo);
+             return "redirect:/curriculo/" + savedCurriculo.getId();
+         } else {
+             return "redirect:/erro";
+         }
     }
 
-
-	
     @GetMapping("/curriculo/editar/{id}")
     public String editarCurriculo(@PathVariable Long id, Model model) {
-        // Buscar o Curriculo no banco de dados com o ID fornecido
-        Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
-        
-        // Se o Curriculo existir, adiciona ao modelo
-        if (curriculoOpt.isPresent()) {
-            model.addAttribute("curriculo", curriculoOpt.get());
-            return "editar-curriculo"; // Nome do template
-        } else {
-            // Caso não exista, redireciona para uma página de erro ou página anterior
-            return "redirect:/erro";
-        }
+         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
+         if (curriculoOpt.isPresent()) {
+             model.addAttribute("curriculo", curriculoOpt.get());
+             return "editar-curriculo";
+         } else {
+             return "redirect:/erro";
+         }
     }
 
-	
     @PostMapping("/curriculo/editar/salvar/{id}")
     public String salvarEdit(@PathVariable Long id, @ModelAttribute Curriculo curriculo) {
-        // Definir o ID no objeto Curriculo, caso ele precise ser atualizado antes de salvar
-        curriculo.setId(id);
-        
-        // Salvar o currículo no serviço
-        curriculoService.save(curriculo);
-
-        return "redirect:/usuario/freelancer/curriculo/" + id;
+         curriculo.setId(id); // Define o ID do currículo como o ID do Freelancer
+         curriculoService.save(curriculo);
+         return "redirect:/usuario/freelancer/curriculo/" + id;
     }
 
-
-	
 	@PostMapping("/enviarCurriculo")
 	public String enviarCurriculo(Long id){
-		curriculoService.editaCurriculo(id);
-		return "redirect:/usuario/freelancer";
+	 	curriculoService.editaCurriculo(id);
+	 	return "redirect:/usuario/freelancer";
 	}
 
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarPerfil(@PathVariable Long id){
-		freelancerService.mostraFreelancer(id);
-		return "perfil-freelancer";
+	 	freelancerService.mostraFreelancer(id);
+	 	return "perfil-freelancer";
 	}
 		
 	@PutMapping("/perfil/editar/{id}")
 	public String editarFreelancer(Long id){
-		freelancerService.UpdateFreelancer(id);
-		return "Pagina de editar freelancer";
+	 	freelancerService.UpdateFreelancer(id);
+	 	return "Pagina de editar freelancer";
 	}
 	
 	@DeleteMapping("/perfil/{id}")
 	public String deletarFreelancer(Long id){
-		freelancerService.deletaFreelancer(id);
-		return "redirect:/create-count";
+	 	freelancerService.deletaFreelancer(id);
+	 	return "redirect:/create-count";
 	}
 }
 

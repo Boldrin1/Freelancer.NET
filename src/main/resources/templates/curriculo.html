@@ -157,7 +157,7 @@
          position: absolute; /* Adicione isso se não estiver definido */
          width: 580px; /* Defina uma largura adequada */
          height: 800px; /* Defina uma altura adequada */
-         background-color: #yourColor; /* Escolha a cor desejada */
+         background-color: red; /* Escolha a cor desejada*/
          clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
      }
      
@@ -270,7 +270,7 @@
     </div>
 
     <div class="register-container">
-        <h1>Editar Currículo</h1>
+        <h1>Currículo</h1>
 		<form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="get">
 			
             <label for="inputNome" class="form-label">Nome:</label>

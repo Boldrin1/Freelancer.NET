@@ -1,8 +1,5 @@
 package Main_Package.model;
 
-
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,12 +9,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 @Entity
 public class Curriculo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
     private Long id;
 
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private Freelancer freelancer;
     
     private String nome;
     private String telefone;
@@ -32,7 +34,8 @@ public class Curriculo {
         @Column(name = "competencias")
         private String competencias;
 
-        // Getters e Setters
+       
+        
     
 
     @Enumerated(EnumType.STRING)
@@ -40,9 +43,6 @@ public class Curriculo {
     
     private String status;
     
-      @ManyToOne // ou @OneToOne, dependendo da sua lógica
-      @JoinColumn(name = "freelancer_id")
-      private Freelancer freelancer;
     
       @ManyToOne
       @JoinColumn(name = "servico_id")
