@@ -19,6 +19,7 @@ import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
 import Main_Package.model.Usuario;
+import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
@@ -41,6 +42,9 @@ public class FreelancerController {
     @Autowired
     private FreelancerRepository freelancerRepository;
 
+    @Autowired
+    private CurriculoRepository curriculoRepository;
+    
 @GetMapping("/{id}")
     public String paginaInicial_Free(@PathVariable Long id, Model model,Servico servico) {
         Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
@@ -77,17 +81,30 @@ public String mostrarCurriculo(@PathVariable Long id, Model model) {
 }
 
 
-    @GetMapping("/curriculo/novo/{id}")
-    public String criarCurriculoForm(@PathVariable Long id, Model model) {
-        Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
-        if (freelancerOpt.isPresent()) {
-            model.addAttribute("freelancer", freelancerOpt.get());
-            model.addAttribute("curriculo", new Curriculo());
-            return "criar-curriculo"; 
+@GetMapping("/curriculo/novo/{id}")
+public String criarCurriculoForm(@PathVariable Long id, Model model) {
+    // Procurar o Freelancer pelo ID
+    Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
+    
+    if (freelancerOpt.isPresent()) {
+        // Verificar se já existe um Curriculo associado ao Freelancer
+        Optional<Curriculo> curriculoOpt = curriculoRepository.findByFreelancerId(id);
+        
+        if (curriculoOpt.isPresent()) {
+            // Se já existe, redireciona para a página do currículo
+            model.addAttribute("curriculo", curriculoOpt.get());  // Passa o currículo existente para o modelo
+            return "curriculo";  // Página do currículo
         } else {
-            return "redirect:/usuario/freelancer/{id}"; // Ou página de erro
+            // Se não existir, cria um novo Curriculo
+            model.addAttribute("freelancer", freelancerOpt.get());  // Passa o Freelancer para o modelo
+            model.addAttribute("curriculo", new Curriculo());  // Cria um novo Curriculo
+            return "criar-curriculo";  // Página para criar o currículo
         }
+    } else {
+        // Se o Freelancer não for encontrado, redireciona para uma página de erro ou página inicial
+        return "redirect:/usuario/freelancer/" + id;  // Redireciona para a página inicial do freelancer
     }
+}
 
 
 
@@ -132,9 +149,9 @@ public String mostrarCurriculo(@PathVariable Long id, Model model) {
 
 	
 	@GetMapping("/perfil/{id}")
-	public String mostrarPerfil(Long id){
+	public String mostrarPerfil(@PathVariable Long id){
 		freelancerService.mostraFreelancer(id);
-		return "Perfil do Freelancer";
+		return "perfil-freelancer";
 	}
 		
 	@PutMapping("/perfil/editar/{id}")
