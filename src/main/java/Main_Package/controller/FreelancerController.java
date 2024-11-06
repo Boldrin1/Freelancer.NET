@@ -1,5 +1,6 @@
 package Main_Package.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Main_Package.model.AreaDeInteresse;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
@@ -63,6 +65,7 @@ public class FreelancerController {
          if (curriculoOpt.isPresent()) {
              Curriculo curriculo = curriculoOpt.get();
              model.addAttribute("curriculo", curriculo);  // Adiciona o currículo ao modelo
+             model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
              return "curriculo"; // Retorna a página do currículo
          } else {
              return "redirect:/curriculo/novo/" + id; // Redireciona se o currículo não for encontrado
@@ -82,6 +85,7 @@ public class FreelancerController {
                  curriculo.setFreelancer(freelancerOpt.get());  // Associa o Freelancer ao novo Currículo
                  model.addAttribute("freelancer", freelancerOpt.get());
                  model.addAttribute("curriculo", curriculo); // Passa o novo currículo
+                 model.addAttribute("areasDeInteresse", Arrays.asList(AreaDeInteresse.values()));
                  return "criar-curriculo";
              }
          } else {
@@ -91,12 +95,15 @@ public class FreelancerController {
     
     
     @PostMapping("/curriculo/salvar")
-    public String salvarCurriculo(@ModelAttribute Curriculo curriculo, @RequestParam Long freelancerId) {
+    public String salvarCurriculo(@ModelAttribute Curriculo curriculo, @RequestParam Long freelancerId,Model model) {
          Optional<Freelancer> freelancerOpt = freelancerRepository.findById(freelancerId);
          if (freelancerOpt.isPresent()) {
              curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
              Curriculo savedCurriculo = curriculoService.save(curriculo);
-             return "redirect:/curriculo/" + savedCurriculo.getId();
+             model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
+             model.addAttribute("areaDeInteresse", curriculo.getArea());
+
+             return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
          } else {
              return "redirect:/erro";
          }
