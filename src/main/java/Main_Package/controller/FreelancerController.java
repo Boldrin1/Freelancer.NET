@@ -124,11 +124,21 @@ public String criarCurriculoForm(@PathVariable Long id, Model model) {
 	
     @GetMapping("/curriculo/editar/{id}")
     public String editarCurriculo(@PathVariable Long id, Model model) {
-       curriculoService.editaCurriculo(id);
-        return "editar-curriculo"; // Nome do template
+        // Buscar o Curriculo no banco de dados com o ID fornecido
+        Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
+        
+        // Se o Curriculo existir, adiciona ao modelo
+        if (curriculoOpt.isPresent()) {
+            model.addAttribute("curriculo", curriculoOpt.get());
+            return "editar-curriculo"; // Nome do template
+        } else {
+            // Caso não exista, redireciona para uma página de erro ou página anterior
+            return "redirect:/erro";
+        }
     }
+
 	
-    @PutMapping("/curriculo/editar/salvar/{id}")
+    @PostMapping("/curriculo/editar/salvar/{id}")
     public String salvarEdit(@PathVariable Long id, @ModelAttribute Curriculo curriculo) {
         // Definir o ID no objeto Curriculo, caso ele precise ser atualizado antes de salvar
         curriculo.setId(id);

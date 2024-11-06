@@ -13,16 +13,19 @@
     <div class="curriculum-edit-container">
         <h2>Editar Currículo</h2>
 
-       <form th:action="@{/usuario/freelancer/curriculo/editar/{id} (id=${curriculo.id})}" th:object="${curriculo}" method="get">
+		<form th:action="@{/usuario/freelancer/curriculo/editar/salvar/{id}(id=${curriculo.id})}" method="post" th:method="put">
        
-            <label for="qualificacoes">Qualificações</label>
-            <textarea id="qualificacoes" th:field="*{qualificacoes}" required></textarea>
+		    <label for="Telefone">Telefone:</label>
+		    <textarea id="Telefone" th:field="*{curriculo.telefone}" required></textarea>
+		
+            <label for="experiencia">Experiência Profissional:</label>
+            <textarea id="experiencia" th:field="*{curriculo.experiencias}" required></textarea>
 
-            <label for="experiencias">Experiências</label>
-            <textarea id="experiencias" th:field="*{experiencias}" required></textarea>
+            <label for="experiencias">Formação Acadêmica:</label>
+            <textarea id="formacao" name="formacao" th:field="*{curriculo.formacaoAcademica}" required></textarea>
 
-            <label for="habilidades">Habilidades</label>
-            <textarea id="habilidades" th:field="*{habilidades}" required></textarea>
+            <label for="habilidades">Competências:</label>
+            <textarea id="competencias" th:field="*{curriculo.competencias}" required></textarea>
 
             <button type="submit" class="btn">Salvar Alterações</button>
         </form>

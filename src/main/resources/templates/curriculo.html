@@ -271,7 +271,8 @@
 
     <div class="register-container">
         <h1>Editar Currículo</h1>
-        <form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="get">
+		<form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="get">
+			
             <label for="inputNome" class="form-label">Nome:</label>
             <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome">
 
