@@ -3,6 +3,7 @@ package Main_Package.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,11 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 @Entity
-public class Curriculo extends Usuario {
+public class Curriculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    
+    private String nome;
+    private String telefone;
+    private String email;
     @ManyToOne
     @JoinColumn(name = "experiencias_id") // Nome da coluna de referência
     private Experiencias experiencias;
@@ -33,11 +38,11 @@ public class Curriculo extends Usuario {
     private AreaDeInteresse area;
     
     private String status;
-
-      @ManyToOne
+    
+      @ManyToOne // ou @OneToOne, dependendo da sua lógica
       @JoinColumn(name = "freelancer_id")
       private Freelancer freelancer;
-
+    
       @ManyToOne
       @JoinColumn(name = "servico_id")
       private Servico servico;
@@ -48,27 +53,22 @@ public class Curriculo extends Usuario {
       }
 
 
-	public void setCompetencias(Competencias competencias) {
-		this.competencias = competencias;
-	}
-
-	public void setFreelancer(Freelancer freelancer) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void setServico(Servico servico) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	public Curriculo(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
-			String telefone, Main_Package.model.role role, Long id2, Experiencias experiencias,
+	
+
+
+	    public Curriculo(Long id, String nome, String telefone, String email, Experiencias experiencias,
 			FormacaoAcademica formacaoAcademica, Competencias competencias, AreaDeInteresse area, String status,
 			Freelancer freelancer, Servico servico) {
-		super(id, nome, email, senha, dataNascimento, sexo, cpf, telefone, role);
-		id = id2;
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
 		this.experiencias = experiencias;
 		this.formacaoAcademica = formacaoAcademica;
 		this.competencias = competencias;
@@ -78,98 +78,118 @@ public class Curriculo extends Usuario {
 		this.servico = servico;
 	}
 
+	    
+	    
 
-	
-	
-	
-	public Curriculo(Long id, String nome, String email, String senha, Date dataNascimento, String sexo, String cpf,
-			String telefone, Main_Package.model.role role) {
-		super(id, nome, email, senha, dataNascimento, sexo, cpf, telefone, role);
-	}
-
-
-	public Curriculo() {
-	}
+		public Curriculo() {
+		}
+		
+		
 
 
-	public Long getId() {
-		return id;
-	}
+		public Long getId() {
+			return id;
+		}
 
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+		public void setId(Long id) {
+			this.id = id;
+		}
 
 
-	public Experiencias getExperiencias() {
-		return experiencias;
-	}
+		public String getNome() {
+			return nome;
+		}
 
 
-	public void setExperiencias(Experiencias experiencias) {
-		this.experiencias = experiencias;
-	}
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
 
 
-	public FormacaoAcademica getFormacaoAcademica() {
-		return formacaoAcademica;
-	}
+		public String getTelefone() {
+			return telefone;
+		}
 
 
-	public void setFormacaoAcademica(FormacaoAcademica formacaoAcademica) {
-		this.formacaoAcademica = formacaoAcademica;
-	}
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
+		}
 
 
-	public AreaDeInteresse getArea() {
-		return area;
-	}
+		public String getEmail() {
+			return email;
+		}
 
 
-	public void setArea(AreaDeInteresse area) {
-		this.area = area;
-	}
+		public void setEmail(String email) {
+			this.email = email;
+		}
 
 
-	public String getStatus() {
-		return status;
-	}
+		public Experiencias getExperiencias() {
+			return experiencias;
+		}
 
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+		public void setExperiencias(Experiencias experiencias) {
+			this.experiencias = experiencias;
+		}
 
 
-	public Competencias getCompetencias() {
-		return competencias;
-	}
+		public FormacaoAcademica getFormacaoAcademica() {
+			return formacaoAcademica;
+		}
 
 
-	public Freelancer getFreelancer() {
-		return freelancer;
-	}
+		public void setFormacaoAcademica(FormacaoAcademica formacaoAcademica) {
+			this.formacaoAcademica = formacaoAcademica;
+		}
 
 
-	public Servico getServico() {
-		return servico;
-	}
+		public Competencias getCompetencias() {
+			return competencias;
+		}
 
 
-	public Long getFreelancerId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		public void setCompetencias(Competencias competencias) {
+			this.competencias = competencias;
+		}
 
 
-	
+		public AreaDeInteresse getArea() {
+			return area;
+		}
 
-	
-	
-	
 
-	
+		public void setArea(AreaDeInteresse area) {
+			this.area = area;
+		}
 
-      
+
+		public String getStatus() {
+			return status;
+		}
+
+
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+
+		public Freelancer getFreelancer() {
+			return freelancer;
+		}
+
+
+		public Servico getServico() {
+			return servico;
+		}
+
+
+		public void setFreelancer(Freelancer freelancer) {
+	        this.freelancer = freelancer;
+	    }
+
+
 }

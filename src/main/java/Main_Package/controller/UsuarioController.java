@@ -86,7 +86,7 @@ public class UsuarioController {
 	    }
 
 	    model.addAttribute("erro", "Email ou senha incorretos");
-	    return "login";
+	    return "redirect:/login";
 	}
 
 

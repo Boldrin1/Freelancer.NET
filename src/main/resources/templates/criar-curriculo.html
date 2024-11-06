@@ -23,6 +23,7 @@
     <div class="container">
         <h2>Criar Currículo</h2>
         <form th:action="@{/usuario/freelancer/curriculo/salvar}" method="post">
+			<input type="hidden" th:name="freelancerId" th:value="${freelancer.id}" />
             <label for="inputNome">Nome:</label>
             <input type="text" id="inputNome" name="nome" placeholder="Insira seu nome" required>
 
