@@ -243,3 +243,10 @@
             color: #4b2ea6;
             text-decoration: underline;
         }
+        
+        #inputAreaDeInteresse {
+    color: #000; /* Cor de texto mais escura */
+    opacity: 1;  /* Define a opacidade completa */
+    background-color: #f8f9fa; /* Cor de fundo mais clara para contraste */
+}
+        

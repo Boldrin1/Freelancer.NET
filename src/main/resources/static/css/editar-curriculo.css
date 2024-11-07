@@ -107,3 +107,47 @@ textarea:focus {
     background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
     border-radius: 50%; /* Forma arredondada */
 }
+
+        /* Estilo para o label */
+.label-area-interesse {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilo para o select */
+.form-label {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #555555;
+    appearance: none; /* Remove o estilo padrão em alguns navegadores */
+    -webkit-appearance: none; /* Remove o estilo padrão no Safari */
+     margin: 1.2%;
+}
+
+/* Estilo para a primeira opção (placeholder) */
+.select-area-interesse option[value=""] {
+    color: #999999;
+}
+
+/* Efeito ao focar */
+.select-area-interesse:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+}
+
+/* Ícone de seta customizado */
+.select-area-interesse {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px; /* Espaço para o ícone de seta */
+}

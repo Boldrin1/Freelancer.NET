@@ -110,14 +110,18 @@ public class FreelancerController {
 
     @GetMapping("/curriculo/editar/{id}")
     public String editarCurriculo(@PathVariable Long id, Model model) {
-         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
-         if (curriculoOpt.isPresent()) {
-             model.addAttribute("curriculo", curriculoOpt.get());
-             return "editar-curriculo";
-         } else {
-             return "redirect:/erro";
-         }
+        Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
+        AreaDeInteresse[] areasDeInteresse = AreaDeInteresse.values(); // Obtém todas as opções do enum
+
+        if (curriculoOpt.isPresent()) {
+            model.addAttribute("curriculo", curriculoOpt.get());
+            model.addAttribute("areasDeInteresse", areasDeInteresse); // Adiciona as áreas de interesse ao modelo
+            return "editar-curriculo";
+        } else {
+            return "redirect:/erro";
+        }
     }
+
 
     @PostMapping("/curriculo/editar/salvar/{id}")
     public String salvarEdit(@PathVariable Long id, @ModelAttribute Curriculo curriculo) {

@@ -27,11 +27,26 @@
         	 <label for="experiencia">Experiência Profissional:</label>
             <textarea id="experiencia" th:field="*{curriculo.experiencias}" required></textarea>
 
-            <label for="experiencias">Formação Acadêmica:</label>
+            <label for="formacao">Formação Acadêmica:</label>
             <textarea id="formacao" name="formacao" th:field="*{curriculo.formacaoAcademica}" required></textarea>
 
             <label for="habilidades">Competências:</label>
             <textarea id="competencias" th:field="*{curriculo.competencias}" required></textarea>
+            
+            <label for="areaDeInteresse" class="label-area-interesse">Área que deseja atuar:</label>
+               <select name="areaDeInteresse" id="areaDeInteresse" class="form-label select-area-interesse">
+               <!-- Placeholder para a área de interesse -->
+               <option value="" disabled>Selecione uma área</option>
+    
+               <!-- Exibe cada valor do enum como uma opção, com a opção salva selecionada -->
+               <th:block th:each="areaDeInteresse : ${areasDeInteresse}">
+               <option th:value="${areaDeInteresse}" 
+               th:text="${areaDeInteresse}" 
+               th:selected="${curriculo.areaDeInteresse} == areaDeInteresse">
+               </option>
+              </th:block>
+           </select>
+            
             
             <button type="submit" class="btn">Salvar Alterações</button>
         </form>
