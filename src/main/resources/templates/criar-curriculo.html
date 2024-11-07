@@ -44,11 +44,14 @@
     <textarea id="inputHabilidades" name="competencias" rows="2" placeholder="Liste suas competências" required></textarea>
 
 <label for="inputAreaDeInteresse" class="form-label label-area-interesse">Área que deseja atuar:</label>
-<select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control select-area-interesse" required>
-    <option value="">Selecione uma área de interesse</option>
-    <option th:each="area : ${areasDeInteresse}" th:value="${area}" th:text="${area}"
-            th:selected="${area == areaDeInteresse}"></option>
-</select>
+ <select name="areaDeInteresse" id="areaDeInteresse">
+        <option value="" disabled selected>Selecione uma área</option>
+        <!-- Exibe cada valor do enum como uma opção -->
+        <th:block th:each="areaDeInteresse : ${areasDeInteresse}">
+            <option th:value="${areaDeInteresse}" th:text="${areaDeInteresse}" 
+                th:selected="${curriculo.areaDeInteresse} == ${areaDeInteresse}"></option>
+        </th:block>
+    </select>
 
     
 

@@ -48,14 +48,13 @@
     <textarea id="inputHabilidades" name="competencias" class="form-control" rows="2" th:text="${curriculo.competencias}" placeholder="Liste suas competências" readonly></textarea>
 
     <!-- Select para Área de Interesse (somente visualização) -->
-   <label for="inputAreaDeInteresse" class="form-label">Área que deseja atuar:</label>
-<select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control" th:disabled="${desabilitarSelect}">
-    <option value="">Selecione uma área de interesse</option>
-    <option th:each="area : ${areasDeInteresse}" 
-            th:value="${area}" 
-            th:text="${area}" 
-            th:selected="${area == areaDeInteresse}"></option>
+<label for="AreaDeInteresse" class="form-label">Área que deseja atuar:</label>
+<select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control" th:disabled="true">
+    <option th:value="${curriculo.areaDeInteresse}" th:text="${curriculo.areaDeInteresse}" selected></option>
 </select>
+
+
+
    
 
     <button type="submit" class="btn-primary">Editar</button>

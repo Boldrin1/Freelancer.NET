@@ -32,11 +32,6 @@ public class UsuarioController {
     
     
 
-    @GetMapping("/register")
-    public String criarConta(Model modelo) {
-        modelo.addAttribute("usuario", new Usuario());
-        return "register";
-    }
     @PostMapping("/save")
 	public String save(@ModelAttribute Usuario usuario) {
     if (usuario.getRole() == role.FREELANCER) {
@@ -93,6 +88,11 @@ public class UsuarioController {
 	    public Usuario getUsuarioAutenticado(HttpSession session) {
 	        return (Usuario) session.getAttribute("usuarioAutenticado");
 	    }
+		@GetMapping("/register")
+		public String criarConta(Model modelo) {
+		    modelo.addAttribute("usuario", new Usuario());
+		    return "register";
+		}
 
 
 	}

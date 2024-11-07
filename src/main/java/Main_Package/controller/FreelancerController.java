@@ -65,7 +65,7 @@ public class FreelancerController {
          if (curriculoOpt.isPresent()) {
              Curriculo curriculo = curriculoOpt.get();
              model.addAttribute("curriculo", curriculo);  // Adiciona o currículo ao modelo
-             model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
+             model.addAttribute("areasDeInteresse", curriculo.getAreaDeInteresse());
              return "curriculo"; // Retorna a página do currículo
          } else {
              return "redirect:/curriculo/novo/" + id; // Redireciona se o currículo não for encontrado
@@ -85,7 +85,7 @@ public class FreelancerController {
                  curriculo.setFreelancer(freelancerOpt.get());  // Associa o Freelancer ao novo Currículo
                  model.addAttribute("freelancer", freelancerOpt.get());
                  model.addAttribute("curriculo", curriculo); // Passa o novo currículo
-                 model.addAttribute("areasDeInteresse", Arrays.asList(AreaDeInteresse.values()));
+                 model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
                  return "criar-curriculo";
              }
          } else {
@@ -100,9 +100,8 @@ public class FreelancerController {
          if (freelancerOpt.isPresent()) {
              curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
              Curriculo savedCurriculo = curriculoService.save(curriculo);
-             model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
-             model.addAttribute("areaDeInteresse", curriculo.getArea());
-
+             // Verificação do valor de área de interesse
+             System.out.println("Área de Interesse selecionada: " + curriculo.getAreaDeInteresse());
              return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
          } else {
              return "redirect:/erro";

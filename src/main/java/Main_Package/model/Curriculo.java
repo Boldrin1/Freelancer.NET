@@ -24,22 +24,14 @@ public class Curriculo {
     private String nome;
     private String telefone;
     private String email;
-
-        @Column(name = "experiencias")
-        private String experiencias;
-
-        @Column(name = "formacao_academica")
-        private String formacaoAcademica;
-
-        @Column(name = "competencias")
-        private String competencias;
-
-       
+    private String competencias;
+    private String experiencias;
+    private String formacaoAcademica;
         
     
 
     @Enumerated(EnumType.STRING)
-    private AreaDeInteresse area;
+    private AreaDeInteresse areaDeInteresse;
     
     private String status;
     
@@ -48,10 +40,6 @@ public class Curriculo {
       @JoinColumn(name = "servico_id")
       private Servico servico;
 
-      
-      public void alterarCurriculo(Experiencias experiencias,FormacaoAcademica formacaoAcademica,Competencias competencias) {
-    	 // return curriculoAlterado;
-      }
 
 
 	public void setServico(Servico servico) {
@@ -59,132 +47,109 @@ public class Curriculo {
 		
 	}
 
-
-	public Curriculo(Long id, String nome, String telefone, String email, String experiencias, String formacaoAcademica,
-			String competencias, AreaDeInteresse area, String status, Freelancer freelancer, Servico servico) {
-		this.id = id;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
-		this.experiencias = experiencias;
-		this.formacaoAcademica = formacaoAcademica;
-		this.competencias = competencias;
-		this.area = area;
-		this.status = status;
-		this.freelancer = freelancer;
-		this.servico = servico;
-	}
-
-
 	public Curriculo() {
 	}
 
+	public Curriculo(Long id, Freelancer freelancer, String nome, String telefone, String email, String competencias,
+			String experiencias, String formacaoAcademica, AreaDeInteresse areaDeInteresse, String status,
+			Servico servico) {
+		this.id = id;
+		this.freelancer = freelancer;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+		this.competencias = competencias;
+		this.experiencias = experiencias;
+		this.formacaoAcademica = formacaoAcademica;
+		this.areaDeInteresse = areaDeInteresse;
+		this.status = status;
+		this.servico = servico;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getExperiencias() {
-		return experiencias;
-	}
-
-
-	public void setExperiencias(String experiencias) {
-		this.experiencias = experiencias;
-	}
-
-
-	public String getFormacaoAcademica() {
-		return formacaoAcademica;
-	}
-
-
-	public void setFormacaoAcademica(String formacaoAcademica) {
-		this.formacaoAcademica = formacaoAcademica;
-	}
-
-
-	public String getCompetencias() {
-		return competencias;
-	}
-
-
-	public void setCompetencias(String competencias) {
-		this.competencias = competencias;
-	}
-
-
-	public AreaDeInteresse getArea() {
-		return area;
-	}
-
-
-	public void setArea(AreaDeInteresse area) {
-		this.area = area;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 
 	public Freelancer getFreelancer() {
 		return freelancer;
 	}
 
-
 	public void setFreelancer(Freelancer freelancer) {
 		this.freelancer = freelancer;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCompetencias() {
+		return competencias;
+	}
+
+	public void setCompetencias(String competencias) {
+		this.competencias = competencias;
+	}
+
+	public String getExperiencias() {
+		return experiencias;
+	}
+
+	public void setExperiencias(String experiencias) {
+		this.experiencias = experiencias;
+	}
+
+	public String getFormacaoAcademica() {
+		return formacaoAcademica;
+	}
+
+	public void setFormacaoAcademica(String formacaoAcademica) {
+		this.formacaoAcademica = formacaoAcademica;
+	}
+
+	public AreaDeInteresse getAreaDeInteresse() {
+		return areaDeInteresse;
+	}
+
+	public void setAreaDeInteresse(AreaDeInteresse areaDeInteresse) {
+		this.areaDeInteresse = areaDeInteresse;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Servico getServico() {
 		return servico;
 	}
 
-
-	  
+	
 
 }
