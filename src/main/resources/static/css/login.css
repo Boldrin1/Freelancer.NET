@@ -106,3 +106,70 @@ body {
     width: 400px;
     height: 400px;
 }
+/* Para dispositivos com largura até 768px (como tablets) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 10px; /* Adiciona um pequeno padding */
+    }
+
+    .site-title {
+        font-size: 50px; /* Reduz o tamanho do título */
+        margin-bottom: 15px; /* Reduz o espaço abaixo do título */
+    }
+
+    .login-container {
+        padding: 30px; /* Reduz o padding do container */
+        width: 90%; /* Limita a largura do container */
+    }
+
+    .form-control {
+        font-size: 16px; /* Ajusta o tamanho da fonte dos campos */
+        padding: 8px; /* Reduz o padding dos campos */
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-size: 16px; /* Ajusta o tamanho do botão */
+        width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    }
+
+    .top-right-amoeba, .bottom-left-amoeba {
+        width: 350px; /* Reduz o tamanho das formas */
+        height: 350px;
+    }
+}
+
+/* Para dispositivos com largura até 480px (como celulares) */
+@media (max-width: 480px) {
+    body {
+        padding: 0 5px; /* Adiciona padding mais estreito */
+    }
+
+    .site-title {
+        font-size: 40px; /* Reduz ainda mais o tamanho do título */
+        margin-bottom: 10px; /* Diminui o espaço abaixo do título */
+    }
+
+    .login-container {
+        padding: 20px; /* Ajuste de padding */
+        width: 100%; /* Garante que o container ocupe toda a largura */
+        margin-top: 20px; /* Reduz o espaço superior */
+    }
+
+    .form-control {
+        font-size: 14px; /* Reduz ainda mais o tamanho da fonte */
+        padding: 6px; /* Reduz o padding dos campos */
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-size: 16px; /* Ajusta o tamanho do botão */
+        width: 100%; /* O botão ocupa toda a largura disponível */
+    }
+
+    .top-right-amoeba, .bottom-left-amoeba {
+        width: 300px; /* Reduz mais o tamanho das formas */
+        height: 300px;
+    }
+}

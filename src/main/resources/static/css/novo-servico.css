@@ -203,3 +203,105 @@ body {
     color: #4b2ea6;
     text-decoration: underline;
 }
+/* Para dispositivos com largura até 1024px (como tablets) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 10px 15px; /* Ajusta o padding para cabeçalhos menores */
+    }
+
+    .title {
+        font-size: 24px; /* Reduz o tamanho do título */
+    }
+
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+
+    .register-container {
+        padding: 40px 30px; /* Reduz o padding interno do container */
+        max-width: 400px; /* Limita a largura do container */
+        margin-top: 70px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+}
+
+/* Para dispositivos com largura até 768px (como tablets em modo retrato) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 0 15px; /* Adiciona padding para o corpo */
+    }
+
+    .header {
+        padding: 10px 15px;
+    }
+
+    .title {
+        font-size: 22px; /* Ajusta o tamanho do título */
+    }
+
+    .sidebar {
+        left: -250px; /* Deixa a sidebar mais escondida */
+        width: 180px; /* Reduz a largura da sidebar */
+    }
+
+    .sidebar.active {
+        left: 0; /* Permite a abertura da sidebar */
+    }
+
+    .register-container {
+        max-width: 350px; /* Reduz o tamanho do container */
+        padding: 35px 25px; /* Ajusta o padding */
+        margin-top: 50px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+}
+
+/* Para dispositivos com largura até 480px (como celulares) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Adiciona padding extra para celulares */
+    }
+
+    .header {
+        padding: 10px; /* Reduz o padding do cabeçalho */
+    }
+
+    .title {
+        font-size: 20px; /* Reduz ainda mais o tamanho do título */
+    }
+
+    .sidebar {
+        left: -200px; /* Sidebar mais escondida */
+        width: 160px; /* Reduz ainda mais a largura da sidebar */
+    }
+
+    .sidebar.active {
+        left: 0; /* Sidebar pode ser aberta */
+    }
+
+    .register-container {
+        max-width: 300px; /* Limita a largura do container */
+        padding: 25px 20px; /* Ajusta o padding */
+        margin-top: 40px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+
+    .btn-primary {
+        font-size: 16px; /* Reduz o tamanho da fonte no botão */
+        padding: 10px; /* Ajusta o padding do botão */
+    }
+
+    .menu-toggle {
+        font-size: 20px; /* Ajusta o tamanho do ícone do menu */
+    }
+}

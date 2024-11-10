@@ -1,19 +1,23 @@
-/* Estilo para o corpo */
+        /* Estilo para o corpo */
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            height: 100vh; /* Altura total da tela */
+            display: flex;
+            align-items: flex-start; /* Alinhamento superior */
+            justify-content: center; /* Centraliza horizontalmente */
+            overflow: hidden; /* Impede rolagem da página */
         }
 
-        /* Cabeçalho fixo contendo logo e título */
+        /* Cabeçalho fixo contendo logo, título e botão de menu */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
-            background-color: #fdfdfd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: rgba(250, 250, 250, 0.99);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             left: 0;
@@ -21,136 +25,191 @@
             z-index: 1000;
         }
 
-        /* Estilo do título */
-        .header-title {
+        /* Estilo do botão de abrir o menu */
+        .menu-toggle {
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        /* Logo e título no cabeçalho */
+        .logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .title {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 30px;
             color: #000000;
         }
 
-        /* Estilo da barra lateral */
+        /* Estilo para a barra lateral */
         .sidebar {
             width: 250px;
             height: 100vh;
             position: fixed;
             top: 0;
             left: -300px;
-            background-color: #ffffff; /* Cor branca */
+            background-color: rgba(250, 250, 250, 0.99);
             transition: left 0.3s ease;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1100;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .menu-item {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-            color: #000000;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
-        }
-
-        .menu-item:hover {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        /* Conteúdo principal */
-        .main-content {
-            margin-top: 80px; /* Espaço para o cabeçalho fixo */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            z-index: 1100;
         }
 
-        /* Seção de perfil */
-        .profile-section {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+        /* Logo e título na sidebar */
+       .sidebar-logo {
+           width: 55px;
+           height: 55px;
+           object-fit: contain;
+       }
+       .sidebar-title {
+           font-family: 'Inter', sans-serif;
+           font-weight: 700;
+           font-size: 22px;
+           color: #1E1E1E;
+       }
+
+        /* Animação para abrir a barra lateral */
+        .sidebar.active {
+            left: 0;
         }
 
-        .profile-section h2 {
-            margin: 0 0 10px;
-            color: #6a1b9a; /* Cor roxa para o título */
-        }
-
-        .profile-detail {
-            margin-bottom: 15px;
-        }
-
-        .profile-detail label {
-            font-weight: bold;
-        }
-
-        .edit-button {
-            background-color: #6a1b9a; /* Cor roxa para o botão de editar */
-            color: #ffffff;
-            border: none;
+        /* Itens de menu */
+        .menu-item {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: #000;
+            border: 0.3px solid #000;
             padding: 10px 15px;
-            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
 
-        .edit-button:hover {
-            background-color: #4a0072; /* Tom mais escuro de roxo ao passar o mouse */
+        /* Hover nos itens */
+        .menu-item:hover {
+            background-color: #e0e0e0;
         }
 
-        /* Estilo da seção de serviços */
-        .services-section {
-            margin-top: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        /* Estilo para o conteúdo principal */
+        .main-content {
+            margin-top: 80px; /* Espaço abaixo do cabeçalho */
             padding: 20px;
+            flex: 1; /* Preenche o espaço restante */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza horizontalmente */
         }
 
-        .services-section h2 {
-            margin: 0 0 10px;
-            color: #6a1b9a; /* Cor roxa para o título */
-        }
+        .register-container {
+    max-width: 600px; /* Largura máxima do container */
+    padding: 30px; /* Aumentando o padding interno para mais espaçamento */
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); /* Leve ajuste na sombra para suavizar */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px; /* Espaço inferior */
+}
 
-        /* Estilo dos cards */
-        .services-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria um layout responsivo */
-            gap: 20px; /* Espaçamento entre os cards */
-        }
+.register-container h2 {
+    font-size: 28px; /* Tamanho do título aumentado para maior destaque */
+    font-weight: bold;
+    color: #361899; /* Cor do título */
+    margin-bottom: 15px; /* Aumentando o espaço abaixo do título */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Adicionando sombra ao texto do título */
+}
 
-        .service-card {
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+.form-label {
+    font-weight: 600;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px; /* Aumentando o espaço abaixo do rótulo */
+    display: block;
+}
 
-        .service-card:hover {
-            transform: translateY(-5px); /* Efeito de levantar o card ao passar o mouse */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ced4da; /* Ajustando a borda para um cinza mais suave */
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Largura total do campo */
+    margin-bottom: 15px;
+}
 
-        .service-card h3 {
-            margin: 0 0 10px;
-            color: #333; /* Cor padrão para o título do serviço */
-        }
+.form-control:focus {
+    border-color: #5f3fc9; /* Mantendo a borda azul ao focar */
+    box-shadow: 0 0 5px rgba(95, 63, 201, 0.4); /* Suavizando o efeito de foco */
+    outline: none;
+}
 
-        .service-card p {
-            margin: 5px 0;
-            color: #555; /* Cor padrão para o texto do serviço */
-        }
+.btn-primary {
+    background-color: #5f3fc9; /* Cor do botão */
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    color: #fff; /* Texto branco */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(95, 63, 201, 0.2); /* Adicionando sombra ao botão */
+}
+
+.btn-primary:hover {
+    background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(75, 46, 166, 0.3); /* Sombras mais pronunciadas ao passar o mouse */
+}
+
+.services-section {
+    width: 100%; /* Largura total */
+    margin-top: 30px; /* Espaçamento acima da seção de serviços */
+    text-align: center; /* Centraliza o título */
+}
+
+.services-section h2 {
+    font-size: 28px; /* Tamanho do título */
+    color: #361899; /* Cor do título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.services-cards {
+    display: grid; /* Usando grid para layout responsivo */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas responsivas */
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+.service-card {
+    background-color: #fff; /* Cor do fundo do card */
+    border-radius: 10px;
+    padding: 20px; /* Padding interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transição suave */
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Leve movimento ao passar o mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
+}
+
+.service-card h3 {
+    font-size: 20px; /* Tamanho do título do serviço */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+    color: #361899; /* Cor do título do serviço */
+}
+
+.service-card p {
+    margin: 5px 0; /* Margem para o texto da descrição */
+    color: #666; /* Cor do texto da descrição */
+}

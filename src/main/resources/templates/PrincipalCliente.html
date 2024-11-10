@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal do Cliente</title>
-    <link rel="stylesheet" href="/css/PrincipalCliente.css"> <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="/css/PrincipalCliente.css">
 </head>
 <body>
     <div class="header">
@@ -14,11 +14,16 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <div class="menu-item">Início</div>
-        <div class="menu-item">Meus Serviços</div>
-        <div class="menu-item">Meus Currículos</div>
-        <div class="menu-item">Ajustes</div>
-        <div class="menu-item">Ajuda</div>
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+        <div class="menu-item">Perfil</div>
+        <div class="menu-item">Curriculo</div>
+        <div class="menu-item">Inbox</div>
+        <div class="menu-item">Contratos</div>
+        <div class="menu-item">Informações</div> <!-- Fechamento correto aqui -->
     </div>
 
     <div class="main-content">

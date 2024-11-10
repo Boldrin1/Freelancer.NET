@@ -12,6 +12,7 @@ body {
     position: relative;
 }
 
+/* Cabeçalho */
 .header {
     display: flex;
     align-items: center;
@@ -26,6 +27,7 @@ body {
     z-index: 1000;
 }
 
+/* Título */
 .title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
@@ -33,6 +35,7 @@ body {
     color: #1E1E1E;
 }
 
+/* Container do formulário */
 .form-container {
     max-width: 455px;
     padding: 60px 45px;
@@ -45,6 +48,7 @@ body {
     margin-top: 100px; /* Para evitar sobreposição com o cabeçalho fixo */
 }
 
+/* Inputs e Botões */
 input[type="text"], input[type="password"], input[type="date"] {
     width: 100%;
     padding: 12px;
@@ -134,5 +138,68 @@ input[type="text"], input[type="password"], input[type="date"] {
     }
     50% {
         transform: translateY(-20px);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .form-container {
+        max-width: 90%;
+        padding: 40px 20px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .cancel-button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .form-container {
+        padding: 30px 15px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .cancel-button {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    /* Ajustes nas amoebas para telas menores */
+    .amoeba {
+        width: 100px;
+        height: 100px;
+    }
+
+    .amoeba:nth-child(2) {
+        width: 80px;
+        height: 80px;
+    }
+
+    .amoeba:nth-child(3) {
+        width: 120px;
+        height: 120px;
+    }
+
+    .amoeba:nth-child(4) {
+        width: 150px;
+        height: 150px;
     }
 }

@@ -101,7 +101,6 @@ public class FreelancerController {
              curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
              Curriculo savedCurriculo = curriculoService.save(curriculo);
              // Verificação do valor de área de interesse
-             System.out.println("Área de Interesse selecionada: " + curriculo.getAreaDeInteresse());
              return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
          } else {
              return "redirect:/erro";

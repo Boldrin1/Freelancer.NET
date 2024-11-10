@@ -82,3 +82,42 @@ body {
 .btn:hover {
     background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduz padding para telas menores */
+    }
+
+    .container h1 {
+        font-size: 28px; /* Reduz tamanho da fonte do título */
+    }
+
+    .freelancer-card h3 {
+        font-size: 20px; /* Reduz tamanho da fonte do título do freelancer */
+    }
+
+    .btn {
+        font-size: 14px; /* Reduz tamanho da fonte do botão */
+        padding: 10px 16px; /* Ajusta padding para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Reduz padding ainda mais */
+    }
+
+    .container h1 {
+        font-size: 24px; /* Reduz tamanho da fonte do título */
+    }
+
+    .freelancers-list {
+        grid-template-columns: 1fr; /* Exibe um cartão por linha */
+    }
+
+    .btn {
+        font-size: 12px; /* Reduz tamanho da fonte do botão */
+        padding: 8px 12px; /* Ajusta padding para telas pequenas */
+    }
+}

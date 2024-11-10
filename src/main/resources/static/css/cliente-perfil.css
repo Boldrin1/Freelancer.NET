@@ -13,6 +13,7 @@ body {
 /* Container principal */
 .container {
     max-width: 1200px; /* Largura máxima do container */
+    width: 100%; /* Largura total para garantir que o container se ajuste ao tamanho da tela */
     padding: 40px 30px; /* Padding interno */
     background-color: #ffffff;
     border-radius: 20px;
@@ -48,4 +49,35 @@ body {
 .btn:hover {
     background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
     box-shadow: 0 4px 15px rgba(75, 46, 166, 0.4);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduz padding para telas menores */
+    }
+
+    .container h1 {
+        font-size: 28px; /* Reduz tamanho da fonte do título */
+    }
+
+    .btn {
+        font-size: 14px; /* Reduz tamanho da fonte do botão */
+        padding: 8px 12px; /* Ajusta padding para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Reduz padding ainda mais */
+    }
+
+    .container h1 {
+        font-size: 24px; /* Reduz tamanho da fonte do título */
+    }
+
+    .btn {
+        font-size: 12px; /* Reduz tamanho da fonte do botão */
+        padding: 8px 12px; /* Ajusta padding para telas muito pequenas */
+    }
 }

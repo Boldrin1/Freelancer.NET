@@ -111,3 +111,30 @@ body {
     width: 400px;
     height: 400px;
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .container {
+        max-width: 90%; /* Ajusta largura em telas pequenas */
+        padding: 30px 20px; /* Padding reduzido */
+    }
+
+    .container h1 {
+        font-size: 28px; /* Tamanho de fonte menor para título */
+    }
+
+    .form-control {
+        padding: 10px; /* Ajusta padding dos inputs */
+        font-size: 14px; /* Tamanho de fonte dos inputs */
+    }
+
+    .btn {
+        font-size: 16px; /* Ajusta tamanho da fonte do botão */
+        padding: 10px; /* Reduz padding do botão */
+    }
+
+    .top-right-amoeba, .bottom-left-amoeba {
+        width: 300px; /* Tamanho menor para as formas */
+        height: 300px;
+    }
+}

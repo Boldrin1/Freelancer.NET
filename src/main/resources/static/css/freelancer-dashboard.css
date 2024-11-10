@@ -210,3 +210,71 @@ body {
     border-radius: 100%;
     clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
 }
+/* Para dispositivos com largura até 768px (como tablets) */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px; /* Reduzindo o padding */
+    }
+
+    .title {
+        font-size: 24px; /* Reduzindo o tamanho da fonte */
+    }
+
+    .sidebar {
+        width: 200px; /* Largura reduzida */
+        left: -250px; /* Ajuste na posição */
+    }
+
+    .service-list {
+        padding: 10px; /* Ajustando o padding */
+    }
+
+    .service-item {
+        width: 90%; /* Reduzindo a largura dos itens */
+    }
+
+    .background-shapes .top-right-amoeba,
+    .background-shapes .bottom-left-amoeba {
+        width: 400px; /* Ajuste no tamanho das formas */
+        height: 350px;
+    }
+
+    .menu-toggle {
+        font-size: 22px; /* Reduzindo o tamanho do botão */
+    }
+}
+
+/* Para dispositivos com largura até 480px (como celulares) */
+@media (max-width: 480px) {
+    body {
+        padding: 0 10px; /* Adiciona um pequeno padding */
+    }
+
+    .header {
+        padding: 8px 15px;
+        flex-direction: column; /* Alterando a direção do cabeçalho */
+    }
+
+    .title {
+        font-size: 22px; /* Reduzindo ainda mais o título */
+    }
+
+    .sidebar {
+        width: 180px; /* Largura ainda menor */
+        left: -240px;
+    }
+
+    .menu-item {
+        font-size: 18px; /* Reduzindo o tamanho da fonte do menu */
+    }
+
+    .service-item {
+        width: 95%; /* Itens mais estreitos */
+    }
+
+    .background-shapes .top-right-amoeba,
+    .background-shapes .bottom-left-amoeba {
+        width: 350px; /* Formas menores */
+        height: 300px;
+    }
+}

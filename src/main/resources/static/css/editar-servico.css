@@ -20,6 +20,8 @@ body {
     text-align: left; /* Alinhamento à esquerda */
     position: relative; /* Para manter a estrutura */
     z-index: 1; /* Garante que o conteúdo esteja acima do fundo */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível */
+    box-sizing: border-box; /* Para garantir que o padding seja incluído no cálculo da largura */
 }
 
 /* Estilo dos títulos */
@@ -27,6 +29,7 @@ h1 {
     text-align: center; /* Centraliza o título */
     color: #5f3fc9; /* Cor do título */
     margin-bottom: 20px; /* Margem inferior */
+    font-size: 24px; /* Tamanho da fonte */
 }
 
 /* Estilo dos campos de entrada e textarea */
@@ -61,6 +64,7 @@ button {
     width: 100%; /* Largura total do botão */
 }
 
+/* Efeito hover do botão */
 button:hover {
     background-color: #4b2ea6; /* Cor do botão ao passar o mouse */
 }
@@ -94,4 +98,47 @@ button:hover {
     height: 200px; /* Ajuste conforme necessário */
     background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
     border-radius: 50%; /* Forma arredondada */
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+    /* Ajustes para telas menores que 768px */
+    .new-service-container {
+        padding: 30px 20px; /* Reduz o padding */
+    }
+
+    h1 {
+        font-size: 20px; /* Reduz o tamanho do título */
+    }
+
+    input,
+    textarea {
+        font-size: 14px; /* Tamanho de fonte reduzido para campos */
+    }
+
+    button {
+        padding: 12px 25px; /* Aumenta o padding do botão */
+        font-size: 18px; /* Aumenta o tamanho da fonte do botão */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para telas menores que 480px */
+    .new-service-container {
+        padding: 20px 15px; /* Reduz ainda mais o padding */
+    }
+
+    h1 {
+        font-size: 18px; /* Tamanho de título reduzido */
+    }
+
+    input,
+    textarea {
+        font-size: 14px; /* Reduz o tamanho da fonte para maior legibilidade */
+    }
+
+    button {
+        padding: 14px 28px; /* Ajusta o tamanho do botão */
+        font-size: 16px; /* Ajusta o tamanho do texto do botão */
+    }
 }
