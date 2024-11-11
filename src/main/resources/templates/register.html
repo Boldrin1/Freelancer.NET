@@ -22,7 +22,7 @@
     <!-- Conteúdo Principal - Formulário de Registro -->
     <div class="register-container">
         <h2>Adicionar Perfil</h2>
-        <form action="#" th:action="@{/save}" method="post" class="form-grid">
+        <form action="#" th:action="@{/save}"  th:object="${usuario}" method="post" class="form-grid">
             <!-- Nome Completo -->
             <div>
                 <label class="form-label" for="nome">Nome Completo:</label>
@@ -71,11 +71,11 @@
 
             <!-- Identificação como (Freelancer ou Cliente) -->
             <div>
-                <label class="form-label" for="identificacao">Você se identifica como:</label>
-                <select class="form-control" id="identificacao" name="identificacao" required>
+                <label class="form-label" for="role">Você se identifica como:</label>
+                <select class="form-control" id="role" name="role" required>
                     <option value="">Selecione</option>
-                    <option value="freelancer">Freelancer</option>
-                    <option value="cliente">Cliente</option>
+                    <option value="FREELANCER">Freelancer</option>
+                    <option value="CLIENTE">Cliente</option>
                 </select>
             </div>
 
