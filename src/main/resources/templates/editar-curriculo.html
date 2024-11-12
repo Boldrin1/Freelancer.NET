@@ -13,18 +13,44 @@
     <div class="curriculum-edit-container">
         <h2>Editar Currículo</h2>
 
-        <form th:action="@{/editar-curriculo/{freelancerId}(freelancerId=${curriculum.freelancerId})}" th:object="${curriculum}" method="post">
-            <label for="qualificacoes">Qualificações</label>
-            <textarea id="qualificacoes" th:field="*{qualificacoes}" required></textarea>
+        <form th:action="@{/usuario/freelancer/curriculo/editar/salvar/{id}(id=${curriculo.id})}" method="post" th:method="put">
+        
+            <label for="nome">Nome:</label>
+		    <textarea id="nome" th:field="*{curriculo.nome}" required></textarea>
+        
+        	 <label for="email">Email:</label>
+            <textarea id="email" th:field="*{curriculo.email}" required></textarea>
+        
+             <label for="Telefone">Telefone:</label>
+		    <textarea id="Telefone" th:field="*{curriculo.telefone}" required></textarea>
+        
+        	 <label for="experiencia">Experiência Profissional:</label>
+            <textarea id="experiencia" th:field="*{curriculo.experiencias}" required></textarea>
 
-            <label for="experiencias">Experiências</label>
-            <textarea id="experiencias" th:field="*{experiencias}" required></textarea>
+            <label for="formacao">Formação Acadêmica:</label>
+            <textarea id="formacao" name="formacao" th:field="*{curriculo.formacaoAcademica}" required></textarea>
 
-            <label for="habilidades">Habilidades</label>
-            <textarea id="habilidades" th:field="*{habilidades}" required></textarea>
-
+            <label for="habilidades">Competências:</label>
+            <textarea id="competencias" th:field="*{curriculo.competencias}" required></textarea>
+            
+            <label for="areaDeInteresse" class="label-area-interesse">Área que deseja atuar:</label>
+               <select name="areaDeInteresse" id="areaDeInteresse" class="form-label select-area-interesse">
+               <!-- Placeholder para a área de interesse -->
+               <option value="" disabled>Selecione uma área</option>
+    
+               <!-- Exibe cada valor do enum como uma opção, com a opção salva selecionada -->
+               <th:block th:each="areaDeInteresse : ${areasDeInteresse}">
+               <option th:value="${areaDeInteresse}" 
+               th:text="${areaDeInteresse}" 
+               th:selected="${curriculo.areaDeInteresse} == areaDeInteresse">
+               </option>
+              </th:block>
+           </select>
+            
+            
             <button type="submit" class="btn">Salvar Alterações</button>
         </form>
     </div>
 </body>
 </html>
+		    
