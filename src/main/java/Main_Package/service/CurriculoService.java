@@ -1,6 +1,7 @@
 package Main_Package.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class CurriculoService {
 		return curriculoRepository.findById(id);
 	}
 	
+	public List<Curriculo> listarCurriculo(Curriculo curriculo){
+		return curriculoRepository.findAll();
+	}
+
 	
 	public Curriculo save(Curriculo curriculo){
 		return curriculoRepository.save(curriculo);

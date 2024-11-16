@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard do Freelancer - Serviços Disponíveis</title>
+    <title>Freelancer Disponíveis</title>
 	<link rel="stylesheet" href="/css/cliente-home.css">
 </head>
 <body>
@@ -42,7 +42,7 @@
                 <h3 th:text="${curriculo.nome}">Nome:</h3>
                 <p th:text="${curriculo.AreaDeInteresse}">Area De Atuação:</p>               
                 <!-- Botão para aplicar ao serviço -->
-                <a th:href="@{/curriculo/{id}(id=${proposta.id})}" class="btn-apply">Ver curriculo</a>
+               <!-- <a th:href="@{/curriculo/{id}(id=${proposta.id})}" class="btn-apply">Ver curriculo</a>-->
             </div>
         </div>
     </div>

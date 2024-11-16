@@ -1,6 +1,5 @@
 package Main_Package.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,7 @@ public class FreelancerService {
 				.orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
 	}
 	
-	public List<Freelancer> listarFreelancer(){
-		return freelancerRepository.findAll();
-	}
+
 	
 	public Freelancer UpdateFreelancer(Long id){
 		Optional<Freelancer> freelancer = freelancerRepository.findById(id);

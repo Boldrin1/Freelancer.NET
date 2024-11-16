@@ -1,12 +1,21 @@
 package Main_Package.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import Main_Package.model.Cliente;
+import Main_Package.model.Curriculo;
 import Main_Package.service.ClienteService;
+import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
 
 
@@ -17,8 +26,22 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	
 	@Autowired
-	private FreelancerService freelancerService;
+	private CurriculoService curriculoService;
+	
+	@GetMapping("/{id}")
+	public String paginaInicial_Cliente(@PathVariable Long id,Model model, Curriculo curriculo) {
+		Optional<Cliente> cliente = clienteService.mostrarCliente(id);
+		if(cliente.isPresent()) {
+		List<Curriculo> curriculos = curriculoService.listarCurriculo(curriculo);
+		model.addAttribute("cliente", cliente.get());
+		model.addAttribute("curriculo",curriculos);
+		return "cliente-home";
+		}else {
+			return "redirect:/error";
+		}
+	}
 	
 	
 	@GetMapping("/perfil/{id}")
@@ -38,14 +61,7 @@ public class ClienteController {
 		return "redirect:/create-count";
 	}
 	
-	@GetMapping("/{id}")
-	public String paginaInicial_Cliente() {
-		freelancerService.listarFreelancer();
-		return "PrincipalCliente";
-	}
-	
 
-	
 }
 
 

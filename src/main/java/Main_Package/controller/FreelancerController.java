@@ -103,7 +103,7 @@ public class FreelancerController {
         if (curriculoOpt.isPresent()) {
             model.addAttribute("curriculo", curriculoOpt.get());
             model.addAttribute("areasDeInteresse", areasDeInteresse); // Adiciona as áreas de interesse ao modelo
-            return "editar-curriculo";
+            return "curriculo-editar";
         } else {
             return "redirect:/erro";
         }

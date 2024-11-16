@@ -10,4 +10,5 @@ public interface CurriculoRepository extends JpaRepository<Curriculo,Long>{
 
 	Optional<Curriculo> findByFreelancerId(Long id);
 
+
 }
