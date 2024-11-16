@@ -125,8 +125,9 @@ public class FreelancerController {
 
 	
 	@GetMapping("/perfil/{id}")
-	public String mostrarPerfil(@PathVariable Long id){
-	 	freelancerService.mostraFreelancer(id);
+	public String mostrarPerfil(@PathVariable Long id,Model model){
+		Freelancer freelancer = freelancerService.mostraFreelancer(id);
+		model.addAttribute("freelancer",freelancer);
 	 	return "perfil-freelancer";
 	}
 		

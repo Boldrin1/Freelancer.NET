@@ -24,8 +24,7 @@
         <div class="profile-section">
             <img src="/img/logofree-removebg-preview.png" alt="Imagem do Freelancer" class="profile-image">
             <div class="profile-details">
-                <h2 th:text="${perfilFreelancer.nome}">Nome do Freelancer</h2>
-                <p th:text="${perfilFreelancer.localizacao}">Localização</p>
+                <h2 th:text="${freelancer.nome}">Nome do Freelancer</h2>
             </div>
         </div>
 
@@ -36,32 +35,7 @@
             <a href="#" class="btn-action">Ver Currículo</a>
         </div>
 
-        <!-- Serviços -->
-        <div class="services-section">
-            <h3>Serviços Oferecidos</h3>
-            <div class="service-card" th:each="servico : ${servicos}">
-                <h4 class="service-title" th:text="${servico.titulo}">Título do Serviço</h4>
-                <p class="service-description" th:text="${servico.descricao}">Descrição do serviço...</p>
-                <a th:href="@{/servico/{id}(id=${servico.id})}" class="btn-action">Ver Detalhes</a>
-            </div>
-        </div>
-
-        <!-- Conquistas -->
-        <div class="achievements-section">
-            <h3>Conquistas e Certificações</h3>
-            <div class="achievement" th:each="cert : ${certificacoes}">
-                <p th:text="${cert.nome}">Nome da Certificação ou Conquista</p>
-            </div>
-        </div>
-
-        <!-- Testemunhos -->
-        <div class="testimonials-section">
-            <h3>Depoimentos de Clientes</h3>
-            <div class="testimonial-card" th:each="avaliacao : ${avaliacoes}">
-                <p th:text="${avaliacao.comentario}">Comentário do cliente...</p>
-            </div>
-        </div>
-
+  
         <!-- Contato -->
         <div class="contact-section">
             <h3>Informações de Contato</h3>

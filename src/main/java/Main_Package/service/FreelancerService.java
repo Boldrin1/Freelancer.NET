@@ -19,8 +19,9 @@ public class FreelancerService {
 		return freelancerRepository.save(freelancer);
 	}
 	
-	public Optional<Freelancer> mostraFreelancer(Long id){
-		return freelancerRepository.findById(id);
+	public Freelancer mostraFreelancer(Long id){
+		return freelancerRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
 	}
 	
 	public List<Freelancer> listarFreelancer(){
