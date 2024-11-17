@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Main_Package.model.Cliente;
 import Main_Package.model.Curriculo;
@@ -43,13 +44,22 @@ public class ClienteController {
 	}
 
 	
-	@GetMapping("/view-curriculo/{id}")
-	public String viewCurriculo(@PathVariable Long id, Model model) {
-	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(id);
+	@GetMapping("/view-curriculo/{curriculoId}")
+	public String viewCurriculo(
+	    @PathVariable Long curriculoId, 
+	    @RequestParam Long clienteId, 
+	    Model model) {
+	    
+	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(curriculoId);
+	    Cliente cliente = clienteService.mostrarCliente(clienteId);
+
 	    if (curriculo.isPresent()) {
 	        Curriculo curriculo2 = curriculo.get();
 
+	        model.addAttribute("cliente", cliente);
+	        System.out.println(cliente);
 	        model.addAttribute("curriculo", curriculo2);
+	        System.out.println(curriculo2);
 	        return "view-curriculo";
 	    } else {
 	        return "erro"; 

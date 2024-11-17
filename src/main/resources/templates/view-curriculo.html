@@ -53,7 +53,7 @@
     <textarea id="inputHabilidades" name="competencias" class="form-control" rows="2" th:text="${curriculo.competencias}" placeholder="Liste suas competências" readonly></textarea>
 
     <!-- Select para Área de Interesse (somente visualização) -->
-    <label for="AreaDeInteresse" class="form-label">Área que deseja atuar:</label>
+    <label for="AreaDeInteresse" class="form-label">Área que o Freelancer deseja atuar:</label>
        <select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control" th:disabled="true">
        <option th:value="${curriculo.areaDeInteresse}" th:text="${curriculo.areaDeInteresse}" selected></option>
        </select>
