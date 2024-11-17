@@ -18,8 +18,9 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	public Optional<Cliente> mostrarCliente(Long id){
-		return clienteRepository.findById(id);
+	public Cliente mostrarCliente(Long id){
+		return clienteRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Cliente não encontrado "));
 	}
 	
     public Cliente UpdateCliente(Long id){

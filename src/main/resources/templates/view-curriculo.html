@@ -29,7 +29,10 @@
 
     <div class="register-container">
         <h1>Currículo</h1>
-<form th:action="@{/usuario/cliente/enviar/{id}(id=${cliente.id})}" method="get">
+		<!-- Remova o cliente, pois ele não é necessário neste contexto -->
+		<form th:action="@{/usuario/cliente/enviar/{id}(id=${curriculo.id})}" method="get">
+
+			
 
     <label for="inputNome" class="form-label">Nome:</label>
     <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome" readonly>

@@ -31,30 +31,31 @@ public class ClienteController {
 	private CurriculoService curriculoService;
 	
 	@GetMapping("/{id}")
-	public String paginaInicial_Cliente(@PathVariable Long id,Model model, Curriculo curriculo) {
-		Optional<Cliente> cliente = clienteService.mostrarCliente(id);
-		if(cliente.isPresent()) {
-		List<Curriculo> curriculos = curriculoService.listarCurriculo(curriculo);
-		model.addAttribute("cliente", cliente.get());
-		model.addAttribute("curriculo",curriculos);
-		return "cliente-home";
-		}else {
-			return "redirect:/error";
-		}
+	public String paginaInicial_Cliente(@PathVariable Long id, Model model, Curriculo curriculo) {
+	    Cliente cliente = clienteService.mostrarCliente(id);
+	    List<Curriculo> curriculos = curriculoService.listarCurriculo(curriculo);
+
+	    // Adicione o objeto completo "cliente" ao modelo
+	    model.addAttribute("cliente", cliente);
+	    model.addAttribute("curriculo", curriculos);
+
+	    return "cliente-home";
 	}
+
 	
 	@GetMapping("/view-curriculo/{id}")
 	public String viewCurriculo(@PathVariable Long id, Model model) {
 	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(id);
-	    System.out.println(curriculo);
 	    if (curriculo.isPresent()) {
-	    	Curriculo curriculo2 = curriculo.get();
+	        Curriculo curriculo2 = curriculo.get();
+
 	        model.addAttribute("curriculo", curriculo2);
 	        return "view-curriculo";
 	    } else {
 	        return "erro"; 
 	    }
 	}
+
 
 
 	
