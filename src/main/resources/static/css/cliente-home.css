@@ -154,8 +154,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Estilo para o botão de aplicar */
-.btn-apply {
+.a {
     background-color: #5f3fc9;
     color: white;
     padding: 10px 15px;
@@ -168,7 +167,7 @@ body {
 }
 
 /* Hover no botão de aplicar */
-.btn-apply:hover {
+.a:hover {
     background-color: #4b2ea6;
 }
 
