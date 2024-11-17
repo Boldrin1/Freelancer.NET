@@ -1,8 +1,5 @@
 package Main_Package.model;
 
-
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 
 
 
@@ -22,7 +19,7 @@ public class Servico {
 	 private Long id;
 	 
 	 private String titulo;
-     public int valor;
+     public Integer  valor;
      public int horas;
      public String descricao;
 
@@ -46,7 +43,7 @@ public class Servico {
      }
 
 
-	public Servico(Long id, String titulo, int valor, int horas, String descricao, Cliente cliente,
+	public Servico(Long id, String titulo, Integer valor, int horas, String descricao, Cliente cliente,
 			AreaDeInteresse area) {
 		this.id = id;
 		this.titulo = titulo;
@@ -55,6 +52,10 @@ public class Servico {
 		this.descricao = descricao;
 		this.cliente = cliente;
 		this.area = area;
+	}
+
+
+	public Servico() {
 	}
 
 
@@ -78,12 +79,12 @@ public class Servico {
 	}
 
 
-	public int getValor() {
+	public Integer getValor() {
 		return valor;
 	}
 
 
-	public void setValor(int valor) {
+	public void setValor(Integer valor) {
 		this.valor = valor;
 	}
 
@@ -128,6 +129,4 @@ public class Servico {
 	}
 
 
-
-     
 }

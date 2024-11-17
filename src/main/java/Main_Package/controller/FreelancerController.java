@@ -49,10 +49,10 @@ public class FreelancerController {
             if (freelancerOpt.isPresent()) {
             	List<Servico> servicos = servicoService.listarServico(servico); 
                 model.addAttribute("servicos", servicos); 
-                model.addAttribute("freelancer", freelancerOpt.get()); // Passando freelancer para o modelo
+                model.addAttribute("freelancer", freelancerOpt.get()); 
                 return "freelancer-home";
             } else {
-                return "redirect:/erro"; // Ou qualquer outra página caso o freelancer não seja encontrado
+                return "redirect:/erro"; 
             }
         }
 
@@ -128,7 +128,7 @@ public class FreelancerController {
 	public String mostrarPerfil(@PathVariable Long id,Model model){
 		Freelancer freelancer = freelancerService.mostraFreelancer(id);
 		model.addAttribute("freelancer",freelancer);
-	 	return "perfil-freelancer";
+	 	return "freelancer-perfil";
 	}
 		
 	@PutMapping("/perfil/editar/{id}")

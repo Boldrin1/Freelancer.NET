@@ -45,7 +45,6 @@
                 <h3 th:text="${servico.titulo}">Título do Serviço</h3>
                 <p th:text="${servico.descricao}">Descrição do serviço...</p>
                 <p><strong>Cliente:</strong> <span th:text="${servico.cliente.nome}">Nome do Cliente</span></p>
-                <p><strong>Localização:</strong> <span th:text="${servico.localizacao}">Localização do Serviço</span></p>
                 
                 <!-- Botão para aplicar ao serviço -->
                 <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Aplicar</a>
