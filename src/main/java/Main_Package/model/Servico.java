@@ -32,10 +32,10 @@ public class Servico {
      private Cliente cliente;
 
 
-     
+     /*
      // Um serviço pode ter vários curriculos enviados por freelancers
      @OneToMany(mappedBy = "servico")
-     private List<Curriculo> curriculos;
+     private List<Curriculo> curriculos;*/
      
      @Enumerated(EnumType.STRING)
      private AreaDeInteresse area;
@@ -47,19 +47,14 @@ public class Servico {
 
 
 	public Servico(Long id, String titulo, int valor, int horas, String descricao, Cliente cliente,
-			List<Curriculo> curriculos, AreaDeInteresse area) {
+			AreaDeInteresse area) {
 		this.id = id;
 		this.titulo = titulo;
 		this.valor = valor;
 		this.horas = horas;
 		this.descricao = descricao;
 		this.cliente = cliente;
-		this.curriculos = curriculos;
 		this.area = area;
-	}
-
-
-	public Servico() {
 	}
 
 
@@ -113,8 +108,6 @@ public class Servico {
 	}
 
 
-
-
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -122,16 +115,6 @@ public class Servico {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-
-	public List<Curriculo> getCurriculos() {
-		return curriculos;
-	}
-
-
-	public void setCurriculos(List<Curriculo> curriculos) {
-		this.curriculos = curriculos;
 	}
 
 
@@ -145,6 +128,6 @@ public class Servico {
 	}
 
 
-	
+
      
 }

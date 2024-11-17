@@ -43,6 +43,20 @@ public class ClienteController {
 		}
 	}
 	
+	@GetMapping("/view-curriculo/{id}")
+	public String viewCurriculo(@PathVariable Long id, Model model) {
+	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(id);
+	    System.out.println(curriculo);
+	    if (curriculo.isPresent()) {
+	    	Curriculo curriculo2 = curriculo.get();
+	        model.addAttribute("curriculo", curriculo2);
+	        return "view-curriculo";
+	    } else {
+	        return "erro"; 
+	    }
+	}
+
+
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarCliente(Long id) {

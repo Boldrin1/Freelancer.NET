@@ -82,7 +82,7 @@ public class CurriculoService {
         return ResponseEntity.ok("Currículo enviado com sucesso!");
     }
     
-    public void aceitarCurriculo(Long curriculoId) {
+   /* public void aceitarCurriculo(Long curriculoId) {
         Curriculo curriculo = curriculoRepository.findById(curriculoId).orElseThrow();
         curriculo.setStatus("ACEITO");
 
@@ -92,7 +92,7 @@ public class CurriculoService {
         contrato.setServico(curriculo.getServico());
         contratoRepository.save(contrato);
     }
-    
+    */
     
 
 

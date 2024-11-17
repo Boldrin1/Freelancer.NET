@@ -42,7 +42,7 @@
                 <h3 th:text="${curriculo.nome}">Nome:</h3>
                 <p th:text="${curriculo.AreaDeInteresse}">Area De Atuação:</p>               
                 <!-- Botão para aplicar ao serviço -->
-               <!-- <a th:href="@{/curriculo/{id}(id=${proposta.id})}" class="btn-apply">Ver curriculo</a>-->
+             <a th:href="@{/usuario/cliente/view-curriculo/{id}(id=${curriculo.id})}" class="btn-apply">Ver curriculo</a>
             </div>
         </div>
     </div>

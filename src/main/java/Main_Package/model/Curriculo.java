@@ -36,9 +36,9 @@ public class Curriculo {
     private String status;
     
     
-      @ManyToOne
+      /*@ManyToOne
       @JoinColumn(name = "servico_id")
-      private Servico servico;
+      private Servico servico;*/
 
 
 
@@ -51,8 +51,7 @@ public class Curriculo {
 	}
 
 	public Curriculo(Long id, Freelancer freelancer, String nome, String telefone, String email, String competencias,
-			String experiencias, String formacaoAcademica, AreaDeInteresse areaDeInteresse, String status,
-			Servico servico) {
+			String experiencias, String formacaoAcademica, AreaDeInteresse areaDeInteresse, String status) {
 		this.id = id;
 		this.freelancer = freelancer;
 		this.nome = nome;
@@ -63,7 +62,6 @@ public class Curriculo {
 		this.formacaoAcademica = formacaoAcademica;
 		this.areaDeInteresse = areaDeInteresse;
 		this.status = status;
-		this.servico = servico;
 	}
 
 	public Long getId() {
@@ -144,10 +142,6 @@ public class Curriculo {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Servico getServico() {
-		return servico;
 	}
 
 	

@@ -74,7 +74,7 @@ public class FreelancerController {
                 curriculo.setFreelancer(freelancer);
                 model.addAttribute("curriculo", curriculo);
                 model.addAttribute("areasDeInteresse", AreaDeInteresse.values());
-                return "criar-curriculo";
+                return "curriculo-criar";
             }
         } else {
             return "redirect:/usuario/freelancer/" + id;
