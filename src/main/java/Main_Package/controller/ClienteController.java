@@ -70,9 +70,11 @@ public class ClienteController {
 
 	
 	@GetMapping("/perfil/{id}")
-	public String mostrarCliente(Long id) {
+	public String mostrarCliente(@PathVariable Long id,Model model) {
+		Cliente cliente = clienteService.mostrarCliente(id);
 		clienteService.mostrarCliente(id);
-		return "vizualizar perfil do Cliente";
+		model.addAttribute("cliente",cliente);
+		return "cliente-perfil";
 	}
 	
 	@PutMapping("/perfil/editar/{id}")
