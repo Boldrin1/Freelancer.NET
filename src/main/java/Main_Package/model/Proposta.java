@@ -12,14 +12,15 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
 	private String proposta;
+	
+	private String resposta;
 
-	public Proposta(Long id, String proposta) {
+	public Proposta(Long id, String proposta, String resposta) {
 		this.id = id;
 		this.proposta = proposta;
-	}
-
-	public Proposta() {
+		this.resposta = resposta;
 	}
 
 	public Long getId() {
@@ -37,7 +38,15 @@ public class Proposta {
 	public void setProposta(String proposta) {
 		this.proposta = proposta;
 	}
-	
+
+	public String getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
+	}
+
 	
 	
 }
