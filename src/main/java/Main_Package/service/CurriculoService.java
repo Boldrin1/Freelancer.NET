@@ -3,20 +3,14 @@ package Main_Package.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import Main_Package.model.Contrato;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
-
-import Main_Package.repository.ContratoRepository;
 import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.repository.ServicoRepository;
@@ -34,8 +28,6 @@ public class CurriculoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
-    @Autowired
-    private ContratoRepository contratoRepository;
 	
 	public Optional<Curriculo> mostraCurriculo(Long id) {
 		return curriculoRepository.findById(id);
