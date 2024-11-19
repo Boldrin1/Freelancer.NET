@@ -63,11 +63,6 @@ public class CurriculoService {
         Servico servico = servicoRepository.findById(servicoId)
         	.orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
 
-        // Associar o currículo ao freelancer e ao serviço
-        curriculo.setStatus("PENDENTE");
-        curriculo.setFreelancer(freelancer);
-        curriculo.setServico(servico);        
-
         // Salvar o currículo no banco de dados
         curriculoRepository.save(curriculo);
 
