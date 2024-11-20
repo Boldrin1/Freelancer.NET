@@ -40,6 +40,7 @@
         <h2>Serviços Disponíveis para Freelancers</h2>
 
         <!-- Lista de serviços -->
+		<div class="servicos-container" id="servicosContainer">
         <div class="service-list" th:each="servico : ${servicos}">
             <div class="service-item">
                 <h3 th:text="${servico.titulo}">Título do Serviço</h3>
@@ -47,9 +48,10 @@
                 <p><strong>Cliente:</strong> <span th:text="${servico.cliente.nome}">Nome do Cliente</span></p>
                 
                 <!-- Botão para aplicar ao serviço -->
-                <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Aplicar</a>
+                <a th:href="@{/aplicar-servico/{id}(id=${servico.id})}" class="btn-apply">Vizualizar</a>
             </div>
         </div>
+		</div>
     </div>
     <script>
         function toggleSidebar() {
