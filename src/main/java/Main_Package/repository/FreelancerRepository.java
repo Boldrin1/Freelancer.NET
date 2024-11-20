@@ -12,12 +12,9 @@ import Main_Package.model.Freelancer;
 @Repository
 public interface FreelancerRepository extends JpaRepository<Freelancer,Long>{
 
-
-
-	// FreelancerRepository
-	List<Freelancer> findByEmail(String email);
-
 	Optional<Freelancer> findByEmailAndSenha(String email, String senha);
+
+	Optional<Freelancer> findByEmail(String email);
 
 	
 

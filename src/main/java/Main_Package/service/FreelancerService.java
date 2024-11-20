@@ -15,6 +15,10 @@ public class FreelancerService {
 	private FreelancerRepository freelancerRepository;
 	
 	public Freelancer save(Freelancer freelancer) {
+		Optional<Freelancer> emailExistente = freelancerRepository.findByEmail(freelancer.getEmail());
+		if (emailExistente.isPresent()) {
+            throw new IllegalArgumentException("O email já está cadastrado.");
+        }
 		return freelancerRepository.save(freelancer);
 	}
 	

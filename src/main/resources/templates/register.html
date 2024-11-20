@@ -33,12 +33,14 @@
             <div>
                 <label class="form-label" for="email">E-mail:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
+				<span id="emailMessage" style="color: red;"></span>
             </div>
 
             <!-- Senha -->
             <div>
                 <label class="form-label" for="senha">Senha:</label>
                 <input type="password" class="form-control" id="senha" name="senha" required>
+				
             </div>
 
             <!-- Data de Nascimento -->
@@ -88,5 +90,28 @@
             <a href="#" th:href="@{/login}">Voltar para o Login</a>
         </div>
     </div>
+	
+	<script>
+	    const emailInput = document.getElementById('email');
+	    const emailMessage = document.getElementById('emailMessage');
+
+	    emailInput.addEventListener('blur', () => {
+	        const email = emailInput.value;
+
+	        // Faz uma requisição para verificar o e-mail
+	        fetch(`/api/freelancers/check-email?email=${encodeURIComponent(email)}`)
+	            .then(response => response.json())
+	            .then(data => {
+	                if (data) {
+	                    emailMessage.textContent = 'Este e-mail já está cadastrado.';
+	                } else {
+	                    emailMessage.textContent = ''; // Limpa a mensagem se o e-mail não existe
+	                }
+	            })
+	            .catch(error => {
+	                console.error('Erro ao verificar o e-mail:', error);
+	            });
+	    });
+		</script>
 </body>
 </html>
