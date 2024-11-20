@@ -44,10 +44,10 @@ public class FreelancerController {
     private CurriculoRepository curriculoRepository;
     
     @GetMapping("/{id}")
-        public String paginaInicial_Free(@PathVariable Long id, Model model,Servico servico) {
+        public String paginaInicial_Free(@PathVariable Long id, Model model) {
             Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
             if (freelancerOpt.isPresent()) {
-            	List<Servico> servicos = servicoService.listarServico(servico); 
+            	List<Servico> servicos = servicoService.listarServico(); 
                 model.addAttribute("servicos", servicos); 
                 model.addAttribute("freelancer", freelancerOpt.get()); 
                 return "freelancer-home";
@@ -55,7 +55,6 @@ public class FreelancerController {
                 return "redirect:/erro"; 
             }
         }
-
 
 
     @GetMapping("/curriculo/{id}")

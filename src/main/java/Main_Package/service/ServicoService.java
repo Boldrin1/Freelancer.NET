@@ -19,7 +19,7 @@ public class ServicoService {
 		return servicoRepository.save(servico);
 	}
 	
-	public List<Servico> listarServico(Servico servico) {
+	public List<Servico> listarServico() {
 		return servicoRepository.findAll();
 	}
 	
@@ -27,4 +27,6 @@ public class ServicoService {
 	public void deletarServico(Long id) {
 		servicoRepository.deleteById(id);
 	}
+
+
 }

@@ -19,10 +19,6 @@ public class Cliente extends Usuario{
 	
 	public Cliente() {}
 
-	public Cliente(Usuario usuario) {
-		// TODO Auto-generated constructor stub
-	}
-
 
 
 	private void criarServico() {
@@ -36,14 +32,7 @@ public class Cliente extends Usuario{
 	private void responderCurriculo(Curriculo curriculo) {
 		   //return respostaEnviada
 	}
-
-	private void avaliarFreelancer(Freelancer freelancer) {
-		   //return avaliacaoRealizada
-	}
-
-	private void confirmarServicoRealizado(OrdemDeServico ordem) {
-		   //return confirmaRealizada
-	}
- 
+	
+	
 }
 

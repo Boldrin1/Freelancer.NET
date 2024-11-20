@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import Main_Package.model.Cliente;
 import Main_Package.model.Curriculo;
+import Main_Package.model.Servico;
 import Main_Package.service.ClienteService;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
+import Main_Package.service.ServicoService;
 
 
 @Controller
@@ -30,6 +32,9 @@ public class ClienteController {
 	
 	@Autowired
 	private CurriculoService curriculoService;
+	
+	@Autowired
+	private ServicoService servicoService;
 	
 	@GetMapping("/{id}")
 	public String paginaInicial_Cliente(@PathVariable Long id, Model model, Curriculo curriculo) {
@@ -66,6 +71,16 @@ public class ClienteController {
 	    }
 	}
 
+	
+	@GetMapping("/servicos/{id}")
+	public String listServico(@PathVariable Long id, Model model){
+		List<Servico> servico = servicoService.listarServico();	
+		Cliente cliente = clienteService.mostrarCliente(id);
+		model.addAttribute("servico", servico);
+		model.addAttribute("clienteId", cliente);
+		return "cliente-servico";
+	}
+	
 
 
 	
