@@ -55,9 +55,7 @@ public class SecurityConfig {
 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
-    	System.out.println("Método onAuthenticationSuccess chamado----------------------------------------------------------------------");
-        String username = authentication.getName();  // Obtém o nome de usuário (email)
-        System.out.println("Username autenticado: " + username);  // Adicione esse log para depuração
+        String username = authentication.getName(); 
         // Busca no FreelancerService
         Optional<Freelancer> freelancerOptional = freelancerService.findByEmail(username);
         // Busca no ClienteService
@@ -65,22 +63,19 @@ public class SecurityConfig {
 
         // Verifica se o Freelancer foi encontrado
         if (freelancerOptional.isPresent()) {
-            Freelancer freelancer = freelancerOptional.get();  // Obtém o freelancer dentro do Optional
-            response.sendRedirect("/usuario/freelancer/" + freelancer.getId());  // Redireciona para o perfil do freelancer
+            Freelancer freelancer = freelancerOptional.get(); 
+            response.sendRedirect("/usuario/freelancer/" + freelancer.getId()); 
         } 
         // Verifica se o Cliente foi encontrado
         else if (clienteOptional.isPresent()) {
-            Cliente cliente = clienteOptional.get();  // Obtém o cliente dentro do Optional
-            response.sendRedirect("/usuario/cliente/" + cliente.getId());  // Redireciona para o perfil do cliente
+            Cliente cliente = clienteOptional.get();  
+            response.sendRedirect("/usuario/cliente/" + cliente.getId());  
         } 
         // Caso o usuário não seja encontrado
         else {
-            response.sendRedirect("/home");  // Redireciona para a página padrão
-            System.out.println("Username autenticado: " + username);
+            response.sendRedirect("/home");
         }
     }
-
-
 
 
     @Bean
