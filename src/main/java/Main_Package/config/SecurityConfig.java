@@ -1,5 +1,7 @@
 package Main_Package.config;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +19,9 @@ import Main_Package.model.Cliente;
 import Main_Package.model.Freelancer;
 import Main_Package.service.ClienteService;
 import Main_Package.service.FreelancerService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -26,6 +32,9 @@ public class SecurityConfig {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,27 +51,36 @@ public class SecurityConfig {
             }
         };
     }
+    
 
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = 
-            http.getSharedObject(AuthenticationManagerBuilder.class);
-        
-        authenticationManagerBuilder
-            .userDetailsService(email -> {
-                if (email.startsWith("freelancer")) {
-                    Freelancer freelancer = freelancerService.findByEmail(email);
-                    return new User(freelancer.getEmail(), freelancer.getSenha(), new ArrayList<>());
-                } else if (email.startsWith("cliente")) {
-                    Cliente cliente = clienteService.findByEmail(email);
-                    return new User(cliente.getEmail(), cliente.getSenha(), new ArrayList<>());
-                }
-                throw new UsernameNotFoundException("Usuário não encontrado: " + email);
-            })
-            .passwordEncoder(passwordEncoder());  // Usando o password encoder
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws IOException, ServletException {
+    	System.out.println("Método onAuthenticationSuccess chamado----------------------------------------------------------------------");
+        String username = authentication.getName();  // Obtém o nome de usuário (email)
+        System.out.println("Username autenticado: " + username);  // Adicione esse log para depuração
+        // Busca no FreelancerService
+        Optional<Freelancer> freelancerOptional = freelancerService.findByEmail(username);
+        // Busca no ClienteService
+        Optional<Cliente> clienteOptional = clienteService.findByEmail(username);
 
-        return authenticationManagerBuilder.build();  // Retorna a instância do AuthenticationManager
+        // Verifica se o Freelancer foi encontrado
+        if (freelancerOptional.isPresent()) {
+            Freelancer freelancer = freelancerOptional.get();  // Obtém o freelancer dentro do Optional
+            response.sendRedirect("/usuario/freelancer/" + freelancer.getId());  // Redireciona para o perfil do freelancer
+        } 
+        // Verifica se o Cliente foi encontrado
+        else if (clienteOptional.isPresent()) {
+            Cliente cliente = clienteOptional.get();  // Obtém o cliente dentro do Optional
+            response.sendRedirect("/usuario/cliente/" + cliente.getId());  // Redireciona para o perfil do cliente
+        } 
+        // Caso o usuário não seja encontrado
+        else {
+            response.sendRedirect("/home");  // Redireciona para a página padrão
+            System.out.println("Username autenticado: " + username);
+        }
     }
+
+
 
 
     @Bean
@@ -76,6 +94,7 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/login-verificar")
+                .successHandler(customAuthenticationSuccessHandler)  // Usando o handler personalizado
                 .permitAll()
             )
             .logout(logout -> logout

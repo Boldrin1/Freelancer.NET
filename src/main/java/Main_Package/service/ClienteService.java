@@ -45,11 +45,11 @@ public class ClienteService {
     	clienteRepository.deleteById(id);
     }
 
+    public Optional<Cliente> findByEmail(String email) {
+        return clienteRepository.findByEmail(email);
+    }
 
-        public Cliente findByEmail(String email) {
-            return clienteRepository.findByEmail(email)
-                    .orElseThrow(() -> new UsernameNotFoundException("Cliente com email " + email + " não encontrado"));
-        }
+        
     }
 
 		

@@ -10,7 +10,6 @@ import Main_Package.model.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente,Long>{
 
 
-
 	Optional<Cliente> findByEmail(String email);
 
 	Optional<Cliente> findByEmailAndSenha(String email, String senha);
