@@ -1,11 +1,8 @@
 package Main_Package.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import Main_Package.model.Cliente;
 import Main_Package.repository.ClienteRepository;
 

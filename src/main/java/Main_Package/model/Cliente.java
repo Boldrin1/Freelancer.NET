@@ -20,19 +20,5 @@ public class Cliente extends Usuario{
 	public Cliente() {}
 
 
-
-	private void criarServico() {
-		   //return servicoCriado
-	}
-
-	private void excluirServico(Servico servico) {
-		   //return servicoExcluido;
-	}
-
-	private void responderCurriculo(Curriculo curriculo) {
-		   //return respostaEnviada
-	}
-	
-	
 }
 

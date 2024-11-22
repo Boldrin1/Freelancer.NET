@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import Main_Package.model.Cliente;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Usuario;
 import Main_Package.model.role;
-import Main_Package.service.AutenticacaoService;
 import Main_Package.service.ClienteService;
 import Main_Package.service.FreelancerService;
 import jakarta.servlet.http.HttpSession;
@@ -21,8 +19,6 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping
 public class UsuarioController {
 
-    @Autowired
-    private AutenticacaoService autenticacaoService;
 
     @Autowired
     private FreelancerService freelancerService;
