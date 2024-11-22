@@ -56,7 +56,6 @@ public class SecurityConfig {
         // Busca no ClienteService
         Optional<Cliente> clienteOptional = clienteService.findByEmail(username);
 
-        // Verifica se o Freelancer foi encontrado
         if (freelancerOptional.isPresent()) {
             Freelancer freelancer = freelancerOptional.get(); 
             response.sendRedirect("/usuario/freelancer/" + freelancer.getId()); 
@@ -66,7 +65,6 @@ public class SecurityConfig {
             Cliente cliente = clienteOptional.get();  
             response.sendRedirect("/usuario/cliente/" + cliente.getId());  
         } 
-        // Caso o usuário não seja encontrado
         else {
             response.sendRedirect("/home");
         }
