@@ -17,17 +17,21 @@
             <img src="/img/logofree.png" alt="Logo" class="logo-img"> <!-- Caminho do logo -->
             <h1 class="site-title">Freelancer.NET</h1> <!-- Classe para o título -->
         </div>
-        <form th:action="@{/login-verificar}" method="post">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
-            </div>
-            <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha" required>
-            </div>
-            <button type="submit" class="btn-primary">Login</button>
+        
+        <form action="/login-verificar" method="post">
+         <div class="mb-3">
+           <label for="email" class="form-label">Email</label>
+           <input type="text" class="form-control" name="username" id="email"  placeholder="Digite seu email" required />
+         </div>
+         
+         <div class="mb-3">
+           <label for="senha" class="form-label">Senha</label>  
+           <input type="password" class="form-control" id="senha" name="password"  placeholder="Digite sua senha" required />
+         </div>
+           
+           <button type="submit" class="btn-primary">Login</button>
         </form>
+        
         <div class="text-center mt-3">
             <a href="/register">Não tem uma conta? Crie uma!</a>
         </div>

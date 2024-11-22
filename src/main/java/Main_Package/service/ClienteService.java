@@ -3,6 +3,7 @@ package Main_Package.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import Main_Package.model.Cliente;
@@ -43,5 +44,12 @@ public class ClienteService {
     public void deleteCliente(Long id){
     	clienteRepository.deleteById(id);
     }
+
+
+        public Cliente findByEmail(String email) {
+            return clienteRepository.findByEmail(email)
+                    .orElseThrow(() -> new UsernameNotFoundException("Cliente com email " + email + " não encontrado"));
+        }
+    }
+
 		
-}

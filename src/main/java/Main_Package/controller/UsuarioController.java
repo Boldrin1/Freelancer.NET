@@ -44,7 +44,7 @@ public class UsuarioController {
         freelancer.setCpf(usuario.getCpf());
         freelancer.setTelefone(usuario.getTelefone());
         freelancer.setRole(usuario.getRole());
-        
+        System.out.println("Salvando freelancer: " + freelancer.getEmail());
         freelancerService.save(freelancer);
     } else if (usuario.getRole() == role.CLIENTE) {
         Cliente cliente = new Cliente();
@@ -65,24 +65,6 @@ public class UsuarioController {
 		return "login";
 	}
 	
-	@PostMapping("/login-verificar")
-	public String verificarUser(@RequestParam String email, @RequestParam String senha, HttpSession session, Model model) {
-	    Usuario usuario = autenticacaoService.autenticar(email, senha);
-
-	    if (usuario != null) {
-	        session.setAttribute("usuarioAutenticado", usuario);
-	        System.out.println("Usuário autenticado: " + usuario.getId());
-	        
-	        if (usuario instanceof Freelancer) {
-	            return "redirect:/usuario/freelancer/" + usuario.getId();
-	        } else if (usuario instanceof Cliente) {
-	            return "redirect:/usuario/cliente/" + usuario.getId();
-	        }
-	    }
-
-	    model.addAttribute("erro", "Email ou senha incorretos");
-	    return "redirect:/login";
-	}
 
 
 	    public Usuario getUsuarioAutenticado(HttpSession session) {

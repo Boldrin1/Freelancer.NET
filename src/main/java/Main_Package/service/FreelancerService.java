@@ -3,6 +3,7 @@ package Main_Package.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import Main_Package.model.Freelancer;
@@ -48,4 +49,10 @@ public class FreelancerService {
 	public void deletaFreelancer(Long id) {
 		freelancerRepository.deleteById(id);
 	}
+
+
+	 public Freelancer findByEmail(String email) {
+	        return freelancerRepository.findByEmail(email)
+	                .orElseThrow(() -> new UsernameNotFoundException("Freelancer com email " + email + " não encontrado"));
+	    }
 }
