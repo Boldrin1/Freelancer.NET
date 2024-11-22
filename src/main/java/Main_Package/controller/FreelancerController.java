@@ -62,7 +62,7 @@ public class FreelancerController {
         Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
         if (freelancerOpt.isPresent()) {
             Freelancer freelancer = freelancerOpt.get();
-            model.addAttribute("freelancer", freelancer); // Adiciona o freelancer ao modelo
+            model.addAttribute("freelancer", freelancer); 
             
             Optional<Curriculo> curriculoOpt = curriculoRepository.findByFreelancerId(id);
             if (curriculoOpt.isPresent()) {
@@ -85,9 +85,9 @@ public class FreelancerController {
     public String salvarCurriculo(@ModelAttribute Curriculo curriculo, @RequestParam Long freelancerId,Model model) {
          Optional<Freelancer> freelancerOpt = freelancerRepository.findById(freelancerId);
          if (freelancerOpt.isPresent()) {
-             curriculo.setFreelancer(freelancerOpt.get()); // Associa o freelancer ao currículo
+             curriculo.setFreelancer(freelancerOpt.get()); 
              Curriculo savedCurriculo = curriculoService.save(curriculo);
-             // Verificação do valor de área de interesse
+
              return "redirect:/usuario/freelancer/curriculo/" + savedCurriculo.getId();
          } else {
              return "redirect:/erro";
@@ -97,11 +97,11 @@ public class FreelancerController {
     @GetMapping("/curriculo/editar/{id}")
     public String editarCurriculo(@PathVariable Long id, Model model) {
         Optional<Curriculo> curriculoOpt = curriculoService.mostraCurriculo(id);
-        AreaDeInteresse[] areasDeInteresse = AreaDeInteresse.values(); // Obtém todas as opções do enum
+        AreaDeInteresse[] areasDeInteresse = AreaDeInteresse.values(); 
 
         if (curriculoOpt.isPresent()) {
             model.addAttribute("curriculo", curriculoOpt.get());
-            model.addAttribute("areasDeInteresse", areasDeInteresse); // Adiciona as áreas de interesse ao modelo
+            model.addAttribute("areasDeInteresse", areasDeInteresse);
             return "curriculo-editar";
         } else {
             return "redirect:/erro";
@@ -111,7 +111,7 @@ public class FreelancerController {
 
     @PostMapping("/curriculo/editar/salvar/{id}")
     public String salvarEdit(@PathVariable Long id, @ModelAttribute Curriculo curriculo) {
-         curriculo.setId(id); // Define o ID do currículo como o ID do Freelancer
+         curriculo.setId(id);
          curriculoService.save(curriculo);
          return "redirect:/usuario/freelancer/curriculo/" + id;
     }

@@ -38,7 +38,6 @@ public class ClienteController {
 	    Cliente cliente = clienteService.mostrarCliente(id);
 	    List<Curriculo> curriculos = curriculoService.listarCurriculo(curriculo);
 
-	    // Adicione o objeto completo "cliente" ao modelo
 	    model.addAttribute("cliente", cliente);
 	    model.addAttribute("curriculo", curriculos);
 

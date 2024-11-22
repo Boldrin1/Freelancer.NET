@@ -33,16 +33,16 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Implementação personalizada que não codifica a senha
+ 
         return new PasswordEncoder() {
             @Override
             public String encode(CharSequence rawPassword) {
-                return rawPassword.toString();  // Não faz nada com a senha
+                return rawPassword.toString();  
             }
 
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                return rawPassword.toString().equals(encodedPassword);  // Compara a senha diretamente
+                return rawPassword.toString().equals(encodedPassword); 
             }
         };
     }
@@ -51,16 +51,15 @@ public class SecurityConfig {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         String username = authentication.getName(); 
-        // Busca no FreelancerService
         Optional<Freelancer> freelancerOptional = freelancerService.findByEmail(username);
-        // Busca no ClienteService
+
         Optional<Cliente> clienteOptional = clienteService.findByEmail(username);
 
         if (freelancerOptional.isPresent()) {
             Freelancer freelancer = freelancerOptional.get(); 
             response.sendRedirect("/usuario/freelancer/" + freelancer.getId()); 
         } 
-        // Verifica se o Cliente foi encontrado
+
         else if (clienteOptional.isPresent()) {
             Cliente cliente = clienteOptional.get();  
             response.sendRedirect("/usuario/cliente/" + cliente.getId());  
@@ -82,7 +81,7 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/login-verificar")
-                .successHandler(customAuthenticationSuccessHandler)  // Usando o handler personalizado
+                .successHandler(customAuthenticationSuccessHandler)  
                 .permitAll()
             )
             .logout(logout -> logout
