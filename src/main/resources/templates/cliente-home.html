@@ -39,18 +39,19 @@
         <h2>Currículo de Freelancers Disponíveis</h2>
 
         <!-- Lista de serviços -->
-        <div class="service-list" th:each="curriculo : ${curriculo}">
-            <div class="service-item">
+      <div class="curriculo-container" id="curriculoContainer">  
+        <div class="curriculo" th:each="curriculo : ${curriculo}">
+            <div class="curriculo-item">
                 <h3 th:text="${curriculo.nome}">Nome:</h3>
                 <p th:text="${curriculo.AreaDeInteresse}">Area De Atuação:</p>               
                 <!-- Botão para aplicar ao serviço -->
 
 					<a class="a" th:href="@{/usuario/cliente/view-curriculo/{curriculoId}(curriculoId=${curriculo.id}, clienteId=${cliente.id})}">
-				    Ver Currículo</a>
-
-
+				    Ver Currículo
+                    </a>
             </div>
         </div>
+      </div>
     </div>
     <script>
         function toggleSidebar() {

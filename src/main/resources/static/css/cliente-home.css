@@ -4,13 +4,24 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
     height: 100vh; /* Altura total da tela */
-    display: flex;
+
     align-items: center; /* Centraliza verticalmente */
     justify-content: center; /* Centraliza horizontalmente */
-    overflow: hidden; /* Impede rolagem da página */
+    margin: 0; /* Remove margens que podem contribuir para o scroll */
+    overflow-x: hidden;
 }
 
-/* Cabeçalho fixo contendo logo, título e botão de menu */
+.curriculo-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 2%; /* Espaço entre os cartões */
+    padding: 2%;
+}
+
+
+
+
+
 .header {
     display: flex;
     align-items: center;
@@ -125,24 +136,22 @@ body {
 }
 
 /* Estilo para a lista de serviços */
-.service-list {
-    margin-top: 100px; /* Espaçamento abaixo do cabeçalho */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Espaçamento entre os itens */
+.curriculo-list {
+    margin-top: 1.3%; /* Espaçamento abaixo do cabeçalho */
+
     padding: 20px;
 }
 
 /* Estilo para cada item de serviço */
-.service-item {
+.curriculo-item {
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 80%; /* Largura do item */
-    max-width: 600px; /* Largura máxima do item */
+    display: grid;
+    width: 100%; /* Largura do item */
     transition: transform 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(3, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 /* Efeito de hover para o item de serviço */

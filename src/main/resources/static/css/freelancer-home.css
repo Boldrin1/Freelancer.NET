@@ -7,7 +7,6 @@ body {
 
     align-items: center; /* Centraliza verticalmente */
     justify-content: center; /* Centraliza horizontalmente */
-
     margin: 0; /* Remove margens que podem contribuir para o scroll */
     overflow-x: hidden; /* Remove a barra de rolagem horizontal */
 }
