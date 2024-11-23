@@ -45,11 +45,11 @@
             <label for="inputFormacao">Formação Acadêmica:</label>
             <textarea id="inputFormacao" name="formacaoAcademica" rows="3" placeholder="Conte-nos sobre sua formação acadêmica" required></textarea>
 
-            <label for="inputExperiencia">Experiência Profissional:</label>
-            <textarea id="inputExperiencia" name="experiencias" rows="5" placeholder="Conte-nos sobre suas experiências" required></textarea>
-
             <label for="inputCompetencias">Competências:</label>
             <textarea id="inputCompetencias" name="competencias" class="form-control" rows="4" placeholder="Liste suas competências" th:text="${curriculo.competencias}"></textarea>
+			
+			<label for="inputExperiencias">Experiência Profissional:</label>
+			<textarea id="inputExperiencias" name="experiencias" class="form-control" rows="4" placeholder="Liste suas experiencias" th:text="${curriculo.experiencias}"></textarea>
 			
 			<label for="inputArea" class="form-label">Área de Interesse:</label>
 			<select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control" style="font-size: 18px; text-align: center; width: 100%;">

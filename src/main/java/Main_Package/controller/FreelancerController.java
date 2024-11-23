@@ -116,11 +116,7 @@ public class FreelancerController {
          return "redirect:/usuario/freelancer/curriculo/" + id;
     }
 
-	@PostMapping("/enviarCurriculo")
-	public String enviarCurriculo(Long id){
-	 	curriculoService.editaCurriculo(id);
-	 	return "redirect:/usuario/freelancer";
-	}
+
 
 	
 	@GetMapping("/perfil/{id}")

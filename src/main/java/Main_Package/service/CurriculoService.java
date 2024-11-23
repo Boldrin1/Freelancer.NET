@@ -42,11 +42,14 @@ public class CurriculoService {
 		return curriculoRepository.save(curriculo);
 	}
 	
-	public Curriculo editaCurriculo(Long id){
+	/*public Curriculo editaCurriculo(Long id){
 		Optional<Curriculo> curriculo = curriculoRepository.findById(id);
 		
 		if(curriculo.isPresent()) {
 			Curriculo curriculoAtualizado = curriculo.get();
+			curriculoAtualizado.setNome(curriculoAtualizado.getNome());
+			curriculoAtualizado.setTelefone(curriculoAtualizado.getTelefone());
+			curriculoAtualizado.setAreaDeInteresse(curriculoAtualizado.setAreaDeInteresse());
 			curriculoAtualizado.setCompetencias(curriculoAtualizado.getCompetencias()); 
 			curriculoAtualizado.setExperiencias(curriculoAtualizado.getExperiencias());
 			curriculoAtualizado.setFormacaoAcademica(curriculoAtualizado.getFormacaoAcademica());
@@ -54,7 +57,7 @@ public class CurriculoService {
 		}else {
 			throw new RuntimeException("Curriculo não encontrado");
 		}
-	}
+	}*/
 	
     public ResponseEntity<String> enviarCurriculo(@RequestParam Long freelancerId, @RequestParam Long servicoId, @RequestBody Curriculo curriculo) {
         // Encontrar o freelancer e o serviço pelos IDs

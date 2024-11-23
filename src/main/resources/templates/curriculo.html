@@ -37,15 +37,16 @@
 
             <label for="inputTelefone" class="form-label">Telefone:</label>
             <input type="text" id="inputTelefone" name="telefone" class="form-control" th:value="${curriculo.telefone}" readonly>
+			
+			<label for="formacaoAcademica" class="form-label">Formação Acadêmica:</label>
+			<textarea id="formacaoAcademica" name="formacaoAcademica" th:text="${curriculo.formacaoAcademica}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
+			
+			<label for="competencias" class="form-label">Competências:</label>
+			<textarea id="competencias" name="competencias" th:text="${curriculo.competencias}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
 
-            <label for="experienciaProfissional" class="form-label">Experiência Profissional:</label>
-            <textarea id="experienciaProfissional" name="experienciaProfissional" th:text="${curriculo.experiencias}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
+			<label for="experienciaProfissional" class="form-label">Experiência Profissional:</label>
+			<textarea id="experienciaProfissional" name="experienciaProfissional" th:text="${curriculo.experiencias}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
 
-            <label for="competencias" class="form-label">Competências:</label>
-            <textarea id="competencias" name="competencias" th:text="${curriculo.competencias}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
-
-            <label for="formacaoAcademica" class="form-label">Formação Acadêmica:</label>
-            <textarea id="formacaoAcademica" name="formacaoAcademica" th:text="${curriculo.formacaoAcademica}" class="form-control" rows="4" readonly style="resize: none; font-size: 18px; text-align: center; color: #000000;"></textarea>
  
            <label for="AreaDeInteresse" class="form-label">Área que deseja atuar:</label>
                <select id="inputAreaDeInteresse" name="areaDeInteresse" class="form-control" th:disabled="true" style="font-size: 18px; text-align: center; width: 100%;">
@@ -53,7 +54,7 @@
                 </select>
            
 
-            <button type="submit" class="btn-primary">Salvar</button>
+            <button type="submit" class="btn-primary">Editar</button>
         </form>
     </div>
 

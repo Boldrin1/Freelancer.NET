@@ -142,6 +142,11 @@ public class Curriculo {
 	public void setAreaDeInteresse(AreaDeInteresse areaDeInteresse) {
 		this.areaDeInteresse = areaDeInteresse;
 	}
+
+
+
+
+
 	
 	
 

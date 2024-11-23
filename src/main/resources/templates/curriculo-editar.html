@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Currículo do Freelancer</title>
-    <link rel="stylesheet" href="/css/editar-curriculo.css">
+    <link rel="stylesheet" href="/css/curriculo-editar.css">
 </head>
 <body>
     <div class="top-right-amoeba"></div>
@@ -12,7 +12,7 @@
     
     <div class="register-container">
         <h1>Editar Currículo</h1>
-        <form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="post">
+        <form th:action="@{/usuario/freelancer/curriculo/editar/salvar/{id}(id=${curriculo.id})}" method="post" th:method="put">
             <label for="inputNome" class="form-label">Nome:</label>
             <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome">
 
@@ -22,27 +22,33 @@
             <label for="inputTelefone" class="form-label">Telefone:</label>
             <input type="text" id="inputTelefone" name="telefone" class="form-control" th:value="${curriculo.telefone}" placeholder="Insira seu telefone">
 
-            <label for="inputArea" class="form-label">Área de Interesse:</label>
-            <select id="inputArea" name="area" class="form-control">
-                <option value="desenvolvimento" th:selected="${curriculo.area == 'desenvolvimento'}">Desenvolvimento</option>
-                <option value="design" th:selected="${curriculo.area == 'design'}">Design</option>
-                <option value="marketing" th:selected="${curriculo.area == 'marketing'}">Marketing</option>
-                <option value="administracao" th:selected="${curriculo.area == 'administracao'}">Administração</option>
-                <option value="outro" th:selected="${curriculo.area == 'outro'}">Outro...</option>
-            </select>
-
             <label for="inputFormacao" class="form-label">Formação Acadêmica:</label>
-            <textarea id="inputFormacao" name="formacao" class="form-control" rows="4" placeholder="Insira sua formação acadêmica" th:text="${curriculo.formacao}"></textarea>
+            <textarea id="inputFormacao" name="formacaoAcademica" class="form-control" rows="4" placeholder="Insira sua formação acadêmica" th:text="${curriculo.formacaoAcademica}"></textarea>
 
             <label for="inputCompetencias" class="form-label">Competências:</label>
             <textarea id="inputCompetencias" name="competencias" class="form-control" rows="4" placeholder="Liste suas competências" th:text="${curriculo.competencias}"></textarea>
 
             <label for="inputExperiencia" class="form-label">Experiência Profissional:</label>
-            <textarea id="inputExperiencia" name="experiencia" class="form-control" rows="4" placeholder="Descreva sua experiência profissional" th:text="${curriculo.experiencia}"></textarea>
+            <textarea id="inputExperiencia" name="experiencias" class="form-control" rows="4" placeholder="Descreva sua experiência profissional" th:text="${curriculo.experiencias}"></textarea>
+						
+			
+			<label for="areaDeInteresse" class="form-label">Área que deseja atuar:</label>
+			   <select name="areaDeInteresse" id="inputArea" class="form-control">
+			       <!-- Placeholder para a área de interesse -->
+			       <option value="" disabled>Selecione uma área</option>
+			           <!-- Exibe cada valor do enum como uma opção, com a opção salva selecionada -->
+			           <th:block th:each="areaDeInteresse : ${areasDeInteresse}">
+			              <option th:value="${areaDeInteresse}" 
+			              th:text="${areaDeInteresse}" 
+			              th:selected="${curriculo.areaDeInteresse} == areaDeInteresse">
+			        </option>
+			           </th:block>
+			   </select>
+			
 
             <div class="btn-group">
+				<button type="button" class="btn-back" onclick="window.history.back();">Voltar</button>
                 <button type="submit" class="btn-primary">Salvar</button>
-                <a class="btn-back">Voltar</a>
             </div>
         </form>
     </div>
