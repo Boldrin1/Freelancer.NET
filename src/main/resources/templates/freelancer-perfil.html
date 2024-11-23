@@ -3,47 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal do Freelancer</title>
-    <link rel="stylesheet" href="/css/perfil-freelancer.css">
+    <title>Perfil do Freelancer</title>
+    <link rel="stylesheet" href="/css/freelancer-perfil.css">
 </head>
 <body>
     <!-- Cabeçalho fixo -->
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
+
     <div class="header">
         <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
-        <span class="title">Freelancer.NET</span>
+        <span class="header-title">Freelancer.NET</span>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+        <div class="menu-item">Perfil</div>
+        <div class="menu-item">Curriculo</div>
+        <div class="menu-item">Inbox</div>
+        <div class="menu-item">Contratos</div>
+        <div class="menu-item">Informações</div>
     </div>
 
     <!-- Conteúdo principal -->
     <div class="container">
-        <div class="welcome-section">
-            <h1>Bem-vindo, Freelancer!</h1>
-            <p>Gerencie seus serviços, conquistas e avaliações de clientes.</p>
-        </div>
-
-        <!-- Perfil -->
         <div class="profile-section">
-            <img src="/img/logofree-removebg-preview.png" alt="Imagem do Freelancer" class="profile-image">
-            <div class="profile-details">
-                <h2 th:text="${freelancer.nome}">Nome do Freelancer</h2>
+            <h1>Perfil</h1>
+            <!-- Nome -->
+            <div class="profile-field">
+                <label>Nome:</label>
+                <span th:text="${freelancer.nome}"></span>
             </div>
-        </div>
 
-        <!-- Botões de ação -->
-        <div class="action-buttons">
-            <a href="#" class="btn-action">Editar Perfil</a>
-            <a href="#" class="btn-action">Adicionar Novo Serviço</a>
-            <a href="#" class="btn-action">Ver Currículo</a>
-        </div>
-
-  
-        <!-- Contato -->
-        <div class="contact-section">
-            <h3>Informações de Contato</h3>
-            <div class="contact-info">
-                <p><strong>Telefone:</strong> (00) 12345-6789</p>
-                <p><strong>Email:</strong> exemplo@freelancer.com</p>
+            <!-- E-mail -->
+            <div class="profile-field">
+                <label>E-mail:</label>
+                <span th:text="${freelancer.email}"></span>
             </div>
+			
+			<!-- Telefone -->
+			<div class="profile-field">
+			    <label>Telefone:</label>
+			    <span th:text="${freelancer.telefone}"></span>
+			</div>
+
+			<div class="profile-field">
+			    <label>Data de Nascimento:</label>
+			    <span th:text="${#dates.format(freelancer.dataNascimento, 'dd-MM-yyyy')}"></span>
+			</div>
+
+
+            <div class="profile-field">
+                <label>Sexo:</label>
+                <span th:text="${freelancer.sexo}"></span>
+            </div>
+
+            <!-- CPF -->
+            <div class="profile-field">
+                <label>CPF:</label>
+                <span th:text="${freelancer.cpf}"></span>
+            </div>
+
+
+            <!-- Botão de Editar -->
+            <div class="button-container">
+                <a th:href="@{/usuario/freelancer/perfil/editar/{id}(id=${freelancer.id})}" class="btn-action">Editar</a>
+            </div>
+
         </div>
     </div>
+
+    <script>
+        // Função para alternar a visibilidade da sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
 </body>
 </html>

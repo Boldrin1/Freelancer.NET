@@ -25,8 +25,6 @@ public class UsuarioController {
     
     @Autowired
     private ClienteService clienteService;
-    
-    
 
     @PostMapping("/save")
 	public String save(@ModelAttribute Usuario usuario) {
@@ -60,8 +58,6 @@ public class UsuarioController {
 	public String entrarConta() {
 		return "login";
 	}
-	
-
 
 	    public Usuario getUsuarioAutenticado(HttpSession session) {
 	        return (Usuario) session.getAttribute("usuarioAutenticado");

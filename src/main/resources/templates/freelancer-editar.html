@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Freelancer</title>
-	<link rel="stylesheet" href="/css/editar-freelancer.css">
+	<link rel="stylesheet" href="/css/freelancer-editar.css">
 </head>
 <body>
     <div class="background-shapes">
@@ -14,10 +14,19 @@
     <div class="edit-freelancer">
         <h2>Editar Perfil do Freelancer</h2>
         <form th:action="@{/editar-freelancer/{id}(id=${freelancer.id})}" method="post">
-            <input type="text" th:value="${freelancer.nome}" name="nome" placeholder="Nome" required>
-            <textarea th:value="${freelancer.descricaoServico}" name="descricaoServico" placeholder="Descrição do Serviço" required></textarea>
-            <input type="text" th:value="${freelancer.localizacao}" name="localizacao" placeholder="Localização" required>
-            <input type="text" th:value="${freelancer.habilidades}" name="habilidades" placeholder="Habilidades" required>
+            <input type="text" th:value="${freelancer.email}" name="email" placeholder="Email" required>
+			<input type="text" th:value="${freelancer.senha}" name="senha" placeholder="senha" required>
+			<input type="text" th:value="${#dates.format(freelancer.dataNascimento, 'dd-MM-yyyy')}" name="dataNascimento" placeholder="Data de Nascimento" required>
+			<input type="text" th:value="${freelancer.telefone}" name="telefone" placeholder="Telefone" required>			
+			
+			<div>
+			  <label class="form-label" for="sexo">Sexo:</label>
+			    <select class="form-control" id="sexo" name="sexo" required>
+			        <option value="">Selecione</option>
+			        <option value="masculino">Masculino</option>
+			        <option value="feminino">Feminino</option>
+			    </select>
+			</div>
 
             <button type="submit" class="btn">Salvar Alterações</button>
         </form>

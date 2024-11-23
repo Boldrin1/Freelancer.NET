@@ -1,6 +1,5 @@
 package Main_Package.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import Main_Package.model.AreaDeInteresse;
@@ -44,7 +42,7 @@ public class FreelancerController {
     private CurriculoRepository curriculoRepository;
     
     @GetMapping("/{id}")
-        public String paginaInicial_Free(@PathVariable Long id, Model model) {
+    public String paginaInicial_Free(@PathVariable Long id, Model model) {
             Optional<Freelancer> freelancerOpt = freelancerRepository.findById(id);
             if (freelancerOpt.isPresent()) {
             	List<Servico> servicos = servicoService.listarServico(); 
@@ -115,9 +113,6 @@ public class FreelancerController {
          curriculoService.save(curriculo);
          return "redirect:/usuario/freelancer/curriculo/" + id;
     }
-
-
-
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarPerfil(@PathVariable Long id,Model model){
@@ -126,10 +121,12 @@ public class FreelancerController {
 	 	return "freelancer-perfil";
 	}
 		
-	@PutMapping("/perfil/editar/{id}")
-	public String editarFreelancer(Long id){
+	@GetMapping("/perfil/editar/{id}")
+	public String editarFreelancer(@PathVariable Long id,Model model){
+		Freelancer freelancer = freelancerService.mostraFreelancer(id);
 	 	freelancerService.UpdateFreelancer(id);
-	 	return "Pagina de editar freelancer";
+	 	model.addAttribute("freelancer", freelancer);
+	 	return "freelancer-editar";
 	}
 	
 	@DeleteMapping("/perfil/{id}")
@@ -137,6 +134,12 @@ public class FreelancerController {
 	 	freelancerService.deletaFreelancer(id);
 	 	return "redirect:/create-count";
 	}
+	
+	
+	
+	
+	
+	
 }
 
 
