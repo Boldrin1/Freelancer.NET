@@ -18,7 +18,7 @@ import jakarta.persistence.MappedSuperclass;
 public class Usuario{
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private Long id;
+	protected Long id;
 	  
 	    private String nome;
 	    @Column(unique = true)

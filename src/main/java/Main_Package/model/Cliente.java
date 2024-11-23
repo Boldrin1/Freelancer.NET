@@ -18,6 +18,10 @@ public class Cliente extends Usuario{
 	}
 	
 	public Cliente() {}
+	
+    public Cliente(Long id) {
+        this.id = id;
+    }
 
 
 }

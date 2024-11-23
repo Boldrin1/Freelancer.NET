@@ -23,6 +23,11 @@ public class Freelancer extends Usuario{
 
 	public Freelancer() {
 	}
+	
+	 public Freelancer(Long id) {
+	        this.id = id;
+	  }
+
 
 	public Curriculo getCurriculo() {
 		return curriculo;

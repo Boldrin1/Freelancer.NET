@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inbox - Freelancer</title>
-    <link rel="stylesheet" href="/css/inboxFreelancer.css">
+    <link rel="stylesheet" href="/css/freelancer-inbox.css">
 </head>
 <body>
     <div class="header">
@@ -38,8 +38,8 @@
     <div class="proposals-section">
         <div class="proposal-card">
             <div class="action-container">
-                <h2 th:text="${proposta.nomeCliente}">(Nome do Cliente)</h2>
-                <a th:href="@{/proposta/{id}(id=${proposta.id})}" class="btn-view">Ver Proposta</a>
+                <!-- <h2 th:text="${proposta.cliente.nome}">(Nome do Cliente)</h2>--> 
+               <!--<a th:href="@{/proposta/{id}(id=${proposta.id})}" class="btn-view">Ver Proposta</a>--> 
             </div>
         </div>
     </div>
