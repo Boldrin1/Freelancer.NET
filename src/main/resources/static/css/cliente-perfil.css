@@ -1,7 +1,7 @@
 /* Estilo do corpo */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
     height: 100vh; /* Altura total da tela */
     display: flex;
@@ -27,7 +27,7 @@ body {
 
 /* Título */
 .container h1 {
-    font-size: 36px; /* Tamanho da fonte do título */
+    font-family: 'Inter';font-size: 36px; /* Tamanho da fonte do título */
     font-weight: bold;
     color: #5f3fc9;
     margin-bottom: 20px; /* Margem inferior para separação */
@@ -58,11 +58,11 @@ body {
     }
 
     .container h1 {
-        font-size: 28px; /* Reduz tamanho da fonte do título */
+        font-family: 'Inter';font-size: 28px; /* Reduz tamanho da fonte do título */
     }
 
     .btn {
-        font-size: 14px; /* Reduz tamanho da fonte do botão */
+        font-family: 'Inter';font-size: 14px; /* Reduz tamanho da fonte do botão */
         padding: 8px 12px; /* Ajusta padding para telas menores */
     }
 }
@@ -73,11 +73,11 @@ body {
     }
 
     .container h1 {
-        font-size: 24px; /* Reduz tamanho da fonte do título */
+        font-family: 'Inter';font-size: 24px; /* Reduz tamanho da fonte do título */
     }
 
     .btn {
-        font-size: 12px; /* Reduz tamanho da fonte do botão */
+        font-family: 'Inter';font-size: 12px; /* Reduz tamanho da fonte do botão */
         padding: 8px 12px; /* Ajusta padding para telas muito pequenas */
     }
 }

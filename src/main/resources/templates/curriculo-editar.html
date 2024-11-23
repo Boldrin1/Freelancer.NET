@@ -1,56 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Currículo</title>
-	<link rel="stylesheet" href="/css/editar-curriculo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Currículo do Freelancer</title>
+    <link rel="stylesheet" href="/css/editar-curriculo.css">
 </head>
 <body>
-    <div class="background-shapes">
-        <div class="top-right-amoeba"></div>
-        <div class="bottom-left-amoeba"></div>
-    </div>
-    <div class="curriculum-edit-container">
-        <h2>Editar Currículo</h2>
-
-        <form th:action="@{/usuario/freelancer/curriculo/editar/salvar/{id}(id=${curriculo.id})}" method="post" th:method="put">
-        
-            <label for="nome">Nome:</label>
-		    <textarea id="nome" th:field="*{curriculo.nome}" required></textarea>
-        
-        	 <label for="email">Email:</label>
-            <textarea id="email" th:field="*{curriculo.email}" required></textarea>
-        
-             <label for="Telefone">Telefone:</label>
-		    <textarea id="Telefone" th:field="*{curriculo.telefone}" required></textarea>
-        
-        	 <label for="experiencia">Experiência Profissional:</label>
-            <textarea id="experiencia" th:field="*{curriculo.experiencias}" required></textarea>
-
-            <label for="formacao">Formação Acadêmica:</label>
-            <textarea id="formacao" name="formacao" th:field="*{curriculo.formacaoAcademica}" required></textarea>
-
-            <label for="habilidades">Competências:</label>
-            <textarea id="competencias" th:field="*{curriculo.competencias}" required></textarea>
-            
-            <label for="areaDeInteresse" class="label-area-interesse">Área que deseja atuar:</label>
-               <select name="areaDeInteresse" id="areaDeInteresse" class="form-label select-area-interesse">
-               <!-- Placeholder para a área de interesse -->
-               <option value="" disabled>Selecione uma área</option>
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
     
-               <!-- Exibe cada valor do enum como uma opção, com a opção salva selecionada -->
-               <th:block th:each="areaDeInteresse : ${areasDeInteresse}">
-               <option th:value="${areaDeInteresse}" 
-               th:text="${areaDeInteresse}" 
-               th:selected="${curriculo.areaDeInteresse} == areaDeInteresse">
-               </option>
-              </th:block>
-           </select>
-            
-            
-            <button type="submit" class="btn">Salvar Alterações</button>
+    <div class="register-container">
+        <h1>Editar Currículo</h1>
+        <form th:action="@{/usuario/freelancer/curriculo/editar/{id}(id=${curriculo.id})}" method="post">
+            <label for="inputNome" class="form-label">Nome:</label>
+            <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome">
+
+            <label for="inputEmail" class="form-label">E-mail:</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" th:value="${curriculo.email}" placeholder="Insira seu e-mail">
+
+            <label for="inputTelefone" class="form-label">Telefone:</label>
+            <input type="text" id="inputTelefone" name="telefone" class="form-control" th:value="${curriculo.telefone}" placeholder="Insira seu telefone">
+
+            <label for="inputArea" class="form-label">Área de Interesse:</label>
+            <select id="inputArea" name="area" class="form-control">
+                <option value="desenvolvimento" th:selected="${curriculo.area == 'desenvolvimento'}">Desenvolvimento</option>
+                <option value="design" th:selected="${curriculo.area == 'design'}">Design</option>
+                <option value="marketing" th:selected="${curriculo.area == 'marketing'}">Marketing</option>
+                <option value="administracao" th:selected="${curriculo.area == 'administracao'}">Administração</option>
+                <option value="outro" th:selected="${curriculo.area == 'outro'}">Outro...</option>
+            </select>
+
+            <label for="inputFormacao" class="form-label">Formação Acadêmica:</label>
+            <textarea id="inputFormacao" name="formacao" class="form-control" rows="4" placeholder="Insira sua formação acadêmica" th:text="${curriculo.formacao}"></textarea>
+
+            <label for="inputCompetencias" class="form-label">Competências:</label>
+            <textarea id="inputCompetencias" name="competencias" class="form-control" rows="4" placeholder="Liste suas competências" th:text="${curriculo.competencias}"></textarea>
+
+            <label for="inputExperiencia" class="form-label">Experiência Profissional:</label>
+            <textarea id="inputExperiencia" name="experiencia" class="form-control" rows="4" placeholder="Descreva sua experiência profissional" th:text="${curriculo.experiencia}"></textarea>
+
+            <div class="btn-group">
+                <button type="submit" class="btn-primary">Salvar</button>
+                <a class="btn-back">Voltar</a>
+            </div>
         </form>
     </div>
 </body>
 </html>
-		    

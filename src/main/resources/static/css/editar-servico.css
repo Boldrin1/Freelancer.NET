@@ -1,7 +1,7 @@
 /* Estilo do corpo */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4f8; /* Cor de fundo */
     display: flex;
     align-items: center; /* Centraliza verticalmente */
@@ -29,7 +29,7 @@ h1 {
     text-align: center; /* Centraliza o título */
     color: #5f3fc9; /* Cor do título */
     margin-bottom: 20px; /* Margem inferior */
-    font-size: 24px; /* Tamanho da fonte */
+    font-family: 'Inter';font-size: 24px; /* Tamanho da fonte */
 }
 
 /* Estilo dos campos de entrada e textarea */
@@ -40,7 +40,7 @@ textarea {
     margin: 10px 0; /* Margem */
     border: 1px solid #ccc; /* Borda */
     border-radius: 5px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
+    font-family: 'Inter';font-size: 16px; /* Tamanho da fonte */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna para profundidade */
     transition: border-color 0.3s; /* Transição suave para a borda */
 }
@@ -108,17 +108,17 @@ button:hover {
     }
 
     h1 {
-        font-size: 20px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 20px; /* Reduz o tamanho do título */
     }
 
     input,
     textarea {
-        font-size: 14px; /* Tamanho de fonte reduzido para campos */
+        font-family: 'Inter';font-size: 14px; /* Tamanho de fonte reduzido para campos */
     }
 
     button {
         padding: 12px 25px; /* Aumenta o padding do botão */
-        font-size: 18px; /* Aumenta o tamanho da fonte do botão */
+        font-family: 'Inter';font-size: 18px; /* Aumenta o tamanho da fonte do botão */
     }
 }
 
@@ -129,16 +129,16 @@ button:hover {
     }
 
     h1 {
-        font-size: 18px; /* Tamanho de título reduzido */
+        font-family: 'Inter';font-size: 18px; /* Tamanho de título reduzido */
     }
 
     input,
     textarea {
-        font-size: 14px; /* Reduz o tamanho da fonte para maior legibilidade */
+        font-family: 'Inter';font-size: 14px; /* Reduz o tamanho da fonte para maior legibilidade */
     }
 
     button {
         padding: 14px 28px; /* Ajusta o tamanho do botão */
-        font-size: 16px; /* Ajusta o tamanho do texto do botão */
+        font-family: 'Inter';font-size: 16px; /* Ajusta o tamanho do texto do botão */
     }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Serviço - Freelancer.NET</title>
+	<link rel="stylesheet" href="/css/novo-servico.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
+            <span class="title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+        <div class="menu-item">Perfil</div>
+        <div class="menu-item">Curriculo</div>
+        <div class="menu-item">Inbox</div>
+        <div class="menu-item">Contratos</div>
+        <div class="menu-item">Informações</div>
+    </div>
+    <div class="register-container">
+        <h1>Novo Serviço</h1>
+        <form th:action="@{/cliente/servicos/salvar}" th:object="${servico}" method="post">
+            <input type="hidden" name="clienteId" th:value="${clienteId}" />
+            <label class="form-label" for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" th:field="*{titulo}" class="form-control" required />
+
+            <label class="form-label" for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" th:field="*{descricao}" class="form-control" required></textarea>
+
+            <label class="form-label" for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" th:field="*{preco}" class="form-control" required />
+
+            <button type="submit" class="btn-primary">Cadastrar Serviço</button>
+        </form>
+        <div class="text-center">
+            <a th:href="@{/cliente/servicos}">Voltar para Meus Serviços</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

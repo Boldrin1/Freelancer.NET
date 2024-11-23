@@ -1,7 +1,7 @@
 /* Estilo para o corpo */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f4f7f9;
     color: #333;
 }
@@ -156,7 +156,7 @@ body {
     }
 
     .header-title {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .sidebar {
@@ -164,7 +164,7 @@ body {
     }
 
     .menu-item {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .main-content {
@@ -200,7 +200,7 @@ body {
     }
 
     .menu-item {
-        font-size: 18px;
+        font-family: 'Inter';font-size: 18px;
         padding: 8px 12px;
     }
 
@@ -218,6 +218,6 @@ body {
     }
 
     .hire-button {
-        font-size: 14px;
+        font-family: 'Inter';font-size: 14px;
     }
 }

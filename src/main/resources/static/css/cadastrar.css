@@ -1,7 +1,7 @@
 /* Estilo para o corpo */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter' sans-serif;
     background-color: #f0f4f8;
     height: 100vh;
     display: flex;
@@ -29,9 +29,8 @@ body {
 
 /* Título */
 .title {
-    font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: 30px;
+    font-family: 'Inter'; font-size: 30px;
     color: #1E1E1E;
 }
 
@@ -62,7 +61,7 @@ input[type="text"], input[type="password"], input[type="date"] {
     border: none;
     padding: 12px;
     border-radius: 10px;
-    font-size: 18px;
+    font-family: 'Inter';font-size: 18px;
     font-weight: bold;
     width: 100%;
     color: #fff;

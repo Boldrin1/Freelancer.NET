@@ -1,7 +1,7 @@
 /* Estilo geral */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
     display: flex;
     justify-content: center;
@@ -50,14 +50,14 @@ body {
 
 /* Seção de introdução */
 .welcome-section h1 {
-    font-size: 36px;
+    font-family: 'Inter';font-size:36px;
     font-weight: bold;
     color: #6a1b9a;
     margin-bottom: 10px;
 }
 
 .welcome-section p {
-    font-size: 18px;
+    font-family: 'Inter';font-size:18px;
     color: #555;
 }
 
@@ -79,13 +79,13 @@ body {
 }
 
 .profile-details h2 {
-    font-size: 28px;
+    font-family: 'Inter';font-size:28px;
     color: #333;
     margin-bottom: 5px;
 }
 
 .profile-details p {
-    font-size: 16px;
+    font-family: 'Inter';font-size: 16px;
     color: #777;
 }
 
@@ -100,7 +100,7 @@ body {
     padding: 10px 15px;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-family: 'Inter';font-size: 16px;
     text-decoration: none;
     margin: 5px;
     transition: background-color 0.3s ease;
@@ -112,7 +112,7 @@ body {
 
 /* Serviços */
 .services-section h3 {
-    font-size: 28px;
+    font-family: 'Inter';font-size: 28px;
     color: #6a1b9a;
     margin-bottom: 10px;
     text-align: left;
@@ -139,7 +139,7 @@ body {
 }
 
 .achievements-section h3 {
-    font-size: 28px;
+    font-family: 'Inter';font-size: 28px;
     color: #6a1b9a;
     margin-bottom: 10px;
 }
@@ -154,7 +154,7 @@ body {
 
 /* Testemunhos */
 .testimonials-section h3 {
-    font-size: 28px;
+    font-family: 'Inter';font-size: 28px;
     color: #6a1b9a;
     margin-bottom: 10px;
     text-align: left;
@@ -176,13 +176,13 @@ body {
 }
 
 .contact-section h3 {
-    font-size: 28px;
+    font-family: 'Inter';font-size: 28px;
     color: #5f3fc9;
     margin-bottom: 10px;
 }
 
 .contact-info p {
-    font-size: 16px;
+    font-family: 'Inter';font-size: 16px;
     color: #555;
     margin: 5px 0;
 }
@@ -206,7 +206,7 @@ body {
     }
 
     .title {
-        font-size: 24px;
+        font-family: 'Inter';font-size: 24px;
     }
 
     .container {
@@ -214,7 +214,7 @@ body {
     }
 
     .welcome-section h1 {
-        font-size: 28px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 28px; /* Reduz o tamanho do título */
     }
 
     .profile-section {
@@ -228,7 +228,7 @@ body {
     }
 
     .profile-details h2 {
-        font-size: 24px;
+        font-family: 'Inter';font-size: 24px;
     }
 
     .action-buttons .btn-action {
@@ -237,7 +237,7 @@ body {
     }
 
     .services-section h3 {
-        font-size: 24px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 24px; /* Reduz o tamanho do título */
     }
 
     .service-card {
@@ -245,7 +245,7 @@ body {
     }
 
     .achievements-section h3 {
-        font-size: 24px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 24px; /* Reduz o tamanho do título */
     }
 
     .testimonial-card {
@@ -253,11 +253,11 @@ body {
     }
 
     .contact-section h3 {
-        font-size: 24px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 24px; /* Reduz o tamanho do título */
     }
 
     .contact-info p {
-        font-size: 14px;
+        font-family: 'Inter';font-size: 14px;
     }
 }
 
@@ -272,7 +272,7 @@ body {
     }
 
     .title {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .container {
@@ -280,7 +280,7 @@ body {
     }
 
     .welcome-section h1 {
-        font-size: 24px;
+        font-family: 'Inter';font-size: 24px;
     }
 
     .profile-section {
@@ -293,16 +293,16 @@ body {
     }
 
     .profile-details h2 {
-        font-size: 22px;
+        font-family: 'Inter';font-size: 22px;
     }
 
     .action-buttons .btn-action {
-        font-size: 12px;
+        font-family: 'Inter';font-size: 12px;
         padding: 6px 10px;
     }
 
     .services-section h3 {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .service-card {
@@ -310,7 +310,7 @@ body {
     }
 
     .achievements-section h3 {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .testimonial-card {
@@ -318,10 +318,10 @@ body {
     }
 
     .contact-section h3 {
-        font-size: 20px;
+        font-family: 'Inter';font-size: 20px;
     }
 
     .contact-info p {
-        font-size: 12px;
+        font-family: 'Inter';font-size: 12px;
     }
 }

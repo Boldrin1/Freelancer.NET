@@ -1,7 +1,7 @@
 /* Estilo para o corpo */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
     height: 100vh; /* Altura total da tela */
     display: flex;
@@ -37,7 +37,7 @@ body {
     color: black;
     padding: 10px;
     cursor: pointer;
-    font-size: 25px;
+    font-family: 'Inter';font-size: 25px;
 }
 
 /* Logo e título no cabeçalho */
@@ -139,7 +139,7 @@ body {
 }
 
 .register-container h1 {
-    font-size: 36px; /* Aumentando o tamanho da fonte do título */
+    font-family: 'Inter';font-size:36px; /* Aumentando o tamanho da fonte do título */
     font-weight: bold;
     color: #5f3fc9;
     margin-bottom: 10px;
@@ -148,7 +148,7 @@ body {
 
 .form-label {
     font-weight: 600;
-    font-size: 15px;
+    font-family: 'Inter';font-size: 15px;
     color: #555;
     margin-bottom: 8px;
     display: block;
@@ -175,7 +175,7 @@ body {
     border: none;
     padding: 12px;
     border-radius: 10px;
-    font-size: 18px;
+    font-family: 'Inter';font-size: 18px;
     font-weight: bold;
     width: 100%;
     color: #fff;
@@ -191,7 +191,7 @@ body {
 }
 
 .text-center a {
-    font-size: 15px;
+    font-family: 'Inter';font-size: 15px;
     color: #5f3fc9;
     margin-top: 15px;
     display: block;
@@ -210,7 +210,7 @@ body {
     }
 
     .title {
-        font-size: 24px; /* Reduz o tamanho do título */
+        font-family: 'Inter';font-size: 24px; /* Reduz o tamanho do título */
     }
 
     .sidebar {
@@ -240,7 +240,7 @@ body {
     }
 
     .title {
-        font-size: 22px; /* Ajusta o tamanho do título */
+        font-family: 'Inter';font-size: 22px; /* Ajusta o tamanho do título */
     }
 
     .sidebar {
@@ -274,7 +274,7 @@ body {
     }
 
     .title {
-        font-size: 20px; /* Reduz ainda mais o tamanho do título */
+        font-family: 'Inter';font-size: 20px; /* Reduz ainda mais o tamanho do título */
     }
 
     .sidebar {
@@ -297,11 +297,11 @@ body {
     }
 
     .btn-primary {
-        font-size: 16px; /* Reduz o tamanho da fonte no botão */
+        font-family: 'Inter';font-size: 16px; /* Reduz o tamanho da fonte no botão */
         padding: 10px; /* Ajusta o padding do botão */
     }
 
     .menu-toggle {
-        font-size: 20px; /* Ajusta o tamanho do ícone do menu */
+        font-family: 'Inter';font-size: 20px; /* Ajusta o tamanho do ícone do menu */
     }
 }
