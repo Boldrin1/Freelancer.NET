@@ -77,8 +77,6 @@ public class ClienteController {
 		return "cliente-servico";
 	}
 	
-
-
 	
 	@GetMapping("/perfil/{id}")
 	public String mostrarCliente(@PathVariable Long id,Model model) {
