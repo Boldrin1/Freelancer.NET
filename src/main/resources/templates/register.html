@@ -92,45 +92,42 @@
     </div>
 	
 <script>
-    // Captura os elementos do DOM
-    const emailInput = document.getElementById('email');
-    const emailMessage = document.getElementById('emailMessage');
+const emailInput = document.getElementById('email');
+const emailMessage = document.getElementById('emailMessage');
 
-    // Adiciona o evento "blur" para verificar o e-mail quando o campo perde o foco
-    emailInput.addEventListener('blur', () => {
-        const email = emailInput.value.trim(); // Remove espaços extras
+emailInput.addEventListener('blur', () => {
+    const email = emailInput.value.trim();
 
-        // Verifica se o e-mail está vazio antes de fazer a requisição
-        if (!email) {
-            emailMessage.textContent = 'Por favor, insira um e-mail válido.';
-            return;
-        }
+    if (!email) {
+        emailMessage.textContent = 'Por favor, insira um e-mail válido.';
+        emailMessage.style.color = 'red';
+        return;
+    }
 
-        // Faz uma requisição para verificar o e-mail
-        fetch(`/api/freelancers/check-email?email=${encodeURIComponent(email)}`)
-            .then(response => {
-                // Verifica se a resposta foi bem-sucedida
-                if (!response.ok) {
-                    throw new Error(`Erro na resposta: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Atualiza a mensagem com base na resposta da API
-                if (data) {
-                    emailMessage.textContent = 'Este e-mail já está cadastrado.';
-                    emailMessage.style.color = 'red';
-                } else {
-                    emailMessage.textContent = ''; // Limpa a mensagem
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao verificar o e-mail:', error);
-                emailMessage.textContent = 'Erro ao verificar o e-mail. Tente novamente.';
+    fetch(`/api/usuarios/check-email?email=${encodeURIComponent(email)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro na resposta: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                emailMessage.textContent = 'Este e-mail já está cadastrado.';
                 emailMessage.style.color = 'red';
-            });
-    });
+            } else {
+                emailMessage.textContent = ''; // Limpa a mensagem se o e-mail não existe
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao verificar o e-mail:', error);
+            emailMessage.textContent = 'Erro ao verificar o e-mail. Tente novamente.';
+            emailMessage.style.color = 'red';
+        });
+});
 </script>
+
+
 
 </body>
 </html>
