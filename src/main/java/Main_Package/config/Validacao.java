@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import Main_Package.repository.FreelancerRepository;
 
 @RestController
@@ -19,6 +18,7 @@ public class Validacao {
     @GetMapping("/check-email")
     public ResponseEntity<Boolean> checkEmail(@RequestParam String email) {
         boolean emailExists = freelancerRepository.findByEmail(email).isPresent();
+        System.out.println("Verificando e-mail: " + emailExists);
         return ResponseEntity.ok(emailExists);
     }
 }

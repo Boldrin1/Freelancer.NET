@@ -8,13 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import Main_Package.model.Cliente;
 import Main_Package.model.Proposta;
-import Main_Package.repository.PropostaRepository;
 import Main_Package.service.ClienteService;
 import Main_Package.service.PropostaService;
 
@@ -37,9 +34,9 @@ public class PropostaController {
 	        return ResponseEntity.ok(proposta);
 	    }
 
-	    @GetMapping("/freelancer/{freelancerId}")
-	    public String listarPropostasFreelancer(@PathVariable Long freelancerId, Model model,Long clienteId) {
-	        List<Proposta> propostas = propostaService.listarPropostasFreelancer(freelancerId);
+	    @GetMapping("/freelancer/{id}")
+	    public String listarPropostasFreelancer(@PathVariable Long id, Model model,Long clienteId) {
+	        List<Proposta> propostas = propostaService.listarPropostasFreelancer(id);
 	        Cliente cliente = clienteService.mostrarCliente(clienteId);
 	        model.addAttribute("cliente", cliente);
 	        model.addAttribute("propostas", propostas); 

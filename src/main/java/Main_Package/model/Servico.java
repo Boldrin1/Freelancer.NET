@@ -19,9 +19,9 @@ public class Servico {
 	 private Long id;
 	 
 	 private String titulo;
-     public Integer  valor;
-     public int horas;
-     public String descricao;
+     private Integer  valor;
+     private String horas;
+     private String descricao;
 
      
      @ManyToOne
@@ -43,7 +43,7 @@ public class Servico {
      }
 
 
-	public Servico(Long id, String titulo, Integer valor, int horas, String descricao, Cliente cliente,
+	public Servico(Long id, String titulo, Integer valor, String horas, String descricao, Cliente cliente,
 			AreaDeInteresse area) {
 		this.id = id;
 		this.titulo = titulo;
@@ -52,10 +52,6 @@ public class Servico {
 		this.descricao = descricao;
 		this.cliente = cliente;
 		this.area = area;
-	}
-
-
-	public Servico() {
 	}
 
 
@@ -89,12 +85,12 @@ public class Servico {
 	}
 
 
-	public int getHoras() {
+	public String getHoras() {
 		return horas;
 	}
 
 
-	public void setHoras(int horas) {
+	public void setHoras(String horas) {
 		this.horas = horas;
 	}
 
@@ -129,4 +125,5 @@ public class Servico {
 	}
 
 
+	
 }
