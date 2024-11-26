@@ -1,8 +1,10 @@
 package Main_Package.controller;
 
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,10 @@ import Main_Package.repository.PropostaRepository;
 import Main_Package.service.ClienteService;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.ServicoService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+
+
 
 
 @Controller
@@ -78,7 +84,7 @@ public class ClienteController {
 	        System.out.println(cliente);
 	        model.addAttribute("curriculo", curriculo2);
 	        System.out.println(curriculo2);
-	        return "view-curriculo";
+	        return "curriculo-view";
 	    } else {
 	        return "erro"; 
 	    }
@@ -117,7 +123,7 @@ public class ClienteController {
 	}
 	
 	
-	@GetMapping("/enviar/{clienteId}/{curriculoId}")
+	@GetMapping("/proposta/enviar/{clienteId}/{curriculoId}")
 	public String enviarProposta(
 	        @PathVariable Long clienteId,
 	        @PathVariable Long curriculoId,
@@ -137,26 +143,31 @@ public class ClienteController {
 	
 
 	@PostMapping("/{freelancerId}/enviar-proposta")
-    public ResponseEntity<?> enviarProposta(
-            @PathVariable Long freelancerId,
-            @RequestParam Long clienteId,
-            @RequestBody String descricao) {
+	public ResponseEntity<?> enviarProposta(
+	        @PathVariable Long freelancerId,
+	        @RequestParam Long clienteId,
+	        @RequestBody String descricao) {
 
-        Freelancer freelancer = freelancerRepository.findById(freelancerId)
-                .orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
+	    Freelancer freelancer = freelancerRepository.findById(freelancerId)
+	            .orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
 
-        Cliente cliente = clienteRepository.findById(clienteId)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+	    Cliente cliente = clienteRepository.findById(clienteId)
+	            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        Proposta proposta = new Proposta();
-        proposta.setPropostaText(descricao);
-        proposta.setCliente(cliente);
-        proposta.setFreelancer(freelancer);
+	    Proposta proposta = new Proposta();
+	    proposta.setPropostaText(descricao);
+	    proposta.setCliente(cliente);
+	    proposta.setFreelancer(freelancer);
 
-        propostaRepository.save(proposta);
+	    propostaRepository.save(proposta);
 
-        return ResponseEntity.ok("Proposta enviada com sucesso!");
-    }
+	    // Redireciona para a página do cliente após enviar a proposta
+	    String redirecionarUrl = "/usuario/cliente/home/" + clienteId;
+	    return ResponseEntity.status(HttpStatus.FOUND)
+	            .header(HttpHeaders.LOCATION, redirecionarUrl)
+	            .build();
+	}
+
 	
 	@DeleteMapping("/perfil/{id}")
 	public String excluirCliente(Long id) {

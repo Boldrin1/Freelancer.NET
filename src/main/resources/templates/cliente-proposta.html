@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar Proposta para Freelancer</title>
-	<link rel="stylesheet" href="/css/PropostaCliente.css">
+	<link rel="stylesheet" href="/css/cliente-proposta.css">
 </head>
 <body>
     <div class="top-right-amoeba"></div>
     <div class="bottom-left-amoeba"></div>
 	
     <div class="container">
-        <h1>Enviar Proposta para <span id="freelancer-name">[Nome do Freelancer]</span></h1>
+        <h1>Enviar Proposta</h1>
         <div class="description">
             <label for="proposta">Escreva uma proposta para o freelancer:</label>
             <textarea id="proposta" placeholder="Descreva aqui sua proposta..."></textarea>
@@ -39,6 +39,35 @@
             alert('Proposta enviada com sucesso!');
             // Aqui você pode integrar o envio com backend, por exemplo.
         }
+        
+        
+      
+        function enviarProposta() {
+            // Obtendo os valores do freelancerId, clienteId e a descrição da proposta
+            var freelancerId = /* seu freelancerId aqui */;
+            var clienteId = /* seu clienteId aqui */;
+            var descricao = document.getElementById('descricao').value; // assumindo que você tenha um campo de texto com id "descricao"
+
+            fetch(`/seu-endpoint/{freelancerId}/enviar-proposta`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(descricao)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redireciona para a página do cliente após a proposta ser enviada com sucesso
+                    window.location.href = `/usuario/cliente/home/${clienteId}`;
+                } else {
+                    alert('Erro ao enviar a proposta!');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar a proposta!');
+            });
+
     </script>
 </body>
 </html>
