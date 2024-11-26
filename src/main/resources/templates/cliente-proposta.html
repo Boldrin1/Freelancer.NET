@@ -44,8 +44,8 @@
       
         function enviarProposta() {
             // Obtendo os valores do freelancerId, clienteId e a descrição da proposta
-            var freelancerId = /* seu freelancerId aqui */;
-            var clienteId = /* seu clienteId aqui */;
+            var freelancerId = [[$,{freelancerId}]];
+            var clienteId = [[$,{clienteId}]];
             var descricao = document.getElementById('descricao').value; // assumindo que você tenha um campo de texto com id "descricao"
 
             fetch(`/seu-endpoint/{freelancerId}/enviar-proposta`, {
@@ -67,7 +67,7 @@
                 console.error('Erro:', error);
                 alert('Erro ao enviar a proposta!');
             });
-
+        }
     </script>
 </body>
 </html>
