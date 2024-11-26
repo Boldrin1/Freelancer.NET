@@ -3,6 +3,7 @@ package Main_Package.controller;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,8 +17,11 @@ import Main_Package.model.AreaDeInteresse;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
+import Main_Package.model.ServicoCurriculo;
 import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
+import Main_Package.repository.ServicoCurriculoRepository;
+import Main_Package.repository.ServicoRepository;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
 import Main_Package.service.ServicoService;
@@ -34,12 +38,20 @@ public class FreelancerController {
     
     @Autowired
     private CurriculoService curriculoService;
-
+    
     @Autowired
     private FreelancerRepository freelancerRepository;
-
+    
     @Autowired
     private CurriculoRepository curriculoRepository;
+    
+    @Autowired
+    private  ServicoCurriculoRepository servicoCurriculoRepository;
+    
+    @Autowired
+    private ServicoRepository servicoRepository;
+    
+    
     
     @GetMapping("/{id}")
     public String paginaInicial_Free(@PathVariable Long id, Model model) {
@@ -129,11 +141,35 @@ public class FreelancerController {
 	 	return "freelancer-editar";
 	}
 	
+
+	
 	@DeleteMapping("/perfil/{id}")
 	public String deletarFreelancer(Long id){
 	 	freelancerService.deletaFreelancer(id);
 	 	return "redirect:/create-count";
 	}
+	
+	
+	
+	@PostMapping("/{servicoId}/enviar-curriculo")
+    public ResponseEntity<?> enviarCurriculo(
+            @PathVariable Long servicoId,
+            @RequestParam Long freelancerId) {
+
+        Curriculo curriculo = curriculoRepository.findByFreelancer_Id(freelancerId)
+                .orElseThrow(() -> new RuntimeException("Currículo não encontrado"));
+
+        Servico servico = servicoRepository.findById(servicoId)
+                .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
+
+        ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
+        servicoCurriculo.setServico(servico);
+        servicoCurriculo.setCurriculo(curriculo);
+
+        servicoCurriculoRepository.save(servicoCurriculo);
+
+        return ResponseEntity.ok("Currículo enviado com sucesso!");
+    }
 	
 	
 }

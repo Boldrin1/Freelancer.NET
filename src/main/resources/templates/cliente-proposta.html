@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Proposta para Freelancer</title>
+	<link rel="stylesheet" href="/css/PropostaCliente.css">
+</head>
+<body>
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
+	
+    <div class="container">
+        <h1>Enviar Proposta para <span id="freelancer-name">[Nome do Freelancer]</span></h1>
+        <div class="description">
+            <label for="proposta">Escreva uma proposta para o freelancer:</label>
+            <textarea id="proposta" placeholder="Descreva aqui sua proposta..."></textarea>
+        </div>
+        <div class="button-group">
+            <button onclick="window.history.back();">Voltar</button>
+            <button onclick="verPerfil();">Ver Perfil</button>
+            <button onclick="enviarProposta();">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de funções para os botões
+        function verPerfil() {
+            alert('Redirecionando para o perfil do freelancer...');
+            // Aqui você pode colocar a lógica de redirecionamento
+        }
+
+        function enviarProposta() {
+            const proposta = document.getElementById('proposta').value;
+            if (proposta.trim() === '') {
+                alert('Por favor, escreva uma proposta antes de enviar.');
+                return;
+            }
+            alert('Proposta enviada com sucesso!');
+            // Aqui você pode integrar o envio com backend, por exemplo.
+        }
+    </script>
+</body>
+</html>

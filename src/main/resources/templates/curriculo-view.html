@@ -30,10 +30,9 @@
     <div class="register-container">
         <h1>Currículo</h1>
 		<!-- Remova o cliente, pois ele não é necessário neste contexto -->
-		<form th:action="@{/usuario/cliente/enviar/{id}(id=${curriculo.id})}" method="get">
-
-			
-
+ <form th:action="@{/usuario/cliente/proposta/enviar/{clienteId}/{curriculoId}(clienteId=${cliente.id}, curriculoId=${curriculo.id})}" method="get">
+ 
+		
     <label for="inputNome" class="form-label">Nome:</label>
     <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome" readonly>
 
@@ -54,7 +53,7 @@
 
     <!-- Select para Área de Interesse (somente visualização) -->
     <label for="AreaDeInteresse" class="form-label">Área que o Freelancer deseja atuar:</label>
-      
+      <select>
        <option class="form-control" th:value="${curriculo.areaDeInteresse}" th:text="${curriculo.areaDeInteresse}" selected></option>
        </select>
 

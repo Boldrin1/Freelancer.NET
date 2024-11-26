@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/VisualizarCliente.css">
+    <title>Visualizar Serviço Do Freelancer</title>
+</head>
+<body>
+
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
+
+    <div class="container">
+        <h1>(Título do Serviço)</h1>
+        <div class="row">
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" value="R$ 2.000,00" readonly>
+        </div>
+        <div class="row">
+            <label for="duracao">Dias ou Horas:</label>
+            <input type="text" id="duracao" value="15 dias" readonly>
+        </div>
+        <div class="description">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" readonly>Criação de um site responsivo e otimizado, com integração de funcionalidades modernas e design profissional.</textarea>
+        </div>
+        <button class="back-button" onclick="window.history.back();">Voltar</button>
+    </div>
+</body>
+</html>

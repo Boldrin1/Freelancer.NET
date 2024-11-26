@@ -14,7 +14,7 @@ public class Proposta {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    private String proposta;
+	    private String propostaText;
 
 	    @ManyToOne
 	    @JoinColumn(name = "cliente_id", nullable = false)
@@ -23,50 +23,60 @@ public class Proposta {
 	    @ManyToOne
 	    @JoinColumn(name = "freelancer_id", nullable = false)
 	    private Freelancer freelancer;
+	    
 
-		public Proposta(Long id, String proposta, Cliente cliente, Freelancer freelancer) {
+		public Proposta() {
+		}
+
+
+		public Proposta(Long id, String propostaText, Cliente cliente, Freelancer freelancer) {
 			this.id = id;
-			this.proposta = proposta;
+			this.propostaText = propostaText;
 			this.cliente = cliente;
 			this.freelancer = freelancer;
 		}
 
-		public Proposta() {
-			
-		}
 
 		public Long getId() {
 			return id;
 		}
 
+
 		public void setId(Long id) {
 			this.id = id;
 		}
 
-		public String getProposta() {
-			return proposta;
+
+		public String getPropostaText() {
+			return propostaText;
 		}
 
-		public void setProposta(String proposta) {
-			this.proposta = proposta;
+
+		public void setPropostaText(String propostaText) {
+			this.propostaText = propostaText;
 		}
+
 
 		public Cliente getCliente() {
 			return cliente;
 		}
 
+
 		public void setCliente(Cliente cliente) {
 			this.cliente = cliente;
 		}
+
 
 		public Freelancer getFreelancer() {
 			return freelancer;
 		}
 
+
 		public void setFreelancer(Freelancer freelancer) {
 			this.freelancer = freelancer;
 		}
 
-	  
+
+			
 	}
 

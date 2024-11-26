@@ -1,0 +1,312 @@
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            padding-top: 80px; /* Adicionado padding-top para evitar que o conteúdo fique oculto abaixo do cabeçalho fixo */
+        }
+    
+        /* Cabeçalho fixo contendo logo, título e botão de menu */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+    
+        /* Estilo do título */
+        .header-title {
+            font-weight: 700;
+            font-family: 'Inter';font-size: 24px;
+            color: #333;
+        }
+    
+        /* Estilo do logotipo */
+        .logo {
+            height: 40px; /* Ajuste a altura da imagem conforme necessário */
+        }
+    
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: #ffffff;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1100;
+        }
+    
+        /* Animação para abrir a barra lateral */
+        .sidebar.active {
+            left: 0; /* Mostra a sidebar quando ativa */
+        }
+    
+        /* Estilo do cabeçalho da sidebar */
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    
+        .sidebar-logo {
+            height: 40px; /* Ajuste conforme necessário */
+        }
+    
+        .sidebar-title {
+    
+            font-weight: 700;
+            font-family: 'Inter';font-size: 24px;
+            color: #333;
+        }
+    
+        /* Itens de menu */
+        .menu-item {
+            font-weight: 400;
+            font-family: 'Inter';font-size: 24px;
+            color: #000;
+            border: 0.3px solid #000;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+    
+        /* Hover nos itens */
+        .menu-item:hover {
+            background-color: #e0e0e0;
+        }
+        .top-right-amoeba, .bottom-left-amoeba {
+        transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
+        position: absolute;
+        background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+        border-radius: 50%;
+        opacity: 0.9;
+    }
+
+    .top-right-amoeba {
+        top: -90px;
+        right: -90px;
+        width: 550px;
+        height: 580px;
+    }
+
+    .bottom-left-amoeba {
+        bottom: -100px;
+        left: -100px;
+        width: 500px;
+        height: 500px;
+    }
+
+        /* Painéis de status */
+        .status-panel {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+    
+        /* Título fora do container */
+        .page-title {
+            font-family: 'Inter';font-size: 28px;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 10px; /* Espaço entre o título e o container */
+            font-weight: bold;
+        }
+    
+        /* Seção de propostas */
+        .proposals-section {
+            margin-top: 20px;
+        }
+    
+        /* Card de proposta */
+        .proposal-card {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            display: flex;
+            flex-direction: column; /* Alinha os itens verticalmente por padrão */
+        }
+    
+        /* Nome do cliente e botão na mesma linha */
+        .proposal-card h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #000000;
+            flex-grow: 1; /* Garante que o nome ocupe o máximo de espaço disponível */
+        }
+    
+        /* Container para o nome do cliente e botão */
+        .proposal-card .action-container {
+            display: flex;
+            justify-content: space-between; /* Coloca o nome e o botão com espaçamento entre eles */
+            align-items: center;
+            width: 600px;
+        }
+    
+        /* Botão Ver Proposta */
+        .btn-view {
+            background-color: #4b0082;
+            color: #ffffff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Inter';font-size: 14px;
+            transition: background-color 0.3s;
+            align-self: flex-start; /* Garante que o botão não ocupe toda a largura */
+        }
+    
+        .btn-view:hover {
+            background-color: #3a006d;
+        }
+        
+      
+        
+       /* Media Queries para diferentes tamanhos de tela */
+
+/* Responsividade */
+@media (max-width: 1440px) {
+    .top-right-amoeba {
+        width: 500px;
+        height: 500px;
+        top: -60px;
+        right: -60px;
+    }
+
+    .bottom-left-amoeba {
+        width: 450px;
+        height: 450px;
+        bottom: -70px;
+        left: -70px;
+    }
+
+    .sidebar {
+        width: 220px; /* Ajusta o tamanho da sidebar */
+    }
+
+    .proposal-card {
+        width: 500px; /* Ajuste para tamanho médio */
+    }
+}
+
+@media (max-width: 1024px) {
+    .top-right-amoeba {
+        width: 350px;
+        height: 350px;
+        top: -30px;
+        right: -50px;
+    }
+
+    .bottom-left-amoeba {
+        width: 350px;
+        height: 350px;
+        bottom: -50px;
+        left: -50px;
+    }
+
+    .sidebar {
+        width: 200px; /* Ajusta o tamanho da sidebar */
+    }
+
+    .proposal-card {
+        width: 100%; /* Ocupa toda a largura disponível */
+    }
+
+    .header-title {
+        font-size: 20px; /* Ajuste o tamanho do título */
+    }
+}
+
+@media (max-width: 768px) {
+    .top-right-amoeba {
+        width: 250px;
+        height: 250px;
+        top: -20px;
+        right: -100px;
+    }
+
+    .bottom-left-amoeba {
+        width: 250px;
+        height: 250px;
+        bottom: -60px;
+        left: -60px;
+    }
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .proposal-card {
+        width: 100%;
+    }
+
+    .header-title {
+        font-size: 18px;
+    }
+
+    .sidebar-header {
+        flex-direction: column; /* Alinha os itens verticalmente no cabeçalho da sidebar */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-right-amoeba {
+        width: 200px;
+        height: 200px;
+        top: -30px;
+        right: -40px;
+    }
+
+    .bottom-left-amoeba {
+        width: 200px;
+        height: 200px;
+        bottom: -40px;
+        left: -40px;
+    }
+
+    .sidebar {
+        width: 150px;
+    }
+
+    .proposal-card {
+        width: 100%;
+    }
+
+    .header-title {
+        font-size: 16px;
+    }
+
+    .sidebar-header {
+        flex-direction: column; /* Alinha os itens verticalmente no cabeçalho da sidebar */
+    }
+
+    .menu-item {
+        font-size: 18px; /* Ajusta o tamanho da fonte */
+    }
+}

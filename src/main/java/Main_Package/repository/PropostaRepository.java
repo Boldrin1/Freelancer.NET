@@ -13,4 +13,5 @@ public interface PropostaRepository extends JpaRepository<Proposta,Long> {
 
 	List<Proposta> findByFreelancer_Id(Long freelancerId);
 
+
 }

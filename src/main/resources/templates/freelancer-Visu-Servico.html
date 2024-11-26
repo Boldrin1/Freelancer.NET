@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Serviço</title>
+    <link rel="stylesheet" href="/css/Freelancer-Visu-Servico.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>(Título do Serviço)</h2>
+            <form>
+                <label for="valor">Valor:</label>
+                <input type="text" id="valor" placeholder="Digite o valor" disabled value="R$ 1.000,00">
+
+                <label for="dias">Dias ou Horas:</label>
+                <input type="text" id="dias" placeholder="Informe o prazo" disabled value="5 Dias">
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" rows="5" disabled>Descreva detalhadamente o serviço aqui.</textarea>
+
+                <div class="button-group">
+                    <button type="button" class="btn voltar" onclick="window.location.href='index.html'">Voltar</button>
+                    <button type="button" class="btn enviar" onclick="window.location.href='proposta.html'">Enviar Currículo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,295 @@
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho fixo contendo logo, título e botão de menu */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.sidebar-title {
+        font-weight: 700;
+        font-family: 'Inter';
+        font-size: 24px;
+        color: #333;
+    }
+
+.header-title {
+    font-weight: 700;
+    font-family: 'Inter';
+    font-size: 30px; /* Ajustado para 30px */
+    color: #333;
+    margin-left: -1550px; /* Adicionado para dar um espaçamento entre a logo e o título */
+}
+
+/* Estilo do logotipo */
+.logo {
+    height: 40px; /* Ajuste a altura da imagem conforme necessário */
+}
+
+
+
+.menu-toggle {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: rgba(255, 255, 255, 0.99);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1100;
+    font-weight: 700;
+}
+
+.sidebar.active {
+    left: 0;
+}
+/* Estilo do cabeçalho da sidebar */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 40px; /* Ajuste conforme necessário */
+}
+
+.sidebar-title {
+    font-weight: 700;
+   font-family: 'Inter';font-size: 24px;
+    color: #333;
+}
+.menu-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #000000;
+    border: 0.3px solid #000;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #ffffff;
+}
+        
+        /* Conteúdo principal */
+        .main-content {
+            margin-top: 80px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Seção de serviços */
+.services-section {
+    background-color: #ffffff;
+    border-radius: 15px; /* Aumentei o raio para bordas mais arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Deixei a sombra mais pronunciada */
+    padding: 30px; /* Aumentei o espaçamento interno */
+}
+
+.services-section h2 {
+    margin: 0 0 20px; /* Maior espaçamento entre o título e o conteúdo */
+    color: #6a1b9a;
+    font-size: 28px; /* Aumentei o tamanho da fonte */
+}
+
+/* Estilo da lista de serviços */
+.service-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px; /* Ajustei para ficar consistente com a seção */
+    padding: 20px; /* Aumentei o espaçamento interno */
+    margin-bottom: 20px; /* Maior espaço entre os cartões */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-7px); /* Aumentei o efeito de elevação */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte ao passar o mouse */
+}
+
+.service-card h3 {
+    margin: 0 0 15px; /* Mais espaçamento abaixo do título */
+    color: #000000;
+    font-size: 22px; /* Fonte maior */
+}
+
+.service-card p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 16px; /* Texto mais legível */
+}
+
+/* Botões */
+.hire-button {
+    background-color: #9d00ff;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px; /* Botão maior */
+    border-radius: 8px; /* Mais arredondado */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 16px; /* Texto maior */
+}
+
+.hire-button:hover {
+    background-color: #4a0072;
+}
+
+.action-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px; /* Maior espaço entre botões */
+}
+
+.action-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        .view-button {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+
+.criar {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px; /* Texto maior */
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+        .top-right-amoeba, .bottom-left-amoeba {
+        transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
+        position: absolute;
+        background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+        border-radius: 50%;
+        opacity: 0.9;
+    }
+    
+    .top-right-amoeba {
+        top: -90px;
+        right: -90px;
+        width: 450px;
+        height: 450px;
+    }
+    
+    .bottom-left-amoeba {
+        bottom: -100px;
+        left: -100px;
+        width: 400px;
+        height: 400px;
+    }
+
+      /* Remove o scrolling */
+   html, body {
+    overflow: hidden;
+    height: 100%;
+}
+        /* Responsividade: Ajustes para telas pequenas */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-top: 120px;
+            }
+
+            .services-section {
+                padding: 15px;
+            }
+
+            .service-card {
+                padding: 10px;
+            }
+        }
+
+        /* Responsividade para telas muito pequenas */
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 180px;
+                left: -180px;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .menu-item {
+                font-family: 'Inter';font-size: 18px;
+            }
+
+            .main-content {
+                margin-top: 140px;
+            }
+
+            .services-section {
+                padding: 10px;
+            }
+
+            .service-card {
+                padding: 8px;
+            }
+
+            .hire-button {
+                font-size: 14px;
+            }
+        }

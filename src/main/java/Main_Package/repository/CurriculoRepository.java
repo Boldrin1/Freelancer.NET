@@ -9,6 +9,8 @@ import Main_Package.model.Curriculo;
 public interface CurriculoRepository extends JpaRepository<Curriculo,Long>{
 
 	Optional<Curriculo> findByFreelancerId(Long id);
+	
+	Optional<Curriculo> findByFreelancer_Id(Long freelancerId);
 
 
 }

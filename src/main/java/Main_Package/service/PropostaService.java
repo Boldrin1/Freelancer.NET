@@ -18,7 +18,7 @@ public class PropostaService {
 
 	public Proposta enviarProposta(Long clienteId, Long freelancerId, String conteudoProposta) {
         Proposta proposta = new Proposta();
-        proposta.setProposta(conteudoProposta);
+        proposta.setPropostaText(conteudoProposta);
         proposta.setCliente(new Cliente(clienteId)); // Instancie o cliente pelo ID
         proposta.setFreelancer(new Freelancer(freelancerId)); // Instancie o freelancer pelo ID
         return propostaRepository.save(proposta);

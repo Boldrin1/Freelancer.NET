@@ -25,6 +25,6 @@ public class ServiceController {
 	Optional<Servico> servico = servicoService.encontrarServico(id);
 	model.addAttribute("servico", servico);
 		
-	return "";
+	return "freelancer-Visu-Servico";
 	}
 }

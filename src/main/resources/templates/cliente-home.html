@@ -9,14 +9,14 @@
 <body>
     <div class="header">
         <div class="left-header">
-            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
+            <img src="/img/logofree.png" alt="Logo" class="logo">
             <span class="title">Freelancer.NET</span>
         </div>
         <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
     </div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
@@ -27,7 +27,9 @@
 		<div class="menu-item">
 		    <a th:href="@{/usuario/cliente/servicos/{id}(id=${cliente.id})}">Meus Serviços</a>
 		</div>
-        <div class="menu-item">Inbox</div>
+        <div class="menu-item">
+        <a th:href="@{/proposta/cliente/{id}(id=${cliente.id})}">Inbox</a>
+        </div>
 
     </div>
     <div class="background-shapes">
