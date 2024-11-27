@@ -1,5 +1,6 @@
 package Main_Package.controller;
 
+import java.security.Principal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Main_Package.model.Cliente;
+import Main_Package.model.Freelancer;
 import Main_Package.model.Servico;
 import Main_Package.service.ClienteService;
+import Main_Package.service.FreelancerService;
 import Main_Package.service.ServicoService;
 
 
@@ -24,19 +27,34 @@ public class ServiceController {
 	
 	@Autowired
 	private ServicoService servicoService;
-
 	
+	@Autowired
+	private FreelancerService freelancerService;
+
 	@GetMapping("/freelancer/visualizar/{id}")
-	public String vizualizarServico(@PathVariable Long id, Model model) {
+	public String vizualizarServico(@PathVariable Long id, Model model, Principal principal) {
 	    Optional<Servico> servicoOptional = servicoService.encontrarServico(id);
-	    
+
 	    if (servicoOptional.isPresent()) {
-	        model.addAttribute("servico", servicoOptional.get());
+	        Servico servico = servicoOptional.get();
+
+	        // Buscar o freelancer logado pelo e-mail (modificado para usar o e-mail)
+	        Freelancer freelancer = freelancerService.mostraFreelancer(principal.getName()); // Passa o e-mail aqui
+
+	        model.addAttribute("servico", servico);
+	        model.addAttribute("freelancer", freelancer);
+
 	        return "freelancer-Visu-Servico";
 	    } else {
 	        return "redirect:/erro/servico-nao-encontrado";
 	    }
 	}
+
+
+
+
+
+
 
 	
 	@GetMapping("/cliente/visualizar/{id}")

@@ -56,6 +56,11 @@ public class FreelancerService {
 	public Optional<Freelancer> findByEmail(String email) {
         return freelancerRepository.findByEmail(email);
     }
+	
+	public Freelancer mostraFreelancer(String email) {
+	    return freelancerRepository.findByEmail(email)
+	            .orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
+	}
 
 	
 	
