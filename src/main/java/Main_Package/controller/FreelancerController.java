@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
 import Main_Package.model.AreaDeInteresse;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
@@ -157,24 +160,33 @@ public class FreelancerController {
 	
 	
 	@PostMapping("/{servicoId}/enviar-curriculo")
-    public ResponseEntity<?> enviarCurriculo(
-            @PathVariable Long servicoId,
-            @RequestParam Long freelancerId) {
+	public String enviarCurriculo(
+	        @PathVariable Long servicoId,
+	        @RequestParam Long freelancerId,
+	        RedirectAttributes redirectAttributes) {
 
-        Curriculo curriculo = curriculoRepository.findByFreelancer_Id(freelancerId)
-                .orElseThrow(() -> new RuntimeException("Currículo não encontrado"));
+	    Curriculo curriculo = curriculoRepository.findByFreelancer_Id(freelancerId)
+	            .orElseThrow(() -> new RuntimeException("Currículo não encontrado"));
 
-        Servico servico = servicoRepository.findById(servicoId)
-                .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
+	    Servico servico = servicoRepository.findById(servicoId)
+	            .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
 
-        ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
-        servicoCurriculo.setServico(servico);
-        servicoCurriculo.setCurriculo(curriculo);
+	    if (servicoCurriculoRepository.existsByServicoIdAndCurriculoId(servicoId, curriculo.getId())) {
+	        redirectAttributes.addFlashAttribute("error", "Currículo já enviado para este serviço.");
+	        return "redirect:/freelancer/visualizar/" + servicoId;
+	    }
 
-        servicoCurriculoRepository.save(servicoCurriculo);
+	    ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
+	    servicoCurriculo.setServico(servico);
+	    servicoCurriculo.setCurriculo(curriculo);
 
-        return ResponseEntity.ok("Currículo enviado com sucesso!");
-    }
+	    servicoCurriculoRepository.save(servicoCurriculo);
+
+	    redirectAttributes.addFlashAttribute("success", "Currículo enviado com sucesso!");
+	    return "redirect:/freelancer/visualizar/" + servicoId;
+	}
+
+
 	
 	
 }

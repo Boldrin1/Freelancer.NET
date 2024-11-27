@@ -6,4 +6,6 @@ import Main_Package.model.ServicoCurriculo;
 
 public interface ServicoCurriculoRepository extends JpaRepository<ServicoCurriculo,Long>{
 
+	boolean existsByServicoIdAndCurriculoId(Long servicoId, Long id);
+
 }

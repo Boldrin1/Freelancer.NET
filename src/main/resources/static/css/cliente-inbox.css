@@ -1,4 +1,4 @@
-        body {
+ body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
@@ -10,88 +10,90 @@
         }
     
         /* Cabeçalho fixo contendo logo, título e botão de menu */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.header-title {
+    font-weight: 700;
+    font-family: 'Inter';
+    font-size: 30px; /* Ajustado para 30px */
+    color: #333;
+    margin-left: 0px; /* Adicionado para dar um espaçamento entre a logo e o título */
+}
+
+/* Estilo do logotipo */
+.logo {
+    height: 40px; /* Ajuste a altura da imagem conforme necessário */
+}
     
-        /* Estilo do título */
-        .header-title {
-            font-weight: 700;
-            font-family: 'Inter';font-size: 24px;
-            color: #333;
-        }
+.menu-toggle {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: rgba(255, 255, 255, 0.99);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1100;
+    font-weight: 700;
+}
     
-        /* Estilo do logotipo */
-        .logo {
-            height: 40px; /* Ajuste a altura da imagem conforme necessário */
-        }
+.sidebar.active {
+    left: 0;
+}
+/* Estilo do cabeçalho da sidebar */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 40px; /* Ajuste conforme necessário */
+}
+
+.sidebar-title {
+    font-weight: 700;
+   font-family: 'Inter';font-size: 24px;
+    color: #333;
+}
+.menu-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #000000;
+    border: 0.3px solid #000;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
     
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: -300px;
-            background-color: #ffffff;
-            transition: left 0.3s ease;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1100;
-        }
-    
-        /* Animação para abrir a barra lateral */
-        .sidebar.active {
-            left: 0; /* Mostra a sidebar quando ativa */
-        }
-    
-        /* Estilo do cabeçalho da sidebar */
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-    
-        .sidebar-logo {
-            height: 40px; /* Ajuste conforme necessário */
-        }
-    
-        .sidebar-title {
-    
-            font-weight: 700;
-            font-family: 'Inter';font-size: 24px;
-            color: #333;
-        }
-    
-        /* Itens de menu */
-        .menu-item {
-            font-weight: 400;
-            font-family: 'Inter';font-size: 24px;
-            color: #000;
-            border: 0.3px solid #000;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-    
-        /* Hover nos itens */
-        .menu-item:hover {
-            background-color: #e0e0e0;
-        }
+.menu-item:hover {
+    background-color: #ffffff;
+}
         .top-right-amoeba, .bottom-left-amoeba {
         transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
         position: absolute;
@@ -127,15 +129,7 @@
             transition: transform 0.2s;
         }
     
-        /* Título fora do container */
-        .page-title {
-            font-family: 'Inter';font-size: 28px;
-            color: #000000;
-            text-align: center;
-            margin-bottom: 10px; /* Espaço entre o título e o container */
-            font-weight: bold;
-        }
-    
+
         /* Seção de propostas */
         .proposals-section {
             margin-top: 20px;
@@ -186,7 +180,11 @@
             background-color: #3a006d;
         }
         
-      
+      /* Remove o scrolling */
+   html, body {
+    overflow: hidden;
+    height: 100%;
+}
         
        /* Media Queries para diferentes tamanhos de tela */
 
