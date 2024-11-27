@@ -32,10 +32,8 @@ public class ServicoService {
 	}
 
 	
-	
 	public void deletarServico(Long id) {
 		servicoRepository.deleteById(id);
 	}
-
 
 }

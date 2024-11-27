@@ -69,6 +69,22 @@ public class ServiceController {
 	    return "redirect:/usuario/cliente/servicos/" + cliente.getId();
 	}
 
+	
+	@GetMapping("/excluir/{id}")
+	public String excluirServico(@PathVariable Long id) {
+	    // Busca o serviço pelo ID
+	    Optional<Servico> servicoOptional = servicoService.encontrarServico(id);
+	    
+	    if (servicoOptional.isPresent()) {
+	        Servico servico = servicoOptional.get();
+	        Cliente cliente = servico.getCliente(); 
+	        servicoService.deletarServico(id); 
+	        return "redirect:/usuario/cliente/servicos/" + cliente.getId(); 
+	    } else {
+	        throw new RuntimeException("Serviço não encontrado."); 
+	    }
+	}
+
 
 	
 }

@@ -17,7 +17,7 @@ public class Servico {
 	 private Long id;
 	 
 	 private String titulo;
-     private Integer valor;
+     private String valor;
      private String horas;
      private String descricao;
 
@@ -42,9 +42,20 @@ public class Servico {
 	public Servico() {
 	}
 
+	
+	/*
+	 * 
+	 * 
+ 	 * ALTER TABLE servico
+       DROP FOREIGN KEY FKte1p7xhut5cf7cdiqbvp6yoqd;
+
+       ALTER TABLE servico
+       ADD CONSTRAINT FK_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id);
+
+	 * */
 
 
-	public Servico(Long id, String titulo, Integer valor, String horas, String descricao, Cliente cliente) {
+	public Servico(Long id, String titulo, String valor, String horas, String descricao, Cliente cliente) {
 		this.id = id;
 		this.titulo = titulo;
 		this.valor = valor;
@@ -79,13 +90,13 @@ public class Servico {
 
 
 
-	public Integer getValor() {
+	public String getValor() {
 		return valor;
 	}
 
 
 
-	public void setValor(Integer valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 
@@ -127,6 +138,5 @@ public class Servico {
 
 
 
-	
 	
 }

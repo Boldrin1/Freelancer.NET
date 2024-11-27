@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    padding: 30px; /* Aumentado */
+    width: 80%; /* Ajustável */
+    max-width: 600px; /* Aumentado */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.container h1 {
+    background-color: #ffffff;
+    padding: 15px; /* Aumentado */
+    border-radius: 5px;
+    color: #000;
+    font-size: 22px; /* Aumentado */
+    margin-bottom: 25px; /* Ajustado */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Aumentado */
+}
+
+.row label {
+    flex: 1;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 16px; /* Aumentado */
+}
+
+.row input {
+    flex: 2;
+    padding: 10px; /* Aumentado */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* Aumentado */
+}
+
+.description {
+    margin-bottom: 20px; /* Aumentado */
+    text-align: left;
+}
+
+.description textarea {
+    width: 100%;
+    height: 120px; /* Aumentado */
+    padding: 10px; /* Aumentado */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px; /* Aumentado */
+}
+
+.back-button {
+    background-color: #6a1b9a;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Aumentado */
+    border-radius: 5px;
+    font-size: 18px; /* Aumentado */
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #4a0072;
+}
+
+/* Fundo decorativo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://via.placeholder.com/800x600') no-repeat center/cover;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Ajuste dos elementos decorativos */
+.top-right-amoeba,
+.bottom-left-amoeba {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.top-right-amoeba {
+    top: -100px;
+    right: -100px;
+    width: 400px; /* Aumentado */
+    height: 400px; /* Aumentado */
+}
+
+.bottom-left-amoeba {
+    bottom: -120px;
+    left: -120px;
+    width: 400px; /* Aumentado */
+    height: 400px; /* Aumentado */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .row label,
+    .row input,
+    .description textarea {
+        font-size: 14px;
+    }
+
+    .back-button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+
+    .top-right-amoeba {
+        top: -80px;
+        right: -80px;
+        width: 500px;
+        height: 550px;
+    }
+
+    .bottom-left-amoeba {
+        bottom: -90px;
+        left: -90px;
+        width: 450px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    .container h1 {
+        font-size: 18px;
+    }
+
+    .row label {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    .row input,
+    .description textarea {
+        font-size: 14px;
+    }
+
+    .back-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .top-right-amoeba,
+    .bottom-left-amoeba {
+        width: 350px;
+        height: 350px;
+    }
+}
+   /* Remove o scrolling */
+   html, body {
+    overflow: hidden;
+    height: 100%;
+}
