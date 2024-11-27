@@ -34,9 +34,6 @@ public class Servico {
      @OneToMany(mappedBy = "servico")
      private List<Curriculo> curriculos;*/
      
-     @Enumerated(EnumType.STRING)
-     private AreaDeInteresse area;
-     
      
      public void receberCurriculo(Curriculo curriculo) {
     	 //return curriculoGuardado
@@ -49,16 +46,15 @@ public class Servico {
 
 
 
-	public Servico(Long id, String titulo, Integer valor, String horas, String descricao, Cliente cliente,
-			AreaDeInteresse area) {
+	public Servico(Long id, String titulo, Integer valor, String horas, String descricao, Cliente cliente) {
 		this.id = id;
 		this.titulo = titulo;
 		this.valor = valor;
 		this.horas = horas;
 		this.descricao = descricao;
 		this.cliente = cliente;
-		this.area = area;
 	}
+
 
 
 	public Long getId() {
@@ -66,9 +62,11 @@ public class Servico {
 	}
 
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 
 	public String getTitulo() {
@@ -76,9 +74,11 @@ public class Servico {
 	}
 
 
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 
 
 	public Integer getValor() {
@@ -86,9 +86,11 @@ public class Servico {
 	}
 
 
+
 	public void setValor(Integer valor) {
 		this.valor = valor;
 	}
+
 
 
 	public String getHoras() {
@@ -96,9 +98,11 @@ public class Servico {
 	}
 
 
+
 	public void setHoras(String horas) {
 		this.horas = horas;
 	}
+
 
 
 	public String getDescricao() {
@@ -106,9 +110,11 @@ public class Servico {
 	}
 
 
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 
 
 	public Cliente getCliente() {
@@ -116,19 +122,11 @@ public class Servico {
 	}
 
 
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-
-	public AreaDeInteresse getArea() {
-		return area;
-	}
-
-
-	public void setArea(AreaDeInteresse area) {
-		this.area = area;
-	}
 
 
 	

@@ -25,7 +25,6 @@ public class DetalhesUsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // Tentando buscar freelancer pelo email
         Optional<Freelancer> freelancer = freelancerRepository.findByEmail(email);
         if (freelancer.isPresent()) {
             return new org.springframework.security.core.userdetails.User(
