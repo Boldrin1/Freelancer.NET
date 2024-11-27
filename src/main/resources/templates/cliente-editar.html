@@ -23,7 +23,9 @@
             <label class="form-label" for="senha">Senha:</label>
             <input type="text" id="senha" th:field="*{senha}" class="form-control" required />
             
- 
+            <label class="form-label" for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" th:field="*{dataNascimento}" class="form-control" required />
+            
             <label class="form-label" for="telefone">Telefone:</label>
             <input type="text" id="telefone" th:field="*{telefone}" class="form-control" required />
             
@@ -31,9 +33,11 @@
 
             
 
-            <button type="button" class="btn" onclick="window.history.back();">Voltar</button>
-            <button type="submit" class="btn">Salvar Alterações</button>
-        </form>
+             <!-- Botões centralizados -->
+    <div class="form-buttons">
+        <button type="button" class="btn" onclick="window.history.back();">Voltar</button>
+        <button type="submit" class="btn">Salvar Alterações</button>
+    </div>
     </div>
 </body>
 </html>

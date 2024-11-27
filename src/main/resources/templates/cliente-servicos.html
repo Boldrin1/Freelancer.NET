@@ -29,35 +29,24 @@
     </div>
 
     <div class="main-content">
-        <div class="services-section">
+       <div class="services-section">
             <h2>Seus Serviços</h2>
-            <div class="service-card">
-                <h3>Desenvolvimento Web</h3>
-                <p>Criação de sites responsivos e otimizados.</p>
-                <div class="action-buttons">
-                    <button class="action-button view-button">Visualizar</button>
-                    <button class="action-button">Excluir</button>
-                </div>
-                
+			<div class="service-card" th:each="servico : ${servicos}">
+			    <h3 th:text="${servico.titulo}"></h3>
+			    <div class="action-buttons">
+					<button class="action-button view-button" 
+					    th:onclick="'location.href=\'/servico/' + ${servico.id} + '/visualizar\''">Visualizar</button>
+					<button class="action-button" 
+					    th:onclick="'location.href=\'/servico/' + ${servico.id} + '/excluir\''">Excluir</button>
+
+			    </div>
+			</div>
+
+ 
+            <div class="button-container">
+                <button th:onclick="'location.href=\'/servico/novo/' + ${id} + '\''">Criar</button>
             </div>
-            <div class="service-card">
-                <h3>Design Gráfico</h3>
-                <p>Desenvolvimento de identidades visuais e materiais gráficos.</p>
-                <div class="action-buttons">
-                    <button class="action-button view-button">Visualizar</button>
-                    <button class="action-button">Excluir</button>
-                </div>
-        
-            </div>
-            <div class="service-card">
-                <h3>Marketing Digital</h3>
-                <p>Estratégias para aumentar a visibilidade online.</p>
-                <div class="action-buttons">
-                    <button class="action-button view-button">Visualizar</button>
-                    <button class="action-button">Excluir</button>
-                </div>
-            </div>
-            <button class="criar">Criar</button>
+            
         </div>
     </div>
 

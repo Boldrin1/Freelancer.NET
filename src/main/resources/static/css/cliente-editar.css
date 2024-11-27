@@ -1,94 +1,12 @@
-/* Estilo para o corpo */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
-    height: 100vh; /* Altura total da tela */
+    height: 100vh;
     display: flex;
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
-    overflow: hidden; /* Impede rolagem da página */
-}
-
-/* Container principal para o formulário */
-.container {
-    max-width: 455px; /* Largura máxima do contêiner */
-    padding: 40px 30px; /* Padding interno */
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-/* Estilo do título */
-.container h1 {
-    font-family: 'Inter';font-size: 36px; /* Tamanho da fonte do título */
-    font-weight: bold;
-    color: #5f3fc9;
-    margin-bottom: 20px; /* Margem inferior para separação */
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para os rótulos do formulário */
-.form-label {
-    font-weight: 600;
-    font-family: 'Inter';font-size: 15px;
-    color: #555;
-    margin-bottom: 8px;
-    display: block;
-    text-align: left; /* Alinhamento à esquerda */
-}
-
-/* Estilos para os campos de entrada */
-.form-control {
-    border-radius: 10px;
-    padding: 12px;
-    border: 1px solid #ced4da;
-    font-family: 'Inter';font-size: 15px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    width: 100%; /* Largura total do campo */
-    margin-bottom: 15px; /* Margem inferior */
-}
-
-/* Estilos para o foco nos campos de entrada */
-.form-control:focus {
-    border-color: #5f3fc9;
-    box-shadow: 0 0 10px rgba(95, 63, 201, 0.4);
-    outline: none;
-}
-
-/* Estilo para o botão */
-.btn {
-    background-color: #5f3fc9;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    font-family: 'Inter';font-size: 18px;
-    font-weight: bold;
-    width: 100%; /* Largura total do botão */
-    color: #fff;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
-}
-
-/* Estilo do botão ao passar o mouse */
-.btn:hover {
-    background-color: #4b2ea6;
-    box-shadow: 0 10px 30px rgba(75, 46, 166, 0.4);
-}
-
-/* Estilos para as formas de fundo */
-.background-shapes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .top-right-amoeba, .bottom-left-amoeba {
@@ -101,40 +19,125 @@ body {
 .top-right-amoeba {
     top: -90px;
     right: -90px;
-    width: 580px;
-    height: 580px;
+    width: 400px; /* Reduzido */
+    height: 430px; /* Reduzido */
 }
 
 .bottom-left-amoeba {
     bottom: -100px;
     left: -100px;
-    width: 400px;
-    height: 400px;
+    width: 350px; /* Reduzido */
+    height: 350px; /* Reduzido */
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 600px) {
+.container {
+    max-width: 1200px;
+    width: 90%;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.container h1 {
+    font-size: 36px; /* Reduzido */
+    font-weight: bold;
+    color: #5b38d1;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-label {
+    font-size: 18px; /* Reduzido */
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px; /* Reduzido */
+    font-size: 16px; /* Reduzido */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+
+.form-buttons {
+display: flex;
+justify-content: center;
+gap: 20px; /* Espaçamento entre os botões */
+margin-top: 25px;
+}
+
+.btn {
+padding: 12px 20px;
+background-color: #5f3fc9;
+color: white;
+border: none;
+border-radius: 8px;
+font-size: 18px;
+font-weight: bold;
+text-decoration: none;
+text-align: center;
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 0 5px 12px rgba(95, 63, 201, 0.3);
+cursor: pointer;
+}
+
+.btn:hover {
+background-color: #4b2ea6;
+box-shadow: 0 5px 15px rgba(75, 46, 166, 0.4);
+}
+/* Remove o scrolling */
+html, body {
+overflow: hidden;
+height: 100%;
+}
+/* Responsividade */
+@media (max-width: 768px) {
     .container {
-        max-width: 90%; /* Ajusta largura em telas pequenas */
-        padding: 30px 20px; /* Padding reduzido */
+        padding: 25px 20px;
+        max-width: 95%;
     }
-
     .container h1 {
-        font-size: 28px; /* Tamanho de fonte menor para título */
+        font-size: 30px;
     }
-
-    .form-control {
-        padding: 10px; /* Ajusta padding dos inputs */
-        font-size: 14px; /* Tamanho de fonte dos inputs */
-    }
-
     .btn {
-        font-size: 16px; /* Ajusta tamanho da fonte do botão */
-        padding: 10px; /* Reduz padding do botão */
+        padding: 10px 18px;
+        font-size: 16px;
     }
+    .form-label {
+        font-size: 16px;
+    }
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
 
-    .top-right-amoeba, .bottom-left-amoeba {
-        width: 300px; /* Tamanho menor para as formas */
-        height: 300px;
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        max-width: 100%;
+        border-radius: 15px;
+    }
+    .container h1 {
+        font-size: 24px;
+    }
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .form-label {
+        font-size: 14px;
+    }
+    .form-control {
+        padding: 8px;
+        font-size: 12px;
     }
 }

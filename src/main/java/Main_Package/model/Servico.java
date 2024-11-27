@@ -42,6 +42,12 @@ public class Servico {
     	 //return curriculoGuardado
      }
 
+     
+
+	public Servico() {
+	}
+
+
 
 	public Servico(Long id, String titulo, Integer valor, String horas, String descricao, Cliente cliente,
 			AreaDeInteresse area) {

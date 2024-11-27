@@ -1,4 +1,4 @@
-  body {
+body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
@@ -9,6 +9,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 
 /* Cabeçalho fixo contendo logo, título e botão de menu */
 .header {
@@ -105,106 +106,102 @@
     background-color: #ffffff;
 }
         
-        /* Conteúdo principal */
-        .main-content {
-            margin-top: 80px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+.main-content {
+        width: 90%; /* Ocupa 90% da largura da tela */
+        max-width: 1200px; /* Limite máximo para não exceder em telas maiores */
+        margin: 80px auto; /* Centraliza na tela */
+        padding: 20px; /* Adiciona espaçamento interno */
+        box-sizing: border-box; /* Inclui padding dentro do tamanho total */
+    }
+
+    /* Ajusta elementos internos */
+    .service-card {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+        /* Seção de serviços */
+        .services-section {
+            background-color: #ffffff;
+            border-radius: 20px; /* Bordas mais arredondadas */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+            padding: 40px; /* Maior espaçamento interno */
         }
 
-        /* Seção de serviços */
-.services-section {
-    background-color: #ffffff;
-    border-radius: 15px; /* Aumentei o raio para bordas mais arredondadas */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Deixei a sombra mais pronunciada */
-    padding: 30px; /* Aumentei o espaçamento interno */
-}
+        .services-section h2 {
+            margin: 0 0 30px; /* Mais espaçamento abaixo do título */
+            color: #6a1b9a;
+            font-size: 36px; /* Fonte maior */
+        }
 
-.services-section h2 {
-    margin: 0 0 20px; /* Maior espaçamento entre o título e o conteúdo */
-    color: #6a1b9a;
-    font-size: 28px; /* Aumentei o tamanho da fonte */
-}
+        
 
-/* Estilo da lista de serviços */
-.service-card {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 15px; /* Ajustei para ficar consistente com a seção */
-    padding: 20px; /* Aumentei o espaçamento interno */
-    margin-bottom: 20px; /* Maior espaço entre os cartões */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
+        .service-card:hover {
+            transform: translateY(-10px); /* Maior efeito de elevação */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+        }
 
-.service-card:hover {
-    transform: translateY(-7px); /* Aumentei o efeito de elevação */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte ao passar o mouse */
-}
+        .service-card h3 {
+            margin: 0 0 20px; /* Mais espaçamento abaixo do título */
+            color: #000000;
+            font-size: 28px; /* Fonte maior */
+        }
 
-.service-card h3 {
-    margin: 0 0 15px; /* Mais espaçamento abaixo do título */
-    color: #000000;
-    font-size: 22px; /* Fonte maior */
-}
+        .service-card p {
+            margin: 8px 0;
+            color: #555;
+            font-size: 18px; /* Texto maior */
+        }
 
-.service-card p {
-    margin: 5px 0;
-    color: #555;
-    font-size: 16px; /* Texto mais legível */
-}
+        /* Botões */
+        .hire-button {
+            background-color: #9d00ff;
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px; /* Botão maior */
+            border-radius: 10px; /* Mais arredondado */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 18px; /* Texto maior */
+        }
 
-/* Botões */
-.hire-button {
-    background-color: #9d00ff;
-    color: #ffffff;
-    border: none;
-    padding: 12px 20px; /* Botão maior */
-    border-radius: 8px; /* Mais arredondado */
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-size: 16px; /* Texto maior */
-}
+        .hire-button:hover {
+            background-color: #4a0072;
+        }
 
-.hire-button:hover {
-    background-color: #4a0072;
-}
+        .action-buttons {
+            margin-top: 20px; /* Maior espaço entre botões e conteúdo */
+            display: flex;
+            gap: 20px; /* Maior espaço entre botões */
+        }
 
-.action-buttons {
-    margin-top: 15px;
-    display: flex;
-    gap: 15px; /* Maior espaço entre botões */
-}
-
-.action-button {
+        .action-button {
             background-color: #ff0000;
             color: white;
-            padding: 8px 15px;
+            padding: 12px 20px; /* Aumentado */
             cursor: pointer;
-            font-size: 14px;
-            border-radius: 5px;
+            font-size: 16px; /* Texto maior */
+            border-radius: 8px; /* Bordas mais arredondadas */
         }
 
         .view-button {
             background-color: #6a1b9a;
             color: white;
-            padding: 8px 15px;
+            padding: 12px 20px; /* Aumentado */
             cursor: pointer;
-            font-size: 14px;
-            border-radius: 5px;
+            font-size: 16px; /* Texto maior */
+            border-radius: 8px; /* Bordas mais arredondadas */
         }
 
-
-.criar {
-    background-color: #6a1b9a;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px; /* Texto maior */
-    border-radius: 8px;
-    cursor: pointer;
-}
-
+        .criar {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 15px 25px; /* Botão maior */
+            font-size: 18px; /* Texto maior */
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
         .top-right-amoeba, .bottom-left-amoeba {
         transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
@@ -226,6 +223,28 @@
         left: -100px;
         width: 400px;
         height: 400px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end; /* Alinha o botão à direita */
+        margin-top: 20px; /* Adiciona espaçamento acima do botão */
+		
+    }
+
+    .button-container button {
+        padding: 15px 30px; /* Tamanho maior para o botão */
+        background-color: #6a0dad; /* Cor de fundo */
+        color: #fff; /* Cor do texto */
+        border: none;
+        border-radius: 8px; /* Borda arredondada */
+        cursor: pointer;
+        font-size: 18px; /* Texto maior */
+        font-weight: bold; /* Texto em negrito */
+    }
+
+    .button-container button:hover {
+        background-color: #540a8f; /* Cor ao passar o mouse */
     }
 
       /* Remove o scrolling */
