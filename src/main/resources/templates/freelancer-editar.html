@@ -1,35 +1,71 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Freelancer</title>
-	<link rel="stylesheet" href="/css/freelancer-editar.css">
+    <title>Editar Perfil do Freelancer</title>
+    <link rel="stylesheet" href="/css/freelancer-editar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+ 
+
     <div class="background-shapes">
         <div class="top-right-amoeba"></div>
         <div class="bottom-left-amoeba"></div>
     </div>
-    <div class="edit-freelancer">
-        <h2>Editar Perfil do Freelancer</h2>
-        <form th:action="@{/editar-freelancer/{id}(id=${freelancer.id})}" method="post">
-            <input type="text" th:value="${freelancer.email}" name="email" placeholder="Email" required>
-			<input type="text" th:value="${freelancer.senha}" name="senha" placeholder="senha" required>
-			<input type="text" th:value="${#dates.format(freelancer.dataNascimento, 'dd-MM-yyyy')}" name="dataNascimento" placeholder="Data de Nascimento" required>
-			<input type="text" th:value="${freelancer.telefone}" name="telefone" placeholder="Telefone" required>			
-			
-			<div>
-			  <label class="form-label" for="sexo">Sexo:</label>
-			    <select class="form-control" id="sexo" name="sexo" required>
-			        <option value="">Selecione</option>
-			        <option value="masculino">Masculino</option>
-			        <option value="feminino">Feminino</option>
-			    </select>
-			</div>
+    <div class="container">
+        <h1 class="profile-title">Editar Perfil do Freelancer</h1>
+        <form th:action="@{/usuario/freelancer/perfil/editar/salvar/{id}(id=${freelancer.id})}" method="post" th:method="put">
+            <div class="details">
+                <!-- Nome -->
+                <div class="details-item">
+                    <i class="fas fa-user"></i>
+                    <label for="nome"><strong>Nome:</strong></label>
+                    <input type="text" id="nome" name="nome" class="input-field" 
+                        th:value="${freelancer.nome}" required>
+                </div>
 
-            <button type="submit" class="btn">Salvar Alterações</button>
+
+                <!-- Email -->
+                <div class="details-item">
+                    <i class="fas fa-envelope"></i>
+                    <label for="email"><strong>Email:</strong></label>
+                    <input type="email" id="email" name="email" class="input-field" 
+                        th:value="${freelancer.email}" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="details-item">
+                    <i class="fas fa-lock"></i>
+                    <label for="senha"><strong>Senha:</strong></label>
+                    <input type="password" id="senha" name="senha" class="input-field" 
+                        th:value="${freelancer.senha}" required>
+                </div>
+
+                <!-- Telefone -->
+                <div class="details-item">
+                    <i class="fas fa-phone"></i>
+                    <label for="telefone"><strong>Telefone:</strong></label>
+                    <input type="text" id="telefone" name="telefone" class="input-field" 
+                        th:value="${freelancer.telefone}" required>
+                </div>
+
+
+            <!-- Botões -->
+            <div class="button-group">
+				<button type="button" class="btn" onclick="window.history.back();">Voltar</button>
+                <button type="submit" class="btn">Salvar Alterações</button>
+            </div>
         </form>
     </div>
+
+    <script>
+        // Função para alternar a visibilidade da sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
 </body>
 </html>

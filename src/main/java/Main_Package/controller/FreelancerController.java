@@ -136,9 +136,14 @@ public class FreelancerController {
 	@GetMapping("/perfil/editar/{id}")
 	public String editarFreelancer(@PathVariable Long id,Model model){
 		Freelancer freelancer = freelancerService.mostraFreelancer(id);
-	 	freelancerService.UpdateFreelancer(id);
 	 	model.addAttribute("freelancer", freelancer);
 	 	return "freelancer-editar";
+	}
+	
+	@PostMapping("/perfil/editar/salvar/{id}")
+	public String salvarEditar(@PathVariable Long id, @ModelAttribute Freelancer freelancerAtualizado ) {
+		freelancerService.UpdateFreelancer(id,freelancerAtualizado);
+		return "redirect:/usuario/freelancer/perfil/" + freelancerAtualizado.getId();
 	}
 	
 
