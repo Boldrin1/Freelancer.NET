@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inbox - Cliente</title>
-    <link rel="stylesheet" href="/css/InboxCliente.css">
+    <link rel="stylesheet" href="/css/cliente-inbox.css">
 </head>
 <body>
     <div class="header">
@@ -17,7 +17,7 @@
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
@@ -35,10 +35,16 @@
     
     <h1 class="page-title">Veja as suas propostas</h1>
 
-    <div class="proposals-section">
+ <!-- Verifica se a lista de propostas está vazia -->
+    <div th:if="${propostas.isEmpty()}">
+        <p>Nenhum curriculo foi enviado para voce.</p>
+    </div>
+    
+    <!-- Itera sobre a lista de propostas -->
+    <div th:each="proposta : ${propostas}">
         <div class="proposal-card">
             <div class="action-container">
-              <!--  <h2 th:text="${proposta.freelancer.nome}">(Nome do Freelancer)</h2>-->
+                <h3 th:text="${proposta.freelancer.nome}">Nome do Freelancer</h3>
                 <a th:href="@{/proposta/{id}(id=${proposta.id})}" class="btn-view">Ver Proposta</a>
             </div>
         </div>

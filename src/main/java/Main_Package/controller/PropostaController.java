@@ -46,8 +46,9 @@ public class PropostaController {
 	    @GetMapping("/cliente/{clienteId}")
 	    public String listarPropostasCliente(@PathVariable Long clienteId, Model model) {
 	        List<Proposta> propostas = propostaService.listarPropostasCliente(clienteId);
-	        model.addAttribute("propostas", propostas); // Adiciona as propostas ao modelo
-	        return "cliente-inbox"; // Nome do template HTML para a inbox do cliente
+	        model.addAttribute("propostas", propostas); // Passa a lista de propostas (vazia ou não) para o modelo
+	        return "cliente-inbox";
 	    }
+
 
 	}
