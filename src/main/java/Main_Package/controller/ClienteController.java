@@ -93,10 +93,8 @@ public class ClienteController {
 	
 	@GetMapping("/servicos/{id}")
 	public String listServico(@PathVariable Long id, Model model){
-		List<Servico> servico = servicoService.listarServico();	
-		Cliente cliente = clienteService.mostrarCliente(id);
-		model.addAttribute("servico", servico);
-		model.addAttribute("clienteId", cliente);
+	    List<Servico> servicos = servicoService.listarPorCliente(id);
+		model.addAttribute("servicos", servicos);
 		return "cliente-servicos";
 	}
 	

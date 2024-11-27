@@ -27,6 +27,11 @@ public class ServicoService {
 		return servicoRepository.findAll();
 	}
 	
+	public List<Servico> listarPorCliente(Long clienteId) {
+	    return servicoRepository.findByClienteId(clienteId);
+	}
+
+	
 	
 	public void deletarServico(Long id) {
 		servicoRepository.deleteById(id);
