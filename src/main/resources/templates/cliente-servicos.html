@@ -18,7 +18,7 @@
 
 	<div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="sidebar-logo">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
@@ -34,8 +34,9 @@
 			<div class="service-card" th:each="servico : ${servicos}">
 			    <h3 th:text="${servico.titulo}"></h3>
 			    <div class="action-buttons">
-					<button class="action-button view-button" 
-					    th:onclick="'location.href=\'/servico/' + ${servico.id} + '/visualizar\''">Visualizar</button>
+					<a class="action-button view-button" 
+					   th:href="@{/servico/cliente/visualizar/{id}(id=${servico.id})}">Visualizar</a>
+
 					<button class="action-button" 
 					    th:onclick="'location.href=\'/servico/' + ${servico.id} + '/excluir\''">Excluir</button>
 

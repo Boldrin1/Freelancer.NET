@@ -26,13 +26,26 @@ public class ServiceController {
 	private ServicoService servicoService;
 
 	
-	@GetMapping("/vizualizar/{id}")
+	@GetMapping("/freelancer/visualizar/{id}")
 	public String vizualizarServico(@PathVariable Long id,Model model) {
 	Optional<Servico> servico = servicoService.encontrarServico(id);
-	model.addAttribute("servico", servico);
-		
+	model.addAttribute("servico", servico);	
 	return "freelancer-Visu-Servico";
 	}
+	
+	@GetMapping("/cliente/visualizar/{id}")
+	public String vizualizarClienteServico(@PathVariable Long id, Model model) {
+	    Optional<Servico> servicoOptional = servicoService.encontrarServico(id);
+	    
+	    if (servicoOptional.isPresent()) {
+	        Servico servico = servicoOptional.get();
+	        model.addAttribute("servico", servico); 
+	        return "cliente-vizu-servico";
+	    } else {
+	        return "redirect:/erro"; 
+	    }
+	}
+
 	
 	@GetMapping("/novo/{id}")
 	public String novoServico(@PathVariable Long id, Model model) {

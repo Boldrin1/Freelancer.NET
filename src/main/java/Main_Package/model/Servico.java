@@ -1,8 +1,6 @@
 package Main_Package.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +17,7 @@ public class Servico {
 	 private Long id;
 	 
 	 private String titulo;
-     private Integer  valor;
+     private Integer valor;
      private String horas;
      private String descricao;
 

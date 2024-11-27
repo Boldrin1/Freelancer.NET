@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/css/VisualizarCliente.css">
+	<link rel="stylesheet" href="/css/cliente-vizu-servico.css">
     <title>Visualizar Serviço Do Freelancer</title>
 </head>
 <body>
@@ -12,19 +12,20 @@
     <div class="bottom-left-amoeba"></div>
 
     <div class="container">
-        <h1>(Título do Serviço)</h1>
+        <h1 th:text="${servico.titulo}">(Título do Serviço)</h1>
         <div class="row">
-            <label for="valor">Valor:</label>
-            <input type="text" id="valor" value="R$ 2.000,00" readonly>
+			<label for="valor">Valor:</label>
+			<input type="text" id="valor" th:value="${servico.valor}" readonly>
         </div>
         <div class="row">
             <label for="duracao">Dias ou Horas:</label>
-            <input type="text" id="duracao" value="15 dias" readonly>
+            <input type="text" id="duracao" th:value="${servico.horas}" readonly>
         </div>
-        <div class="description">
-            <label for="descricao">Descrição:</label>
-            <textarea id="descricao" readonly>Criação de um site responsivo e otimizado, com integração de funcionalidades modernas e design profissional.</textarea>
-        </div>
+		<div class="description">
+		    <label for="descricao">Descrição:</label>
+		    <textarea id="descricao" readonly style="color:black;" th:text="${servico.descricao}"></textarea>
+		</div>
+
         <button class="back-button" onclick="window.history.back();">Voltar</button>
     </div>
 </body>
