@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil do Cliente</title>
-    <link rel="stylesheet" href="/css/cliente-perfil.css">
+    <link rel="stylesheet" href="/css/cliente-editar.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -31,7 +31,7 @@
     </div>
     <div class="container">
         <h1 class="profile-title">Editar Perfil</h1>
-        <form th:action="@{/cliente/salvar}" th:method="post">
+        <form th:action="@{/usuario/cliente/perfil/editar/salvar/{id}(id=${cliente.id})}" method="post" th:method="put">
             <div class="details">
                 <!-- Nome -->
                 <div class="details-item">
@@ -41,7 +41,7 @@
                         th:value="${cliente.nome}" required>
                 </div>
 
-
+          
                 <!-- Email -->
                 <div class="details-item">
                     <i class="fas fa-envelope"></i>
@@ -62,14 +62,15 @@
                 <div class="details-item">
                     <i class="fas fa-phone"></i>
                     <label for="telefone"><strong>Telefone:</strong></label>
-                    <input  type="text" id="telefone" name="telefone" class="input-field" 
+                    <input type="text" id="telefone" name="telefone" class="input-field" 
                         th:value="${cliente.telefone}" required>
                 </div>
 
+
             <!-- Botões -->
             <div class="button-group">
+            <button type="button" class="btn" onclick="window.history.back();">Voltar</button>
                 <button type="submit" class="btn">Salvar Alterações</button>
-                <a th:href="@{/cliente/perfil}" class="btn">Voltar</a>
             </div>
         </form>
     </div>
