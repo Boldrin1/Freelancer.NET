@@ -41,13 +41,6 @@
                         th:value="${cliente.nome}" required>
                 </div>
 
-                <!-- CPF -->
-                <div class="details-item">
-                    <i class="fas fa-id-card"></i>
-                    <label for="cpf"><strong>CPF:</strong></label>
-                    <input type="text" id="cpf" name="cpf" class="input-field" 
-                        th:value="${cliente.cpf}" required>
-                </div>
 
                 <!-- Email -->
                 <div class="details-item">
@@ -65,30 +58,12 @@
                         th:value="${cliente.senha}" required>
                 </div>
 
-                <!-- Data de Nascimento -->
-                <div class="details-item">
-                    <i class="fas fa-calendar"></i>
-                    <label for="datadenascimento"><strong>Data de Nascimento:</strong></label>
-                    <input type="date" id="datadenascimento" name="datadenascimento" 
-                        class="input-field" th:value="${cliente.datadenascimento}" required>
-                </div>
-
                 <!-- Telefone -->
                 <div class="details-item">
                     <i class="fas fa-phone"></i>
                     <label for="telefone"><strong>Telefone:</strong></label>
-                    <input type="text" id="telefone" name="telefone" class="input-field" 
+                    <input  type="text" id="telefone" name="telefone" class="input-field" 
                         th:value="${cliente.telefone}" required>
-                </div>
-
-                <div class="details-item">
-                    <i class="fas fa-venus-mars"></i>
-                    <label for="sexo"><strong>Sexo:</strong></label>
-                    <select id="sexo" name="sexo" class="input-field" required>
-                        <option th:selected="${cliente.sexo == 'Masculino'}" value="Masculino">Masculino</option>
-                        <option th:selected="${cliente.sexo == 'Feminino'}" value="Feminino">Feminino</option>
-                        <option th:selected="${cliente.sexo == 'Outro'}" value="Outro">Outro</option>
-                    </select>
                 </div>
 
             <!-- Botões -->
