@@ -51,11 +51,6 @@ public class ServiceController {
 	}
 
 
-
-
-
-
-
 	
 	@GetMapping("/cliente/visualizar/{id}")
 	public String vizualizarClienteServico(@PathVariable Long id, Model model) {

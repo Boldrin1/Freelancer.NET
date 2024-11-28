@@ -21,16 +21,9 @@ public class Servico {
      private String horas;
      private String descricao;
 
-     
      @ManyToOne
-     @JoinColumn(name = "cliente_id" , nullable = false)
-     private Cliente cliente;
-
-
-     /*
-     // Um serviço pode ter vários curriculos enviados por freelancers
-     @OneToMany(mappedBy = "servico")
-     private List<Curriculo> curriculos;*/
+     @JoinColumn(name = "cliente_id", nullable = false)
+     private Cliente cliente;  
      
      
      public void receberCurriculo(Curriculo curriculo) {

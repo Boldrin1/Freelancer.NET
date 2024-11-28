@@ -33,22 +33,24 @@
         <div class="bottom-left-amoeba"></div>
     </div>
     
-    <h1 class="page-title">Veja as suas propostas</h1>
+	<h1 class="page-title">Veja as suas propostas</h1>
 
- <!-- Verifica se a lista de propostas está vazia -->
-    <div th:if="${propostas.isEmpty()}">
-        <p>Nenhum curriculo foi enviado para voce.</p>
-    </div>
-    
-    <!-- Itera sobre a lista de propostas -->
-    <div th:each="proposta : ${propostas}">
-        <div class="proposal-card">
-            <div class="action-container">
-                <h3 th:text="${proposta.freelancer.nome}">Nome do Freelancer</h3>
-                <a th:href="@{/proposta/{id}(id=${proposta.id})}" class="btn-view">Ver Proposta</a>
-            </div>
-        </div>
-    </div>
+	<!-- Verifica se a lista de propostas está vazia -->
+	<div th:if="${servicosCurriculos.isEmpty()}">
+	    <p>Nenhum currículo foi enviado para você.</p>
+	</div>
+
+	<!-- Itera sobre a lista de ServicoCurriculo -->
+	<div th:each="servicoCurriculo : ${servicosCurriculos}">
+	    <div class="curriculos-card">
+	        <div class="action-container">
+	            <h3 th:text="${servicoCurriculo.curriculo.freelancer.nome}">Nome do Freelancer</h3>
+	            <a th:href="@{/inbox/{id}(id=${servicoCurriculo.id})}" class="btn-view">Ver Curriculo</a>
+	        </div>
+	    </div>
+	</div>
+
+
 
     <script>
         function toggleSidebar() {

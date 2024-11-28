@@ -1,10 +1,8 @@
 package Main_Package.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,16 +19,16 @@ import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Proposta;
 import Main_Package.model.Servico;
+import Main_Package.model.ServicoCurriculo;
 import Main_Package.repository.ClienteRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.repository.PropostaRepository;
+import Main_Package.repository.ServicoCurriculoRepository;
 import Main_Package.service.ClienteService;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.ServicoService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-
-
 
 
 @Controller
@@ -55,6 +53,9 @@ public class ClienteController {
 	
 	@Autowired
 	private PropostaRepository propostaRepository;
+	
+	@Autowired
+	private ServicoCurriculoRepository servicoCurriculoRepository;
 	
 	@GetMapping("/{id}")
 	public String paginaInicial_Cliente(@PathVariable Long id, Model model, Curriculo curriculo) {
@@ -172,6 +173,24 @@ public class ClienteController {
 		return "redirect:/create-count";
 	}
 	
+	
+	
+	
+	@GetMapping("/inbox/{id}")
+	public String visualizarInbox(@PathVariable Long id, Model model) {
+	    // Busca os ServicoCurriculo relacionados ao Cliente através do id do Servico
+	    List<ServicoCurriculo> servicosCurriculos = servicoCurriculoRepository.findByServico_Cliente_Id(id);
+
+	    if (servicosCurriculos.isEmpty()) {
+	        model.addAttribute("mensagem", "Nenhum currículo foi enviado para você.");
+	    } else {
+	        model.addAttribute("servicosCurriculos", servicosCurriculos);
+	    }
+
+	    return "cliente-inbox";  // Página onde os currículos serão listados
+	}
+
+
 
 }
 

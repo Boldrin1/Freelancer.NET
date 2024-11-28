@@ -43,12 +43,7 @@ public class PropostaController {
 	        return "freelancer-inbox";
 	    }
 
-	    @GetMapping("/cliente/{clienteId}")
-	    public String listarPropostasCliente(@PathVariable Long clienteId, Model model) {
-	        List<Proposta> propostas = propostaService.listarPropostasCliente(clienteId);
-	        model.addAttribute("propostas", propostas); // Passa a lista de propostas (vazia ou não) para o modelo
-	        return "cliente-inbox";
-	    }
+
 
 
 	}
