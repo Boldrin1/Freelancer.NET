@@ -2,7 +2,6 @@ package Main_Package.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import Main_Package.model.Cliente;
 import Main_Package.model.Proposta;
 import Main_Package.service.ClienteService;
@@ -25,14 +26,21 @@ public class PropostaController {
 	    @Autowired
 	    private ClienteService clienteService;
 
-	    // Endpoint para enviar proposta
-	    @PostMapping("/enviar")
-	    public ResponseEntity<Proposta> enviarProposta(@RequestParam Long clienteId,
-	                                                   @RequestParam Long freelancerId,
-	                                                   @RequestParam String conteudoProposta) {
-	        Proposta proposta = propostaService.enviarProposta(clienteId, freelancerId, conteudoProposta);
-	        return ResponseEntity.ok(proposta);
+	    @PostMapping("/enviar/{clienteId}/{freelancerId}")
+	    public String enviarProposta(@PathVariable Long clienteId,
+	                                 @PathVariable Long freelancerId,
+	                                 @RequestParam String propostaText,
+	                                 RedirectAttributes redirectAttributes) {
+	        Proposta proposta = propostaService.enviarProposta(clienteId, freelancerId, propostaText);
+
+	        // Mensagem de sucesso para a próxima página (opcional)
+	        redirectAttributes.addFlashAttribute("mensagem", "Proposta enviada com sucesso!");
+
+	        return "redirect:/usuario/cliente/" + clienteId;
 	    }
+
+	    
+	    
 
 	    @GetMapping("/freelancer/{id}")
 	    public String listarPropostasFreelancer(@PathVariable Long id, Model model,Long clienteId) {

@@ -12,62 +12,24 @@
 	
     <div class="container">
         <h1>Enviar Proposta</h1>
+		<form th:action="@{/proposta/enviar/{clienteId}/{freelancerId}(clienteId=${cliente.id}, freelancerId=${freelancer.id})}" method="post">
         <div class="description">
             <label for="proposta">Escreva uma proposta para o freelancer:</label>
-            <textarea id="proposta" placeholder="Descreva aqui sua proposta..."></textarea>
+			<textarea name="propostaText" placeholder="Digite sua proposta" required></textarea>
         </div>
+		
+		
+		
         <div class="button-group">
             <button onclick="window.history.back();">Voltar</button>
-            <button onclick="verPerfil();">Ver Perfil</button>
-            <button onclick="enviarProposta();">Enviar</button>
+			
+            <button type="submit">Enviar</button>
+			
         </div>
+		
+		</form>
     </div>
 
-    <script>
-        // Exemplo de funções para os botões
-        function verPerfil() {
-            alert('Redirecionando para o perfil do freelancer...');
-            // Aqui você pode colocar a lógica de redirecionamento
-        }
-
-        function enviarProposta() {
-            const proposta = document.getElementById('proposta').value;
-            if (proposta.trim() === '') {
-                alert('Por favor, escreva uma proposta antes de enviar.');
-                return;
-            }
-            alert('Proposta enviada com sucesso!');
-            // Aqui você pode integrar o envio com backend, por exemplo.
-        }
-        
-        
-      
-        function enviarProposta() {
-            // Obtendo os valores do freelancerId, clienteId e a descrição da proposta
-            var freelancerId = [[$,{freelancerId}]];
-            var clienteId = [[$,{clienteId}]];
-            var descricao = document.getElementById('descricao').value; // assumindo que você tenha um campo de texto com id "descricao"
-
-            fetch(`/seu-endpoint/{freelancerId}/enviar-proposta`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(descricao)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Redireciona para a página do cliente após a proposta ser enviada com sucesso
-                    window.location.href = `/usuario/cliente/home/${clienteId}`;
-                } else {
-                    alert('Erro ao enviar a proposta!');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro ao enviar a proposta!');
-            });
-        }
-    </script>
+  
 </body>
 </html>

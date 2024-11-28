@@ -27,6 +27,7 @@ import Main_Package.repository.PropostaRepository;
 import Main_Package.repository.ServicoCurriculoRepository;
 import Main_Package.service.ClienteService;
 import Main_Package.service.CurriculoService;
+import Main_Package.service.FreelancerService;
 import Main_Package.service.ServicoService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,6 +58,10 @@ public class ClienteController {
 	
 	@Autowired
 	private ServicoCurriculoRepository servicoCurriculoRepository;
+	
+	@Autowired
+	private FreelancerService freelancerService;;
+	
 	
 	   public ClienteController(ServicoCurriculoRepository servicoCurriculoRepository) {
 	        this.servicoCurriculoRepository = servicoCurriculoRepository;
@@ -126,21 +131,19 @@ public class ClienteController {
 	    return "redirect:/usuario/cliente/perfil/" + id; 
 	}
 	
-	
-	@GetMapping("/proposta/enviar/{clienteId}/{curriculoId}")
-	public String enviarProposta(
-	        @PathVariable Long clienteId,
-	        @PathVariable Long curriculoId,
-	        Model model) {
-	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(curriculoId);
+	@GetMapping("/proposta/enviar/{clienteId}/{freelancerId}")
+	public String exibirClienteProposta(@PathVariable Long clienteId,
+	                                    @PathVariable Long freelancerId,
+	                                    Model model) {
 	    Cliente cliente = clienteService.mostrarCliente(clienteId);
-	    
-	    if (curriculo.isEmpty()) {
-	        throw new RuntimeException("Currículo não encontrado!");
+	    Freelancer freelancer = freelancerService.mostraFreelancer(freelancerId);
+
+	    if (cliente == null || freelancer == null) {
+	        throw new RuntimeException("Cliente ou Freelancer não encontrado!");
 	    }
 
-	    model.addAttribute("curriculo", curriculo.get());
 	    model.addAttribute("cliente", cliente);
+	    model.addAttribute("freelancer", freelancer);
 	    return "cliente-proposta";
 	}
 

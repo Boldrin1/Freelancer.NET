@@ -13,6 +13,7 @@
    
     <div class="register-container">
         <h1>Currículo</h1>
+		<form th:action="@{/usuario/cliente/proposta/enviar/{clienteId}/{curriculoId}(clienteId=${cliente.id}, curriculoId=${curriculo.id})}" method="get">
     <label for="inputNome" class="form-label">Nome:</label>
     <input type="text" id="inputNome" name="nome" class="form-control" th:value="${curriculo.nome}" placeholder="Insira seu nome" readonly>
 
