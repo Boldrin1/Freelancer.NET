@@ -104,8 +104,10 @@ public class ClienteController {
 	
 	@GetMapping("/servicos/{id}")
 	public String listServico(@PathVariable Long id, Model model){
+		Cliente cliente = clienteService.mostrarCliente(id);
 	    List<Servico> servicos = servicoService.listarPorCliente(id);
 		model.addAttribute("servicos", servicos);
+		model.addAttribute("cliente", cliente);
 		return "cliente-servicos";
 	}
 	
@@ -187,11 +189,12 @@ public class ClienteController {
 	public String clienteInbox(@PathVariable("id") Long clienteId, Model model) {
 	    // Busca a lista de currículos relacionados ao cliente
 	    List<ServicoCurriculo> servicosCurriculos = servicoCurriculoRepository.findByServico_Cliente_Id(clienteId);
-	    
+	    Cliente cliente = clienteService.mostrarCliente(clienteId);
 	    // Garante que a lista não será nula
 	    if (servicosCurriculos == null) {
 	        servicosCurriculos = new ArrayList<>();
 	    }
+	    model.addAttribute("cliente", cliente);
 
 	    // Adiciona a lista no modelo
 	    model.addAttribute("servicosCurriculos", servicosCurriculos);

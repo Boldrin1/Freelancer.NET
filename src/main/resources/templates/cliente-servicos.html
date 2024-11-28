@@ -11,7 +11,7 @@
     <div class="top-right-amoeba"></div>
     <div class="bottom-left-amoeba"></div>
     <div class="header">
-        <img src="logo.png" alt="Logo" class="logo"> 
+        <img src="/img/logofree.png" alt="Logo" class="logo"> 
         <span class="header-title">Freelancer.NET</span>
         <div class="menu-toggle" onclick="toggleSidebar()" style="font-size: 24px; cursor: pointer;">&#9776;</div>
     </div>
@@ -22,10 +22,15 @@
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
-        <div class="menu-item">Perfil</div>
-        <div class="menu-item">Curriculo</div>
-        <div class="menu-item">Inbox</div>
-        <div class="menu-item">Contratos</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/{id}(id=${cliente.id})}">Inicio</a>
+	    </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/perfil/{id}(id=${cliente.id})}">Perfil</a>
+		</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/inbox/{id}(id=${cliente.id})}">Inbox</a>
+		</div>
     </div>
 
     <div class="main-content">

@@ -24,10 +24,7 @@ public class Proposta {
 	    @JoinColumn(name = "freelancer_id", nullable = false)
 	    private Freelancer freelancer;
 	    
-	    @ManyToOne
-	    @JoinColumn(name = "curriculo_id", nullable = false) // Mapeamento correto para Curriculo
-	    private Curriculo curriculo;
-	    
+
 
 		public Proposta() {
 		}

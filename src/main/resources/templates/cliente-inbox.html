@@ -9,7 +9,7 @@
 <body>
     <div class="header">
         <div class="left-header">
-            <img src="/img/logofree-removebg-preview.png" alt="Logo" class="logo">
+            <img src="/img/logofree.png" alt="Logo" class="logo">
             <span class="header-title">Freelancer.NET</span>
         </div>
         <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
@@ -21,11 +21,15 @@
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
-        <div class="menu-item">Perfil</div>
-        <div class="menu-item">Curriculo</div>
-        <div class="menu-item">Inbox</div>
-        <div class="menu-item">Contratos</div>
-        <div class="menu-item">Informações</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/{id}(id=${cliente.id})}">Inicio</a>
+	    </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/perfil/{id}(id=${cliente.id})}">Perfil</a>
+		</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/servicos/{id}(id=${cliente.id})}">Meus Serviços</a>
+		</div>
     </div>
     <!-- Adicionando os shapes de fundo -->
     <div class="background-shapes">
