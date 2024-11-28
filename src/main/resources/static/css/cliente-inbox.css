@@ -118,8 +118,9 @@
         .page-title {
     text-align: center;
     font-size: 2rem;
-    margin-top: 20px;
+    margin-top: 1%;
     color: #333;
+    padding:2%;
 }
 
 .curriculos-card {

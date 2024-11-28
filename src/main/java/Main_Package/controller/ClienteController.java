@@ -60,7 +60,7 @@ public class ClienteController {
 	private ServicoCurriculoRepository servicoCurriculoRepository;
 	
 	@Autowired
-	private FreelancerService freelancerService;;
+	private FreelancerService freelancerService;
 	
 	
 	   public ClienteController(ServicoCurriculoRepository servicoCurriculoRepository) {
@@ -197,8 +197,22 @@ public class ClienteController {
 	    model.addAttribute("servicosCurriculos", servicosCurriculos);
 	    return "cliente-inbox";
 	}
+	
+	@GetMapping("/inbox/view-curriculo/{servicoId}")
+	public String clienteViewCurriculo(@PathVariable Long servicoId, 
+	                                    @RequestParam Long curriculoId, 
+	                                    Model model) {
+	    // Certifique-se de que o curriculoId está sendo passado
+	    Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(curriculoId);
 
+	    if (curriculo.isPresent()) {
+	        model.addAttribute("curriculo", curriculo.get());
+	    } else {
+	        model.addAttribute("mensagem", "Currículo não encontrado.");
+	    }
 
+	    return "cliente-visu-curriculo-inbox";
+	}
 
 
 }

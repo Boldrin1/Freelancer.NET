@@ -44,7 +44,11 @@
 	    <div class="curriculos-card">
 	        <div class="action-container">
 	            <h3 th:text="${servicoCurriculo.curriculo.freelancer.nome}">Nome do Freelancer</h3>
-	            <a th:href="@{/inbox/{id}(id=${servicoCurriculo.id})}" class="btn-view">Ver Currículo</a>
+	            <a th:href="@{/usuario/cliente/inbox/view-curriculo/{servicoId}(servicoId=${servicoCurriculo.servico.id}, curriculoId=${servicoCurriculo.curriculo.id})}" class="btn-view">
+                     Ver Currículo
+                </a>
+	            
+	            
 	        </div>
 	    </div>
 	</div>
