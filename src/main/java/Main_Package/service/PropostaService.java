@@ -40,7 +40,12 @@ public class PropostaService {
 
 
     public List<Proposta> listarPropostasFreelancer(Long freelancerId) {
-        return propostaRepository.findByFreelancer_Id(freelancerId);
+    	 List<Proposta> propostas = propostaRepository.findByFreelancer_Id(freelancerId);
+    	    propostas.forEach(proposta -> {
+    	        proposta.getCliente().getNome(); 
+    	    });
+
+    	    return propostas;
     }
 
     public List<Proposta> listarPropostasCliente(Long clienteId) {

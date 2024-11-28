@@ -41,13 +41,10 @@ public class PropostaController {
 
 	    
 	    
-
-	    @GetMapping("/freelancer/{id}")
-	    public String listarPropostasFreelancer(@PathVariable Long id, Model model,Long clienteId) {
-	        List<Proposta> propostas = propostaService.listarPropostasFreelancer(id);
-	        Cliente cliente = clienteService.mostrarCliente(clienteId);
-	        model.addAttribute("cliente", cliente);
-	        model.addAttribute("propostas", propostas); 
+	    @GetMapping("/freelancer/{freelancerId}")
+	    public String listarPropostasFreelancer(@PathVariable Long freelancerId, Model model) {
+	        List<Proposta> propostas = propostaService.listarPropostasFreelancer(freelancerId);
+	        model.addAttribute("propostas", propostas);
 	        return "freelancer-inbox";
 	    }
 
