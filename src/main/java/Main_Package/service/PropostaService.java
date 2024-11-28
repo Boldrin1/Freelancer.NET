@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Main_Package.model.Cliente;
+import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
 import Main_Package.model.Proposta;
 import Main_Package.repository.ClienteRepository;
+import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
 import Main_Package.repository.PropostaRepository;
 
@@ -23,6 +25,9 @@ public class PropostaService {
 	
 	@Autowired
 	private PropostaRepository propostaRepository;
+	
+	@Autowired
+	private CurriculoRepository curriculoRepository;
 
 	public Proposta enviarProposta(Long clienteId, Long freelancerId, String propostaText) {
 	    Cliente cliente = clienteRepository.findById(clienteId)
@@ -30,13 +35,18 @@ public class PropostaService {
 	    Freelancer freelancer = freelancerRepository.findById(freelancerId)
 	            .orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
 
+	    Curriculo curriculo = curriculoRepository.findByFreelancerId(freelancerId)
+	            .orElseThrow(() -> new RuntimeException("Currículo não encontrado"));
+
 	    Proposta proposta = new Proposta();
-	    proposta.setPropostaText(propostaText);
 	    proposta.setCliente(cliente);
 	    proposta.setFreelancer(freelancer);
+	    proposta.setCurriculo(curriculo); // Preencha o campo `curriculo`
+	    proposta.setPropostaText(propostaText);
 
 	    return propostaRepository.save(proposta);
 	}
+
 
 
     public List<Proposta> listarPropostasFreelancer(Long freelancerId) {

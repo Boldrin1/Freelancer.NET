@@ -24,16 +24,21 @@ public class Proposta {
 	    @JoinColumn(name = "freelancer_id", nullable = false)
 	    private Freelancer freelancer;
 	    
+	    @ManyToOne
+	    @JoinColumn(name = "curriculo_id", nullable = false) // Mapeamento correto para Curriculo
+	    private Curriculo curriculo;
+	    
 
 		public Proposta() {
 		}
 
 
-		public Proposta(Long id, String propostaText, Cliente cliente, Freelancer freelancer) {
+		public Proposta(Long id, String propostaText, Cliente cliente, Freelancer freelancer, Curriculo curriculo) {
 			this.id = id;
 			this.propostaText = propostaText;
 			this.cliente = cliente;
 			this.freelancer = freelancer;
+			this.curriculo = curriculo;
 		}
 
 
@@ -77,6 +82,17 @@ public class Proposta {
 		}
 
 
+		public Curriculo getCurriculo() {
+			return curriculo;
+		}
+
+
+		public void setCurriculo(Curriculo curriculo) {
+			this.curriculo = curriculo;
+		}
+
+
+		
 			
 	}
 
