@@ -139,7 +139,6 @@ public class FreelancerController {
 	@GetMapping("/perfil/{id}")
 	public String mostrarPerfil(@PathVariable Long id,Model model){
 		Optional<Curriculo> curriculo = curriculoService.mostraCurriculo(id);
-		System.out.println("ID do Currículo recebido: " + curriculo.get().getId());
 
 
 		Freelancer freelancer = freelancerService.mostraFreelancer(id);

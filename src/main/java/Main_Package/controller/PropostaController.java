@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import Main_Package.model.Freelancer;
 import Main_Package.model.Proposta;
-import Main_Package.repository.PropostaRepository;
+import Main_Package.service.FreelancerService;
 import Main_Package.service.PropostaService;
 
 @Controller
@@ -21,9 +23,8 @@ public class PropostaController {
 	    @Autowired
 	    private PropostaService propostaService;
 	    
-	    @Autowired
-	    private PropostaRepository propostaRepository;
-	    
+	    @Autowired 
+	    private FreelancerService freelancerService;
 
 	    @PostMapping("/enviar/{clienteId}/{freelancerId}")
 	    public String enviarProposta(@PathVariable Long clienteId,
@@ -42,9 +43,10 @@ public class PropostaController {
 	    
 	    @GetMapping("/freelancer/{freelancerId}")
 	    public String listarPropostasFreelancer(@PathVariable Long freelancerId, Model model) {
-	    	System.out.println("Freelancer ID recebido: " + freelancerId);
+	    	Freelancer freelancer = freelancerService.mostraFreelancer(freelancerId);
 	        List<Proposta> propostas = propostaService.listarPropostasFreelancer(freelancerId);
 	        model.addAttribute("propostas", propostas);
+	        model.addAttribute("freelancer", freelancer);
 	        return "freelancer-inbox";
 
 
