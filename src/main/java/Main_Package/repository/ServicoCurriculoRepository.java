@@ -17,7 +17,7 @@ public interface ServicoCurriculoRepository extends JpaRepository<ServicoCurricu
 
 	List<ServicoCurriculo> findByClienteId(Long id);
 
-	    List<ServicoCurriculo> findByServico_Cliente_Id(Long clienteId);
+    List<ServicoCurriculo> findByServico_Cliente_Id(Long clienteId);
 	
 
 

@@ -175,7 +175,7 @@ public class FreelancerController {
 
 	    ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
 	    servicoCurriculo.setServico(servico);
-	    servicoCurriculo.setCurriculo(curriculo);
+	    servicoCurriculo.setCurriculoId(curriculo);       /*--------------------------- esse esta retornando null -------------------------------------*/
 
 	    servicoCurriculoRepository.save(servicoCurriculo);
 

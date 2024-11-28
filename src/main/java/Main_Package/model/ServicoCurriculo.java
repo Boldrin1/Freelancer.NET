@@ -14,26 +14,26 @@ public class ServicoCurriculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "servico_id", nullable = false)
-    private Servico servico;
+
+    private Long curriculoId; // ID do currículo enviado (relacionado ao freelancer)
 
     @ManyToOne
-    @JoinColumn(name = "curriculo_id", nullable = false)
-    private Curriculo curriculo;
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Cliente cliente; // Referência ao cliente que publicou o serviço
 
-	public ServicoCurriculo(Long id, Servico servico, Curriculo curriculo) {
-		this.id = id;
-		this.servico = servico;
-		this.curriculo = curriculo;
-	}
+    @ManyToOne
+    @JoinColumn(name = "servico_id", referencedColumnName = "id")
+    private Servico servico; // Referência ao serviço
 	
-	
-
 	public ServicoCurriculo() {
 	}
 
-
+	public ServicoCurriculo(Long id, Long curriculoId, Cliente cliente, Servico servico) {
+		this.id = id;
+		this.curriculoId = curriculoId;
+		this.cliente = cliente;
+		this.servico = servico;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,6 +41,22 @@ public class ServicoCurriculo {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCurriculoId() {
+		return curriculoId;
+	}
+
+	public void setCurriculoId(Long curriculoId) {
+		this.curriculoId = curriculoId;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Servico getServico() {
@@ -51,13 +67,11 @@ public class ServicoCurriculo {
 		this.servico = servico;
 	}
 
-	public Curriculo getCurriculo() {
-		return curriculo;
+	public void setCurriculoId(Curriculo curriculo) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setCurriculo(Curriculo curriculo) {
-		this.curriculo = curriculo;
-	}
-    
-    
+
+	
 }

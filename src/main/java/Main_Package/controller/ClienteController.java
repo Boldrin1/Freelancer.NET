@@ -1,5 +1,6 @@
 package Main_Package.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,10 @@ public class ClienteController {
 	
 	@Autowired
 	private ServicoCurriculoRepository servicoCurriculoRepository;
+	
+	   public ClienteController(ServicoCurriculoRepository servicoCurriculoRepository) {
+	        this.servicoCurriculoRepository = servicoCurriculoRepository;
+	    }
 	
 	@GetMapping("/{id}")
 	public String paginaInicial_Cliente(@PathVariable Long id, Model model, Curriculo curriculo) {
@@ -175,20 +180,21 @@ public class ClienteController {
 	
 	
 	
-	
 	@GetMapping("/inbox/{id}")
-	public String visualizarInbox(@PathVariable Long id, Model model) {
-	    // Busca os ServicoCurriculo relacionados ao Cliente através do id do Servico
-	    List<ServicoCurriculo> servicosCurriculos = servicoCurriculoRepository.findByServico_Cliente_Id(id);
-
-	    if (servicosCurriculos.isEmpty()) {
-	        model.addAttribute("mensagem", "Nenhum currículo foi enviado para você.");
-	    } else {
-	        model.addAttribute("servicosCurriculos", servicosCurriculos);
+	public String clienteInbox(@PathVariable("id") Long clienteId, Model model) {
+	    // Busca a lista de currículos relacionados ao cliente
+	    List<ServicoCurriculo> servicosCurriculos = servicoCurriculoRepository.findByServico_Cliente_Id(clienteId);
+	    
+	    // Garante que a lista não será nula
+	    if (servicosCurriculos == null) {
+	        servicosCurriculos = new ArrayList<>();
 	    }
 
-	    return "cliente-inbox";  // Página onde os currículos serão listados
+	    // Adiciona a lista no modelo
+	    model.addAttribute("servicosCurriculos", servicosCurriculos);
+	    return "cliente-inbox";
 	}
+
 
 
 
