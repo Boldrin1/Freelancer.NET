@@ -175,12 +175,11 @@ public class FreelancerController {
 
 	    ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
 	    servicoCurriculo.setServico(servico);
-	    servicoCurriculo.setCurriculoId(curriculo);       /*--------------------------- esse esta retornando null -------------------------------------*/
-
+	    servicoCurriculo.setCurriculo(curriculo);       
 	    servicoCurriculoRepository.save(servicoCurriculo);
 
 	    redirectAttributes.addFlashAttribute("success", "Currículo enviado com sucesso!");
-	    return "redirect:/freelancer/visualizar/" + servicoId;
+	    return "redirect:/usuario/freelancer/" + freelancerId;
 	}
 
 

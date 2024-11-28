@@ -14,64 +14,71 @@ public class ServicoCurriculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private Long curriculoId; // ID do currículo enviado (relacionado ao freelancer)
-
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente cliente; // Referência ao cliente que publicou o serviço
-
-    @ManyToOne
-    @JoinColumn(name = "servico_id", referencedColumnName = "id")
-    private Servico servico; // Referência ao serviço
-	
+    
 	public ServicoCurriculo() {
 	}
 
-	public ServicoCurriculo(Long id, Long curriculoId, Cliente cliente, Servico servico) {
-		this.id = id;
-		this.curriculoId = curriculoId;
-		this.cliente = cliente;
-		this.servico = servico;
-	}
+	private Long clienteId;
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	@ManyToOne
+	    @JoinColumn(name = "servico_id")
+	    private Servico servico;
 
-	public Long getCurriculoId() {
-		return curriculoId;
-	}
+	    @ManyToOne
+	    @JoinColumn(name = "curriculo_id")
+	    private Curriculo curriculo;
 
-	public void setCurriculoId(Long curriculoId) {
-		this.curriculoId = curriculoId;
-	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+		public ServicoCurriculo(Long id, Long clienteId, Servico servico, Curriculo curriculo) {
+			this.id = id;
+			this.clienteId = clienteId;
+			this.servico = servico;
+			this.curriculo = curriculo;
+		}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
-	public Servico getServico() {
-		return servico;
-	}
+		public Long getId() {
+			return id;
+		}
 
-	public void setServico(Servico servico) {
-		this.servico = servico;
-	}
 
-	public void setCurriculoId(Curriculo curriculo) {
-		// TODO Auto-generated method stub
-		
-	}
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+
+		public Long getClienteId() {
+			return clienteId;
+		}
+
+
+		public void setClienteId(Long clienteId) {
+			this.clienteId = clienteId;
+		}
+
+
+		public Servico getServico() {
+			return servico;
+		}
+
+
+		public void setServico(Servico servico) {
+			this.servico = servico;
+		}
+
+
+		public Curriculo getCurriculo() {
+			return curriculo;
+		}
+
+
+		public void setCurriculo(Curriculo curriculo) {
+			this.curriculo = curriculo;
+		}
 
 
 	
-}
+	
+	}
+	
