@@ -14,14 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import Main_Package.model.AreaDeInteresse;
+import Main_Package.model.Cliente;
 import Main_Package.model.Curriculo;
 import Main_Package.model.Freelancer;
+import Main_Package.model.Proposta;
 import Main_Package.model.Servico;
 import Main_Package.model.ServicoCurriculo;
 import Main_Package.repository.CurriculoRepository;
 import Main_Package.repository.FreelancerRepository;
+import Main_Package.repository.PropostaRepository;
 import Main_Package.repository.ServicoCurriculoRepository;
 import Main_Package.repository.ServicoRepository;
+import Main_Package.service.ClienteService;
 import Main_Package.service.CurriculoService;
 import Main_Package.service.FreelancerService;
 import Main_Package.service.ServicoService;
@@ -50,6 +54,12 @@ public class FreelancerController {
     
     @Autowired
     private ServicoRepository servicoRepository;
+    
+	@Autowired
+	private PropostaRepository propostaRepository;
+	
+	@Autowired
+	private ClienteService clienteService;
     
     
     
@@ -181,7 +191,18 @@ public class FreelancerController {
 	    redirectAttributes.addFlashAttribute("success", "Currículo enviado com sucesso!");
 	    return "redirect:/usuario/freelancer/" + freelancerId;
 	}
-
+	
+	
+	@GetMapping("/inbox/view-proposta/{propostaId}")
+	public String freelancerViewCurriculo(@PathVariable Long propostaId,
+	                                      @RequestParam Long clienteId,
+	                                      Model model) {
+	    Cliente cliente = clienteService.mostrarCliente(clienteId);
+	    Optional<Proposta> proposta = propostaRepository.findById(propostaId);
+	    model.addAttribute("cliente", cliente);
+	    model.addAttribute("proposta", proposta);
+	    return "freelancer-Visu-Proposta";
+	}
 
 	
 	

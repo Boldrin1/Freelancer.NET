@@ -14,7 +14,33 @@ body {
     flex-direction: column;
     min-height: 100vh;
     padding: 20px;
+    overflow: hidden;
+    overflow-x: hidden;
 }
+
+       .top-right-amoeba, .bottom-left-amoeba {
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.top-right-amoeba {
+    top: -90px;
+    right: -90px;
+    width: 550px;
+    height: 580px;
+}
+
+.bottom-left-amoeba {
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+}
+
+
 
 /* Estilo do Contêiner */
 .container {

@@ -213,7 +213,7 @@ public class ClienteController {
 
 	    return "cliente-visu-curriculo-inbox";
 	}
-
+	
 
 }
 

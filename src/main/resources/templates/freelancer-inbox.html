@@ -36,7 +36,9 @@
 	<div class="proposal-card" th:each="proposta : ${propostas}">
 	    <div class="action-container">
 	        <h2 th:text="${proposta.cliente != null ? proposta.cliente.nome : 'Cliente não encontrado'}"></h2> 
-	        <a th:href="@{/proposta/{id}(id=${proposta.id})}" class="btn-view">Ver Proposta</a>
+	         <a th:href="@{/usuario/freelancer/inbox/view-proposta/{propostaId}(propostaId=${proposta.id}, clienteId=${proposta.cliente.id})}"
+   class="btn-view">Ver Proposta</a>
+	         
 	    </div>
 	</div>
 

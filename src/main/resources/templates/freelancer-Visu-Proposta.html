@@ -7,14 +7,20 @@
 <link rel="stylesheet" href="/css/Freelancer-Visu-Proposta.css"></head>
 <body>
     <div class="container">
+    
+        <div class="background-shapes">
+            <div class="top-right-amoeba"></div>
+            <div class="bottom-left-amoeba"></div>
+        </div>
+    
         <div class="card">
-            <h2>Proposta do(a) (Nome do Cliente)</h2>
+            <h2 th:text="${cliente.nome}"></h2>
             <form>
                 <label for="proposta">Proposta do Cliente:</label>
-                <textarea id="proposta" rows="10" disabled>Aqui estará a proposta detalhada do cliente para o freelancer avaliar.</textarea>
+                <textarea id="proposta" th:text="${proposta.propostaText}" rows="10" disabled></textarea>
 
                 <div class="button-group">
-                    <button type="button" class="btn voltar" onclick="window.location.href='servico.html'">Voltar</button>
+                    <button type="button" class="btn voltar" onclick="window.history.back();">Voltar</button>
                 </div>
             </form>
         </div>

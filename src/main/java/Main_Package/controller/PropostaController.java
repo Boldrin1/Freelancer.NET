@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import Main_Package.model.Cliente;
 import Main_Package.model.Proposta;
-import Main_Package.service.ClienteService;
 import Main_Package.service.PropostaService;
 
 @Controller
@@ -23,8 +20,6 @@ public class PropostaController {
 	    @Autowired
 	    private PropostaService propostaService;
 	    
-	    @Autowired
-	    private ClienteService clienteService;
 
 	    @PostMapping("/enviar/{clienteId}/{freelancerId}")
 	    public String enviarProposta(@PathVariable Long clienteId,
