@@ -203,7 +203,8 @@ public class FreelancerController {
 	                                      @RequestParam Long clienteId,
 	                                      Model model) {
 	    Cliente cliente = clienteService.mostrarCliente(clienteId);
-	    Optional<Proposta> proposta = propostaRepository.findById(propostaId);
+	    Proposta proposta = propostaRepository.findById(propostaId)
+	    		.orElseThrow(() -> new RuntimeException("Freelancer não encontrado"));
 	    model.addAttribute("cliente", cliente);
 	    model.addAttribute("proposta", proposta);
 	    return "freelancer-Visu-Proposta";

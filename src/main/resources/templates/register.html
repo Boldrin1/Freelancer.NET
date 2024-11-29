@@ -119,11 +119,7 @@ emailInput.addEventListener('blur', () => {
                 emailMessage.textContent = ''; // Limpa a mensagem se o e-mail não existe
             }
         })
-        .catch(error => {
-            console.error('Erro ao verificar o e-mail:', error);
-            emailMessage.textContent = 'Erro ao verificar o e-mail. Tente novamente.';
-            emailMessage.style.color = 'red';
-        });
+
 });
 </script>
 
