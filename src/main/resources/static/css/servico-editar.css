@@ -79,27 +79,26 @@ button:hover {
     pointer-events: none; /* Ignora eventos para não interferir na interação */
     z-index: 0; /* Coloca atrás do conteúdo principal */
 }
+.top-right-amoeba, .bottom-left-amoeba {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+}
 
 .top-right-amoeba {
-    position: absolute;
-    top: -100px; /* Ajuste conforme necessário */
-    right: -100px; /* Ajuste conforme necessário */
-    width: 200px; /* Ajuste conforme necessário */
-    height: 200px; /* Ajuste conforme necessário */
-    background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
-    border-radius: 50%; /* Forma arredondada */
+    top: -90px;
+    right: -90px;
+    width: 400px; /* Reduzido */
+    height: 430px; /* Reduzido */
 }
 
 .bottom-left-amoeba {
-    position: absolute;
-    bottom: -100px; /* Ajuste conforme necessário */
-    left: -100px; /* Ajuste conforme necessário */
-    width: 200px; /* Ajuste conforme necessário */
-    height: 200px; /* Ajuste conforme necessário */
-    background-color: rgba(95, 63, 201, 0.2); /* Cor e opacidade */
-    border-radius: 50%; /* Forma arredondada */
+    bottom: -100px;
+    left: -100px;
+    width: 350px; /* Reduzido */
+    height: 350px; /* Reduzido */
 }
-
 /* Media Queries para telas menores */
 @media (max-width: 768px) {
     /* Ajustes para telas menores que 768px */

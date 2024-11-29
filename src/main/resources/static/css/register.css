@@ -124,15 +124,15 @@ body {
 .top-right-amoeba {
     top: -90px;
     right: -90px;
-    width: 580px;
-    height: 580px;
+    width: 400px; /* Reduzido */
+    height: 430px; /* Reduzido */
 }
 
 .bottom-left-amoeba {
     bottom: -100px;
     left: -100px;
-    width: 400px;
-    height: 400px;
+    width: 350px; /* Reduzido */
+    height: 350px; /* Reduzido */
 }
 
 /* Responsividade: Ajustes para telas pequenas */

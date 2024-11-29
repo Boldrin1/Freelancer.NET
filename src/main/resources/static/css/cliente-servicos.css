@@ -40,11 +40,12 @@ body {
     margin-left: -1550px; /* Adicionado para dar um espaçamento entre a logo e o título */
 }
 
-/* Estilo do logotipo */
+/* Logo e título no cabeçalho */
 .logo {
-    height: 40px; /* Ajuste a altura da imagem conforme necessário */
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
 }
-
 
 
 .menu-toggle {

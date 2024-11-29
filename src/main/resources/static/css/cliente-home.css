@@ -1,4 +1,4 @@
-/* Estilo para o corpo */
+ /* Estilo para o corpo */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -10,16 +10,6 @@ body {
     margin: 0; /* Remove margens que podem contribuir para o scroll */
     overflow-x: hidden;
 }
-
-.curriculo-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    gap: 2%; /* Espaço entre os cartões */
-    padding: 2%;
-}
-
-
-
 
 
 .header {
@@ -153,6 +143,12 @@ body {
     transition: transform 0.2s;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(3, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+.curriculo-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 2%; /* Espaço entre os cartões */
+    padding: 2%;
+}
 
 /* Efeito de hover para o item de serviço */
 .service-item:hover {
@@ -186,33 +182,31 @@ body {
     z-index: -1;
 }
 
-.top-right-amoeba,
-.bottom-left-amoeba {
+.top-right-amoeba, .bottom-left-amoeba {
     position: absolute;
     background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
     opacity: 0.9;
-    width: 650px;
-    height: 500px;
-    border-radius: 1000px;
 }
 
 .top-right-amoeba {
     top: -90px;
     right: -90px;
-    position: absolute;
-    width: 580px;
-    height: 800px;
-    background-color: rgba(95, 63, 201, 0.25);
-    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+    width: 400px; /* Reduzido */
+    height: 430px; /* Reduzido */
 }
 
-/* Amoeba inferior esquerda com pontas arredondadas */
 .bottom-left-amoeba {
-    bottom: -120px;
-    left: -180px;
-    width: 500px;
-    border-radius: 100%;
-    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+    bottom: -100px;
+    left: -100px;
+    width: 350px; /* Reduzido */
+    height: 350px; /* Reduzido */
+}
+
+/* Remove o scrolling */
+html, body {
+overflow: hidden;
+height: 100%;
 }
 /* Para dispositivos com largura até 768px (como tablets) */
 @media (max-width: 768px) {
