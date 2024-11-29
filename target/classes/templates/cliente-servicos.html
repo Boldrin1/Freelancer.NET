@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços do Cliente</title>
+	<link rel="stylesheet" href="/css/cliente-servicos.css">
+</head>
+<body>
+
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
+    <div class="header">
+        <img src="/img/logofree.png" alt="Logo" class="logo"> 
+        <span class="header-title">Freelancer.NET</span>
+        <div class="menu-toggle" onclick="toggleSidebar()" style="font-size: 24px; cursor: pointer;">&#9776;</div>
+    </div>
+
+	<div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/{id}(id=${cliente.id})}">Inicio</a>
+	    </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/perfil/{id}(id=${cliente.id})}">Perfil</a>
+		</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/inbox/{id}(id=${cliente.id})}">Inbox</a>
+		</div>
+    </div>
+
+    <div class="main-content">
+       <div class="services-section">
+            <h2>Seus Serviços</h2>
+			<div class="service-card" th:each="servico : ${servicos}">
+			    <h3 th:text="${servico.titulo}"></h3>
+			    <div class="action-buttons">
+			    
+			    
+					<a class="action-button" 
+                          th:href="@{/servico/excluir/{id}(id=${servico.id})}">Excluir</a>
+
+                    <a class="action-button view-button" 
+                          th:href="@{/servico/cliente/visualizar/{id}(id=${servico.id})}">Visualizar</a>
+					
+					
+
+
+			    </div>
+			</div>
+
+ 
+            <div class="button-container">
+                <button th:onclick="'location.href=\'/servico/novo/' + ${id} + '\''">Criar</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

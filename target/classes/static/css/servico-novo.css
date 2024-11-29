@@ -1,0 +1,353 @@
+/* Estilo para o corpo */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    height: 100vh; /* Altura total da tela */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    overflow: hidden; /* Impede rolagem da página */
+}
+
+/* Cabeçalho fixo contendo logo, título e botão de menu */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(250, 250, 250, 0.99);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Container para menu-toggle, logo e título no cabeçalho */
+.left-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo do botão de abrir o menu */
+.menu-toggle {
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Inter';font-size: 25px;
+}
+
+/* Logo e título no cabeçalho */
+.logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+.title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #1E1E1E;
+}
+
+/* Estilo para a barra lateral */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: rgba(250, 250, 250, 0.99);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1100;
+}
+
+/* Cabeçalho dentro da sidebar com nova logo e título */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* Logo e título na sidebar */
+.sidebar-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+.sidebar-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #1E1E1E;
+}
+
+/* Animação para abrir a barra lateral */
+.sidebar.active {
+    left: 0;
+}
+
+/* Itens de menu */
+.menu-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+    border: 0.3px solid #000;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover nos itens */
+.menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+/* Link de ajuda */
+.help-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000;
+    border: 0.3px solid #000;
+    padding: 10px 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.register-container {
+    max-width: 455px; /* Aumentando a largura do container */
+    padding: 60px 45px; /* Aumentando o padding interno */
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 80px; /* Espaço abaixo do cabeçalho fixo */
+}
+
+.register-container h1 {
+    font-family: 'Inter';font-size:36px; /* Aumentando o tamanho da fonte do título */
+    font-weight: bold;
+    color: #5f3fc9;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    font-family: 'Inter';font-size: 15px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.top-right-amoeba,
+.bottom-left-amoeba {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    opacity: 0.9;
+    width: 650px;
+    height: 500px;
+    border-radius: 1000px;
+}
+
+.top-right-amoeba {
+    top: -90px;
+    right: -90px;
+    position: absolute;
+    width: 580px;
+    height: 800px;
+    background-color: rgba(95, 63, 201, 0.25);
+    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+}
+
+/* Amoeba inferior esquerda com pontas arredondadas */
+.bottom-left-amoeba {
+    bottom: -120px;
+    left: -180px;
+    width: 500px;
+    border-radius: 100%;
+    clip-path: polygon(5%, 80% 20%, 95% 55%, 80% 85%, 50% 95%, 20% 85%, 5% 50%, 20% 20%);
+}
+
+.form-control:focus {
+    border-color: #5f3fc9;
+    box-shadow: 0 0 10px rgba(95, 63, 201, 0.4);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #5f3fc9;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-family: 'Inter';font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
+}
+
+.btn-primary2 {
+    background-color: #5f3fc9;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-family: 'Inter';font-size: 18px;
+    font-weight: bold;
+    width: 70%;
+	height:70%;
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(95, 63, 201, 0.3);
+	margin-top:3%;
+}
+
+.btn-primary:hover {
+    background-color: #4b2ea6;
+    box-shadow: 0 10px 30px rgba(75, 46, 166, 0.4);
+}
+
+.text-center a {
+    font-family: 'Inter';font-size: 15px;
+    color: #5f3fc9;
+    margin-top: 15px;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    color: #4b2ea6;
+    text-decoration: underline;
+}
+/* Para dispositivos com largura até 1024px (como tablets) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 10px 15px; /* Ajusta o padding para cabeçalhos menores */
+    }
+
+    .title {
+        font-family: 'Inter';font-size: 24px; /* Reduz o tamanho do título */
+    }
+
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+
+    .register-container {
+        padding: 40px 30px; /* Reduz o padding interno do container */
+        max-width: 400px; /* Limita a largura do container */
+        margin-top: 70px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+}
+
+/* Para dispositivos com largura até 768px (como tablets em modo retrato) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 0 15px; /* Adiciona padding para o corpo */
+    }
+
+    .header {
+        padding: 10px 15px;
+    }
+
+    .title {
+        font-family: 'Inter';font-size: 22px; /* Ajusta o tamanho do título */
+    }
+
+    .sidebar {
+        left: -250px; /* Deixa a sidebar mais escondida */
+        width: 180px; /* Reduz a largura da sidebar */
+    }
+
+    .sidebar.active {
+        left: 0; /* Permite a abertura da sidebar */
+    }
+
+    .register-container {
+        max-width: 350px; /* Reduz o tamanho do container */
+        padding: 35px 25px; /* Ajusta o padding */
+        margin-top: 50px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+}
+
+/* Para dispositivos com largura até 480px (como celulares) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Adiciona padding extra para celulares */
+    }
+
+    .header {
+        padding: 10px; /* Reduz o padding do cabeçalho */
+    }
+
+    .title {
+        font-family: 'Inter';font-size: 20px; /* Reduz ainda mais o tamanho do título */
+    }
+
+    .sidebar {
+        left: -200px; /* Sidebar mais escondida */
+        width: 160px; /* Reduz ainda mais a largura da sidebar */
+    }
+
+    .sidebar.active {
+        left: 0; /* Sidebar pode ser aberta */
+    }
+
+    .register-container {
+        max-width: 300px; /* Limita a largura do container */
+        padding: 25px 20px; /* Ajusta o padding */
+        margin-top: 40px; /* Ajusta a margem superior */
+    }
+
+    .form-control {
+        width: 100%; /* Faz os campos de entrada ocuparem 100% da largura */
+    }
+
+    .btn-primary {
+        font-family: 'Inter';font-size: 16px; /* Reduz o tamanho da fonte no botão */
+        padding: 10px; /* Ajusta o padding do botão */
+    }
+
+    .menu-toggle {
+        font-family: 'Inter';font-size: 20px; /* Ajusta o tamanho do ícone do menu */
+    }
+}

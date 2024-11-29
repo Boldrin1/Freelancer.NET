@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Perfil - Freelancer.NET</title>
+	<link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+
+    <!-- Formas de Fundo -->
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+
+    <!-- Logotipo e Título Principal -->
+    <div class="header-logo">
+        <img src="/img/logofree.png" alt="Logo Freelancer.NET" class="logo-img">
+        <h1 class="site-title">Freelancer.NET</h1>
+    </div>
+
+    <!-- Conteúdo Principal - Formulário de Registro -->
+    <div class="register-container">
+        <h2>Adicionar Perfil</h2>
+        <form action="#" th:action="@{/save}"  th:object="${usuario}" method="post" class="form-grid">
+            <!-- Nome Completo -->
+            <div>
+                <label class="form-label" for="nome">Nome Completo:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+
+            <!-- E-mail -->
+            <div>
+                <label class="form-label" for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+				<span id="emailMessage" style="color: red;"></span>
+            </div>
+
+            <!-- Senha -->
+            <div>
+                <label class="form-label" for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+				
+            </div>
+
+            <!-- Data de Nascimento -->
+            <div>
+                <label class="form-label" for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
+            </div>
+
+            <!-- Número de Telefone -->
+            <div>
+                <label class="form-label" for="telefone">Número de Telefone:</label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+            </div>
+
+            <!-- CPF -->
+            <div>
+                <label class="form-label" for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required placeholder="XXX.XXX.XXX-XX">
+            </div>
+
+            <!-- Sexo -->
+            <div>
+                <label class="form-label" for="sexo">Sexo:</label>
+                <select class="form-control" id="sexo" name="sexo" required>
+                    <option value="">Selecione</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                </select>
+            </div>
+
+            <!-- Identificação como (Freelancer ou Cliente) -->
+            <div>
+                <label class="form-label" for="role">Você se identifica como:</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="">Selecione</option>
+                    <option value="FREELANCER">Freelancer</option>
+                    <option value="CLIENTE">Cliente</option>
+                </select>
+            </div>
+
+            <!-- Botão de Enviar -->
+            <button type="submit" class="btn-primary">Adicionar Perfil</button>
+        </form>
+
+        <!-- Link para o login -->
+        <div class="text-center">
+            <a href="#" th:href="@{/login}">Voltar para o Login</a>
+        </div>
+    </div>
+	
+<script>
+const emailInput = document.getElementById('email');
+const emailMessage = document.getElementById('emailMessage');
+
+emailInput.addEventListener('blur', () => {
+    const email = emailInput.value.trim();
+
+    if (!email) {
+        emailMessage.textContent = 'Por favor, insira um e-mail válido.';
+        emailMessage.style.color = 'red';
+        return;
+    }
+
+    fetch(`/api/usuarios/check-email?email=${encodeURIComponent(email)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro na resposta: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                emailMessage.textContent = 'Este e-mail já está cadastrado.';
+                emailMessage.style.color = 'red';
+            } else {
+                emailMessage.textContent = ''; // Limpa a mensagem se o e-mail não existe
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao verificar o e-mail:', error);
+            emailMessage.textContent = 'Erro ao verificar o e-mail. Tente novamente.';
+            emailMessage.style.color = 'red';
+        });
+});
+</script>
+
+
+
+</body>
+</html>

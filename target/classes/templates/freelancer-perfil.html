@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Freelancer</title>
+    <link rel="stylesheet" href="/css/freelancer-perfil.css">
+</head>
+<body>
+    <!-- Cabeçalho fixo -->
+    <div class="top-right-amoeba"></div>
+    <div class="bottom-left-amoeba"></div>
+
+    <div class="header">
+        <img src="/img/logofree.png" alt="Logo" class="logo">
+        <span class="header-title">Freelancer.NET</span>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+		
+		<div class="menu-item">
+		  <a th:href="@{/usuario/freelancer/{id}(id=${freelancer.id})}">Inicio</a>
+			</div>
+
+		<div class="menu-item">
+		     <a th:href="@{/usuario/freelancer/curriculo/{id}(id=${freelancer.id})}">Currículo</a>
+		</div>
+				
+		<div class="menu-item">
+		    <a th:href="@{/proposta/freelancer/{id}(id=${freelancer.id})}">Inbox</a>
+		</div>
+
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="container">
+        <div class="profile-section">
+            <h1>Perfil</h1>
+            <!-- Nome -->
+            <div class="profile-field">
+                <label>Nome:</label>
+                <span th:text="${freelancer.nome}"></span>
+            </div>
+
+            <!-- E-mail -->
+            <div class="profile-field">
+                <label>E-mail:</label>
+                <span th:text="${freelancer.email}"></span>
+            </div>
+			
+			<!-- Telefone -->
+			<div class="profile-field">
+			    <label>Telefone:</label>
+			    <span th:text="${freelancer.telefone}"></span>
+			</div>
+
+			<div class="profile-field">
+			    <label>Data de Nascimento:</label>
+			    <span th:text="${#dates.format(freelancer.dataNascimento, 'dd-MM-yyyy')}"></span>
+			</div>
+
+
+            <div class="profile-field">
+                <label>Sexo:</label>
+                <span th:text="${freelancer.sexo}"></span>
+            </div>
+
+            <!-- CPF -->
+            <div class="profile-field">
+                <label>CPF:</label>
+                <span th:text="${freelancer.cpf}"></span>
+            </div>
+
+
+            <!-- Botão de Editar -->
+            <div class="button-container">
+                <a th:href="@{/usuario/freelancer/perfil/editar/{id}(id=${freelancer.id})}" class="btn-action">Editar</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Função para alternar a visibilidade da sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
+</body>
+</html>

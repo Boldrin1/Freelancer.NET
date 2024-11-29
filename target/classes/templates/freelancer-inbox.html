@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox - Freelancer</title>
+    <link rel="stylesheet" href="/css/freelancer-inbox.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree.png" alt="Logo" class="logo">
+            <span class="header-title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+		<div class="menu-item">
+		     <a th:href="@{/usuario/freelancer/{id}(id=${freelancer.id})}">Inicio</a>
+		</div>
+		<div class="menu-item">
+				<a th:href="@{/usuario/freelancer/perfil/{id}(id=${freelancer.id})}">Perfil</a>
+			</div>
+			<div class="menu-item">
+			    <a th:href="@{/usuario/freelancer/curriculo/{id}(id=${freelancer.id})}">Currículo</a>
+			</div>
+
+    </div>
+    <!-- Adicionando os shapes de fundo -->
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    
+    <h1 class="page-title">Veja as suas propostas</h1>
+
+	<div class="proposal-card" th:each="proposta : ${propostas}">
+	    <div class="action-container">
+	        <h2 th:text="${proposta.cliente != null ? proposta.cliente.nome : 'Cliente não encontrado'}"></h2> 
+	         <a th:href="@{/usuario/freelancer/inbox/view-proposta/{propostaId}(propostaId=${proposta.id}, clienteId=${proposta.cliente.id})}"
+   class="btn-view">Ver Proposta</a>
+	         
+	    </div>
+	</div>
+
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

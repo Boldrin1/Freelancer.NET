@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Serviço</title>
+    <link rel="stylesheet" href="/css/Freelancer-Visu-Servico.css">
+</head>
+<body>
+    <div class="container">
+    
+        <div class="top-right-amoeba"></div>
+         <div class="bottom-left-amoeba"></div>
+    
+        <div class="card">
+            <h2  th:text="${servico.titulo}"></h2>
+          <form th:action="@{/usuario/freelancer/{servicoId}/enviar-curriculo(servicoId=${servico.id})}" method="post">
+    <input type="hidden" name="freelancerId" th:value="${freelancer.id}" />
+    
+    <label for="valor">Valor:</label>
+    <input type="text" id="valor" disabled th:value="${servico.valor}" />
+
+    <label for="dias">Dias ou Horas:</label>
+    <input type="text" id="dias" disabled th:value="${servico.horas}" />
+
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" rows="5" disabled th:text="${servico.descricao}"></textarea>
+
+    <div class="button-group">
+        <button type="button" class="btn voltar" onclick="window.history.back();">Voltar</button>
+        <button type="submit" class="btn enviar">Enviar Currículo</button>
+    </div>
+</form>
+          
+        </div>
+    </div>
+</body>
+</html>

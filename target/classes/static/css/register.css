@@ -1,0 +1,181 @@
+/* Estilo para o corpo */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Container de Registro */
+.register-container {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilos para o Logotipo e Título */
+.header-logo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 150px;
+}
+
+.site-title {
+    font-family: 'Inter';font-size: 36px;
+    color: #5f3fc9;
+    margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o título da página */
+.register-container h2 {
+    font-family: 'Inter';font-size: 28px;
+    color: #5f3fc9;
+    margin-bottom: 20px;
+}
+
+/* Estilos do formulário e grade */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+/* Estilos para o texto e campos de entrada */
+.form-label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para o botão */
+.btn-primary {
+    background-color: #5f3fc9;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter';font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 20px;
+    grid-column: span 2;
+}
+
+.btn-primary:hover {
+    background-color: #4b2ea6;
+}
+
+/* Estilos para o link de login */
+.text-center {
+    margin-top: 20px;
+}
+
+.text-center a {
+    color: #5f3fc9;
+    text-decoration: none;
+}
+
+/* Estilos para as formas de fundo */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.top-right-amoeba, .bottom-left-amoeba {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.top-right-amoeba {
+    top: -90px;
+    right: -90px;
+    width: 580px;
+    height: 580px;
+}
+
+.bottom-left-amoeba {
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+}
+
+/* Responsividade: Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Coloca o formulário em uma coluna */
+        gap: 15px;
+    }
+
+    .site-title {
+        font-family: 'Inter';font-size: 28px; /* Reduz o tamanho do título */
+    }
+
+    .register-container {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        font-family: 'Inter';font-size: 16px; /* Ajusta o tamanho do botão */
+    }
+
+    .logo-img {
+        width: 120px; /* Reduz o tamanho do logo */
+    }
+}
+
+/* Responsividade: Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .site-title {
+        font-family: 'Inter';font-size:24px; /* Título menor em telas pequenas */
+    }
+
+    .register-container {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn-primary {
+        font-family: 'Inter';font-size: 14px; /* Botão menor */
+    }
+
+    .logo-img {
+        width: 100px; /* Logo ainda menor */
+    }
+}

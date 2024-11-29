@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox - Cliente</title>
+    <link rel="stylesheet" href="/css/cliente-inbox.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <img src="/img/logofree.png" alt="Logo" class="logo">
+            <span class="header-title">Freelancer.NET</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/{id}(id=${cliente.id})}">Inicio</a>
+	    </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/perfil/{id}(id=${cliente.id})}">Perfil</a>
+		</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/servicos/{id}(id=${cliente.id})}">Meus Serviços</a>
+		</div>
+    </div>
+    <!-- Adicionando os shapes de fundo -->
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    
+	<h1 class="page-title">Veja os currículos enviados para você!</h1>
+
+	<div th:if="${servicosCurriculos != null && servicosCurriculos.isEmpty()}">
+	    <p>Nenhum currículo foi enviado para você.</p>
+	</div>
+
+
+	<div th:if="${servicosCurriculos != null}" th:each="servicoCurriculo : ${servicosCurriculos}">
+	    <div class="curriculos-card">
+	        <div class="action-container">
+	            <h3 th:text="${servicoCurriculo.curriculo.freelancer.nome}">Nome do Freelancer</h3>
+	            <a th:href="@{/usuario/cliente/inbox/view-curriculo/{servicoId}(servicoId=${servicoCurriculo.servico.id}, curriculoId=${servicoCurriculo.curriculo.id})}" class="btn-view">
+                     Ver Currículo
+                </a>
+	            
+	            
+	        </div>
+	    </div>
+	</div>
+
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            height: 100vh; /* Altura total da tela */
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            overflow: hidden; /* Impede rolagem da página */
+        }
+
+        .top-right-amoeba, .bottom-left-amoeba {
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease;
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.top-right-amoeba {
+    top: -90px;
+    right: -90px;
+    width: 550px;
+    height: 580px;
+}
+
+.bottom-left-amoeba {
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+}
+
+
+        /* Cabeçalho fixo contendo logo, título e botão de menu */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.sidebar-title {
+        font-weight: 700;
+        font-family: 'Inter';
+        font-size: 24px;
+        color: #333;
+    }
+
+.header-title {
+    font-weight: 700;
+    font-family: 'Inter';
+    font-size: 30px; /* Ajustado para 30px */
+    color: #333;
+    margin-left: -1550px; /* Adicionado para dar um espaçamento entre a logo e o título */
+}
+
+/* Estilo do logotipo */
+.logo {
+    height: 40px; /* Ajuste a altura da imagem conforme necessário */
+}
+
+
+
+.menu-toggle {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: rgba(255, 255, 255, 0.99);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1100;
+    font-weight: 700;
+}
+
+.sidebar.active {
+    left: 0;
+}
+/* Estilo do cabeçalho da sidebar */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 40px; /* Ajuste conforme necessário */
+}
+
+.sidebar-title {
+    font-weight: 700;
+   font-family: 'Inter';font-size: 24px;
+    color: #333;
+}
+.menu-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #000000;
+    border: 0.3px solid #000;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #ffffff;
+}
+        /* Container principal */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, #e4e8f9, #ffffff);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+/* Título */
+.container h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #5f3fc9;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Seção de detalhes */
+.container .details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9fc;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+/* Estilo de cada item */
+.details-item {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #e3e3e8;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.details-item:hover {
+    background-color: #e9e9f5;
+}
+
+/* Ícones nos itens */
+.details-item i {
+    font-size: 20px;
+    color: #5f3fc9;
+    margin-right: 12px;
+}
+
+/* Texto forte */
+.details-item strong {
+    margin-right: 8px;
+    color: #5f3fc9;
+}
+
+/* Estilo dos itens */
+.container p {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.container p strong {
+    margin-right: 8px;
+    color: #5f3fc9;
+}
+
+/* Ícones */
+.container p i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #5f3fc9;
+}
+
+/* Botão */
+.btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #5f3fc9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(95, 63, 201, 0.2);
+}
+
+/* Título principal */
+.profile-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #5f3fc9;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 10px rgba(95, 63, 201, 0.2);
+}
+
+
+
+.btn:hover {
+    background-color: #4b2ea6;
+    box-shadow: 0 4px 15px rgba(75, 46, 166, 0.4);
+}
+
+        
+/* Estilo Responsivo */
+
+/* Ajustes para telas menores que 1200px */
+@media (max-width: 1200px) {
+    .container {
+        padding: 30px 20px;
+        max-width: 1000px;
+    }
+    .header-title {
+        font-size: 26px;
+        margin-left: -800px; /* Ajuste para manter a centralização */
+    }
+    .btn {
+        padding: 10px 15px;
+    }
+}
+
+/* Ajustes para telas menores que 768px (tablets e celulares maiores) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Permite que os elementos fiquem empilhados */
+        overflow-y: auto; /* Permite rolagem no eixo Y */
+    }
+    .container {
+        padding: 20px;
+        max-width: 90%;
+    }
+    .header {
+        flex-direction: column; /* Organiza o cabeçalho em pilha */
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .header-title {
+        font-size: 22px;
+        margin-left: 0; /* Remove a margem */
+    }
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .details-item {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+/* Ajustes para telas menores que 480px (smartphones menores) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    .header-title {
+        font-size: 18px;
+    }
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    .details-item {
+        font-size: 14px;
+        padding: 6px;
+        flex-direction: column; /* Organiza os detalhes em pilha */
+        align-items: flex-start;
+    }
+    .details-item i {
+        margin-bottom: 8px; /* Espaço entre o ícone e o texto */
+    }
+    .profile-title {
+        font-size: 28px;
+    }
+}

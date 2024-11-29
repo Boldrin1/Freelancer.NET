@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Cliente</title>
+	<link rel="stylesheet" href="/css/cliente-perfil.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <img src="/img/logofree.png" alt="Logo" class="logo">
+        <span class="header-title">Freelancer.NET</span>
+        <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logofree.png" alt="Logo" class="sidebar-logo">
+            <span class="sidebar-title">Freelancer.NET</span>
+            <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
+        </div>
+		<div class="menu-item">
+				<a th:href="@{/usuario/cliente/{id}(id=${cliente.id})}">Inicio</a>
+	    </div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/servicos/{id}(id=${cliente.id})}">Meus Serviços</a>
+		</div>
+		<div class="menu-item">
+			<a th:href="@{/usuario/cliente/inbox/{id}(id=${cliente.id})}">Inbox</a>
+		</div>
+   
+    </div>
+
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+    <div class="container">
+        <h1 class="profile-title">Perfil</h1>
+        <div class="details">
+            <div class="details-item">
+                <i class="fas fa-user"></i>
+                <p><strong>Nome:</strong> [[${cliente.nome}]]</p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-id-card"></i>
+                <p><strong>CPF:</strong> [[${cliente.cpf}]]</p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-envelope"></i>
+                <p><strong>Email:</strong> [[${cliente.email}]]</p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-lock"></i>
+                <p><strong>Senha:</strong> [[${cliente.senha}]]</p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-calendar"></i>
+                <p><strong>Data de Nascimento:</strong><span th:text="${#dates.format(cliente.dataNascimento, 'dd-MM-yyyy')}"></span></p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-phone"></i>
+                <p><strong>Telefone:</strong> [[${cliente.telefone}]]</p>
+            </div>
+            <div class="details-item">
+                <i class="fas fa-venus-mars"></i>
+                <p><strong>Sexo:</strong> 
+                    <!-- Exibe o sexo escolhido -->
+                    <span th:text="${cliente.sexo}"></span>
+                </p>
+            </div>
+        <!-- Botão para editar perfil -->
+        <a th:href="@{/usuario/cliente/perfil/editar/{id}(id=${cliente.id})}" class="btn">Editar Perfil</a>
+      </div>
+     </div> 
+    
+
+    <script>
+        // Função para alternar a visibilidade da sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
+
+
+</body>
+</html>
+
+

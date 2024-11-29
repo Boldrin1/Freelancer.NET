@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Freelancer.NET</title>
+    <link rel="stylesheet" href="/css/login.css"> <!-- Certifique-se de que o caminho do CSS esteja correto -->
+</head>
+<body>
+
+    <div class="background-shapes">
+        <div class="top-right-amoeba"></div>
+        <div class="bottom-left-amoeba"></div>
+    </div>
+
+    <div class="login-container register-container"> <!-- Alterei a classe para usar os estilos do registro -->
+        <div class="header-logo text-center mb-4">
+            <img src="/img/logofree.png" alt="Logo" class="logo-img"> <!-- Caminho do logo -->
+            <h1 class="site-title">Freelancer.NET</h1> <!-- Classe para o título -->
+        </div>
+        
+        <form action="/login-verificar" method="post">
+         <div class="mb-3">
+           <label for="email" class="form-label">Email</label>
+           <input type="text" class="form-control" name="username" id="email"  placeholder="Digite seu email" required />
+         </div>
+         
+         <div class="mb-3">
+           <label for="senha" class="form-label">Senha</label>  
+           <input type="password" class="form-control" id="senha" name="password"  placeholder="Digite sua senha" required />
+         </div>
+           
+           <button type="submit" class="btn-primary">Login</button>
+        </form>
+        
+        <div class="text-center mt-3">
+            <a href="/register">Não tem uma conta? Crie uma!</a>
+        </div>
+    </div>
+
+</body>
+</html>

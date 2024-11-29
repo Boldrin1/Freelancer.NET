@@ -1,0 +1,175 @@
+/* Estilo para o corpo */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Estilos para o título do site */
+.site-title {
+    font-family: 'Inter';font-size: 60px; /* Tamanho do título */
+    color: #5f3fc9; /* Cor do título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Container de Login */
+.login-container {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    margin-top: 40px;
+}
+
+/* Estilos do formulário */
+.mb-3 {
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+/* Estilos para o texto e campos de entrada */
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para o botão */
+.btn-primary {
+    background-color: #5f3fc9;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter';font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: auto; /* Alterado para auto para não ocupar 100% */
+    margin: 0 auto; /* Para centralizar */
+}
+
+.btn-primary:hover {
+    background-color: #4b2ea6;
+}
+
+/* Estilos para o link de registro */
+.text-center {
+    margin-top: 20px;
+}
+
+.text-center a {
+    color: #5f3fc9;
+    text-decoration: none;
+}
+
+/* Estilos para as formas de fundo */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.top-right-amoeba, .bottom-left-amoeba {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(95, 63, 201, 0.25), rgba(75, 46, 166, 0.15));
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.top-right-amoeba {
+    top: -90px;
+    right: -90px;
+    width: 580px;
+    height: 580px;
+}
+
+.bottom-left-amoeba {
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+}
+/* Para dispositivos com largura até 768px (como tablets) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 10px; /* Adiciona um pequeno padding */
+    }
+
+    .site-title {
+        font-family: 'Inter';font-size: 50px; /* Reduz o tamanho do título */
+        margin-bottom: 15px; /* Reduz o espaço abaixo do título */
+    }
+
+    .login-container {
+        padding: 30px; /* Reduz o padding do container */
+        width: 90%; /* Limita a largura do container */
+    }
+
+    .form-control {
+        font-family: 'Inter';font-size: 16px; /* Ajusta o tamanho da fonte dos campos */
+        padding: 8px; /* Reduz o padding dos campos */
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-family: 'Inter';font-size: 16px; /* Ajusta o tamanho do botão */
+        width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    }
+
+    .top-right-amoeba, .bottom-left-amoeba {
+        width: 350px; /* Reduz o tamanho das formas */
+        height: 350px;
+    }
+}
+
+/* Para dispositivos com largura até 480px (como celulares) */
+@media (max-width: 480px) {
+    body {
+        padding: 0 5px; /* Adiciona padding mais estreito */
+    }
+
+    .site-title {
+        font-family: 'Inter';font-size: 40px; /* Reduz ainda mais o tamanho do título */
+        margin-bottom: 10px; /* Diminui o espaço abaixo do título */
+    }
+
+    .login-container {
+        padding: 20px; /* Ajuste de padding */
+        width: 100%; /* Garante que o container ocupe toda a largura */
+        margin-top: 20px; /* Reduz o espaço superior */
+    }
+
+    .form-control {
+        font-family: 'Inter';font-size: 14px; /* Reduz ainda mais o tamanho da fonte */
+        padding: 6px; /* Reduz o padding dos campos */
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-family: 'Inter';font-size: 16px; /* Ajusta o tamanho do botão */
+        width: 100%; /* O botão ocupa toda a largura disponível */
+    }
+
+    .top-right-amoeba, .bottom-left-amoeba {
+        width: 300px; /* Reduz mais o tamanho das formas */
+        height: 300px;
+    }
+}
