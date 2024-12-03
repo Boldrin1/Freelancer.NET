@@ -49,17 +49,18 @@
                 <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
             </div>
 
-            <!-- Número de Telefone -->
-            <div>
-                <label class="form-label" for="telefone">Número de Telefone:</label>
-                <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
-            </div>
+           <div>
+              <label class="form-label" for="telefone">Número de Telefone:</label>
+              <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+              <span id="telefoneMessage" style="color: red;"></span>
+           </div>
 
-            <!-- CPF -->
-            <div>
-                <label class="form-label" for="cpf">CPF:</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" required placeholder="XXX.XXX.XXX-XX">
-            </div>
+           <div>
+              <label class="form-label" for="cpf">CPF:</label>
+              <input type="text" class="form-control" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" required>
+              <span id="cpfMessage" style="color: red;"></span>
+           </div>
+           
 
             <!-- Sexo -->
             <div>
@@ -71,7 +72,6 @@
                 </select>
             </div>
 
-            <!-- Identificação como (Freelancer ou Cliente) -->
             <div>
                 <label class="form-label" for="role">Você se identifica como:</label>
                 <select class="form-control" id="role" name="role" required>
@@ -81,11 +81,10 @@
                 </select>
             </div>
 
-            <!-- Botão de Enviar -->
-            <button type="submit" class="btn-primary">Adicionar Perfil</button>
+            <button type="submit" class="btn-primary">Registrar-se</button>
         </form>
 
-        <!-- Link para o login -->
+        
         <div class="text-center">
             <a href="#" th:href="@{/login}">Voltar para o Login</a>
         </div>
@@ -93,23 +92,83 @@
 	
 <script>
 
-document.getElementById("cpf").addEventListener("input", function () {
-    const cpf = this.value.replace(/\D/g, "");
-    if (cpf.length === 11) {
-        fetch(`/api/validate/cpf?cpf=${cpf}`)
-            .then(response => response.text())
-            .then(message => alert(message));
+const cpfInput = document.getElementById('cpf');
+const cpfMessage = document.getElementById('cpfMessage');
+
+
+// Validação do CPF
+cpfInput.addEventListener('blur', () => {
+    const cpf = cpfInput.value.trim().replace(/\D/g, '');
+
+    if (cpf.length !== 11) {
+        cpfMessage.textContent = 'Por favor, insira um CPF válido.';
+        return;
     }
+
+    fetch(`/api/validate/cpf`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `cpf=${encodeURIComponent(cpf)}`
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('CPF inválido.');
+            }
+            return response.text();
+        })
+        .then(() => {
+            cpfMessage.textContent = ''; // Remove mensagem em caso de sucesso
+        })
+        .catch(() => {
+            cpfMessage.textContent = 'CPF inválido.';
+        });
+
 });
 
-document.getElementById("telefone").addEventListener("input", function () {
-    const telefone = this.value;
-    if (telefone.match(/^\(\d{2}\) \d{5}-\d{4}$/)) {
-        fetch(`/api/validate/telefone?telefone=${telefone}`)
-            .then(response => response.text())
-            .then(message => alert(message));
+// Validação do telefone
+const telefoneInput = document.getElementById('telefone');
+const telefoneMessage = document.createElement('span');
+telefoneMessage.style.color = 'red';
+telefoneInput.parentNode.appendChild(telefoneMessage);
+
+telefoneInput.addEventListener('blur', () => {
+    const telefone = telefoneInput.value.trim();
+
+    if (!telefone) {
+        telefoneMessage.textContent = 'Por favor, insira um número de telefone válido.';
+        return;
     }
+
+    fetch(`/api/validate/telefone`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `telefone=${encodeURIComponent(telefone)}`
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Telefone inválido.');
+            }
+            return response.text();
+        })
+        .then(() => {
+            telefoneMessage.textContent = ''; // Remove mensagem em caso de sucesso
+        })
+        .catch(() => {
+            telefoneMessage.textContent = 'Telefone inválido.';
+        });
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -137,7 +196,7 @@ emailInput.addEventListener('blur', () => {
                 emailMessage.textContent = 'Este e-mail já está cadastrado.';
                 emailMessage.style.color = 'red';
             } else {
-                emailMessage.textContent = ''; // Limpa a mensagem se o e-mail não existe
+                emailMessage.textContent = ''; 
             }
         })
 

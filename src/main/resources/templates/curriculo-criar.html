@@ -22,15 +22,20 @@
             <span class="sidebar-title">Freelancer.NET</span>
             <div class="menu-toggle" onclick="toggleSidebar()">&#10006;</div>
         </div>
-        <div class="menu-item">Perfil</div>
-        <div class="menu-item">Curriculo</div>
-        <div class="menu-item">Inbox</div>
-        <div class="menu-item">Contratos</div>
-        <div class="menu-item">Informações</div>
+        <div class="menu-item">
+				     <a th:href="@{/usuario/freelancer/{id}(id=${freelancer.id})}">Inicio</a>
+				</div>
+				<div class="menu-item">
+						<a th:href="@{/usuario/freelancer/perfil/{id}(id=${freelancer.id})}">Perfil</a>
+					</div>
+					<div class="menu-item">
+							<a th:href="@{/proposta/freelancer/{id}(id=${freelancer.id})}">Inbox</a>
+						</div>
+
     </div>
 
     <div class="container">
-        <h2>Criar Currículo</h2>
+        <h2 id="titulo">Criar Currículo</h2>
         <form th:action="@{/usuario/freelancer/curriculo/salvar}" method="post">
             <input type="hidden" th:name="freelancerId" th:value="${freelancer.id}" />
             <label for="inputNome">Nome:</label>

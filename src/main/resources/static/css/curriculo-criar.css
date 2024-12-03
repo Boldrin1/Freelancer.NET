@@ -21,6 +21,9 @@ body {
     height: auto;
 }
 
+#titulo{
+	margin-top:10%;
+}
 
 h2 {
     font-family: 'Inter';

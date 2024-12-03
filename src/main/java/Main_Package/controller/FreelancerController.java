@@ -175,28 +175,38 @@ public class FreelancerController {
 	public String enviarCurriculo(
 	        @PathVariable Long servicoId,
 	        @RequestParam Long freelancerId,
-	        RedirectAttributes redirectAttributes) {
+	        Model model) {
 
 	    Curriculo curriculo = curriculoRepository.findByFreelancer_Id(freelancerId)
-	            .orElseThrow(() -> new RuntimeException("Currículo não encontrado"));
-
-	    Servico servico = servicoRepository.findById(servicoId)
-	            .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
-
-	    if (servicoCurriculoRepository.existsByServicoIdAndCurriculoId(servicoId, curriculo.getId())) {
-	        redirectAttributes.addFlashAttribute("error", "Currículo já enviado para este serviço.");
-	        return "redirect:/usuario/freelancer/" + freelancerId;
+	            .orElse(null);
+	    if (curriculo == null) {
+	        model.addAttribute("error", "Currículo não encontrado.");
+	        return "redirect:/usuario/freelancer/curriculo/" + freelancerId; 
 	    }
 
+	    Servico servico = servicoRepository.findById(servicoId)
+	            .orElse(null);
+	    if (servico == null) {
+	        model.addAttribute("error", "Serviço não encontrado.");
+	        return "freelancer-error-page"; 
+	    }
+
+	   
+	    if (servicoCurriculoRepository.existsByServicoIdAndCurriculoId(servicoId, curriculo.getId())) {
+	        model.addAttribute("error", "Currículo já enviado para este serviço.");
+	        return "freelancer-error-page"; 
+	    }
+
+	    
 	    ServicoCurriculo servicoCurriculo = new ServicoCurriculo();
 	    servicoCurriculo.setServico(servico);
-	    servicoCurriculo.setCurriculo(curriculo);       
+	    servicoCurriculo.setCurriculo(curriculo);
 	    servicoCurriculoRepository.save(servicoCurriculo);
 
-	    redirectAttributes.addFlashAttribute("success", "Currículo enviado com sucesso!");
-	    return "redirect:/usuario/freelancer/" + freelancerId;
+	    model.addAttribute("success", "Currículo enviado com sucesso!");
+	    return "redirect:/usuario/freelancer/" + freelancerId; 
 	}
-	
+
 	
 	@GetMapping("/inbox/view-proposta/{propostaId}")
 	public String freelancerViewCurriculo(@PathVariable Long propostaId,
