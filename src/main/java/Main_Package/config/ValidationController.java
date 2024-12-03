@@ -50,7 +50,6 @@ public class ValidationController {
 
 	    @PostMapping("/telefone")
     public ResponseEntity<String> validatePhone(@RequestParam String telefone) {
-    	System.out.println("Validando telefone: " + telefone);
         if (isValidPhone(telefone)) {
             return ResponseEntity.ok("Telefone válido!");
         } else {
@@ -60,7 +59,6 @@ public class ValidationController {
 
     @PostMapping("/cpf")
     public ResponseEntity<String> validateCPF(@RequestParam String cpf) {
-    	System.out.println("Validando CPF: " + cpf);
         if (isValidCPF(cpf)) {
             return ResponseEntity.ok("CPF válido!");
         } else {
