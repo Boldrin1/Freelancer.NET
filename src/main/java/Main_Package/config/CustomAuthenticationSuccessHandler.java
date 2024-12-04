@@ -32,16 +32,14 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         Optional<Freelancer> freelancerOptional = freelancerService.findByEmail(username);
         if (freelancerOptional.isPresent()) {
             Freelancer freelancer = freelancerOptional.get();
-            System.out.println("Freelancer encontrado: " + freelancer.getNome());
             response.sendRedirect("/usuario/freelancer/" + freelancer.getId());  
             return;
         }
 
-        // Verifica se o usuário é cliente
+
         Optional<Cliente> clienteOptional = clienteService.findByEmail(username);
         if (clienteOptional.isPresent()) {
             Cliente cliente = clienteOptional.get();
-            System.out.println("Cliente encontrado: " + cliente.getNome());
             response.sendRedirect("/usuario/cliente/" + cliente.getId()); 
             return;
         }
